@@ -16,3 +16,6 @@
 node_modules/
 .env
 .env.local
+
+# Donor theme — has its own git repo, never track from this repo
+Supplement Store/
