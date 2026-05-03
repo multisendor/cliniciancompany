@@ -87,9 +87,8 @@ Write `Health Store/.gitignore`:
 # Brainstorm scratch
 .superpowers/
 
-# Shopify CLI
-.shopifyignore-local
-*.shopifylocal
+# Shopify CLI (per-machine state — never commit)
+.shopify/
 
 # Node
 node_modules/
