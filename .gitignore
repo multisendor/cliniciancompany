@@ -1,0 +1,18 @@
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Brainstorm scratch
+.superpowers/
+
+# Shopify CLI
+.shopifyignore-local
+*.shopifylocal
+
+# Node
+node_modules/
+.env
+.env.local
