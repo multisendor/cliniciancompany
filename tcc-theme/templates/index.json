@@ -1,4 +1,25 @@
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "hero": {
+      "type": "hero-product-showcase",
+      "settings": {}
+    },
+    "trust": {
+      "type": "scrolling-promo-ticker",
+      "settings": {}
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {}
+    },
+    "comparison": {
+      "type": "brand-comparison-table",
+      "settings": {}
+    },
+    "faq": {
+      "type": "bottom-faq",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "trust", "benefits", "comparison", "faq"]
 }
