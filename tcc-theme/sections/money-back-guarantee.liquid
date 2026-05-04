@@ -1,0 +1,294 @@
+<div
+  data-section-type="money-back-guarantee"
+  class="mbg-section"
+>
+  <div class="mbg-container">
+
+    <!-- SVG Badge -->
+    <div class="mbg-badge-wrapper">
+      <div class="mbg-badge">
+        <svg viewBox="0 0 104 104" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="mbg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="14%" style="stop-color:var(--tcc-ink);stop-opacity:1" />
+              <stop offset="85%" style="stop-color:var(--tcc-ink);stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#mbg-grad)" d="M1.000000,51.000000
+            C1.000000,49.611111 1.000000,48.222221 1.345080,46.394020
+            C8.336266,41.893822 12.947848,37.161053 9.938805,28.279732
+            C8.646383,24.465097 11.970157,22.393621 15.444208,22.262253
+            C21.801205,22.021873 24.917507,18.938211 26.106049,12.786117
+            C27.007561,8.119734 29.861904,6.524527 34.219151,8.422357
+            C40.194992,11.025178 44.557964,10.071068 48.498600,4.846415
+            C51.077892,1.426693 54.778618,1.282823 57.370518,4.737800
+            C61.465118,10.195868 66.036087,11.061080 72.090652,8.285204
+            C75.687096,6.636317 79.120438,8.114588 79.730682,12.131318
+            C80.789162,19.098555 84.587448,22.036135 91.355568,22.446569
+            C95.184387,22.678761 97.190903,25.495935 96.037254,29.119902
+            C93.803085,36.138103 95.949440,40.930271 102.239365,44.325405
+            C103.324608,44.911194 104.087959,46.093330 105.000000,47.000000
+            C105.000000,48.066853 105.000000,49.133701 104.649681,50.591454
+            C97.000122,57.908245 96.765419,58.703869 99.966194,65.671570
+            C102.915359,72.091522 102.375351,73.877281 95.469635,76.505455
+            C91.138290,78.153854 89.130791,80.623383 89.061386,85.339012
+            C88.942863,93.392609 87.490936,94.611420 79.377655,93.600395
+            C75.321228,93.094925 72.808990,94.344246 70.769211,97.851883
+            C69.247780,100.468155 66.951317,102.633720 65.000000,105.000000
+            C64.555557,105.000000 64.111107,105.000000 63.213707,104.679047
+            C56.840244,99.455849 50.821026,97.291199 44.400024,103.576546
+            C43.754292,104.208641 42.807220,104.532883 42.000000,105.000000
+            C41.555553,105.000000 41.111111,105.000000 40.263214,104.663834
+            C38.550728,102.636024 36.883865,101.111076 36.002937,99.220016
+            C33.782291,94.453018 30.546793,92.821617 25.225607,93.689926
+            C18.937431,94.716019 16.938192,92.851753 16.983175,86.486702
+            C17.019377,81.364151 15.385662,78.182785 10.264714,76.339355
+            C3.520113,73.911438 3.074022,72.041969 6.132344,65.432327
+            C9.188617,58.827114 7.837656,55.028172 1.000000,51.000000 z"/>
+        </svg>
+        <div class="mbg-badge-content">
+          <p class="mbg-badge-number">{{ section.settings.days }}</p>
+          <p class="mbg-badge-text">DAYS</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="mbg-header">
+      <p class="mbg-subtitle">{{ section.settings.subtitle }}</p>
+      <h2 class="mbg-title">{{ section.settings.heading }}</h2>
+      <p class="mbg-description">{{ section.settings.description }}</p>
+    </div>
+
+
+  </div>
+</div>
+
+<style>
+  .mbg-section {
+    background: #ffffff;
+    padding: var(--tcc-s-3, 24px) var(--tcc-s-3, 24px);
+  }
+
+  .mbg-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mbg-badge-wrapper {
+    margin-bottom: var(--tcc-s-4, 32px);
+  }
+
+  .mbg-badge {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .mbg-badge svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mbg-badge-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+  }
+
+  .mbg-badge-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin: 0;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .mbg-badge-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin: 6px 0 0 0;
+    letter-spacing: 1px;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .mbg-subtitle {
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    color: var(--tcc-ink);
+    letter-spacing: 2px;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .mbg-title {
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    font-weight: 500;
+    color: #000;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .mbg-description {
+    font-size: var(--tcc-fs-small, 13px);
+    color: #666;
+    line-height: 1.7;
+    margin: 0 0 24px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .mbg-button {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 40px;
+    padding: 14px 32px;
+    background: var(--tcc-ink);
+    color: #fff;
+    font-size: var(--tcc-fs-body, 16px);
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-family: var(--tcc-font-sans);
+    letter-spacing: 0.04em;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .mbg-button:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  .mbg-image-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .mbg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .mbg-section {
+      padding: var(--tcc-s-3, 24px) var(--tcc-s-3, 24px);
+    }
+
+    .mbg-badge {
+      width: 150px;
+      height: 150px;
+    }
+
+    .mbg-badge-number {
+      font-size: 58px;
+    }
+
+    .mbg-badge-text {
+      font-size: 16px;
+      margin: 8px 0 0 0;
+    }
+
+    .mbg-title {
+      font-size: clamp(28px, 3.5vw, 36px);
+    }
+
+    .mbg-description {
+      font-size: 15px;
+      max-width: 650px;
+    }
+
+    .mbg-button {
+      max-width: 350px;
+      padding: 15px 40px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .mbg-button {
+      max-width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Money Back Guarantee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "days",
+      "label": "Days Number",
+      "default": "60"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our Promise"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "60-Day Money-Back Guarantee"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Try {{ settings.brand_name }} for 60 days. If you're not satisfied for any reason — even if the bottle is empty — email us for a full refund. No questions asked."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Add To Cart"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "external_image_url",
+      "label": "External Image URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Money Back Guarantee"
+    }
+  ]
+}
+{% endschema %}
