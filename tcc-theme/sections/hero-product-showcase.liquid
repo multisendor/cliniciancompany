@@ -18,15 +18,100 @@
             height="{{ section.settings.image.height }}"
             class="{% if section.settings.mobile_image != blank %}hidden-mobile{% endif %}"
           >
-        {%- else -%}
+        {%- elsif section.settings.external_image_url != blank -%}
           <img
-            src="{{ section.settings.external_image_url | default: 'https://placehold.co/800x800/0a1628/fafbfc?text=TCC' }}"
+            src="{{ section.settings.external_image_url }}"
             alt="{{ section.settings.heading | escape }}"
             loading="eager"
             width="800"
             height="800"
             class="{% if section.settings.mobile_image != blank %}hidden-mobile{% endif %}"
           >
+        {%- else -%}
+          {%- comment -%} Intentional CSS hero placeholder when no image is uploaded {%- endcomment -%}
+          <div class="tcc-hero-placeholder {% if section.settings.mobile_image != blank %}hidden-mobile{% endif %}">
+            <div class="tcc-hero-placeholder__pattern"></div>
+            <div class="tcc-hero-placeholder__content">
+              <div class="tcc-hero-placeholder__eyebrow">{{ settings.brand_short | default: 'TCC' }} · {{ 'now' | date: '%Y' }}</div>
+              <div class="tcc-hero-placeholder__wordmark">{{ settings.brand_short | default: 'TCC' }}</div>
+              <div class="tcc-hero-placeholder__rule"></div>
+              <div class="tcc-hero-placeholder__tagline">{{ settings.brand_tagline | default: 'Practitioner-Grade Wellness' }}</div>
+            </div>
+            <div class="tcc-hero-placeholder__corner tcc-hero-placeholder__corner--tl"></div>
+            <div class="tcc-hero-placeholder__corner tcc-hero-placeholder__corner--tr"></div>
+            <div class="tcc-hero-placeholder__corner tcc-hero-placeholder__corner--bl"></div>
+            <div class="tcc-hero-placeholder__corner tcc-hero-placeholder__corner--br"></div>
+          </div>
+          <style>
+            .tcc-hero-placeholder {
+              position: relative;
+              width: 100%;
+              aspect-ratio: 1 / 1;
+              background:
+                radial-gradient(circle at 30% 20%, rgba(201, 169, 110, 0.18), transparent 60%),
+                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05), transparent 60%),
+                var(--tcc-ink, #0a1628);
+              overflow: hidden;
+              color: #fafbfc;
+            }
+            .tcc-hero-placeholder__pattern {
+              position: absolute; inset: 0;
+              background-image:
+                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+              background-size: 32px 32px;
+              opacity: 0.6;
+              pointer-events: none;
+            }
+            .tcc-hero-placeholder__content {
+              position: absolute; inset: 0;
+              display: flex; flex-direction: column;
+              align-items: center; justify-content: center;
+              text-align: center; padding: 8%;
+            }
+            .tcc-hero-placeholder__eyebrow {
+              font-family: var(--tcc-font-sans, 'Inter', sans-serif);
+              font-size: clamp(10px, 1vw, 12px);
+              font-weight: 700;
+              letter-spacing: 4px;
+              text-transform: uppercase;
+              color: #c9a96e;
+              margin-bottom: 1.5rem;
+            }
+            .tcc-hero-placeholder__wordmark {
+              font-family: 'Cormorant Garamond', Georgia, serif;
+              font-size: clamp(80px, 14vw, 220px);
+              font-weight: 300;
+              line-height: 1;
+              letter-spacing: 8px;
+              color: #fafbfc;
+              margin: 0;
+            }
+            .tcc-hero-placeholder__rule {
+              width: 60px; height: 1px;
+              background: #c9a96e;
+              margin: 1.5rem 0 1rem;
+            }
+            .tcc-hero-placeholder__tagline {
+              font-family: var(--tcc-font-sans, 'Inter', sans-serif);
+              font-size: clamp(11px, 1.1vw, 14px);
+              font-weight: 500;
+              letter-spacing: 2.5px;
+              text-transform: uppercase;
+              color: rgba(250, 251, 252, 0.7);
+            }
+            .tcc-hero-placeholder__corner {
+              position: absolute;
+              width: 24px; height: 24px;
+              border-color: rgba(201, 169, 110, 0.6);
+              border-style: solid;
+              border-width: 0;
+            }
+            .tcc-hero-placeholder__corner--tl { top: 24px; left: 24px; border-top-width: 2px; border-left-width: 2px; }
+            .tcc-hero-placeholder__corner--tr { top: 24px; right: 24px; border-top-width: 2px; border-right-width: 2px; }
+            .tcc-hero-placeholder__corner--bl { bottom: 24px; left: 24px; border-bottom-width: 2px; border-left-width: 2px; }
+            .tcc-hero-placeholder__corner--br { bottom: 24px; right: 24px; border-bottom-width: 2px; border-right-width: 2px; }
+          </style>
         {%- endif -%}
 
         {%- if section.settings.mobile_image != blank -%}
