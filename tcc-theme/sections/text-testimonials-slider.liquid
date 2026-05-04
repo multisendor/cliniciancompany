@@ -1,0 +1,631 @@
+<style>
+  .text-testimonials-slider {
+    background: var(--tcc-bg);
+    overflow: hidden;
+    padding: var(--tcc-s-8, 64px) 0;
+    width: 100%;
+  }
+
+  .text-testimonials__header {
+    text-align: center;
+    margin-bottom: var(--tcc-s-6, 48px);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--tcc-s-3, 24px);
+  }
+
+  .text-testimonials__header-stars {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: var(--tcc-s-2, 16px);
+  }
+
+  .text-testimonials__header-stars .material-symbols-outlined {
+    font-size: 24px;
+    color: #FFB800;
+    font-variation-settings: 'FILL' 1;
+  }
+
+  .text-testimonials__heading {
+    margin: 0 0 var(--tcc-s-1, 8px);
+  }
+
+  .text-testimonials__heading p {
+    margin: 0;
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    font-weight: 700 !important;
+    line-height: 1.2;
+    color: var(--tcc-ink);
+    font-family: var(--tcc-font-sans);
+  }
+
+  .text-testimonials__heading strong {
+    color: var(--tcc-ink);
+    font-weight: 700 !important;
+  }
+
+  .text-testimonials__subheading {
+    font-size: var(--tcc-fs-body, 16px);
+    line-height: 28px;
+    color: var(--tcc-ink-soft);
+    margin: 0;
+    font-family: var(--tcc-font-sans);
+  }
+
+  /* --- Marquee/Scrolling Row --- */
+  .text-testimonials__marquee-container {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: var(--tcc-s-8, 64px);
+    position: relative;
+    padding: 10px 0;
+  }
+
+  .text-testimonials__marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 50s linear infinite;
+    gap: 20px;
+  }
+
+  .text-testimonials__marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .text-testimonials__user-img-wrap {
+    flex: 0 0 130px;
+    height: 130px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f9f9f9;
+  }
+
+  .text-testimonials__user-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* --- Container & Grid --- */
+  .text-testimonials__container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--tcc-s-4, 32px);
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .text-testimonials__grid-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .text-testimonials__grid {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 30px;
+  }
+
+  .text-testimonials__slide {
+    flex: 0 0 calc(33.333% - 20px);
+    box-sizing: border-box;
+  }
+
+  .text-testimonials__card {
+    background: var(--tcc-card);
+    border: 1px solid var(--tcc-line);
+    border-radius: var(--tcc-radius, 6px);
+    padding: var(--tcc-s-4, 32px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    box-shadow: var(--tcc-shadow-card);
+  }
+
+  .text-testimonials__card-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: var(--tcc-s-2, 16px);
+  }
+
+  .text-testimonials__card-stars .material-symbols-outlined {
+    font-size: 20px;
+    color: #FFB800;
+    font-variation-settings: 'FILL' 1;
+  }
+
+  .text-testimonials__card-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2, 16px);
+    line-height: 1.4;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .text-testimonials__card-body {
+    font-size: var(--tcc-fs-body, 16px);
+    line-height: 1.7;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-4, 32px);
+    flex-grow: 1;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .text-testimonials__author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .text-testimonials__avatar-wrap {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+
+  .text-testimonials__avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #f0f0f0;
+  }
+
+  .text-testimonials__verified-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .text-testimonials__verified-badge .material-symbols-outlined {
+    font-size: 15px;
+    color: var(--tcc-positive, #22C55E);
+    font-variation-settings: 'FILL' 1;
+    font-weight: bold;
+  }
+
+  .text-testimonials__author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text-testimonials__author-name {
+    font-size: var(--tcc-fs-body, 16px);
+    font-weight: 500;
+    color: var(--tcc-ink);
+    margin: 0;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .text-testimonials__author-label {
+    font-size: var(--tcc-fs-small, 13px);
+    color: var(--tcc-ink-soft);
+    margin: 0;
+    font-family: var(--tcc-font-sans);
+  }
+
+  /* --- Controls --- */
+  .text-testimonials__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--tcc-s-4, 32px);
+    margin-top: var(--tcc-s-6, 48px);
+  }
+
+  .text-testimonials__arrow {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #BBB;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .text-testimonials__arrow:hover {
+    color: var(--tcc-ink);
+    transform: scale(1.1);
+  }
+
+  .text-testimonials__arrow .material-symbols-outlined {
+    font-size: 32px;
+  }
+
+  .text-testimonials__dots {
+    display: flex;
+    gap: 10px;
+  }
+
+  .text-testimonials__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tcc-line);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .text-testimonials__dot.active {
+    background: var(--tcc-ink);
+    transform: scale(1.2);
+  }
+
+  @media screen and (max-width: 1100px) {
+    .text-testimonials__slide {
+      flex: 0 0 calc(50% - 15px);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .text-testimonials-slider {
+      padding: var(--tcc-s-6, 48px) 0;
+    }
+
+    .text-testimonials__heading p {
+      font-size: 24px;
+    }
+
+    .text-testimonials__marquee-container {
+      margin-bottom: var(--tcc-s-4, 32px);
+    }
+
+    .text-testimonials__container {
+      padding: 0 var(--tcc-s-3, 24px);
+    }
+
+    .text-testimonials__slide {
+      flex: 0 0 100%;
+    }
+
+    .text-testimonials__user-img-wrap {
+      flex: 0 0 110px;
+      height: 110px;
+    }
+
+    .text-testimonials__card {
+      padding: var(--tcc-s-3, 24px);
+    }
+
+    .text-testimonials__grid {
+      gap: 0;
+    }
+
+    .text-testimonials__slide {
+      padding: 0 10px;
+    }
+  }
+</style>
+
+<div class="text-testimonials-slider" data-section-type="text-testimonials-slider" data-section-id="{{ section.id }}">
+
+  <div class="text-testimonials__header">
+    <div class="text-testimonials__header-stars">
+      <span class="material-symbols-outlined">star</span>
+      <span class="material-symbols-outlined">star</span>
+      <span class="material-symbols-outlined">star</span>
+      <span class="material-symbols-outlined">star</span>
+      <span class="material-symbols-outlined">star</span>
+    </div>
+
+    {%- if section.settings.heading != blank -%}
+      <div class="text-testimonials__heading">{{ section.settings.heading }}</div>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="text-testimonials__subheading">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+  </div>
+
+  <!-- User Images Infinite Marquee -->
+  {%- assign user_images = section.blocks | where: "type", "user_image" -%}
+  {%- if user_images.size > 0 -%}
+    <div class="text-testimonials__marquee-container">
+      <div class="text-testimonials__marquee-track">
+        {%- for i in (1..3) -%}
+          {%- for block in user_images -%}
+            <div class="text-testimonials__user-img-wrap">
+              {%- if block.settings.external_image_url != blank -%}
+                <img src="{{ block.settings.external_image_url }}" alt="Customer Photo" width="130" height="130" loading="lazy">
+              {%- elsif block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 260, height: 260, crop: 'center' }}" alt="Customer Photo" width="130" height="130" loading="lazy">
+              {%- else -%}
+                <div style="background:#eee; width:100%; height:100%;"></div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <!-- Testimonials Slider -->
+  {%- assign testimonials = section.blocks | where: "type", "testimonial" -%}
+  {%- if testimonials.size > 0 -%}
+    <div class="text-testimonials__container">
+      <div class="text-testimonials__grid-wrapper">
+        <div class="text-testimonials__grid" data-track>
+          {%- for block in testimonials -%}
+            <div class="text-testimonials__slide" {{ block.shopify_attributes }}>
+              <div class="text-testimonials__card">
+                <div class="text-testimonials__card-stars">
+                  <span class="material-symbols-outlined">star</span>
+                  <span class="material-symbols-outlined">star</span>
+                  <span class="material-symbols-outlined">star</span>
+                  <span class="material-symbols-outlined">star</span>
+                  <span class="material-symbols-outlined">star</span>
+                </div>
+
+                {%- if block.settings.title != blank -%}
+                  <h3 class="text-testimonials__card-title">{{ block.settings.title }}</h3>
+                {%- endif -%}
+
+                {%- if block.settings.body != blank -%}
+                  <div class="text-testimonials__card-body">{{ block.settings.body }}</div>
+                {%- endif -%}
+
+                <div class="text-testimonials__author">
+                  <div class="text-testimonials__avatar-wrap">
+                    {%- if block.settings.external_author_image_url != blank -%}
+                      <img class="text-testimonials__avatar" src="{{ block.settings.external_author_image_url }}" alt="{{ block.settings.author_name }}" width="52" height="52" loading="lazy">
+                    {%- elsif block.settings.author_image != blank -%}
+                      <img class="text-testimonials__avatar" src="{{ block.settings.author_image | image_url: width: 104, height: 104, crop: 'center' }}" alt="{{ block.settings.author_name }}" width="52" height="52" loading="lazy">
+                    {%- else -%}
+                      <div style="background:#eee; border-radius:50%; width:100%; height:100%;"></div>
+                    {%- endif -%}
+                    <div class="text-testimonials__verified-badge">
+                      <span class="material-symbols-outlined">check_circle</span>
+                    </div>
+                  </div>
+                  <div class="text-testimonials__author-info">
+                    <p class="text-testimonials__author-name">{{ block.settings.author_name }}</p>
+                    <p class="text-testimonials__author-label">Verified Customer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="text-testimonials__controls">
+        <button class="text-testimonials__arrow" data-prev aria-label="Previous">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <div class="text-testimonials__dots" data-dots></div>
+        <button class="text-testimonials__arrow" data-next aria-label="Next">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+    </div>
+  {%- endif -%}
+
+</div>
+
+<script>
+  (function() {
+    const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    const track = section.querySelector('[data-track]');
+    const dotsContainer = section.querySelector('[data-dots]');
+    const prevBtn = section.querySelector('[data-prev]');
+    const nextBtn = section.querySelector('[data-next]');
+    const slides = section.querySelectorAll('.text-testimonials__slide');
+
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = 0;
+
+    function getSlidesPerView() {
+      if (window.innerWidth <= 749) return 1;
+      if (window.innerWidth <= 1100) return 2;
+      return 3;
+    }
+
+    function createDots() {
+      dotsContainer.innerHTML = '';
+      const slidesPerView = getSlidesPerView();
+      const numDots = Math.ceil(slides.length / slidesPerView);
+
+      for (let i = 0; i < numDots; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'text-testimonials__dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => {
+          currentIndex = i * slidesPerView;
+          updateCarousel();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateCarousel() {
+      const slidesPerView = getSlidesPerView();
+      const maxIndex = Math.max(0, slides.length - slidesPerView);
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      if (currentIndex < 0) currentIndex = 0;
+
+      const slideWidth = slides[0].offsetWidth + (slidesPerView > 1 ? 30 : 0);
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+      // Update dots
+      const dots = dotsContainer.querySelectorAll('.text-testimonials__dot');
+      if (dots.length) {
+        const activeDotIndex = Math.floor(currentIndex / slidesPerView);
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === activeDotIndex);
+        });
+      }
+    }
+
+    prevBtn.addEventListener('click', () => {
+      const spv = getSlidesPerView();
+      currentIndex = Math.max(0, currentIndex - spv);
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const spv = getSlidesPerView();
+      if (currentIndex + spv < slides.length) {
+        currentIndex += spv;
+      } else {
+        currentIndex = 0;
+      }
+      updateCarousel();
+    });
+
+    window.addEventListener('resize', () => {
+      createDots();
+      updateCarousel();
+    });
+
+    createDots();
+    updateCarousel();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Text Testimonials Slider",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Real Stories, <strong>Real Results</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Honest experiences with TCC nattokinase"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "user_image",
+      "name": "Customer Image",
+      "limit": 15,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "external_image_url",
+          "label": "External Image URL"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial (placeholder)",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Placeholder copy — replace with verified buyer reviews before launch."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Title (optional)"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Review Body (quote)"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Photo"
+        },
+        {
+          "type": "text",
+          "id": "external_author_image_url",
+          "label": "External Author Photo URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Testimonials Slider",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "body": "Finally feeling like myself again. Three months in and my morning grogginess is gone.",
+            "author_name": "Sarah M., 54, verified buyer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "body": "My cardiologist asked what I was doing differently. I told him about TCC. He's now researching it.",
+            "author_name": "Marcus K., 61, verified buyer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "body": "After Long Covid, I felt invisible to the medical system. This was the first thing that gave me my energy back.",
+            "author_name": "Jennifer R., 47, verified buyer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "body": "I've tried other nattokinase brands. The 4,000 FU dose actually moves the needle.",
+            "author_name": "David L., 58, verified buyer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "body": "My circulation issues from a clot 5 years ago — finally improving. Combined with what my doctor prescribed.",
+            "author_name": "Patricia H., 66, verified buyer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "body": "Practitioner-grade is the right framing. This isn't a CVS supplement.",
+            "author_name": "Robert T., 52, verified buyer"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
