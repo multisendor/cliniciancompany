@@ -1,0 +1,100 @@
+/* The Clinician Company — Brand Tokens
+   Single source of truth for every visual decision.
+   No section CSS may use hardcoded colors, font sizes, or spacing
+   that aren't defined here. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+
+:root {
+  /* --- Color --- */
+  --tcc-bg: #fafbfc;
+  --tcc-ink: #0a1628;
+  --tcc-ink-soft: #4a5b78;
+  --tcc-line: #e8eef5;
+  --tcc-card: #ffffff;
+  --tcc-positive: #00a86b;
+  --tcc-urgent: #c8281a;
+
+  /* --- Type --- */
+  --tcc-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --tcc-fs-display: clamp(40px, 6vw, 64px);
+  --tcc-fs-h1: clamp(32px, 4vw, 48px);
+  --tcc-fs-h2: clamp(24px, 3vw, 32px);
+  --tcc-fs-body: 16px;
+  --tcc-fs-eyebrow: 11px;
+  --tcc-fs-small: 13px;
+  --tcc-lh-tight: 1.05;
+  --tcc-lh-body: 1.55;
+  --tcc-ls-display: -1.5px;
+  --tcc-ls-eyebrow: 2.5px;
+
+  /* --- Weight --- */
+  --tcc-fw-body: 400;
+  --tcc-fw-medium: 500;
+  --tcc-fw-bold: 700;
+  --tcc-fw-display: 800;
+
+  /* --- Spacing (8pt grid) --- */
+  --tcc-s-1: 8px;
+  --tcc-s-2: 16px;
+  --tcc-s-3: 24px;
+  --tcc-s-4: 32px;
+  --tcc-s-6: 48px;
+  --tcc-s-8: 64px;
+
+  /* --- Radius / elevation --- */
+  --tcc-radius: 6px;
+  --tcc-shadow-card: 0 1px 3px rgba(10, 22, 40, 0.06);
+}
+
+/* Global resets bound to tokens */
+body {
+  font-family: var(--tcc-font-sans);
+  font-size: var(--tcc-fs-body);
+  line-height: var(--tcc-lh-body);
+  color: var(--tcc-ink);
+  background: var(--tcc-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--tcc-font-sans);
+  color: var(--tcc-ink);
+  letter-spacing: var(--tcc-ls-display);
+  line-height: var(--tcc-lh-tight);
+  font-weight: var(--tcc-fw-display);
+}
+
+/* Utility classes — for Liquid sections to call */
+.tcc-eyebrow {
+  font-size: var(--tcc-fs-eyebrow);
+  font-weight: var(--tcc-fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tcc-ls-eyebrow);
+  color: var(--tcc-ink-soft);
+}
+
+.tcc-button {
+  display: inline-block;
+  padding: 14px 28px;
+  font-family: var(--tcc-font-sans);
+  font-size: var(--tcc-fs-small);
+  font-weight: var(--tcc-fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  border-radius: var(--tcc-radius);
+  background: var(--tcc-ink);
+  color: var(--tcc-bg);
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.tcc-button:hover { opacity: 0.85; }
+
+.tcc-card {
+  background: var(--tcc-card);
+  border-radius: var(--tcc-radius);
+  box-shadow: var(--tcc-shadow-card);
+  border: 1px solid var(--tcc-line);
+}
