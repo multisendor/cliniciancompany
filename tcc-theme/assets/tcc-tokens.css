@@ -99,30 +99,47 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--tcc-line);
 }
 
-/* Footer + newsletter visibility — overrides Dawn color schemes that fall back to white-on-white when scheme defs are missing */
-.footer .newsletter,
-.footer__newsletter,
-.footer__content-top {
-  background: var(--tcc-bg);
-  color: var(--tcc-ink);
+/* Footer + newsletter visibility — aggressive overrides
+   Dawn's color schemes fall back to white-on-white when scheme defs are missing.
+   These rules force readable text/bg in the contentinfo region regardless of scheme. */
+.shopify-section-group-footer-group,
+.shopify-section-group-footer-group .footer,
+[role="contentinfo"],
+[role="contentinfo"] .footer,
+[role="contentinfo"] .newsletter,
+[role="contentinfo"] .footer-block {
+  background-color: var(--tcc-bg) !important;
+  color: var(--tcc-ink) !important;
 }
 
-.footer .newsletter h2,
-.footer .newsletter h3,
-.footer .newsletter .footer__title,
-.footer .newsletter__subheading,
-.footer .newsletter p,
-.footer .newsletter label {
-  color: var(--tcc-ink);
+[role="contentinfo"] h1,
+[role="contentinfo"] h2,
+[role="contentinfo"] h3,
+[role="contentinfo"] h4,
+[role="contentinfo"] p,
+[role="contentinfo"] label,
+[role="contentinfo"] a,
+[role="contentinfo"] li,
+[role="contentinfo"] span,
+[role="contentinfo"] .footer__title,
+[role="contentinfo"] .newsletter__subheading {
+  color: var(--tcc-ink) !important;
 }
 
-.footer .newsletter input[type="email"] {
-  color: var(--tcc-ink);
-  background: var(--tcc-card);
-  border: 1px solid var(--tcc-line);
+[role="contentinfo"] a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.footer__content-bottom,
-.footer__copyright {
-  color: var(--tcc-ink-soft);
+[role="contentinfo"] input[type="email"],
+[role="contentinfo"] input[type="text"] {
+  color: var(--tcc-ink) !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--tcc-line) !important;
+}
+
+[role="contentinfo"] button {
+  background-color: var(--tcc-ink) !important;
+  color: var(--tcc-bg) !important;
+  border: none !important;
 }
