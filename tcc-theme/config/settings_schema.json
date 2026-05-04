@@ -8,6 +8,35 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "TCC Brand",
+    "settings": [
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Brand name (full)",
+        "default": "The Clinician Company"
+      },
+      {
+        "type": "text",
+        "id": "brand_short",
+        "label": "Brand short name",
+        "default": "TCC"
+      },
+      {
+        "type": "text",
+        "id": "brand_tagline",
+        "label": "Brand tagline",
+        "default": "Practitioner-Grade Wellness"
+      },
+      {
+        "type": "textarea",
+        "id": "brand_claim_disclaimer",
+        "label": "FDA claim disclaimer",
+        "default": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {
