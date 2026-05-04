@@ -1,0 +1,677 @@
+{%- assign gallery_product = product | default: all_products[section.settings.product_handle] -%}
+<div class="product-grid-container">
+<div
+  id="Gallery-{{ section.id }}"
+  data-section-type="product-media-gallery"
+  class="product-media-gallery tcc-section-padding{% unless gallery_product.media.size > 0 %} product-media-gallery--standalone{% endunless %}"
+  style="background-color: #ffffff;"
+>
+  <div class="product-media-gallery__inner tcc-page-width">
+    {%- if gallery_product.media.size > 0 -%}
+      <!-- Main image slider -->
+      <div class="product-media-gallery__main-wrapper">
+        <div class="product-media-gallery__main" id="MainSlider-{{ section.id }}">
+          {%- for media in gallery_product.media -%}
+            <div class="product-media-gallery__slide" data-media-id="{{ media.id }}" data-index="{{ forloop.index0 }}">
+              <img
+                src="{{ media | image_url: width: 800 }}"
+                alt="{{ media.alt | escape | default: product.title }}"
+                width="{{ media.preview_image.width }}"
+                height="{{ media.preview_image.height }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                {% if forloop.first %}fetchpriority="high" decoding="sync"{% else %}decoding="async"{% endif %}
+              >
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- Thumbnail strip with navigation -->
+      {%- if gallery_product.media.size > 1 -%}
+        <div class="product-media-gallery__nav">
+          <button class="product-media-gallery__arrow product-media-gallery__arrow--prev"
+                  type="button" aria-label="Previous image" disabled>
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <div class="product-media-gallery__thumbs">
+            {%- for media in gallery_product.media -%}
+              <button
+                class="product-media-gallery__thumb{% if forloop.first %} product-media-gallery__thumb--active{% endif %}"
+                data-media-id="{{ media.id }}"
+                data-index="{{ forloop.index0 }}"
+                type="button"
+                aria-label="View image {{ forloop.index }}"
+              >
+                <img
+                  src="{{ media | image_url: width: 120 }}"
+                  alt="{{ media.alt | escape | default: gallery_product.title }}"
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                >
+              </button>
+            {%- endfor -%}
+          </div>
+          <button class="product-media-gallery__arrow product-media-gallery__arrow--next"
+                  type="button" aria-label="Next image">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    <!-- Integrated Trust Card (Desktop Only) -->
+    {%- assign badges = section.blocks | where: "type", "trust_badge" -%}
+    {%- assign checklist_items = section.blocks | where: "type", "checklist_item" -%}
+
+    {%- if badges.size > 0 or checklist_items.size > 0 -%}
+      <div class="product-media-gallery__trust-card">
+        <div class="brand-trust-banner__card"
+          style="padding: var(--tcc-s-4, 32px) var(--tcc-s-3, 24px); border-radius: var(--tcc-radius, 6px);
+          {% if section.settings.trust_bg_image_url != blank %}
+            background: linear-gradient(165deg, rgba(10,22,40,0.93) 14%, rgba(10,22,40,0.93) 85%), url({{ section.settings.trust_bg_image_url }}) center/cover no-repeat !important;
+          {% endif %}">
+          <div class="brand-trust-banner__inner">
+            <h2 class="brand-trust-banner__heading tcc-heading" style="font-size: 20px; margin-bottom: var(--tcc-s-3, 24px); width: 100%;">
+              {{ section.settings.trust_heading | default: 'Why Trust Us as Your Wellness Partner?' }}
+            </h2>
+
+            {%- if badges.size > 0 -%}
+              <div class="brand-trust-banner__grid" style="grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: var(--tcc-s-4, 32px); justify-items: center;">
+                {%- for block in badges -%}
+                  <div class="brand-trust-banner__badge-box" {{ block.shopify_attributes }} style="min-height: auto; padding: var(--tcc-s-2, 16px) 0.1rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; width: 100%; max-width: 75px;">
+                    <div class="brand-trust-banner__badge-icon" style="height: 24px;">
+                      {%- if block.settings.external_icon_url != blank -%}
+                        <img src="{{ block.settings.external_icon_url }}" alt="{{ block.settings.title }}" width="24" height="24" style="filter: brightness(0) invert(1);">
+                      {%- else -%}
+                        <span class="material-symbols-outlined" style="font-size: 24px;">verified</span>
+                      {%- endif -%}
+                    </div>
+                    <h3 class="brand-trust-banner__badge-title" style="font-size: 7px; max-width: 50px; line-height: 1.2; display: block; word-wrap: break-word;">{{ block.settings.title }}</h3>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            {%- if checklist_items.size > 0 -%}
+              <div class="brand-trust-banner__checklist" style="grid-template-columns: repeat(2, 1fr); gap: var(--tcc-s-2, 16px) var(--tcc-s-2, 16px);">
+                {%- for block in checklist_items -%}
+                  <div class="brand-trust-banner__check-item" {{ block.shopify_attributes }}>
+                    <span class="material-symbols-outlined brand-trust-banner__check-icon" style="font-size: 16px; opacity: 1; font-variation-settings: 'wght' 200;">check_circle</span>
+                    <span class="brand-trust-banner__check-text" style="font-size: var(--tcc-fs-small, 13px);">{{ block.settings.text }}</span>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <!-- Integrated UGC Video Slider (Desktop Only) -->
+    {%- assign video_blocks = section.blocks | where: "type", "video" -%}
+    {%- if video_blocks.size > 0 -%}
+      <div class="product-media-gallery__ugc-videos">
+        <h3 class="ugc-video-slider__heading tcc-heading" style="font-size: 20px; margin: var(--tcc-s-4, 32px) 0 var(--tcc-s-2, 16px); text-align: center;">What our customers are saying:</h3>
+        <div class="ugc-video-slider__carousel">
+          <div class="ugc-video-slider__track" data-ugc-track>
+            {%- for block in video_blocks -%}
+              <div class="ugc-video-slider__slide" style="width: calc(100% / 3); padding: 0 5px;">
+                <div class="ugc-video-slider__thumbnail-wrapper" data-video-trigger data-video-url="{{ block.settings.external_video_url | default: block.settings.video_url }}" style="aspect-ratio: 9 / 16; border-radius: 8px;">
+                  {%- if block.settings.external_thumbnail_url != blank -%}
+                    <img class="ugc-video-slider__thumbnail" src="{{ block.settings.external_thumbnail_url }}" alt="UGC Video" width="200" height="355" loading="lazy">
+                  {%- elsif block.settings.thumbnail != blank -%}
+                    <img class="ugc-video-slider__thumbnail" src="{{ block.settings.thumbnail | image_url: width: 400 }}" alt="UGC Video" width="200" height="355" loading="lazy">
+                  {%- else -%}
+                    {%- assign thumb_index = forloop.index | modulo: 4 | plus: 1 -%}
+                    {%- capture thumb_asset -%}video-thumb-{{ thumb_index }}.jpg{%- endcapture -%}
+                    <img class="ugc-video-slider__thumbnail" src="{{ thumb_asset | asset_url }}" alt="UGC Video" width="200" height="355" loading="lazy">
+                  {%- endif -%}
+                  <div class="ugc-video-slider__play-overlay">
+                    <div class="ugc-video-slider__play-button" style="width: 36px; height: 36px;">
+                      <span class="material-symbols-outlined" style="font-size: 20px;">play_arrow</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="ugc-video-slider__dots" style="margin-top: var(--tcc-s-2, 16px); gap: 6px;">
+          {%- for block in video_blocks -%}
+            {%- if forloop.index <= 2 -%}
+              <button class="ugc-video-slider__dot{% if forloop.first %} active{% endif %}" data-ugc-dot="{{ forloop.index0 }}" style="width: 6px; height: 6px;"></button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+</div>
+
+<!-- Simple Video Modal -->
+<div id="VideoModal-{{ section.id }}" class="ugc-video-slider__modal" data-modal>
+  <div class="ugc-video-slider__modal-content">
+    <button class="ugc-video-slider__modal-close" data-modal-close aria-label="Close video">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="ugc-video-slider__modal-video" data-modal-video></div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var section = document.getElementById('Gallery-{{ section.id }}');
+    if (!section) return;
+
+    /* Gallery Logic */
+    var thumbs = section.querySelectorAll('.product-media-gallery__thumb');
+    var mainSlider = section.querySelector('#MainSlider-{{ section.id }}');
+    var slides = section.querySelectorAll('.product-media-gallery__slide');
+    var prevBtn = section.querySelector('.product-media-gallery__arrow--prev');
+    var nextBtn = section.querySelector('.product-media-gallery__arrow--next');
+    var thumbContainer = section.querySelector('.product-media-gallery__thumbs');
+
+    if (mainSlider && slides.length > 0) {
+      var activeIndex = 0;
+
+      function scrollThumbsIntoView(index) {
+        if (!thumbContainer || thumbs.length === 0) return;
+        var activeThumb = thumbs[index];
+        if (!activeThumb) return;
+        var containerWidth = thumbContainer.offsetWidth;
+        var thumbOffset = activeThumb.offsetLeft;
+        var thumbWidth = activeThumb.offsetWidth;
+
+        thumbContainer.scrollTo({
+          left: thumbOffset - (containerWidth / 2) + (thumbWidth / 2),
+          behavior: 'smooth'
+        });
+      }
+
+      function goToIndex(index) {
+        if (index < 0 || index >= slides.length) return;
+        activeIndex = index;
+
+        // Scroll main slider
+        var slideWidth = slides[0].offsetWidth;
+        mainSlider.scrollTo({
+          left: slideWidth * activeIndex,
+          behavior: 'smooth'
+        });
+
+        // Update thumbnails
+        thumbs.forEach(function(t, i) {
+          t.classList.toggle('product-media-gallery__thumb--active', i === activeIndex);
+        });
+
+        if (prevBtn) prevBtn.disabled = activeIndex === 0;
+        if (nextBtn) nextBtn.disabled = activeIndex === slides.length - 1;
+
+        scrollThumbsIntoView(activeIndex);
+      }
+
+      // Sync active index on scroll (for swipe)
+      var isScrolling;
+      mainSlider.addEventListener('scroll', function() {
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(function() {
+          var slideWidth = slides[0].offsetWidth;
+          var newIndex = Math.round(mainSlider.scrollLeft / slideWidth);
+          if (newIndex !== activeIndex) {
+            activeIndex = newIndex;
+            thumbs.forEach(function(t, i) {
+              t.classList.toggle('product-media-gallery__thumb--active', i === activeIndex);
+            });
+            if (prevBtn) prevBtn.disabled = activeIndex === 0;
+            if (nextBtn) nextBtn.disabled = activeIndex === slides.length - 1;
+            scrollThumbsIntoView(activeIndex);
+          }
+        }, 66);
+      });
+
+      thumbs.forEach(function(thumb, i) {
+        thumb.addEventListener('click', function() { goToIndex(i); });
+      });
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          if (activeIndex > 0) goToIndex(activeIndex - 1);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          if (activeIndex < slides.length - 1) goToIndex(activeIndex + 1);
+        });
+      }
+    }
+
+    /* UGC Slider Logic (Integrated) */
+    var ugcTrack = section.querySelector('[data-ugc-track]');
+    var ugcDots = section.querySelectorAll('[data-ugc-dot]');
+    if (ugcTrack && ugcDots.length > 0) {
+      var ugcIndex = 0;
+      function updateUgc() {
+        var spv = window.innerWidth <= 749 ? 2 : 3;
+        ugcTrack.style.transform = 'translateX(-' + (ugcIndex * (100 / spv)) + '%)';
+        ugcDots.forEach(function(dot, i) { dot.classList.toggle('active', i === ugcIndex); });
+      }
+      ugcDots.forEach(function(dot, i) { dot.addEventListener('click', function() { ugcIndex = i; updateUgc(); }); });
+      window.addEventListener('resize', updateUgc);
+    }
+
+    /* Video modal — move to body to escape display:contents stacking context on product page */
+    var modal = document.getElementById('VideoModal-{{ section.id }}');
+    if (modal) document.body.appendChild(modal);
+    var modalClose = modal ? modal.querySelector('[data-modal-close]') : null;
+    var modalVideo = modal ? modal.querySelector('[data-modal-video]') : null;
+    var triggers = section.querySelectorAll('[data-video-trigger]');
+    triggers.forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var url = trigger.getAttribute('data-video-url');
+        if (url && modal) {
+          if (url.toLowerCase().match(/\.(mp4|webm|ogg)/) || url.includes('cdn.shopify.com/videos')) {
+            modalVideo.innerHTML = '<video class="ugc-video-slider__modal-video" src="' + url + '" controls autoplay playsinline style="width:100%;height:100%;object-fit:contain;"></video>';
+          } else {
+            modalVideo.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;text-align:center;padding:20px;">Video playback will be active on the live site.</div>';
+          }
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove('active');
+      if (modalVideo) modalVideo.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modal) modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+  })();
+</script>
+
+<style>
+  .product-media-gallery__inner {
+    max-width: 640px;
+  }
+
+  .product-media-gallery__main-wrapper {
+    width: 100%;
+    border-radius: var(--tcc-radius, 6px);
+    overflow: hidden;
+    background: var(--tcc-card, #fff);
+    margin-bottom: var(--tcc-s-2, 16px);
+    position: relative;
+  }
+
+  .product-media-gallery__main {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+  .product-media-gallery__main::-webkit-scrollbar { display: none; }
+
+  .product-media-gallery__slide {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-media-gallery__slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .product-media-gallery__thumbs {
+    display: flex;
+    gap: var(--tcc-s-1, 8px);
+    overflow-x: auto;
+    padding-bottom: var(--tcc-s-1, 8px);
+    scrollbar-width: none;
+  }
+  .product-media-gallery__thumbs::-webkit-scrollbar { display: none; }
+
+  .product-media-gallery__thumb {
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background: var(--tcc-card, #fff);
+    padding: 0;
+    transition: border-color 0.2s ease;
+  }
+
+  .product-media-gallery__thumb--active {
+    border-color: var(--tcc-ink);
+  }
+
+  .product-media-gallery__thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .product-media-gallery__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--tcc-s-1, 8px);
+    margin-bottom: var(--tcc-s-3, 24px);
+  }
+
+  .product-media-gallery__arrow {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid var(--tcc-line);
+    background: var(--tcc-card, #fff);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: var(--tcc-ink);
+  }
+
+  .product-media-gallery__arrow:disabled { opacity: 0.3; }
+
+  /* Trust Card styling (nested) */
+  .product-media-gallery__trust-card {
+    width: 100%;
+    margin-top: var(--tcc-s-3, 24px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-media-gallery.tcc-section-padding {
+      padding-top: 0 !important;
+      padding-bottom: var(--tcc-s-2, 16px) !important;
+      margin-top: -0.5rem !important;
+    }
+    .product-media-gallery__inner {
+      padding: 0 !important;
+    }
+    .product-media-gallery__main-wrapper {
+      margin: 0 var(--tcc-s-2, 16px) var(--tcc-s-1, 8px);
+      width: calc(100% - var(--tcc-s-4, 32px)) !important;
+      border-radius: var(--tcc-radius, 6px);
+    }
+
+    .product-media-gallery__thumbs {
+      padding: 0 var(--tcc-s-2, 16px);
+    }
+    /* Always hide on mobile — separate mobile sections handle trust/videos on every page */
+    .product-media-gallery__trust-card {
+      display: none !important;
+    }
+    .product-media-gallery__ugc-videos {
+      display: none !important;
+    }
+  }
+
+  .product-media-gallery__trust-card .brand-trust-banner__card {
+    background: var(--tcc-ink);
+    border-radius: var(--tcc-radius, 6px);
+    padding: var(--tcc-s-4, 32px) var(--tcc-s-3, 24px);
+    box-shadow: 0 8px 24px rgba(10, 22, 40, 0.12);
+  }
+  .product-media-gallery__trust-card .brand-trust-banner__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .product-media-gallery__trust-card .brand-trust-banner__heading {
+    color: #fff;
+    margin: 0 0 var(--tcc-s-3, 24px) 0;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .product-media-gallery__trust-card .brand-trust-banner__grid {
+    display: grid;
+    width: 100%;
+  }
+
+  .product-media-gallery__trust-card .brand-trust-banner__feature {
+    display: flex;
+    align-items: center;
+    gap: var(--tcc-s-1, 8px);
+    color: #fff;
+    text-align: left;
+  }
+
+  .product-media-gallery__trust-card .brand-trust-banner__feature-icon {
+    color: #fff;
+    flex-shrink: 0;
+    font-variation-settings: 'FILL' 1;
+  }
+
+  .brand-trust-banner__check-item {
+    display: flex;
+    align-items: center;
+    gap: var(--tcc-s-1, 8px);
+    color: #fff;
+    text-align: left;
+  }
+
+  /* UGC Integrated Slider styles */
+  .product-media-gallery__ugc-videos {
+    width: 100%;
+  }
+
+  .ugc-video-slider__carousel {
+    overflow: hidden;
+  }
+
+  .ugc-video-slider__track {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .ugc-video-slider__slide {
+    flex-shrink: 0;
+  }
+
+  .ugc-video-slider__thumbnail-wrapper {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #f7f7f7;
+  }
+
+  .ugc-video-slider__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ugc-video-slider__play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ugc-video-slider__play-button {
+    background: var(--tcc-ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(10, 22, 40, 0.3);
+  }
+
+  .ugc-video-slider__play-button .material-symbols-outlined {
+    color: #ffffff;
+    font-variation-settings: 'FILL' 1;
+  }
+
+  .ugc-video-slider__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .ugc-video-slider__dot {
+    border-radius: 50%;
+    background: var(--tcc-line);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ugc-video-slider__dot.active {
+    background: var(--tcc-ink);
+    transform: scale(1.2);
+  }
+
+  /* Shared Modal CSS */
+  .ugc-video-slider__modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+  }
+  .ugc-video-slider__modal.active { display: flex; }
+  .ugc-video-slider__modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    aspect-ratio: 9 / 16;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .ugc-video-slider__modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+  }
+  .ugc-video-slider__modal-close .material-symbols-outlined { color: #fff; }
+  .ugc-video-slider__modal-video { width: 100%; height: 100%; }
+</style>
+
+{% schema %}
+{
+  "name": "Product Media Gallery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "trust_heading",
+      "label": "Trust Heading",
+      "default": "Why Trust Us as Your Wellness Partner?"
+    },
+    {
+      "type": "text",
+      "id": "trust_bg_image_url",
+      "label": "Trust Card Background Image URL"
+    },
+    {
+      "type": "text",
+      "id": "product_handle",
+      "label": "Product Handle (for non-product pages)",
+      "default": "spike-detox"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title (All Caps)"
+        },
+        {
+          "type": "text",
+          "id": "external_icon_url",
+          "label": "External Icon URL"
+        }
+      ]
+    },
+    {
+      "type": "checklist_item",
+      "name": "Checklist Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "UGC Video",
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video URL",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "text",
+          "id": "external_video_url",
+          "label": "External MP4 Video URL"
+        },
+        {
+          "type": "text",
+          "id": "external_thumbnail_url",
+          "label": "External Thumbnail URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Thumbnail"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Media Gallery"
+    }
+  ]
+}
+{% endschema %}
