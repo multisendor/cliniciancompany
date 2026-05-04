@@ -136,6 +136,28 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--tcc-bg);
 }
 
+/* White variant — for use on dark backgrounds (e.g., comparison table on navy bg) */
+.tcc-btn--white {
+  background: #ffffff;
+  color: var(--tcc-ink);
+}
+.tcc-btn--white:hover {
+  background: #f5b82e;
+  color: var(--tcc-ink);
+  opacity: 1;
+}
+
+/* Gold variant — premium accent */
+.tcc-btn--gold {
+  background: #c9a96e;
+  color: var(--tcc-ink);
+}
+.tcc-btn--gold:hover {
+  background: #b89456;
+  color: var(--tcc-ink);
+  opacity: 1;
+}
+
 /* Filled rating stars — Material Symbols defaults to outlined */
 .tcc-stars .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
