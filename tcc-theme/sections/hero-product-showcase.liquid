@@ -1,0 +1,332 @@
+{%- assign product = section.settings.product -%}
+
+<div
+  data-section-type="hero-product-showcase"
+  class="hero-product-showcase"
+  style="background-color: {{ section.settings.background_color | default: 'var(--tcc-bg)' }};"
+>
+  <div class="hero-product-showcase__inner tcc-page-width tcc-section-padding">
+    <!-- Left column: product image -->
+    <div class="hero-product-showcase__images">
+      <div class="hero-product-showcase__main-image">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1000 }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="eager"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            class="{% if section.settings.mobile_image != blank %}hidden-mobile{% endif %}"
+          >
+        {%- else -%}
+          <img
+            src="{{ section.settings.external_image_url | default: 'https://cdn.shopify.com/s/files/1/0983/1153/7011/files/cutting_board.png?v=1772601382' }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="eager"
+            width="800"
+            height="800"
+            class="{% if section.settings.mobile_image != blank %}hidden-mobile{% endif %}"
+          >
+        {%- endif -%}
+
+        {%- if section.settings.mobile_image != blank -%}
+          <img
+            src="{{ section.settings.mobile_image | image_url: width: 800 }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="eager"
+            width="{{ section.settings.mobile_image.width }}"
+            height="{{ section.settings.mobile_image.height }}"
+            class="hidden-desktop"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Right column: content -->
+    <div class="hero-product-showcase__content">
+      <!-- Star rating -->
+      <div class="hero-product-showcase__rating">
+        <span class="tcc-stars">
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+        </span>
+        <span class="hero-product-showcase__rating-text tcc-body">
+          {{ section.settings.rating_text }}
+        </span>
+      </div>
+
+      <!-- Main heading (large) -->
+      {%- if section.settings.subheading != blank -%}
+        <h2 class="hero-product-showcase__subtitle">
+          {{ section.settings.subheading }}
+        </h2>
+      {%- endif -%}
+
+      <!-- Product name -->
+      <p class="hero-product-showcase__heading">
+        {{ section.settings.heading }}
+      </p>
+
+      <!-- Body text -->
+      {%- if section.settings.body_text != blank -%}
+        <div class="hero-product-showcase__body tcc-body">
+          {{ section.settings.body_text }}
+        </div>
+      {%- endif -%}
+
+      <!-- CTA button -->
+      <a
+        href="{{ section.settings.button_link | default: '#' }}"
+        class="tcc-btn tcc-btn--primary hero-product-showcase__cta"
+      >
+        {{ section.settings.button_text }}
+      </a>
+
+      <!-- Guarantee line -->
+      <div class="hero-product-showcase__guarantee tcc-body">
+        <span class="material-symbols-outlined hero-product-showcase__guarantee-icon">workspace_premium</span>
+        <span>30-day money-back guarantee</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-product-showcase__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  /* Left column: image */
+  .hero-product-showcase__main-image {
+    border-radius: var(--tcc-radius);
+    overflow: hidden;
+    background: var(--tcc-card);
+  }
+
+  .hero-product-showcase__main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* Right column: content */
+  .hero-product-showcase__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-product-showcase__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-product-showcase__rating .tcc-stars .material-symbols-outlined {
+    font-size: 20px;
+  }
+
+  .hero-product-showcase__rating-text {
+    font-size: 15.2px;
+    line-height: 28px;
+    color: var(--tcc-ink);
+  }
+
+  .hero-product-showcase__subtitle {
+    font-family: var(--tcc-font-sans);
+    font-weight: var(--tcc-fw-medium);
+    font-size: var(--tcc-fs-h1);
+    line-height: var(--tcc-lh-tight);
+    color: var(--tcc-ink);
+    margin: 0;
+  }
+
+  .hero-product-showcase__heading {
+    font-size: 21.4px;
+    line-height: 27.8px;
+    margin: 0;
+    color: var(--tcc-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-weight: 500;
+  }
+
+  .hero-product-showcase__heading .material-symbols-outlined {
+    color: var(--tcc-ink);
+    font-size: 1.3em;
+    font-variation-settings: 'FILL' 1;
+  }
+
+  .hero-product-showcase__body {
+    font-size: 15.2px;
+    line-height: 28px;
+    color: var(--tcc-ink);
+    opacity: 0.85;
+  }
+
+  .hero-product-showcase__cta {
+    width: 100%;
+    margin-top: 0.5rem;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 15.2px;
+    line-height: 20px;
+    padding: 1.5rem 2rem !important;
+  }
+
+  .hero-product-showcase__guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 1.5rem;
+    line-height: 19.8px;
+    color: var(--tcc-ink);
+    opacity: 0.75;
+    margin-top: 0.3rem;
+  }
+
+  .hero-product-showcase__cta {
+    align-self: stretch;
+  }
+
+  @media screen and (min-width: 750px) {
+    .hero-product-showcase__guarantee {
+      font-size: 1.6rem;
+    }
+  }
+
+  .hero-product-showcase__guarantee-icon {
+    font-size: 18px;
+    color: var(--tcc-ink);
+  }
+
+  .hero-product-showcase__main-image img.hidden-desktop {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero-product-showcase__main-image img.hidden-mobile {
+      display: none;
+    }
+    .hero-product-showcase__main-image img.hidden-desktop {
+      display: block;
+    }
+    .hero-product-showcase__inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding-bottom: 1.5rem !important;
+    }
+
+    .hero-product-showcase__subtitle {
+      font-size: 28px;
+    }
+
+    .hero-product-showcase__heading {
+      font-size: 18px;
+    }
+
+    .hero-product-showcase__copy {
+      text-align: center;
+    }
+
+    .hero-product-showcase__rating,
+    .hero-product-showcase__guarantee {
+      justify-content: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Product Showcase",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "external_image_url",
+      "label": "External Image URL (overrides picker)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Clear arteries. Restored circulation."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtitle Tag (Eyebrow)",
+      "default": "Practitioner-Grade · Clinically Studied"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body Text",
+      "default": "<p>Pharmaceutical-strength nattokinase, formulated by clinicians for the cardiovascular health you deserve.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop the Protocol"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "Rated 4.8 / 5 | Trusted By 50,000+"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Product Showcase",
+      "settings": {
+        "heading": "Clear arteries. Restored circulation.",
+        "subheading": "Practitioner-Grade · Clinically Studied",
+        "body_text": "<p>Pharmaceutical-strength nattokinase, formulated by clinicians for the cardiovascular health you deserve.</p>",
+        "button_text": "Shop the Protocol",
+        "button_link": "/products/spike-detox"
+      }
+    }
+  ]
+}
+{% endschema %}
