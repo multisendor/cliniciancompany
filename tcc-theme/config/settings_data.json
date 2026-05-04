@@ -6,7 +6,63 @@
     "brand_claim_disclaimer": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
     "type_header_font": "inter_n7",
     "type_body_font": "inter_n4",
-    "color_schemes": {},
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#fafbfc",
+          "background_gradient": "",
+          "text": "#0a1628",
+          "button": "#0a1628",
+          "button_label": "#fafbfc",
+          "secondary_button_label": "#0a1628",
+          "shadow": "#0a1628"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#0a1628",
+          "background_gradient": "",
+          "text": "#fafbfc",
+          "button": "#fafbfc",
+          "button_label": "#0a1628",
+          "secondary_button_label": "#fafbfc",
+          "shadow": "#0a1628"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#e8eef5",
+          "background_gradient": "",
+          "text": "#0a1628",
+          "button": "#0a1628",
+          "button_label": "#fafbfc",
+          "secondary_button_label": "#0a1628",
+          "shadow": "#0a1628"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#0a1628",
+          "button": "#0a1628",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#0a1628",
+          "shadow": "#0a1628"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#c8281a",
+          "background_gradient": "",
+          "text": "#fafbfc",
+          "button": "#fafbfc",
+          "button_label": "#c8281a",
+          "secondary_button_label": "#fafbfc",
+          "shadow": "#0a1628"
+        }
+      }
+    },
     "page_width": 1400,
     "spacing_sections": 32,
     "show_brand_in_footer": true
