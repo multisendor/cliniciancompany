@@ -1,0 +1,288 @@
+<div
+  data-section-type="bottom-faq"
+  class="bottom-faq tcc-section-padding"
+>
+  <div class="bottom-faq__inner tcc-page-width">
+    <div class="bottom-faq__layout">
+      
+      <!-- Left Column: Heading & Text -->
+      <div class="bottom-faq__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="bottom-faq__heading tcc-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="bottom-faq__description tcc-body">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Right Column: Accordion -->
+      {%- if section.blocks.size > 0 -%}
+        <div class="bottom-faq__list">
+          {%- for block in section.blocks -%}
+            <details class="bottom-faq__item" {{ block.shopify_attributes }}>
+              <summary class="bottom-faq__summary tcc-heading">
+                <span>{{ block.settings.title }}</span>
+                <span class="bottom-faq__icon-plus">+</span>
+                <span class="bottom-faq__icon-minus">−</span>
+              </summary>
+              <div class="bottom-faq__content tcc-body">
+                {{ block.settings.content }}
+              </div>
+            </details>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .bottom-faq {
+    background-color: var(--tcc-bg);
+  }
+
+  .bottom-faq__layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .bottom-faq__header {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .bottom-faq__heading {
+    font-size: 31.2px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin: 0 0 1.5rem 0;
+    color: var(--tcc-ink);
+    text-align: left;
+  }
+
+  .bottom-faq__description {
+    font-size: 15.2px;
+    line-height: 1.6;
+    color: var(--tcc-ink);
+    opacity: 0.7;
+  }
+
+  .bottom-faq__description p {
+    margin: 0;
+  }
+
+  .bottom-faq__description strong {
+    color: var(--tcc-ink);
+    font-weight: 500;
+  }
+
+  /* Accordion List */
+  .bottom-faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .bottom-faq__item {
+    border-bottom: 1px solid var(--tcc-line);
+  }
+
+  .bottom-faq__item:first-child {
+    border-top: 1px solid var(--tcc-line);
+  }
+
+  .bottom-faq__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 500;
+    list-style: none;
+    user-select: none;
+    gap: 2rem;
+    color: var(--tcc-ink);
+  }
+
+  .bottom-faq__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .bottom-faq__summary::marker {
+    display: none;
+    content: '';
+  }
+
+  .bottom-faq__icon-plus,
+  .bottom-faq__icon-minus {
+    font-size: 24px;
+    line-height: 1;
+    color: var(--tcc-ink);
+    opacity: 0.4;
+    flex-shrink: 0;
+    font-family: Arial, sans-serif;
+    font-weight: 300;
+  }
+
+  .bottom-faq__icon-minus {
+    display: none;
+  }
+
+  .bottom-faq__item[open] .bottom-faq__icon-plus {
+    display: none;
+  }
+
+  .bottom-faq__item[open] .bottom-faq__icon-minus {
+    display: block;
+  }
+
+  .bottom-faq__content {
+    padding: 0 0 1.5rem 0;
+    font-size: 15.2px;
+    line-height: 1.7;
+    color: var(--tcc-ink);
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .bottom-faq__layout {
+      gap: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .bottom-faq__layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .bottom-faq__header {
+      position: static;
+    }
+
+    .bottom-faq__heading {
+      font-size: 28px;
+      margin-bottom: 1rem;
+    }
+
+    .bottom-faq__summary {
+      padding: 1.25rem 0;
+      font-size: 15px;
+    }
+
+    .bottom-faq__content {
+      font-size: 14.5px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Bottom FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Practitioner-grade answers to your questions"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Transparency matters when it comes to cardiovascular supplements. Below you'll find answers to the most common questions about <strong>nattokinase</strong>, how it works, safety with blood thinners, and how we ensure pharmaceutical-strength quality in every batch.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question",
+          "default": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Answer",
+          "default": "<p>Answer goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 15,
+  "presets": [
+    {
+      "name": "Bottom FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "title": "What is nattokinase?",
+            "content": "<p>Nattokinase is an enzyme extracted from natto, a traditional Japanese fermented soybean food. Discovered in Tokyo in 1980 by Dr. Hiroyuki Sumi, it's been studied for its effect on fibrin — a protein involved in blood clotting and arterial plaque.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "title": "How is this different from store-bought nattokinase?",
+            "content": "<p>Most store-bought nattokinase is dosed at 1,000–2,000 FU per serving. The Clinician Company formulates at 4,000 FU — the dose practitioners actually use in clinical practice. Every batch is third-party tested and vitamin K2 is removed for safety with blood thinners.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "title": "Is it safe to take with blood thinners?",
+            "content": "<p>Talk to your prescribing physician first. Our formulation removes vitamin K2 (which interferes with warfarin) but nattokinase itself has anti-coagulant effects. This is a conversation for your care team.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "title": "How long until I notice a difference?",
+            "content": "<p>Most clinical studies measure outcomes over 8–12 weeks. Fibrin clearance and circulation markers shift gradually, not overnight.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "title": "When should I take it?",
+            "content": "<p>On an empty stomach, ideally before bed or 30 minutes before a meal. Food can reduce enzyme activity.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "title": "Is this FDA-approved?",
+            "content": "<p>Dietary supplements are not FDA-approved; they're regulated differently from drugs. Our manufacturing facility is FDA-registered and follows GMP standards.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "title": "What's your refund policy?",
+            "content": "<p>60-day money-back guarantee. If you're not satisfied for any reason, email support@theclinicianco.com for a full refund.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "title": "Is this third-party tested?",
+            "content": "<p>Yes — every batch is independently tested for potency (FU activity), purity (heavy metals, microbials), and label accuracy. Certificates of Analysis available on request.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
