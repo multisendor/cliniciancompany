@@ -1,0 +1,258 @@
+<style>
+  .research-highlights {
+    background: var(--tcc-bg);
+  }
+
+  .research-highlights__header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--tcc-s-6, 48px);
+  }
+
+  .research-highlights__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: 500;
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2, 16px);
+    line-height: 1.2;
+  }
+
+  .research-highlights__heading strong {
+    color: var(--tcc-ink);
+  }
+
+  .research-highlights__description {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    font-weight: 500;
+    color: var(--tcc-ink-soft);
+    line-height: 28px;
+    margin: 0;
+  }
+
+  .research-highlights__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--tcc-s-3, 24px);
+    margin-bottom: var(--tcc-s-4, 32px);
+  }
+
+  .research-highlights__card {
+    background: var(--tcc-card);
+    border-radius: var(--tcc-radius, 6px);
+    padding: var(--tcc-s-4, 32px) var(--tcc-s-3, 24px);
+    text-align: center;
+    box-shadow: var(--tcc-shadow-card);
+    border: 1px solid var(--tcc-line);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .research-highlights__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.4rem 2rem rgba(10, 22, 40, 0.10);
+  }
+
+  .research-highlights__card-title {
+    font-family: var(--tcc-font-sans);
+    font-weight: 700;
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-1, 8px);
+    line-height: 1.3;
+  }
+
+  .research-highlights__card-description {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.65;
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .research-highlights__card-citation {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0;
+    padding-top: var(--tcc-s-2, 16px);
+    border-top: 1px solid var(--tcc-line);
+  }
+
+  .research-highlights__cta {
+    text-align: center;
+  }
+
+  .research-highlights__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    background: var(--tcc-ink);
+    color: var(--tcc-bg);
+    border-radius: var(--tcc-radius, 6px);
+    font-family: var(--tcc-font-sans);
+    font-weight: 700;
+    font-size: var(--tcc-fs-small, 13px);
+    line-height: 1.2;
+    text-decoration: none;
+    border: 2px solid var(--tcc-ink);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .research-highlights__button:hover {
+    opacity: 0.85;
+    color: var(--tcc-bg);
+  }
+
+  @media screen and (max-width: 749px) {
+    .research-highlights__heading {
+      font-size: 24px;
+    }
+
+    .research-highlights__grid {
+      grid-template-columns: 1fr;
+      gap: var(--tcc-s-2, 16px);
+    }
+
+    .research-highlights__card {
+      padding: var(--tcc-s-3, 24px) var(--tcc-s-2, 16px);
+    }
+  }
+</style>
+
+<div class="research-highlights tcc-section-padding" data-section-type="research-highlights" data-section-id="{{ section.id }}">
+  <div class="tcc-page-width">
+    <div class="research-highlights__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="research-highlights__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="research-highlights__description">{{ section.settings.description }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="research-highlights__grid">
+        {%- for block in section.blocks -%}
+          <div class="research-highlights__card" {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}
+              <h3 class="research-highlights__card-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <p class="research-highlights__card-description">{{ block.settings.description }}</p>
+            {%- endif -%}
+            {%- if block.settings.citation != blank -%}
+              <p class="research-highlights__card-citation">{{ block.settings.citation }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_text != blank -%}
+      <div class="research-highlights__cta">
+        <a
+          class="research-highlights__button"
+          {%- if section.settings.button_link != blank %} href="{{ section.settings.button_link }}"{% endif %}
+        >
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Research Highlights",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Backed by <strong>Peer-Reviewed Research</strong></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Real human studies on nattokinase. Not pre-clinical guesses."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "TRY RISK-FREE TODAY"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat_card",
+      "name": "Research Card",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Headline (journal / source)"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Body (study summary)"
+        },
+        {
+          "type": "text",
+          "id": "citation",
+          "label": "Citation"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Research Highlights",
+      "blocks": [
+        {
+          "type": "stat_card",
+          "settings": {
+            "title": "Frontiers in Cardiovascular Medicine",
+            "description": "Nattokinase demonstrated significant fibrinolytic activity in human subjects, reducing arterial plaque volume in carotid imaging studies.",
+            "citation": "Frontiers in Cardiovascular Medicine, 2022 — PMC fcvm.09.964977"
+          }
+        },
+        {
+          "type": "stat_card",
+          "settings": {
+            "title": "Molecules Journal Review",
+            "description": "Comprehensive review of nattokinase's mechanism: dissolves fibrin, inhibits platelet aggregation, and lowers blood pressure across multiple human trials.",
+            "citation": "Molecules, 2022 — PMC molecules.27.05405"
+          }
+        },
+        {
+          "type": "stat_card",
+          "settings": {
+            "title": "Cureus — Post-Acute COVID Sequelae",
+            "description": "Nattokinase included in a clinical-protocol approach to post-acute sequelae following COVID-19, targeting microclot pathology.",
+            "citation": "Cureus, 2024 — Article 207654"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
