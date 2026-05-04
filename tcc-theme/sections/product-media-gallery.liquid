@@ -25,6 +25,21 @@
           {%- endfor -%}
         </div>
       </div>
+    {%- elsif section.settings.placeholder_image_url != blank -%}
+      <div class="product-media-gallery__main-wrapper">
+        <div class="product-media-gallery__main" id="MainSlider-{{ section.id }}">
+          <div class="product-media-gallery__slide" data-index="0">
+            <img
+              src="{{ section.settings.placeholder_image_url }}"
+              alt="{{ gallery_product.title | escape | default: 'Product image coming soon' }}"
+              width="800"
+              height="800"
+              loading="eager"
+              fetchpriority="high"
+            >
+          </div>
+        </div>
+      </div>
 
       <!-- Thumbnail strip with navigation -->
       {%- if gallery_product.media.size > 1 -%}
@@ -605,6 +620,13 @@
       "id": "product_handle",
       "label": "Product Handle (for non-product pages)",
       "default": "spike-detox"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_image_url",
+      "label": "Placeholder Image URL (used only when product has no media uploaded)",
+      "info": "Stand-in product photo while real photography is in production. Once you upload product images in admin → Products, the real media is used and this is ignored.",
+      "default": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_Thumbnail.png?v=1773419148&width=800"
     }
   ],
   "blocks": [
