@@ -1,4 +1,56 @@
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "buybox": {
+      "type": "product-details-buybox",
+      "settings": {}
+    },
+    "media": {
+      "type": "product-media-gallery",
+      "settings": {}
+    },
+    "research": {
+      "type": "research-highlights",
+      "settings": {}
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "text-testimonials-slider",
+      "settings": {}
+    },
+    "comparison": {
+      "type": "brand-comparison-table",
+      "settings": {}
+    },
+    "guarantee": {
+      "type": "money-back-guarantee",
+      "settings": {}
+    },
+    "faq": {
+      "type": "bottom-faq",
+      "settings": {}
+    },
+    "sticky": {
+      "type": "sticky-atc-bar",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "buybox",
+    "media",
+    "research",
+    "benefits",
+    "testimonials",
+    "comparison",
+    "guarantee",
+    "faq",
+    "sticky"
+  ]
 }
