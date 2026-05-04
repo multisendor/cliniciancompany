@@ -98,3 +98,31 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--tcc-shadow-card);
   border: 1px solid var(--tcc-line);
 }
+
+/* Footer + newsletter visibility — overrides Dawn color schemes that fall back to white-on-white when scheme defs are missing */
+.footer .newsletter,
+.footer__newsletter,
+.footer__content-top {
+  background: var(--tcc-bg);
+  color: var(--tcc-ink);
+}
+
+.footer .newsletter h2,
+.footer .newsletter h3,
+.footer .newsletter .footer__title,
+.footer .newsletter__subheading,
+.footer .newsletter p,
+.footer .newsletter label {
+  color: var(--tcc-ink);
+}
+
+.footer .newsletter input[type="email"] {
+  color: var(--tcc-ink);
+  background: var(--tcc-card);
+  border: 1px solid var(--tcc-line);
+}
+
+.footer__content-bottom,
+.footer__copyright {
+  color: var(--tcc-ink-soft);
+}
