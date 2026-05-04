@@ -1,0 +1,559 @@
+{%- assign brand_features = section.blocks | where: "type", "brand_feature" -%}
+{%- assign competitor_features = section.blocks | where: "type", "competitor_feature" -%}
+{%- assign summary_points = section.blocks | where: "type", "summary_point" -%}
+
+<div data-section-type="brand-comparison-table" data-section-id="{{ section.id }}" class="brand-comparison tcc-section-padding">
+  <div class="tcc-page-width">
+    <div class="brand-comparison__layout">
+      
+      <!-- Left: Side-by-Side Comparison -->
+      <div class="brand-comparison__table-area">
+        <div class="brand-comparison__table">
+          
+          <!-- TCC Column -->
+          <div class="brand-comparison__col brand-comparison__col--brand">
+            {%- if section.settings.brand_image != blank -%}
+              <div class="brand-comparison__brand-image-wrapper">
+                <img
+                  src="{{ section.settings.brand_image | image_url: width: 280 }}"
+                  alt="{{ section.settings.brand_name }} product"
+                  width="140"
+                  height="auto"
+                  loading="lazy"
+                  class="brand-comparison__brand-image"
+                >
+              </div>
+            {%- endif -%}
+            <h3 class="brand-comparison__col-title">{{ section.settings.brand_name }}</h3>
+            <div class="brand-comparison__col-rows">
+              {%- for block in brand_features -%}
+                <div class="brand-comparison__row" {{ block.shopify_attributes }}>
+                  <span class="material-symbols-outlined brand-comparison__row-icon">
+                    {%- if block.settings.icon != blank -%}{{ block.settings.icon }}{%- else -%}check_circle{%- endif -%}
+                  </span>
+                  <span class="brand-comparison__row-text">{{ block.settings.text }}</span>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+
+          <!-- Competitor Column -->
+          <div class="brand-comparison__col brand-comparison__col--competitor">
+            <h3 class="brand-comparison__col-title">{{ section.settings.competitor_name | default: 'Typical Store-Bought' }}</h3>
+            <div class="brand-comparison__col-rows">
+              {%- for block in competitor_features -%}
+                <div class="brand-comparison__row" {{ block.shopify_attributes }}>
+                  <span class="material-symbols-outlined brand-comparison__row-icon brand-comparison__row-icon--grey">
+                    {%- if block.settings.icon != blank -%}{{ block.settings.icon }}{%- else -%}cancel{%- endif -%}
+                  </span>
+                  <span class="brand-comparison__row-text">{{ block.settings.text }}</span>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: Content Area -->
+      <div class="brand-comparison__content">
+        <h2 class="brand-comparison__heading tcc-heading">{{ section.settings.heading | default: 'TCC vs. Typical Store-Bought' }}</h2>
+        
+        <ul class="brand-comparison__checklist">
+          {%- for block in summary_points -%}
+            <li class="brand-comparison__check-item" {{ block.shopify_attributes }}>
+              <span class="material-symbols-outlined brand-comparison__check-icon">check</span>
+              <span class="brand-comparison__check-text">{{ block.settings.text }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {%- assign product = section.settings.product | default: all_products['spike-detox'] -%}
+        {%- if section.settings.button_text != blank -%}
+          <a
+            class="brand-comparison__cta tcc-btn tcc-btn--white"
+            href="/cart/add?id={{ product.selected_or_first_available_variant.id }}&quantity=1"
+          >
+            {{ section.settings.button_text }}
+          </a>
+        {%- endif -%}
+
+        <div class="brand-comparison__trust">
+          <span class="material-symbols-outlined brand-comparison__trust-icon">verified_user</span>
+          <span class="brand-comparison__trust-text">30-day money back guarantee</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .brand-comparison {
+    background-color: var(--tcc-ink);
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .brand-comparison__layout {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Table Styles */
+  .brand-comparison__table-area {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .brand-comparison__table {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .brand-comparison__col {
+    flex: 1;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-comparison__col--brand {
+    background-color: var(--tcc-ink-soft);
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-top: 40px; /* Space for floating image */
+  }
+
+  .brand-comparison__col--competitor {
+    background-color: #fff;
+    color: #333;
+    margin-top: 60px; /* Offset slightly */
+    height: fit-content;
+  }
+
+  .brand-comparison__brand-image-wrapper {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    z-index: 3;
+  }
+
+  .brand-comparison__brand-image {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+  }
+
+  .brand-comparison__col-title {
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 400;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin: 0;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .brand-comparison__col--brand .brand-comparison__col-title {
+    color: #fff;
+    padding-top: 3.5rem; /* Space for image bottom */
+  }
+
+  .brand-comparison__col--competitor .brand-comparison__col-title {
+    color: #000;
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .brand-comparison__col-rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-comparison__row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.25rem 1rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    min-height: 100px;
+  }
+
+  .brand-comparison__col--competitor .brand-comparison__row {
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .brand-comparison__row-icon {
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+  }
+
+  .brand-comparison__col--brand .brand-comparison__row-icon {
+    color: var(--tcc-positive);
+  }
+
+  .brand-comparison__row-icon--grey {
+    color: var(--tcc-urgent);
+  }
+
+  .brand-comparison__row-text {
+    font-size: 14.25px;
+    line-height: 1.2;
+    font-weight: 400;
+  }
+
+  /* Content Styles */
+  .brand-comparison__content {
+    flex: 1;
+    padding-top: 2rem;
+  }
+
+  .brand-comparison__heading {
+    font-size: 31.2px;
+    line-height: 1.2;
+    color: #fff;
+    margin: 0 0 2rem;
+    font-family: var(--tcc-font-sans);
+  }
+
+  .brand-comparison__checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .brand-comparison__check-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .brand-comparison__check-icon {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .brand-comparison__check-text {
+    font-size: 15.2px;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .brand-comparison__cta {
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    color: #000 !important;
+    text-align: center;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15.2px;
+    margin-bottom: 1.25rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .brand-comparison__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .brand-comparison__trust {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    font-size: 14px;
+  }
+
+  .brand-comparison__trust-icon {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .brand-comparison__layout {
+      gap: 2rem;
+    }
+    .brand-comparison__heading {
+      font-size: 32px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .brand-comparison__layout {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 3rem;
+    }
+
+    .brand-comparison__heading {
+      text-align: center;
+      font-size: 36px;
+    }
+
+    .brand-comparison__table-area {
+      order: 1; /* Match reference mobile: title then table */
+    }
+
+    .brand-comparison__content {
+      order: 2;
+    }
+    
+    .brand-comparison__layout > .brand-comparison__content {
+      padding-top: 0;
+    }
+
+    .brand-comparison__checklist {
+      align-items: flex-start;
+      margin-left: 1rem;
+    }
+
+    .brand-comparison__cta {
+      max-width: none;
+    }
+
+    .brand-comparison__trust {
+      justify-content: center;
+    }
+
+    .brand-comparison__col--competitor {
+      margin-top: 40px; /* Reduced offset on mobile */
+    }
+    
+    .brand-comparison__row {
+      min-height: 80px;
+      padding: 1rem 0.5rem;
+    }
+
+    .brand-comparison__row-text {
+      font-size: 13px;
+    }
+    
+    .brand-comparison__col-title {
+      font-size: 20px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Brand Comparison Table",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product for Add to Cart"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "Brand Product Image (optional, floats above column)"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Column Header",
+      "default": "TCC"
+    },
+    {
+      "type": "text",
+      "id": "competitor_name",
+      "label": "Competitor Column Header",
+      "default": "Typical Store-Bought"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "TCC vs. Typical Store-Bought"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Try Risk-Free Today"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand_feature",
+      "name": "Brand Feature",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Material Symbol)",
+          "default": "check_circle"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text"
+        }
+      ]
+    },
+    {
+      "type": "competitor_feature",
+      "name": "Competitor Feature",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Material Symbol)",
+          "default": "cancel"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text"
+        }
+      ]
+    },
+    {
+      "type": "summary_point",
+      "name": "Summary Point",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Summary Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 25,
+  "presets": [
+    {
+      "name": "Brand Comparison Table",
+      "blocks": [
+        {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Nattokinase Dose: 4,000 FU"
+          }
+        },
+        {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Wild-fermented Bacillus subtilis"
+          }
+        },
+        {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Third-Party Tested Every Batch"
+          }
+        },
+        {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Vitamin K2 Removed (blood-thinner safe)"
+          }
+        },
+        {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Vegan Capsules"
+          }
+        },
+        {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Practitioner-Formulated"
+          }
+        },
+        {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Nattokinase Dose: 1,000–2,000 FU"
+          }
+        },
+        {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Lab-cultured fermentation"
+          }
+        },
+        {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Rarely third-party tested"
+          }
+        },
+        {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Vitamin K2 often present"
+          }
+        },
+        {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Vegan capsules: mixed"
+          }
+        },
+        {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Not practitioner-formulated"
+          }
+        },
+        {
+          "type": "summary_point",
+          "settings": {
+            "text": "Pharmaceutical-strength 4,000 FU dosing"
+          }
+        },
+        {
+          "type": "summary_point",
+          "settings": {
+            "text": "Independently tested, every batch"
+          }
+        },
+        {
+          "type": "summary_point",
+          "settings": {
+            "text": "Formulated by clinicians"
+          }
+        },
+        {
+          "type": "summary_point",
+          "settings": {
+            "text": "Safer for blood-thinner users"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
