@@ -57,7 +57,7 @@
     <div class="mbg-header">
       <p class="mbg-subtitle">{{ section.settings.subtitle }}</p>
       <h2 class="mbg-title">{{ section.settings.heading }}</h2>
-      <p class="mbg-description">{{ section.settings.description }}</p>
+      <p class="mbg-description">{{ section.settings.description | replace: '[brand_name]', settings.brand_name | replace: '[brand_short]', settings.brand_short }}</p>
     </div>
 
 
@@ -261,7 +261,7 @@
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Try {{ settings.brand_name }} for 60 days. If you're not satisfied for any reason — even if the bottle is empty — email us for a full refund. No questions asked."
+      "default": "Try [brand_name] for 60 days. If you're not satisfied for any reason — even if the bottle is empty — email us for a full refund. No questions asked."
     },
     {
       "type": "text",
