@@ -1,0 +1,100 @@
+{
+  "sections": {
+    "founder": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why we built The Clinician Company",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For decades, patients with chronic illness — long Covid, post-clot recovery, hypertension, post-vaccine syndromes — have been told to wait, dismissed, or handed prescriptions that didn't address the root cause. We watched them search for answers in Reddit threads at 2 a.m. We watched them feel invisible.</p><p>The Clinician Company started as a question: what if the supplements that practitioners actually trust — the ones they reach for in their own clinics — were available without an appointment, at clinical doses, with the same testing rigor a hospital would demand?</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "advisory": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Practitioner-formulated. Independently verified.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every TCC formulation is reviewed by practicing functional-medicine clinicians before it ships. Every batch is third-party tested for potency, purity, and label accuracy. Certificates of Analysis are available on request.</p><p>Our hero formulation, <strong>Spike Detox</strong>, is built around nattokinase — an enzyme discovered in Tokyo in 1980 by Dr. Hiroyuki Sumi, studied across hundreds of clinical trials. We dose it at 4,000 FU per serving — what your clinician would prescribe — not the 1,000 FU most retail brands use to keep margins fat.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "mission": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our mission",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To put practitioner-grade interventions in the hands of the people who need them most — and to treat them like the intelligent adults they already are.</p><p>Selected references: Frontiers in Cardiovascular Medicine, 2022 (PMC 9.964977); Molecules, 2022 (PMC 27.05405); Cureus, 2024 (Article 207654 — clinical approach to post-acute COVID sequelae).</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": ["founder", "advisory", "mission"]
+}
