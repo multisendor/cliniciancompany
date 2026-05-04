@@ -90,13 +90,36 @@
 
   .tcc-footer-grid__brand {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 2rem;
   }
 
   .tcc-footer-grid__block .footer-block__heading {
-    display: none; /* Hide heading to match reference links style */
+    font-size: var(--tcc-fs-eyebrow);
+    font-weight: var(--tcc-fw-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--tcc-ls-eyebrow);
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 1rem;
+  }
+
+  .tcc-footer-brand-tagline {
+    font-size: var(--tcc-fs-small);
+    font-weight: var(--tcc-fw-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--tcc-ls-eyebrow);
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0.75rem 0 0.5rem;
+  }
+
+  .tcc-footer-brand-blurb {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    max-width: 22ch;
   }
 
   .tcc-footer-grid__links .list-menu__item {
@@ -277,6 +300,12 @@
             {%- else -%}
               <h2 class="tcc-footer-brand-name">{{ settings.brand_name }}</h2>
             {%- endif -%}
+            {%- if settings.brand_tagline != blank -%}
+              <p class="tcc-footer-brand-tagline">{{ settings.brand_tagline }}</p>
+            {%- endif -%}
+            <p class="tcc-footer-brand-blurb">
+              Pharmaceutical-strength nattokinase, formulated by clinicians.
+            </p>
           </div>
 
           {%- comment -%} Column 2: Newsletter {%- endcomment -%}
@@ -361,6 +390,9 @@
                   class="tcc-footer-grid__block"
                   {{ block.shopify_attributes }}
                 >
+                  {%- if block.settings.heading != blank -%}
+                    <h3 class="footer-block__heading">{{ block.settings.heading }}</h3>
+                  {%- endif -%}
                   {%- if block.settings.menu != blank -%}
                     <ul class="footer-block__details-content list-unstyled">
                       {%- for link in block.settings.menu.links -%}
