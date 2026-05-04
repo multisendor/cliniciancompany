@@ -1,0 +1,416 @@
+
+:root {
+  /* Brand colors */
+  --color-primary: rgb(159, 63, 63);
+  --color-primary-dark: rgb(105, 14, 14);
+  --color-text: rgb(43, 43, 43);
+  --color-bg: #FFFFFF;
+  --color-bg-warm: rgb(251, 249, 247);
+  --color-accent-gradient: linear-gradient(165deg, rgba(159,63,63,1) 14%, rgba(105,14,14,1) 85%);
+  --color-star: #d4a017;
+  --color-success: #2e7d32;
+  --color-warning: #c62828;
+
+  /* Spacing & shape */
+  --radius-card: 1.2rem;
+  --radius-button: 6px;
+  --shadow-card: 0 0.2rem 1.5rem rgba(0,0,0,0.1);
+
+  /* Force font-weights to 500 max */
+  --font-body-weight-bold: 500 !important;
+  --font-heading-weight: 500 !important;
+}
+
+/* Typography overrides - Using theme settings */
+.curably-heading,
+.curably-heading strong,
+.curably-heading b,
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5, .h6,
+h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong,
+h1 b, h2 b, h3 b, h4 b, h5 b, h6 b {
+  font-family: var(--font-heading-family);
+  font-weight: 500 !important;
+  letter-spacing: 0.02rem;
+}
+
+/* Global Font Sizes for Headlines */
+h1, .h1 {
+  font-size: 36px !important;
+  line-height: 1.2 !important;
+}
+
+h2, .h2 {
+  font-size: 31.2px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+/* Section headline bold overrides — these use .curably-heading (specificity 0,1,0) so need explicit override */
+.feel-better-daily__heading,
+.proven-benefits__heading,
+.text-testimonials__heading,
+.brand-comparison__heading,
+.bottom-faq__heading {
+  font-weight: 700 !important;
+}
+
+/* "Proven Benefits." word is wrapped in <strong> — needs extra specificity to beat global strong { 500 } */
+.proven-benefits__heading strong {
+  font-weight: 700 !important;
+}
+
+@media screen and (max-width: 749px) {
+  h1, .h1 {
+    font-size: 28px !important;
+  }
+  h2, .h2 {
+    font-size: 24px !important;
+  }
+}
+
+.curably-body {
+  font-family: var(--font-body-family);
+  font-weight: var(--font-body-weight);
+}
+
+/* Global strong/b override for everything to prevent >500 weight */
+strong, b, .font-body-bold {
+  font-weight: 500 !important;
+}
+
+/* Material icon helper */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+
+/* Page-wide overrides */
+body {
+  font-family: var(--font-body-family);
+  color: var(--color-text);
+  background-color: #ffffff !important;
+}
+
+/* Ensure main content is also white */
+main#MainContent {
+  background-color: #ffffff !important;
+}
+
+/* Utility: page-width container */
+.curably-page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Utility: section padding */
+.curably-section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media screen and (max-width: 749px) {
+  .curably-section-padding {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* Star rating helper */
+.curably-stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--color-star);
+}
+
+.curably-stars .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* Button base */
+.curably-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-button);
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 15.2px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.curably-btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.curably-btn--primary:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.curably-btn--white {
+  background: #fff;
+  color: #2b2b2b;
+  border-color: #fff;
+}
+
+/* -----------------------------------------------
+   Tighter section spacing for custom sections 
+   ----------------------------------------------- */
+
+/* Remove Dawn's default inter-section margin on custom sections */
+.shopify-section + .shopify-section {
+  margin-top: 0;
+}
+
+/* Override Dawn's spacing CSS variables globally for a tighter layout */
+:root {
+  --spacing-sections-desktop: 0px;
+  --spacing-sections-mobile: 0px;
+}
+
+/* Prevent horizontal overflow globally */
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  overflow-x: clip; /* clip instead of hidden to avoid creating a scroll container, which would break position:sticky on children */
+  width: 100%;
+  position: relative;
+}
+
+/* Ensure main content handles its own layout without global side padding on mobile */
+main#MainContent {
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* -----------------------------------------------
+   Product page two-column layout (gallery + buybox)
+   ----------------------------------------------- */
+@media screen and (min-width: 750px) {
+  /* Turn <main> into a grid when it contains a product gallery */
+  main#MainContent:has([data-section-type="product-media-gallery"]) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 0;
+  }
+
+  /* Make the gallery and buybox shopify-section wrappers transparent to the grid */
+  main#MainContent > .shopify-section:has([data-section-type="product-media-gallery"]),
+  main#MainContent > .shopify-section:has([data-section-type="product-details-buybox"]) {
+    display: contents;
+  }
+
+  /* Gallery Column */
+  main#MainContent [data-section-type="product-media-gallery"] {
+    position: relative;
+    align-self: stretch;
+    padding: 4rem 4rem;
+    grid-row: 1;
+    z-index: 2;
+  }
+
+  /* Buybox Column */
+  main#MainContent [data-section-type="product-details-buybox"] {
+    align-self: stretch;
+    padding: 4rem 4rem;
+    grid-row: 1;
+  }
+
+  /* Perfectly mirrored inner containers (580px each to fill 1440px grid nicely) */
+  main#MainContent [data-section-type="product-media-gallery"] .product-media-gallery__inner {
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 0;
+  }
+  main#MainContent [data-section-type="product-details-buybox"] .product-details-buybox__inner {
+    max-width: 580px;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 0;
+  }
+
+  /* All remaining sections after gallery+buybox span full width */
+  main#MainContent:has([data-section-type="product-media-gallery"]) > .shopify-section:not(:has([data-section-type="product-media-gallery"])):not(:has([data-section-type="product-details-buybox"])) {
+    grid-column: 1 / -1;
+    position: relative;
+    z-index: 1;
+    background-color: var(--color-bg);
+  }
+}
+
+/* Hide the misplaced payment icons bar near the header */
+.payment-icons-bar,
+[data-section-type="payment-icons-bar"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Hide "Powered by Shopify" footer link */
+.footer__content-bottom a[href*="shopify.com/poweredby"],
+.footer__content-bottom a[href*="utm_campaign=poweredby"] {
+  display: none;
+}
+
+/* Ensure sticky header stays above all page content */
+/* !important needed: base.css uses .section-header.shopify-section-group-header-group (specificity 0,2,0) which beats our single-class selector */
+.shopify-section-header-sticky {
+  z-index: 100 !important;
+}
+
+/* -----------------------------------------------
+   Header Scaling (Desktop & Mobile)
+   ----------------------------------------------- */
+/* Desktop Scaling */
+@media screen and (min-width: 990px) {
+  .header {
+    padding-top: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
+  }
+
+  .header__heading {
+    justify-self: center !important;
+    grid-area: heading !important;
+  }
+
+  .header__heading-logo {
+    max-width: 100px !important;
+    height: auto !important;
+  }
+
+  .header__menu-item {
+    font-size: 1.5rem !important;
+    padding: 0.8rem 1.5rem !important;
+  }
+
+  .header__icon {
+    height: 4.0rem !important;
+    width: 4.0rem !important;
+  }
+
+  .header__icon .icon,
+  .header__icon .svg-wrapper svg {
+    height: 2.2rem !important;
+    width: 2.2rem !important;
+  }
+
+  /* Account icon scale */
+  .header__icon--account .svg-wrapper svg {
+    height: 2.0rem !important;
+    width: 2.0rem !important;
+  }
+
+  /* Cart icon scale boost */
+  .header__icon--cart .svg-wrapper svg {
+    height: 2.4rem !important;
+    width: 2.4rem !important;
+  }
+}
+
+/* Mobile Overrides (Preserving previous fixes) */
+@media screen and (max-width: 749px) {
+  .header {
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+  }
+  .header__icon {
+    height: 4.4rem !important; /* Increase hit area for touch */
+    width: 4.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header__icon .svg-wrapper {
+    width: auto !important;
+    height: auto !important;
+    display: inline-flex !important;
+  }
+
+  /* Hide search and account icons on mobile */
+  .header__search,
+  .header__icon--account {
+    display: none !important;
+  }
+
+  /* Correctly handle search vs close icon visibility */
+  .header__icon--search .header__icon-close {
+    display: none !important;
+  }
+  
+  details[open] .header__icon--search .header__icon-close {
+    display: flex !important;
+  }
+  
+  details[open] .header__icon--search .svg-wrapper:not(.header__icon-close) {
+    display: none !important;
+  }
+
+  /* Specific SVG scaling to make them LOOK even */
+  .header__icon--menu .icon {
+    height: 1.8rem !important;
+    width: 1.8rem !important;
+  }
+
+  .header__icon--search .svg-wrapper svg {
+    height: 1.8rem !important;
+    width: 1.8rem !important;
+  }
+
+  .header__icon--account .svg-wrapper svg {
+    height: 2.0rem !important;
+    width: 2.0rem !important;
+  }
+
+  /* Boost cart icon MASSIVELY as it has huge internal margins */
+  .header__icon--cart .svg-wrapper svg,
+  .header__icon--cart .icon {
+    height: 4.2rem !important;
+    width: 4.2rem !important;
+  }
+  
+  .header__heading-logo {
+    max-width: 100px !important;
+  }
+}
+
+/* Cart empty text - lighter weight */
+.cart__empty-text {
+  font-weight: 300;
+}
+
+/* Cart item name - match checkout button font size */
+.cart-item__name {
+  font-size: 1.5rem !important;
+}
+
