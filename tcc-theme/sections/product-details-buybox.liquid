@@ -1,0 +1,1515 @@
+{%- liquid
+  assign benefits = section.blocks | where: "type", "benefit"
+  assign bundles = section.blocks | where: "type", "bundle_option"
+  assign faqs = section.blocks | where: "type", "faq"
+  assign trusted_avatars = section.blocks | where: "type", "trusted_avatar"
+  assign trust_features = section.blocks | where: "type", "trust_feature"
+  assign section_product = product | default: all_products[section.settings.product_handle]
+-%}
+
+<div class="product-grid-container">
+<div
+  data-section-type="product-details-buybox"
+  class="product-details-buybox tcc-section-padding"
+>
+  <div class="product-details-buybox__inner tcc-page-width">
+
+
+    <!-- Star Rating -->
+    <div class="product-details-buybox__rating">
+      <div class="product-details-buybox__stars tcc-stars">
+        {%- for i in (1..5) -%}
+          <span class="material-symbols-outlined">star</span>
+        {%- endfor -%}
+      </div>
+      <span class="product-details-buybox__rating-text tcc-body">
+        Rated <strong>4.9 Excellent</strong>
+      </span>
+      <div class="product-details-buybox__rating-avatars">
+        <img src="{{ 'avatar-1.png' | asset_url }}" alt="Customer" width="30" height="30" loading="lazy">
+        <img src="{{ 'avatar-2.png' | asset_url }}" alt="Customer" width="30" height="30" loading="lazy">
+        <img src="{{ 'avatar-3.png' | asset_url }}" alt="Customer" width="30" height="30" loading="lazy">
+        <img src="{{ 'avatar-1.png' | asset_url }}" alt="Customer" width="30" height="30" loading="lazy">
+        <img src="{{ 'avatar-2.png' | asset_url }}" alt="Customer" width="30" height="30" loading="lazy">
+        <img src="{{ 'avatar-3.png' | asset_url }}" alt="Customer" width="30" height="30" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Product Title -->
+    <h2 class="product-details-buybox__title tcc-heading" style="font-weight: 700;">
+      {{ section.settings.custom_title | default: section_product.title }}
+    </h2>
+
+    <hr class="product-details-buybox__divider">
+
+    {%- if section.settings.custom_subtitle != blank -%}
+      <p class="product-details-buybox__subtitle tcc-body">{{ section.settings.custom_subtitle }}</p>
+    {%- endif -%}
+    {%- if section.settings.custom_description_2 != blank -%}
+      <p class="product-details-buybox__subtitle tcc-body">{{ section.settings.custom_description_2 }}</p>
+    {%- endif -%}
+
+    <!-- Benefits List -->
+    {%- if benefits.size > 0 -%}
+      <ul class="product-details-buybox__benefits">
+        {%- for block in benefits -%}
+          <li class="product-details-buybox__benefit tcc-body" {{ block.shopify_attributes }}>
+            <span class="material-symbols-outlined product-details-buybox__benefit-icon">check</span>
+            <span>{{ block.settings.text }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    <!-- Ships By Banner -->
+    {%- if section.settings.show_ships_by -%}
+    <div class="buybox-ships-by tcc-body">
+      <span class="buybox-ships-by__dot"></span>
+      <span class="buybox-ships-by__text">Ships by <span id="buybox-ship-date"></span> from US warehouse</span>
+    </div>
+    {%- endif -%}
+
+    <product-form class="product-form" data-hide-errors="false" data-section-id="{{ section.id }}">
+      <div class="product-form__error-message-wrapper" role="alert" hidden>
+        <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+        <span class="product-form__error-message"></span>
+      </div>
+
+      {%- form 'product', section_product, id: 'product-form-buybox', class: 'product-details-buybox__form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+        <input type="hidden" name="id" value="{{ section_product.selected_or_first_available_variant.id }}">
+
+        <!-- Price Display -->
+        {%- if section.settings.show_price_display -%}
+        <div class="product-details-buybox__price-section">
+          <div class="product-details-buybox__price-row" data-price-display>
+            <span class="product-details-buybox__current-price" data-current-price></span>
+            <span class="product-details-buybox__compare-price" data-compare-price></span>
+            <div class="product-details-buybox__sale-badge-wrapper" data-sale-badge-wrapper style="display: none;">
+              {%- if section.settings.badge_mode == 'custom' -%}
+                <span class="product-details-buybox__sale-badge">{{ section.settings.sale_badge_text | escape }} - Save <span data-save-amount></span></span>
+              {%- else -%}
+                <span class="product-details-buybox__sale-badge">
+                  <span data-bogo-label>{{ section.settings.bogo_label_1 | escape }}</span> - Save <span data-save-amount></span>
+                </span>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+        {%- endif -%}
+
+
+        <!-- Kaching Bundles Manual Embed Anchor -->
+        <div class="kaching-bundles__product-page-widget"></div>
+
+        <!-- Apps (Additional) -->
+        {%- for block in section.blocks -%}
+          {%- if block.type == '@app' -%}
+            {% render block %}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <!-- Add to Cart -->
+        <button type="submit" name="add" class="product-details-buybox__add-to-cart">
+          <span class="product-details-buybox__atc-label">Add To Cart</span>
+          <span class="product-details-buybox__atc-divider">|</span>
+          <span class="product-details-buybox__atc-price" data-btn-price></span>
+          <span class="product-details-buybox__atc-compare" data-btn-compare></span>
+          {%- render 'loading-spinner' -%}
+        </button>
+      {%- endform -%}
+    </product-form>
+
+    {%- if trust_features.size > 0 -%}
+      <!-- Inline Trust Badges -->
+      <div class="product-details-buybox__atc-badges">
+        {%- for block in trust_features -%}
+          <div class="product-details-buybox__atc-badge" {{ block.shopify_attributes }}>
+            <span class="material-symbols-outlined product-details-buybox__atc-badge-icon">{{ block.settings.icon | default: 'verified' }}</span>
+            <span class="product-details-buybox__atc-badge-label">{{ block.settings.text }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <!-- Mobile Sticky ATC -->
+    <div class="sticky-atc" id="sticky-atc-{{ section.id }}" aria-hidden="true">
+      <button type="button" class="sticky-atc__btn" id="sticky-atc-btn-{{ section.id }}">
+        <span class="sticky-atc__label">Add To Cart</span>
+        <span class="sticky-atc__divider">|</span>
+        <span class="sticky-atc__price" id="sticky-atc-price-{{ section.id }}"></span>
+        <span class="sticky-atc__compare" id="sticky-atc-compare-{{ section.id }}"></span>
+      </button>
+    </div>
+
+    <!-- Guarantee & Payments & Trust Pill -->
+    <div class="product-details-buybox__trust-stack">
+      
+      <!-- Guarantee -->
+      <div class="product-details-buybox__guarantee tcc-body">
+        <span class="material-symbols-outlined product-details-buybox__guarantee-icon">deployed_code</span>
+        <span>Delivery in 3 to 6 business days</span>
+      </div>
+
+      <!-- Payment Icons (Custom Strip) -->
+      <div class="product-details-buybox__payments">
+        <img src="https://cdn.shopify.com/s/files/1/0983/1153/7011/files/Screenshot_2026-03-05_at_1.21.52_PM.png?v=1772746051" alt="Secure Payment Methods" width="300" height="40" loading="lazy" style="width: 100%; max-width: 420px; height: auto;">
+      </div>
+
+      <!-- Money Back Guarantee -->
+      <div class="buybox-guarantee">
+        <img class="buybox-guarantee__badge" src="https://cdn.shopify.com/s/files/1/0983/1153/7011/files/wp-content_uploads_34_goldp_guarantee.png?v=1774142629" alt="60-Day Money Back Guarantee" width="90" height="90" loading="lazy">
+        <div class="buybox-guarantee__content">
+          <p class="buybox-guarantee__heading tcc-heading">Feel better or it's free!</p>
+          <p class="buybox-guarantee__body tcc-body">If you're not satisfied for any reason within 60 days of delivery — even if the bottle is empty — email us for a full refund. No questions asked.</p>
+        </div>
+      </div>
+
+      <!-- Trusted-By Testimonial Pill -->
+      <div class="product-details-buybox__trusted-pill">
+        <div class="product-details-buybox__trusted-avatars-wrap">
+          <div class="product-details-buybox__trusted-avatars">
+            {%- if trusted_avatars.size > 0 -%}
+              {%- for block in trusted_avatars -%}
+                <div class="product-details-buybox__avatar-item" {{ block.shopify_attributes }}>
+                  {%- if block.settings.external_image_url != blank -%}
+                    <img src="{{ block.settings.external_image_url }}" alt="Customer" width="44" height="44" loading="lazy">
+                  {%- else -%}
+                    <img src="{{ block.settings.image | image_url: width: 100 }}" alt="Customer" width="44" height="44" loading="lazy">
+                  {%- endif -%}
+                  {%- if forloop.last -%}
+                    <div class="product-details-buybox__avatar-badge">
+                      <span class="material-symbols-outlined">verified</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            {%- else -%}
+              <!-- Fallbacks -->
+              <div class="product-details-buybox__avatar-item">
+                <img src="{{ 'avatar-1.png' | asset_url }}" alt="Customer" width="44" height="44" loading="lazy">
+              </div>
+              <div class="product-details-buybox__avatar-item">
+                <img src="{{ 'avatar-2.png' | asset_url }}" alt="Customer" width="44" height="44" loading="lazy">
+              </div>
+              <div class="product-details-buybox__avatar-item">
+                <img src="{{ 'avatar-3.png' | asset_url }}" alt="Customer" width="44" height="44" loading="lazy">
+                <div class="product-details-buybox__avatar-badge">
+                  <span class="material-symbols-outlined">verified</span>
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="product-details-buybox__trusted-content">
+          <p class="product-details-buybox__trusted-heading tcc-heading">Trusted by thousands</p>
+          <p class="product-details-buybox__trusted-subtext tcc-body">who choose {{ settings.brand_name }} for consistent, long-term wellness support.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stock Warning -->
+    <div class="product-details-buybox__stock-warning" style="display:none;">
+      <div class="product-details-buybox__stock-warning-header">
+        <div class="product-details-buybox__pulse-icon">
+          <span class="material-symbols-outlined">error</span>
+        </div>
+        <strong>WARNING: Low Stock Notice</strong>
+      </div>
+      <p class="product-details-buybox__stock-warning-text tcc-body">
+        This product sold out 12 times last year. We encourage you to take advantage of the <strong>limited sale</strong> and buy now. Subscribing protects you against future stockouts. <strong>PS:</strong> Only available here, don't buy fakes on Amazon/eBay.
+      </p>
+    </div>
+
+    <!-- FAQ Section -->
+    {%- if faqs.size > 0 -%}
+      <div class="product-details-buybox__faqs">
+        {%- for block in faqs -%}
+          <details class="product-details-buybox__faq" {{ block.shopify_attributes }}>
+            <summary class="product-details-buybox__faq-summary tcc-heading">
+              <span>{{ block.settings.title }}</span>
+              <span class="material-symbols-outlined product-details-buybox__faq-icon">expand_more</span>
+            </summary>
+            <div class="product-details-buybox__faq-content tcc-body">
+              {{ block.settings.content }}
+            </div>
+          </details>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <!-- Featured Review Card -->
+    <div class="buybox-feat-review">
+      <div class="buybox-feat-review__stars">
+        <span class="buybox-feat-review__star">★</span>
+        <span class="buybox-feat-review__star">★</span>
+        <span class="buybox-feat-review__star">★</span>
+        <span class="buybox-feat-review__star">★</span>
+        <span class="buybox-feat-review__star">★</span>
+      </div>
+      <p class="buybox-feat-review__quote tcc-body">"After my long-COVID circulation issues, my doctor mentioned nattokinase but didn't know which brand. A friend recommended {{ settings.brand_name }}. Two months later my numbers are improving and my doctor is impressed. The 4,000 FU dose actually moves the needle."</p>
+      <div class="buybox-feat-review__footer">
+        <img class="buybox-feat-review__avatar" src="{{ 'avatar-1.png' | asset_url }}" alt="Customer photo" width="42" height="42" loading="lazy">
+        <div class="buybox-feat-review__info">
+          <span class="buybox-feat-review__name tcc-body">— Margaret S., United States</span>
+          <div class="buybox-feat-review__verified">
+            <svg class="buybox-feat-review__badge" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="12" fill="#05B890"/>
+              <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="buybox-feat-review__verified-text tcc-body">Verified Customer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<style>
+  .product-details-buybox__inner {
+    max-width: 560px;
+  }
+
+  .hidden-desktop {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .hidden-desktop {
+      display: block;
+    }
+  }
+
+  /* Star Rating */
+  .product-details-buybox__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: nowrap;
+    background: var(--tcc-bg);
+    border-radius: 50px;
+    padding: 4px 12px 4px 10px;
+  }
+
+  .product-details-buybox__stars {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .product-details-buybox__stars .material-symbols-outlined {
+    font-size: 15px;
+    color: var(--color-star, #d4a017);
+    font-variation-settings: 'FILL' 1;
+    margin-right: -4px;
+  }
+
+  .product-details-buybox__stars .material-symbols-outlined:last-child {
+    margin-right: 0;
+  }
+
+  .product-details-buybox__rating-avatars {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .product-details-buybox__rating-avatars img {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    margin-left: -6px;
+  }
+
+  .product-details-buybox__rating-avatars img:first-child {
+    margin-left: 0;
+  }
+
+  .product-details-buybox__rating-text {
+    font-size: 13.3px;
+    color: var(--tcc-ink);
+    opacity: 0.7;
+  }
+  .product-details-buybox__rating-text strong {
+    font-weight: 700 !important;
+  }
+
+  .product-details-buybox h2.product-details-buybox__title {
+    font-size: 31.2px;
+    line-height: 38px;
+    margin: 0 0 1.5rem 0;
+    color: var(--tcc-ink);
+    font-weight: 700 !important;
+  }
+
+  .product-details-buybox__divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 1rem 0 1.25rem;
+  }
+
+  .product-details-buybox__subtitle {
+    font-size: 15px;
+    color: var(--tcc-ink);
+    margin: 0 0 1.1rem 0;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  .product-details-buybox__subtitle strong,
+  .product-details-buybox__faq-content strong {
+    font-weight: 700 !important;
+  }
+
+  /* Benefits */
+  .product-details-buybox__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .product-details-buybox__benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14.25px;
+    line-height: 18.5px;
+  }
+
+  .product-details-buybox__benefit-icon {
+    color: var(--tcc-ink);
+    font-size: 26px;
+    flex-shrink: 0;
+    font-variation-settings: 'FILL' 0, 'wght' 400;
+  }
+
+  /* Price Section */
+  .product-details-buybox__price-section {
+    margin: 1rem 0;
+    padding: 1.5rem 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .product-details-buybox__price-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .product-details-buybox__current-price {
+    font-family: var(--tcc-font-sans);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--tcc-ink);
+  }
+
+  .product-details-buybox__compare-price {
+    font-size: 16px;
+    font-weight: 100;
+    text-decoration: line-through;
+    color: #000;
+  }
+
+  .product-details-buybox__sale-badge {
+    background: var(--tcc-ink);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 2px 8px;
+    line-height: 1.2;
+    border-radius: 6px;
+    font-family: var(--tcc-font-sans);
+    white-space: nowrap;
+  }
+
+  /* Add to Cart Button */
+  .product-details-buybox__add-to-cart {
+    width: 100%;
+    padding: 1.8rem 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background: var(--tcc-ink);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: var(--tcc-font-sans);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .product-details-buybox__add-to-cart:hover {
+    opacity: 0.88;
+  }
+
+  .product-details-buybox__atc-label {
+    font-size: 15.2px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.01em;
+  }
+
+  .product-details-buybox__atc-divider {
+    font-size: 15.2px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    margin: 0 0.2rem;
+  }
+
+  .product-details-buybox__atc-price {
+    font-size: 15.2px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .product-details-buybox__atc-compare {
+    font-size: 15.2px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    text-decoration: line-through;
+  }
+
+  /* ATC Trust Badges */
+  .product-details-buybox__atc-badges {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: -0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-details-buybox__atc-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.35rem 0.7rem;
+    background: rgba(10, 22, 40, 0.05);
+    border: 1px solid rgba(10, 22, 40, 0.15);
+    border-radius: 100px;
+  }
+
+  .product-details-buybox__atc-badge-icon {
+    font-size: 13px;
+    color: var(--tcc-ink);
+    font-variation-settings: 'FILL' 1;
+  }
+
+  .product-details-buybox__atc-badge-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--tcc-ink);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-family: var(--tcc-font-sans);
+  }
+
+  /* Trust Stack */
+  .product-details-buybox__trust-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .product-details-buybox__guarantee {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 13px;
+    color: var(--tcc-ink);
+    font-weight: 500;
+  }
+
+  .product-details-buybox__guarantee-icon {
+    font-size: 10px;
+    color: #333;
+  }
+
+  .product-details-buybox__payments {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .product-details-buybox__payments img {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Trusted-By Pill Refinement */
+  .product-details-buybox__trusted-pill {
+    display: none !important;
+    background: #F2F2F2;
+    border-radius: 50px;
+    padding: 10px 25px 10px 10px;
+    align-items: center;
+    gap: 15px;
+    max-width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .product-details-buybox__trusted-avatars {
+    display: flex;
+    align-items: center;
+  }
+
+  .product-details-buybox__avatar-item {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    margin-right: -12px;
+  }
+
+  .product-details-buybox__avatar-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    background: #fff;
+  }
+
+  .product-details-buybox__avatar-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background: #fff;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .product-details-buybox__avatar-badge .material-symbols-outlined {
+    font-size: 14px;
+    color: #00A651;
+    font-variation-settings: 'FILL' 1;
+  }
+
+  .product-details-buybox__trusted-content {
+    text-align: left;
+  }
+
+  .product-details-buybox__trusted-heading {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    color: #000;
+  }
+
+  .product-details-buybox__trusted-subtext {
+    font-size: 13px;
+    margin: 0;
+    color: #333;
+    line-height: 1.2;
+  }
+
+  /* Stock Warning Refinement */
+  .product-details-buybox__stock-warning {
+    background: #FFF5F5;
+    border: 2px dashed #FFDCDC; /* Lighter dashed border color */
+    border-radius: 0; /* Sharp corners */
+    padding: 0.625rem; /* Reduced from 1.25rem by 50% */
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-details-buybox__stock-warning-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #C62828;
+    font-size: 15px;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  .product-details-buybox__pulse-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-details-buybox__pulse-icon .material-symbols-outlined {
+    font-size: 22px;
+    z-index: 2;
+    font-variation-settings: 'FILL' 1;
+  }
+
+  .product-details-buybox__pulse-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #C62828;
+    border-radius: 50%;
+    z-index: 1;
+    animation: tcc-pulse 2s infinite;
+    opacity: 0.4;
+  }
+
+  @keyframes tcc-pulse {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    70% { transform: scale(2); opacity: 0; }
+    100% { transform: scale(0.8); opacity: 0; }
+  }
+
+  .product-details-buybox__stock-warning-text {
+    font-size: 13px; /* Match trusted-by subtext size */
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+  }
+
+  .product-details-buybox__stock-warning-text strong {
+    color: #C62828;
+  }
+
+  /* FAQ Section */
+  .product-details-buybox__faqs {
+    margin-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .product-details-buybox__faq {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .product-details-buybox__faq-summary.tcc-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 0;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700 !important;
+    list-style: none;
+    color: #1a1a1a;
+  }
+
+  .product-details-buybox__faq-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    color: #1a1a1a;
+  }
+
+  details[open] .product-details-buybox__faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .product-details-buybox__faq-content {
+    padding: 0 0 1.25rem 0;
+    font-size: 14.25px;
+    line-height: 1.65;
+    color: var(--tcc-ink);
+    opacity: 0.8;
+  }
+
+  /* Featured Review Card */
+  .buybox-feat-review {
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid rgba(10, 22, 40, 0.25);
+    border-radius: 16px;
+    padding: 22px 20px;
+    box-sizing: border-box;
+    text-align: left;
+  }
+  .buybox-feat-review__stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 12px;
+    justify-content: flex-start;
+  }
+  .buybox-feat-review__star {
+    color: #D4A018;
+    font-size: 22px;
+    line-height: 1;
+  }
+  .buybox-feat-review__quote {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+  }
+  .buybox-feat-review__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .buybox-feat-review__avatar {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+  .buybox-feat-review__info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    min-width: 0;
+    flex: 1;
+  }
+  .buybox-feat-review__name {
+    font-size: 13px;
+    font-weight: 700 !important;
+    color: #1a1a1a;
+    white-space: nowrap;
+  }
+  .buybox-feat-review__verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .buybox-feat-review__badge {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+  }
+  .buybox-feat-review__verified-text {
+    font-size: 12px;
+    font-weight: 700 !important;
+    color: #1a1a1a;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-details-buybox.tcc-section-padding {
+      padding-top: 0.5rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+    .product-details-buybox__inner {
+      padding-top: 0 !important;
+    }
+    .product-details-buybox__rating {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .product-details-buybox h2.product-details-buybox__title {
+      font-size: 24px;
+    }
+    
+    .product-details-buybox__trusted-pill {
+      padding: 7px 12px 7px 7px;
+      gap: 8px;
+    }
+
+    .product-details-buybox__avatar-item {
+      width: 36px;
+      height: 36px;
+      margin-right: -10px;
+    }
+
+    .product-details-buybox__avatar-item:last-child {
+      margin-right: 2px;
+    }
+
+    .product-details-buybox__trusted-heading {
+      font-size: 14px;
+    }
+
+    .product-details-buybox__trusted-subtext {
+      font-size: 9px;
+    }
+
+    .product-details-buybox__rating-text {
+      font-size: 11px;
+    }
+
+    .product-details-buybox__atc-label,
+    .product-details-buybox__atc-price,
+    .product-details-buybox__atc-compare {
+      font-size: 15.2px;
+    }
+  }
+
+  /* Buybox gallery (homepage only) */
+  .buybox-gallery {
+    margin-bottom: 2rem;
+  }
+  .product-media-gallery__main-wrapper {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .product-media-gallery__main {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+  .product-media-gallery__main::-webkit-scrollbar { display: none; }
+  .product-media-gallery__slide {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-media-gallery__slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+  .product-media-gallery__thumbs {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+  }
+  .product-media-gallery__thumbs::-webkit-scrollbar { display: none; }
+  .product-media-gallery__thumb {
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background: #fff;
+    padding: 0;
+    transition: border-color 0.2s ease;
+  }
+  .product-media-gallery__thumb--active {
+    border-color: var(--tcc-ink);
+  }
+  .product-media-gallery__thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+  .product-media-gallery__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .product-media-gallery__arrow {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: var(--tcc-ink);
+  }
+  .product-media-gallery__arrow:disabled { opacity: 0.3; }
+
+  /* Money Back Guarantee */
+  .buybox-guarantee {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 16px;
+    background: var(--tcc-bg);
+    border: 1px solid rgba(10, 22, 40, 0.18);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .buybox-guarantee__badge {
+    width: 85px;
+    height: 85px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+  .buybox-guarantee__heading.tcc-heading {
+    font-size: 15px;
+    font-weight: 700 !important;
+    margin: 0 0 6px;
+    color: #1a1a1a;
+  }
+  .buybox-guarantee__body {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--tcc-ink);
+    margin: 0;
+  }
+
+  .buybox-ships-by {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0 16px;
+    font-size: 14px;
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+  .buybox-ships-by__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4FBB4E;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .buybox-ships-by__dot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #4FBB4E;
+    animation: ships-ping 1.5s ease-out infinite;
+  }
+  @keyframes ships-ping {
+    0%   { transform: scale(1); opacity: 0.75; }
+    100% { transform: scale(2.8); opacity: 0; }
+  }
+
+  /* Mobile Sticky ATC */
+  .sticky-atc {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #e0e0e0;
+    padding: 12px 16px;
+    z-index: 200;
+  }
+
+  .sticky-atc__btn {
+    width: 100%;
+    padding: 1.4rem 2rem;
+    border-radius: 8px;
+    background: var(--tcc-ink);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: var(--tcc-font-sans);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .sticky-atc__btn:hover { opacity: 0.88; }
+
+  .sticky-atc__label,
+  .sticky-atc__price {
+    font-size: 15.2px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .sticky-atc__divider {
+    font-size: 15.2px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    margin: 0 0.2rem;
+  }
+
+  .sticky-atc__compare {
+    font-size: 15.2px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    text-decoration: line-through;
+  }
+
+  @media (min-width: 750px) {
+    .sticky-atc { display: none !important; }
+  }
+
+</style>
+
+<script>
+  (function() {
+    // Ships-by date: next business day
+    var shipDateEl = document.getElementById('buybox-ship-date');
+    if (shipDateEl) {
+      var now = new Date();
+      var day = now.getDay(); // 0=Sun,1=Mon,...,6=Sat
+      var daysToAdd = 2;
+      var shipDate = new Date(now);
+      shipDate.setDate(now.getDate() + daysToAdd);
+      var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      shipDateEl.textContent = days[shipDate.getDay()] + ', ' + months[shipDate.getMonth()] + ' ' + shipDate.getDate();
+    }
+  })();
+</script>
+
+<script>
+  (function() {
+    var section = document.querySelector('[data-section-type="product-details-buybox"]');
+    if (!section) return;
+
+    var badgeMode = '{{ section.settings.badge_mode }}';
+    var currentPriceEl = section.querySelector('[data-current-price]');
+    var comparePriceEl = section.querySelector('[data-compare-price]');
+    var saveAmountEl = section.querySelector('[data-save-amount]');
+    var badgeWrapper = section.querySelector('[data-sale-badge-wrapper]');
+    var btnPriceEl = section.querySelector('[data-btn-price]');
+    var btnCompareEl = section.querySelector('[data-btn-compare]');
+    var lastKachingPrice = null;
+    var bogoLabelEl = section.querySelector('[data-bogo-label]');
+    var bogoLabels = [
+      '{{ section.settings.bogo_label_1 | escape }}',
+      '{{ section.settings.bogo_label_2 | escape }}',
+      '{{ section.settings.bogo_label_3 | escape }}'
+    ];
+
+    function parsePrice(str) {
+      if (!str) return 0;
+      return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+    }
+
+    function formatPrice(num) {
+      return '$' + num.toFixed(2);
+    }
+
+    function updatePriceDisplay(price, compare) {
+      // Always update button prices regardless of whether price section is visible
+      if (btnPriceEl) btnPriceEl.textContent = price || '';
+      if (btnCompareEl) {
+        btnCompareEl.textContent = compare || '';
+        btnCompareEl.style.display = compare ? '' : 'none';
+      }
+
+      if (!currentPriceEl) return;
+      currentPriceEl.textContent = price;
+
+      if (comparePriceEl) {
+        comparePriceEl.textContent = compare;
+        comparePriceEl.style.display = compare ? '' : 'none';
+      }
+
+      if (saveAmountEl && compare) {
+        var priceVal = parsePrice(price);
+        var compareVal = parsePrice(compare);
+        if (compareVal > 0 && priceVal < compareVal) {
+          var diff = compareVal - priceVal;
+          if (saveAmountEl) saveAmountEl.textContent = formatPrice(diff);
+          if (badgeWrapper) badgeWrapper.style.display = 'flex';
+        } else {
+          if (badgeWrapper) badgeWrapper.style.display = 'none';
+        }
+      }
+    }
+
+    // Initial price
+    var initialPrice = '{{ section_product.selected_or_first_available_variant.price | money }}';
+    var initialCompare = '{{ section_product.selected_or_first_available_variant.compare_at_price | money }}';
+    updatePriceDisplay(initialPrice, initialCompare);
+
+    // Price update from Kaching event (event price is correct, event compare_at_price is not)
+    document.addEventListener('kaching-bundles:price-updated', function(event) {
+      if (!event.detail || !event.detail.price) return;
+      function normalizePrice(val) {
+        if (!val) return null;
+        if (typeof val === 'number') return '$' + (val / 100).toFixed(2);
+        return String(val).trim() || null;
+      }
+      var price = normalizePrice(event.detail.price);
+      lastKachingPrice = price;
+      if (btnPriceEl) btnPriceEl.textContent = price || '';
+      if (currentPriceEl) currentPriceEl.textContent = price || '';
+    });
+
+    // Sync all prices directly from Kaching widget DOM via MutationObserver.
+    // Reading from DOM is always correct regardless of event timing.
+    function syncCompareFromKaching() {
+      var selectedBar = document.querySelector('.kaching-bundles__bar--selected');
+      if (!selectedBar) return;
+
+      // Re-query btnPriceEl live — Kaching may replace the ATC button DOM after page load
+      var liveBtnPriceEl = section.querySelector('[data-btn-price]') || btnPriceEl;
+
+      // Current price: read directly from .kaching-bundles__bar-price in selected bar
+      var barPriceEl = selectedBar.querySelector('.kaching-bundles__bar-price');
+      var currentPrice = barPriceEl ? barPriceEl.textContent.trim() : null;
+      if (currentPrice) {
+        if (currentPriceEl) currentPriceEl.textContent = currentPrice;
+        if (liveBtnPriceEl) liveBtnPriceEl.textContent = currentPrice;
+      } else if (lastKachingPrice) {
+        if (currentPriceEl) currentPriceEl.textContent = lastKachingPrice;
+        if (liveBtnPriceEl) liveBtnPriceEl.textContent = lastKachingPrice;
+      }
+
+      // BOGO label: map bar index (excluding subscription bar which has no price)
+      var allBars = Array.from(document.querySelectorAll('.kaching-bundles__bar')).filter(function(b) {
+        return !!b.querySelector('.kaching-bundles__bar-price');
+      });
+      var barIndex = allBars.indexOf(selectedBar);
+      if (bogoLabelEl && barIndex >= 0 && bogoLabels[barIndex]) {
+        bogoLabelEl.textContent = bogoLabels[barIndex];
+      }
+
+      // Compare price: read from .kaching-bundles__bar-full-price
+      var fullPriceEl = selectedBar.querySelector('.kaching-bundles__bar-full-price');
+      var compare = fullPriceEl ? fullPriceEl.textContent.trim() : null;
+      if (btnCompareEl) {
+        btnCompareEl.textContent = compare || '';
+        btnCompareEl.style.display = compare ? '' : 'none';
+      }
+      if (comparePriceEl) {
+        comparePriceEl.textContent = compare || '';
+        comparePriceEl.style.display = compare ? '' : 'none';
+      }
+      if (compare && liveBtnPriceEl) {
+        var priceVal = parsePrice(liveBtnPriceEl.textContent);
+        var compareVal = parsePrice(compare);
+        if (compareVal > 0 && priceVal < compareVal) {
+          if (saveAmountEl) saveAmountEl.textContent = formatPrice(compareVal - priceVal);
+          if (badgeWrapper) badgeWrapper.style.display = 'flex';
+        } else {
+          if (badgeWrapper) badgeWrapper.style.display = 'none';
+        }
+      }
+    }
+
+    // Poll until Kaching renders its widget block, then observe any DOM change within it.
+    // We watch the whole .kaching-bundles__block (not just .kaching-bundles__bars) because
+    // the subscription card lives in a sibling branch — its toggle changes text content, not classes.
+    (function waitForKaching() {
+      var kachingBlock = document.querySelector('.kaching-bundles__block');
+      if (kachingBlock) {
+        var debounceTimer = null;
+        var observer = new MutationObserver(function() {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(syncCompareFromKaching, 50);
+        });
+        observer.observe(kachingBlock, { subtree: true, attributes: true, childList: true, characterData: true });
+        syncCompareFromKaching();
+      } else {
+        setTimeout(waitForKaching, 100);
+      }
+    })();
+  })();
+</script>
+
+<script>
+  (function() {
+    var gallery = document.getElementById('BuyboxGallery-{{ section.id }}');
+    if (!gallery) return;
+    var thumbs = gallery.querySelectorAll('.product-media-gallery__thumb');
+    var mainSlider = gallery.querySelector('#BuyboxMainSlider-{{ section.id }}');
+    var slides = gallery.querySelectorAll('.product-media-gallery__slide');
+    var prevBtn = gallery.querySelector('.product-media-gallery__arrow--prev');
+    var nextBtn = gallery.querySelector('.product-media-gallery__arrow--next');
+    var thumbContainer = gallery.querySelector('.product-media-gallery__thumbs');
+    if (!mainSlider || slides.length === 0) return;
+    var activeIndex = 0;
+    function scrollThumbsIntoView(index) {
+      if (!thumbContainer || !thumbs[index]) return;
+      thumbContainer.scrollTo({
+        left: thumbs[index].offsetLeft - (thumbContainer.offsetWidth / 2) + (thumbs[index].offsetWidth / 2),
+        behavior: 'smooth'
+      });
+    }
+    function goToIndex(index) {
+      if (index < 0 || index >= slides.length) return;
+      activeIndex = index;
+      mainSlider.scrollTo({ left: slides[0].offsetWidth * activeIndex, behavior: 'smooth' });
+      thumbs.forEach(function(t, i) { t.classList.toggle('product-media-gallery__thumb--active', i === activeIndex); });
+      if (prevBtn) prevBtn.disabled = activeIndex === 0;
+      if (nextBtn) nextBtn.disabled = activeIndex === slides.length - 1;
+      scrollThumbsIntoView(activeIndex);
+    }
+    var isScrolling;
+    mainSlider.addEventListener('scroll', function() {
+      window.clearTimeout(isScrolling);
+      isScrolling = setTimeout(function() {
+        var newIndex = Math.round(mainSlider.scrollLeft / slides[0].offsetWidth);
+        if (newIndex !== activeIndex) { goToIndex(newIndex); }
+      }, 66);
+    });
+    thumbs.forEach(function(thumb, i) { thumb.addEventListener('click', function() { goToIndex(i); }); });
+    if (prevBtn) prevBtn.addEventListener('click', function() { if (activeIndex > 0) goToIndex(activeIndex - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { if (activeIndex < slides.length - 1) goToIndex(activeIndex + 1); });
+  })();
+</script>
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<script>
+  (function() {
+    var sectionId = '{{ section.id }}';
+    var stickyBar = document.getElementById('sticky-atc-' + sectionId);
+    var stickyBtn = document.getElementById('sticky-atc-btn-' + sectionId);
+    var stickyPrice = document.getElementById('sticky-atc-price-' + sectionId);
+    var stickyCompare = document.getElementById('sticky-atc-compare-' + sectionId);
+    var section = document.querySelector('[data-section-type="product-details-buybox"]');
+    var realBtn = document.querySelector('#product-form-buybox [name="add"]');
+
+    if (!stickyBar || !realBtn || !section) return;
+
+    // Mirror prices from real button — re-query live each tick so Kaching DOM replacement is handled
+    function syncPrices() {
+      var realPrice = section.querySelector('[data-btn-price]');
+      var realCompare = section.querySelector('[data-btn-compare]');
+      if (realPrice) stickyPrice.textContent = realPrice.textContent;
+      if (realCompare) {
+        stickyCompare.textContent = realCompare.textContent;
+        stickyCompare.style.display = realCompare.style.display;
+      }
+    }
+    syncPrices();
+    setInterval(syncPrices, 300);
+
+    // Delegate click: submit the form exactly as the real button would
+    stickyBtn.addEventListener('click', function() {
+      var nativeBtn = document.querySelector('#product-form-buybox [name="add"]');
+      if (!nativeBtn) return;
+      var form = nativeBtn.closest('form');
+      if (form && form.requestSubmit) {
+        form.requestSubmit(nativeBtn);
+      } else {
+        nativeBtn.click();
+      }
+    });
+
+    // Show/hide: only when scrolled past (below) the real button — mobile only
+    if (window.matchMedia('(max-width: 749px)').matches) {
+      function updateStickyVisibility() {
+        var scrolledPast = realBtn.getBoundingClientRect().bottom < 0;
+        stickyBar.style.display = scrolledPast ? 'block' : 'none';
+        stickyBar.setAttribute('aria-hidden', scrolledPast ? 'false' : 'true');
+      }
+      window.addEventListener('scroll', updateStickyVisibility, { passive: true });
+      updateStickyVisibility();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Details Buybox",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Custom Headline",
+      "default": "Practitioner-Grade Nattokinase — 4,000 FU Per Serving."
+    },
+    {
+      "type": "textarea",
+      "id": "custom_subtitle",
+      "label": "Description paragraph 1",
+      "default": "Clinical-grade nattokinase delivering 4,000 fibrinolytic units per serving. Supports healthy circulation, fibrin metabolism, and cardiovascular resilience — the targets backed by peer-reviewed human research."
+    },
+    {
+      "type": "textarea",
+      "id": "custom_description_2",
+      "label": "Description paragraph 2",
+      "default": "One capsule daily. Practitioner-grade dose, third-party tested, designed for the people who actually read the supplement facts panel."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ships_by",
+      "label": "Show ships-by banner",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price_display",
+      "label": "Show price display",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "badge_mode",
+      "label": "Sale Badge Mode",
+      "options": [
+        { "value": "dynamic", "label": "Dynamic — Buy X Get X + Save amount" },
+        { "value": "custom", "label": "Custom — use text below" }
+      ],
+      "default": "dynamic"
+    },
+    {
+      "type": "text",
+      "id": "sale_badge_text",
+      "label": "Custom Sale Badge Text",
+      "default": "Limited Time Offer"
+    },
+    {
+      "type": "text",
+      "id": "bogo_label_1",
+      "label": "Bundle 1 BOGO Label",
+      "default": "Buy 1 Get 1 Free"
+    },
+    {
+      "type": "text",
+      "id": "bogo_label_2",
+      "label": "Bundle 2 BOGO Label",
+      "default": "Buy 2 Get 1 Free"
+    },
+    {
+      "type": "text",
+      "id": "bogo_label_3",
+      "label": "Bundle 3 BOGO Label",
+      "default": "Buy 3 Get 2 Free"
+    },
+    {
+      "type": "text",
+      "id": "product_handle",
+      "label": "Product Handle (for non-product pages)",
+      "default": "spike-detox"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon",
+          "default": "check_circle"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "trusted_avatar",
+      "name": "Trusted Avatar",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Avatar Image"
+        },
+        {
+          "type": "text",
+          "id": "external_image_url",
+          "label": "External Image URL"
+        }
+      ]
+    },
+    {
+      "type": "trust_feature",
+      "name": "ATC Trust Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Material Symbol Icon Name",
+          "default": "verified"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Label Text"
+        }
+      ]
+    },
+    {
+      "type": "bundle_option",
+      "name": "Bundle Option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Details Buybox",
+      "blocks": [
+        {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "lab_research",
+            "text": "Clinically Backed Formulas"
+          }
+        },
+        {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "experiment",
+            "text": "Clean, Trusted Ingredients"
+          }
+        },
+        {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "add_moderator",
+            "text": "Third Party Tested"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
