@@ -1,0 +1,203 @@
+{{ 'tcc-tokens.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+<div
+  data-section-type="scrolling-promo-ticker"
+  class="scrolling-promo-ticker"
+  style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.text_color }};"
+>
+  <div class="scrolling-promo-ticker__track">
+    <div class="scrolling-promo-ticker__content">
+      {% for block in section.blocks %}
+        <div class="scrolling-promo-ticker__item" {{ block.shopify_attributes }}>
+          <span class="material-symbols-outlined scrolling-promo-ticker__icon">{{ block.settings.icon }}</span>
+          <span class="scrolling-promo-ticker__text">{{ block.settings.text }}</span>
+        </div>
+      {% endfor %}
+    </div>
+    
+    <div class="scrolling-promo-ticker__content" aria-hidden="true">
+      {% for block in section.blocks %}
+        <div class="scrolling-promo-ticker__item">
+          <span class="material-symbols-outlined scrolling-promo-ticker__icon">{{ block.settings.icon }}</span>
+          <span class="scrolling-promo-ticker__text">{{ block.settings.text }}</span>
+        </div>
+      {% endfor %}
+    </div>
+
+    {%- comment -%} Add a third copy just to be extra safe for very wide screens {%- endcomment -%}
+    <div class="scrolling-promo-ticker__content" aria-hidden="true">
+      {% for block in section.blocks %}
+        <div class="scrolling-promo-ticker__item">
+          <span class="material-symbols-outlined scrolling-promo-ticker__icon">{{ block.settings.icon }}</span>
+          <span class="scrolling-promo-ticker__text">{{ block.settings.text }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .scrolling-promo-ticker {
+    overflow: hidden;
+    padding: 4px 0; /* Slimmer height */
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .scrolling-promo-ticker__track {
+    display: flex;
+    width: fit-content;
+    animation: scrolling-ticker-kf {{ section.settings.speed | times: 3 }}s linear infinite;
+    will-change: transform;
+  }
+
+  .scrolling-promo-ticker__content {
+    display: flex;
+    align-items: center;
+    gap: 60px; /* Consistent gap between messages */
+    padding-right: 60px; /* Matches gap for seamless loop */
+  }
+
+  @keyframes scrolling-ticker-kf {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.3333%); /* Move by one full set of content */
+    }
+  }
+
+  .scrolling-promo-ticker__item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .scrolling-promo-ticker__icon {
+    font-size: 14px; /* Slimmer icons */
+    opacity: 0.9;
+    font-variation-settings: 'FILL' 0, 'GRAD' 0, 'opsz' 40, 'wght' 400;
+  }
+
+  .scrolling-promo-ticker__text {
+    font-family: var(--tcc-font-sans);
+    font-size: 12px; /* Slightly smaller text */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 749px) {
+    .scrolling-promo-ticker__content {
+      gap: 40px;
+      padding-right: 40px;
+    }
+    .scrolling-promo-ticker__text {
+      font-size: 11px;
+    }
+  }
+
+</style>
+
+{% schema %}
+{
+  "name": "Scrolling Promo Ticker",
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll Speed (Lower is faster)",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "default": 15,
+      "unit": "s"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#0a1628"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Material Symbol Icon",
+          "default": "verified"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Message Text",
+          "default": "Practitioner-Formulated"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Promo Ticker",
+      "blocks": [
+        {
+          "type": "message",
+          "settings": {
+            "icon": "verified",
+            "text": "Practitioner-Formulated"
+          }
+        },
+        {
+          "type": "message",
+          "settings": {
+            "icon": "science",
+            "text": "Independently Tested"
+          }
+        },
+        {
+          "type": "message",
+          "settings": {
+            "icon": "verified_user",
+            "text": "FDA-Registered Facility"
+          }
+        },
+        {
+          "type": "message",
+          "settings": {
+            "icon": "workspace_premium",
+            "text": "GMP Certified"
+          }
+        },
+        {
+          "type": "message",
+          "settings": {
+            "icon": "flag",
+            "text": "Made in the USA"
+          }
+        },
+        {
+          "type": "message",
+          "settings": {
+            "icon": "spa",
+            "text": "Vegan · Non-GMO"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
