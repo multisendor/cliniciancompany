@@ -467,7 +467,8 @@
     }
   },
   "order": [
-    "main",
+    "media",
+    "buybox",
     "research",
     "benefits",
     "testimonials",
