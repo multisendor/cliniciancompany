@@ -1,0 +1,376 @@
+<style>
+  .video-testimonials-slider {
+    background: #f5f7fa;
+  }
+  .video-testimonials__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .video-testimonials__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: var(--tcc-fw-display);
+    font-size: var(--tcc-fs-h2);
+    letter-spacing: var(--tcc-ls-display);
+    line-height: var(--tcc-lh-tight);
+    color: var(--tcc-ink);
+    margin: 0;
+  }
+  .video-testimonials__heading strong {
+    color: var(--tcc-ink);
+    font-weight: var(--tcc-fw-display);
+  }
+  .video-testimonials__subheading {
+    font-size: 16px;
+    color: var(--tcc-ink-soft);
+    margin: 0.75rem 0 0;
+  }
+
+  .video-testimonials__carousel-wrapper { position: relative; }
+  .video-testimonials__carousel { overflow: hidden; }
+  .video-testimonials__track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .video-testimonials__slide {
+    flex-shrink: 0;
+    width: calc(100% / 3);
+    padding: 0 0.75rem;
+    box-sizing: border-box;
+  }
+
+  .video-testimonials__thumbnail-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 14;
+    border-radius: var(--tcc-radius);
+    overflow: hidden;
+    cursor: pointer;
+    background: #e8eef5;
+  }
+  .video-testimonials__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .video-testimonials__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8eef5 0%, #cdd9e6 100%);
+  }
+  .video-testimonials__placeholder .material-symbols-outlined {
+    font-size: 64px;
+    color: var(--tcc-ink);
+    opacity: 0.3;
+  }
+
+  .video-testimonials__play-overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10, 22, 40, 0.18);
+    transition: background 0.3s ease;
+  }
+  .video-testimonials__thumbnail-wrapper:hover .video-testimonials__play-overlay {
+    background: rgba(10, 22, 40, 0.32);
+  }
+  .video-testimonials__play-button {
+    width: 64px; height: 64px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 15px rgba(10, 22, 40, 0.2);
+    transition: transform 0.2s ease;
+  }
+  .video-testimonials__thumbnail-wrapper:hover .video-testimonials__play-button {
+    transform: scale(1.08);
+  }
+  .video-testimonials__play-button .material-symbols-outlined {
+    font-size: 32px;
+    color: var(--tcc-ink);
+    font-variation-settings: 'FILL' 1;
+    margin-left: 3px;
+  }
+
+  .video-testimonials__author-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+    padding-left: 0.25rem;
+  }
+  .video-testimonials__author-name {
+    font-family: var(--tcc-font-sans);
+    font-weight: var(--tcc-fw-bold);
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--tcc-ink);
+    margin: 0;
+  }
+  .video-testimonials__verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-family: var(--tcc-font-sans);
+    font-size: 12px;
+    line-height: 1.2;
+    color: var(--tcc-positive);
+    font-weight: var(--tcc-fw-medium);
+  }
+  .video-testimonials__verified .material-symbols-outlined {
+    font-size: 14px;
+    color: var(--tcc-positive);
+    font-variation-settings: 'FILL' 1;
+  }
+
+  .video-testimonials__arrow {
+    position: absolute;
+    top: 38%;
+    transform: translateY(-50%);
+    background: var(--tcc-card);
+    border: 1px solid var(--tcc-line);
+    border-radius: 50%;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(10, 22, 40, 0.1);
+    transition: all 0.2s ease;
+  }
+  .video-testimonials__arrow:hover {
+    background: var(--tcc-ink);
+    border-color: var(--tcc-ink);
+  }
+  .video-testimonials__arrow .material-symbols-outlined {
+    font-size: 24px;
+    color: var(--tcc-ink);
+    transition: color 0.2s ease;
+  }
+  .video-testimonials__arrow:hover .material-symbols-outlined {
+    color: #fff;
+  }
+  .video-testimonials__arrow--prev { left: -24px; }
+  .video-testimonials__arrow--next { right: -24px; }
+
+  /* Modal */
+  .video-testimonials__modal {
+    display: none;
+    position: fixed; inset: 0;
+    z-index: 9999;
+    background: rgba(10, 22, 40, 0.85);
+    align-items: center; justify-content: center;
+  }
+  .video-testimonials__modal.active { display: flex; }
+  .video-testimonials__modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: var(--tcc-radius);
+    overflow: hidden;
+  }
+  .video-testimonials__modal-close {
+    position: absolute;
+    top: -40px; right: 0;
+    background: none; border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .video-testimonials__modal-close .material-symbols-outlined {
+    font-size: 32px;
+    color: #fff;
+  }
+
+  @media screen and (max-width: 749px) {
+    .video-testimonials__heading { font-size: 24px; }
+    .video-testimonials__slide { width: 75%; padding: 0 0.5rem; }
+    .video-testimonials__arrow { width: 40px; height: 40px; }
+    .video-testimonials__arrow--prev { left: -8px; }
+    .video-testimonials__arrow--next { right: -8px; }
+    .video-testimonials__play-button { width: 52px; height: 52px; }
+    .video-testimonials__play-button .material-symbols-outlined { font-size: 26px; }
+  }
+</style>
+
+<div class="video-testimonials-slider tcc-section-padding" data-section-type="video-testimonials-slider" data-section-id="{{ section.id }}">
+  <div class="tcc-page-width">
+    <div class="video-testimonials__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="video-testimonials__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="video-testimonials__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="video-testimonials__carousel-wrapper">
+        <button class="video-testimonials__arrow video-testimonials__arrow--prev" data-prev aria-label="Previous video">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+
+        <div class="video-testimonials__carousel">
+          <div class="video-testimonials__track" data-track>
+            {%- for block in section.blocks -%}
+              <div class="video-testimonials__slide" data-slide="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                <div class="video-testimonials__thumbnail-wrapper" data-video-trigger data-video-url="{{ block.settings.external_video_url | default: block.settings.video_url }}">
+                  {%- if block.settings.external_thumbnail_url != blank -%}
+                    <img class="video-testimonials__thumbnail" src="{{ block.settings.external_thumbnail_url }}" alt="{{ block.settings.author_name | escape }} testimonial" width="300" height="467" loading="lazy">
+                  {%- elsif block.settings.thumbnail != blank -%}
+                    <img class="video-testimonials__thumbnail" src="{{ block.settings.thumbnail | image_url: width: 600 }}" alt="{{ block.settings.author_name | escape }} testimonial" width="300" height="467" loading="lazy">
+                  {%- else -%}
+                    <div class="video-testimonials__placeholder">
+                      <span class="material-symbols-outlined">videocam</span>
+                    </div>
+                  {%- endif -%}
+                  <div class="video-testimonials__play-overlay">
+                    <div class="video-testimonials__play-button">
+                      <span class="material-symbols-outlined">play_arrow</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="video-testimonials__author-info">
+                  {%- if block.settings.author_name != blank -%}
+                    <p class="video-testimonials__author-name">{{ block.settings.author_name }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.verified -%}
+                    <span class="video-testimonials__verified">
+                      <span class="material-symbols-outlined">verified</span>
+                      Verified
+                    </span>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <button class="video-testimonials__arrow video-testimonials__arrow--next" data-next aria-label="Next video">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="video-testimonials__modal" data-modal>
+    <div class="video-testimonials__modal-content">
+      <button class="video-testimonials__modal-close" data-modal-close aria-label="Close video">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="video-testimonials__modal-video" data-modal-video style="width:100%;height:100%;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var section = document.querySelector('[data-section-id="{{ section.id }}"][data-section-type="video-testimonials-slider"]');
+    if (!section) return;
+    var track = section.querySelector('[data-track]');
+    var slides = section.querySelectorAll('[data-slide]');
+    var prevBtn = section.querySelector('[data-prev]');
+    var nextBtn = section.querySelector('[data-next]');
+    if (!track || slides.length === 0) return;
+
+    var currentIndex = 0;
+    function getSlidesPerView() { return window.innerWidth <= 749 ? 1.33 : 3; }
+    function getMaxIndex() {
+      var spv = getSlidesPerView();
+      return Math.max(0, Math.ceil(slides.length - spv));
+    }
+    function goToSlide(index) {
+      var maxIdx = getMaxIndex();
+      if (index < 0) index = 0;
+      if (index > maxIdx) index = maxIdx;
+      currentIndex = index;
+      var spv = getSlidesPerView();
+      var pct = (currentIndex * (100 / spv));
+      track.style.transform = 'translateX(-' + pct + '%)';
+    }
+    if (prevBtn) prevBtn.addEventListener('click', function() { goToSlide(currentIndex - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { goToSlide(currentIndex + 1); });
+
+    var touchStartX = 0;
+    track.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    track.addEventListener('touchend', function(e) {
+      var diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) goToSlide(diff > 0 ? currentIndex + 1 : currentIndex - 1);
+    }, { passive: true });
+    window.addEventListener('resize', function() { goToSlide(currentIndex); });
+
+    var modal = section.querySelector('[data-modal]');
+    var modalClose = section.querySelector('[data-modal-close]');
+    var modalVideo = section.querySelector('[data-modal-video]');
+    var triggers = section.querySelectorAll('[data-video-trigger]');
+    triggers.forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var url = trigger.getAttribute('data-video-url');
+        if (url && modal) {
+          if (url.includes('.mp4')) {
+            modalVideo.innerHTML = '<video src="' + url + '" controls autoplay playsinline style="width:100%;height:100%;object-fit:cover;"></video>';
+          } else if (url.includes('youtube') || url.includes('youtu.be') || url.includes('vimeo')) {
+            modalVideo.innerHTML = '<iframe src="' + url + '" allow="autoplay; fullscreen" allowfullscreen style="width:100%;height:100%;border:0;"></iframe>';
+          } else {
+            modalVideo.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-family:var(--tcc-font-sans);font-size:1rem;text-align:center;padding:2rem;">Video URL not configured. Edit this block in the theme editor to add a YouTube/Vimeo/MP4 URL.</div>';
+          }
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+    if (modalClose) modalClose.addEventListener('click', function() {
+      modal.classList.remove('active');
+      modalVideo.innerHTML = '';
+      document.body.style.overflow = '';
+    });
+    if (modal) modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        modalVideo.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Video Testimonials Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real customers, real results" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Tap any video to hear their full story." }
+  ],
+  "blocks": [
+    {
+      "type": "video_testimonial",
+      "name": "Video Testimonial",
+      "limit": 8,
+      "settings": [
+        { "type": "video_url", "id": "video_url", "label": "Video URL", "accept": ["youtube", "vimeo"] },
+        { "type": "text", "id": "external_video_url", "label": "External MP4/YouTube/Vimeo URL" },
+        { "type": "text", "id": "external_thumbnail_url", "label": "External Thumbnail URL" },
+        { "type": "image_picker", "id": "thumbnail", "label": "Thumbnail Image" },
+        { "type": "text", "id": "author_name", "label": "Author Name" },
+        { "type": "checkbox", "id": "verified", "label": "Verified Customer", "default": true }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Testimonials Slider",
+      "blocks": [
+        { "type": "video_testimonial", "settings": { "author_name": "Mark T., 62", "verified": true } },
+        { "type": "video_testimonial", "settings": { "author_name": "Patricia L., 58", "verified": true } },
+        { "type": "video_testimonial", "settings": { "author_name": "Kevin M., 71", "verified": true } },
+        { "type": "video_testimonial", "settings": { "author_name": "Margaret S., 54", "verified": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

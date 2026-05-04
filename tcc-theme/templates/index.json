@@ -306,7 +306,69 @@
         "heading": "Practitioner-grade answers to your questions",
         "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below you'll find answers to the most common questions about <strong>nattokinase</strong>, how it works, safety with blood thinners, and how we ensure pharmaceutical-strength quality in every batch.</p>"
       }
+    },
+    "stats": {
+      "type": "animated-stats-counter",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "value": 92, "label": "Reported feeling more energy", "sublabel": "within their first 30 days on TCC nattokinase" } },
+        "s2": { "type": "stat", "settings": { "value": 87, "label": "Would recommend TCC to a friend", "sublabel": "based on day-90 follow-up survey" } },
+        "s3": { "type": "stat", "settings": { "value": 94, "label": "Tolerated the formula well", "sublabel": "with no GI side effects or aftertaste" } },
+        "s4": { "type": "stat", "settings": { "value": 81, "label": "Switched from a store-bought brand", "sublabel": "after seeing the dosing and testing standards" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {
+        "heading": "What 50,000+ customers tell us.",
+        "description": "Independent post-purchase survey of customers who completed at least 30 days on TCC nattokinase."
+      }
+    },
+    "problem-solution": {
+      "type": "problem-solution-split",
+      "blocks": {
+        "p1": { "type": "problem_item", "settings": { "icon": "remove", "text": "1,000–2,000 FU per serving — sub-therapeutic" } },
+        "p2": { "type": "problem_item", "settings": { "icon": "remove", "text": "Lab-cultured fermentation, not wild Bacillus subtilis" } },
+        "p3": { "type": "problem_item", "settings": { "icon": "remove", "text": "Vitamin K2 added — risky for blood-thinner users" } },
+        "p4": { "type": "problem_item", "settings": { "icon": "remove", "text": "Rarely third-party tested, batch-by-batch" } },
+        "s1": { "type": "solution_item", "settings": { "icon": "check", "text": "4,000 FU per serving — pharmaceutical strength" } },
+        "s2": { "type": "solution_item", "settings": { "icon": "check", "text": "Wild-fermented Bacillus subtilis, traditional natto strain" } },
+        "s3": { "type": "solution_item", "settings": { "icon": "check", "text": "K2 removed — safe with anticoagulant therapy" } },
+        "s4": { "type": "solution_item", "settings": { "icon": "check", "text": "Independently tested, every batch, results published" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "s1", "s2", "s3", "s4"],
+      "settings": {
+        "heading": "Why most nattokinase doesn't move the needle.",
+        "problem_heading": "What you've been settling for",
+        "solution_heading": "What practitioner-grade looks like"
+      }
+    },
+    "timeline": {
+      "type": "wellness-timeline",
+      "blocks": {
+        "t1": { "type": "step", "settings": { "week_label": "Days 1–7", "title": "Foundation", "description": "Start one capsule daily, ideally on an empty stomach. Most customers report no noticeable change in the first week — that's expected. The fibrinolytic activity is working at the molecular level." } },
+        "t2": { "type": "step", "settings": { "week_label": "Weeks 2–4", "title": "Early signals", "description": "Subtle shifts: warmer extremities, less afternoon fatigue, easier morning movement. This is your circulation getting back to baseline." } },
+        "t3": { "type": "step", "settings": { "week_label": "Weeks 5–8", "title": "Steady state", "description": "Your body is now in maintenance mode. This is when most customers see their cardiologist and get curious feedback on improving labs — blood pressure, lipid panel, inflammation markers." } },
+        "t4": { "type": "step", "settings": { "week_label": "Day 90+", "title": "Ongoing maintenance", "description": "Continue daily for cardiovascular maintenance. The 60-day money-back guarantee ends here, but the protocol is designed for long-term use alongside your existing routine." } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {
+        "eyebrow": "Your Protocol",
+        "heading": "What to expect, week by week.",
+        "description": "Outcomes vary by individual. The milestones below reflect what most customers report on day-90 follow-up surveys."
+      }
+    },
+    "video-testimonials": {
+      "type": "video-testimonials-slider",
+      "blocks": {
+        "v1": { "type": "video_testimonial", "settings": { "author_name": "Mark T., 62", "verified": true } },
+        "v2": { "type": "video_testimonial", "settings": { "author_name": "Patricia L., 58", "verified": true } },
+        "v3": { "type": "video_testimonial", "settings": { "author_name": "Kevin M., 71", "verified": true } },
+        "v4": { "type": "video_testimonial", "settings": { "author_name": "Margaret S., 54", "verified": true } }
+      },
+      "block_order": ["v1", "v2", "v3", "v4"],
+      "settings": {
+        "heading": "Real customers, real results.",
+        "subheading": "Tap any video to hear their full story."
+      }
     }
   },
-  "order": ["hero", "trust", "benefits", "comparison", "faq"]
+  "order": ["hero", "trust", "stats", "problem-solution", "benefits", "video-testimonials", "timeline", "comparison", "faq"]
 }

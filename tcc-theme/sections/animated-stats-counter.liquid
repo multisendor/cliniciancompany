@@ -1,0 +1,255 @@
+<div data-section-type="animated-stats-counter" data-section-id="{{ section.id }}" class="animated-stats-counter tcc-section-padding">
+  <div class="tcc-page-width">
+    <div class="animated-stats-counter__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="animated-stats-counter__heading tcc-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="animated-stats-counter__description tcc-body">{{ section.settings.description }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="animated-stats-counter__grid">
+      {%- for block in section.blocks -%}
+        <div class="animated-stats-counter__stat" data-stat data-value="{{ block.settings.value }}" {{ block.shopify_attributes }}>
+          <span class="animated-stats-counter__number" aria-live="polite">0%</span>
+          {%- if block.settings.label != blank -%}
+            <p class="animated-stats-counter__label">{{ block.settings.label }}</p>
+          {%- endif -%}
+          {%- if block.settings.sublabel != blank -%}
+            <p class="animated-stats-counter__sublabel">{{ block.settings.sublabel }}</p>
+          {%- endif -%}
+          <div class="animated-stats-counter__progress-bg">
+            <div class="animated-stats-counter__progress-fill" data-progress-fill></div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .animated-stats-counter {
+    background-color: #f5f7fa;
+  }
+
+  .animated-stats-counter__header {
+    text-align: center;
+    margin-bottom: var(--tcc-s-6);
+  }
+
+  .animated-stats-counter__heading {
+    font-size: var(--tcc-fs-h2);
+    color: var(--tcc-ink);
+    line-height: var(--tcc-lh-tight);
+    margin: 0 0 var(--tcc-s-2);
+    font-weight: var(--tcc-fw-display);
+    letter-spacing: var(--tcc-ls-display);
+  }
+
+  .animated-stats-counter__description {
+    font-size: 17px;
+    color: var(--tcc-ink-soft);
+    line-height: var(--tcc-lh-body);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .animated-stats-counter__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .animated-stats-counter__stat {
+    text-align: left;
+    padding-bottom: var(--tcc-s-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .animated-stats-counter__stat:nth-child(1),
+  .animated-stats-counter__stat:nth-child(2) {
+    border-bottom: 1px solid var(--tcc-line);
+    padding-bottom: var(--tcc-s-3);
+  }
+
+  .animated-stats-counter__number {
+    display: block;
+    font-family: var(--tcc-font-sans);
+    font-weight: var(--tcc-fw-display);
+    font-size: 56px;
+    color: var(--tcc-ink);
+    line-height: 1;
+    letter-spacing: -1.5px;
+    margin-bottom: var(--tcc-s-1);
+  }
+
+  .animated-stats-counter__label {
+    font-size: 16px;
+    color: var(--tcc-ink);
+    font-weight: var(--tcc-fw-bold);
+    line-height: 1.35;
+    margin: 0 0 0.4rem;
+  }
+
+  .animated-stats-counter__sublabel {
+    font-size: 14px;
+    color: var(--tcc-ink-soft);
+    font-weight: var(--tcc-fw-body);
+    line-height: 1.4;
+    margin: 0 0 var(--tcc-s-2);
+  }
+
+  .animated-stats-counter__progress-bg {
+    background: var(--tcc-line);
+    border-radius: 5px;
+    height: 8px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .animated-stats-counter__progress-fill {
+    background-color: var(--tcc-ink);
+    height: 100%;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media screen and (max-width: 749px) {
+    .animated-stats-counter__heading {
+      font-size: 26px;
+    }
+    .animated-stats-counter__description {
+      font-size: 15px;
+    }
+    .animated-stats-counter__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .animated-stats-counter__stat,
+    .animated-stats-counter__stat:nth-child(1),
+    .animated-stats-counter__stat:nth-child(2) {
+      border-bottom: 1px solid var(--tcc-line);
+      padding-bottom: 1.25rem;
+    }
+    .animated-stats-counter__stat:last-child {
+      border-bottom: none;
+    }
+    .animated-stats-counter__number {
+      font-size: 42px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+    var animated = false;
+    function animateCounters() {
+      if (animated) return;
+      animated = true;
+      var stats = section.querySelectorAll('[data-stat]');
+      stats.forEach(function(stat) {
+        var target = parseInt(stat.getAttribute('data-value'), 10) || 0;
+        var numberEl = stat.querySelector('.animated-stats-counter__number');
+        var progressBar = stat.querySelector('[data-progress-fill]');
+        if (!numberEl) return;
+        var duration = 1500;
+        var startTime = null;
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var current = Math.round(progress * target);
+          numberEl.textContent = current + '%';
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            numberEl.textContent = target + '%';
+          }
+        }
+        requestAnimationFrame(step);
+        if (progressBar) {
+          setTimeout(function() { progressBar.style.width = target + '%'; }, 100);
+        }
+      });
+    }
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(section);
+    } else {
+      animateCounters();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Animated Stats Counter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What 50,000+ Customers Tell Us"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Independent post-purchase survey of customers who completed at least 30 days on TCC nattokinase."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "range",
+          "id": "value",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Value (%)",
+          "default": 90
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "sublabel",
+          "label": "Sublabel"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animated Stats Counter",
+      "blocks": [
+        { "type": "stat", "settings": { "value": 92, "label": "Reported feeling more energy", "sublabel": "within their first 30 days on TCC nattokinase" } },
+        { "type": "stat", "settings": { "value": 87, "label": "Would recommend TCC to a friend", "sublabel": "based on day-90 follow-up survey" } },
+        { "type": "stat", "settings": { "value": 94, "label": "Tolerated the formula well", "sublabel": "with no GI side effects or aftertaste" } },
+        { "type": "stat", "settings": { "value": 81, "label": "Switched from a store-bought brand", "sublabel": "after seeing the dosing and testing standards" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,225 @@
+<style>
+  .problem-solution-split {
+    background-color: var(--tcc-ink);
+    color: #ffffff;
+    overflow: hidden;
+    text-align: center;
+  }
+  .problem-solution__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: var(--tcc-fw-display);
+    font-size: var(--tcc-fs-h2);
+    color: #ffffff;
+    margin: 0 auto 3rem;
+    letter-spacing: var(--tcc-ls-display);
+    line-height: var(--tcc-lh-tight);
+    max-width: 800px;
+  }
+  .problem-solution__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .problem-solution__card {
+    padding: var(--tcc-s-4);
+    border-radius: var(--tcc-radius);
+    height: 100%;
+  }
+  .problem-solution__card--problem {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .problem-solution__card--solution {
+    background-color: var(--tcc-card);
+    color: var(--tcc-ink);
+  }
+  .problem-solution__card-eyebrow {
+    font-size: var(--tcc-fs-eyebrow);
+    font-weight: var(--tcc-fw-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--tcc-ls-eyebrow);
+    margin: 0 0 0.5rem;
+    opacity: 0.6;
+  }
+  .problem-solution__card--solution .problem-solution__card-eyebrow {
+    color: var(--tcc-ink-soft);
+    opacity: 1;
+  }
+  .problem-solution__card-heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: var(--tcc-fw-display);
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    line-height: var(--tcc-lh-tight);
+    color: inherit;
+    margin: 0 0 var(--tcc-s-3);
+  }
+  .problem-solution__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .problem-solution__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-family: var(--tcc-font-sans);
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .problem-solution__item-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .problem-solution__card--problem .problem-solution__item-icon {
+    background: rgba(200, 40, 26, 0.15);
+    color: var(--tcc-urgent);
+  }
+  .problem-solution__card--solution .problem-solution__item-icon {
+    background: rgba(0, 168, 107, 0.12);
+    color: var(--tcc-positive);
+  }
+  .problem-solution__item-icon .material-symbols-outlined {
+    font-size: 18px;
+    font-variation-settings: 'FILL' 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .problem-solution__heading {
+      font-size: 26px;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+    }
+    .problem-solution__columns {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      padding: 0 1rem;
+    }
+    .problem-solution__card {
+      padding: 2rem 1.5rem;
+    }
+    .problem-solution__item {
+      font-size: 15px;
+    }
+  }
+</style>
+
+<div class="problem-solution-split tcc-section-padding" data-section-type="problem-solution-split" data-section-id="{{ section.id }}">
+  <div class="tcc-page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="problem-solution__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- assign problem_items = section.blocks | where: "type", "problem_item" -%}
+    {%- assign solution_items = section.blocks | where: "type", "solution_item" -%}
+
+    <div class="problem-solution__columns">
+      <div class="problem-solution__card problem-solution__card--problem">
+        <p class="problem-solution__card-eyebrow">The Problem</p>
+        <h3 class="problem-solution__card-heading">{{ section.settings.problem_heading }}</h3>
+        {%- if problem_items.size > 0 -%}
+          <ul class="problem-solution__list">
+            {%- for item in problem_items -%}
+              <li class="problem-solution__item" {{ item.shopify_attributes }}>
+                <div class="problem-solution__item-icon">
+                  <span class="material-symbols-outlined">{{ item.settings.icon }}</span>
+                </div>
+                <span>{{ item.settings.text }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      <div class="problem-solution__card problem-solution__card--solution">
+        <p class="problem-solution__card-eyebrow">The TCC Approach</p>
+        <h3 class="problem-solution__card-heading">{{ section.settings.solution_heading }}</h3>
+        {%- if solution_items.size > 0 -%}
+          <ul class="problem-solution__list">
+            {%- for item in solution_items -%}
+              <li class="problem-solution__item" {{ item.shopify_attributes }}>
+                <div class="problem-solution__item-icon">
+                  <span class="material-symbols-outlined">{{ item.settings.icon }}</span>
+                </div>
+                <span>{{ item.settings.text }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Problem Solution Split",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Why most nattokinase doesn't move the needle."
+    },
+    {
+      "type": "text",
+      "id": "problem_heading",
+      "label": "Problem column heading",
+      "default": "What you've been settling for"
+    },
+    {
+      "type": "text",
+      "id": "solution_heading",
+      "label": "Solution column heading",
+      "default": "What practitioner-grade looks like"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "problem_item",
+      "name": "Problem Item",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Material Symbol Icon Name", "default": "close" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "solution_item",
+      "name": "Solution Item",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Material Symbol Icon Name", "default": "check" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Problem Solution Split",
+      "blocks": [
+        { "type": "problem_item", "settings": { "icon": "remove", "text": "1,000–2,000 FU per serving — sub-therapeutic" } },
+        { "type": "problem_item", "settings": { "icon": "remove", "text": "Lab-cultured fermentation, not wild Bacillus subtilis" } },
+        { "type": "problem_item", "settings": { "icon": "remove", "text": "Vitamin K2 added — risky for blood-thinner users" } },
+        { "type": "problem_item", "settings": { "icon": "remove", "text": "Rarely third-party tested, batch-by-batch" } },
+        { "type": "solution_item", "settings": { "icon": "check", "text": "4,000 FU per serving — pharmaceutical strength" } },
+        { "type": "solution_item", "settings": { "icon": "check", "text": "Wild-fermented Bacillus subtilis, traditional natto strain" } },
+        { "type": "solution_item", "settings": { "icon": "check", "text": "K2 removed — safe with anticoagulant therapy" } },
+        { "type": "solution_item", "settings": { "icon": "check", "text": "Independently tested, every batch, results published" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,194 @@
+<div
+  data-section-type="promo-countdown-bar"
+  class="promo-countdown-bar"
+  style="background: {{ section.settings.background_color | default: '#0a1628' }};"
+>
+  <div class="promo-countdown-bar__inner tcc-page-width">
+    <div class="promo-countdown-bar__text">
+      <h2 class="promo-countdown-bar__heading">
+        {{ section.settings.heading_text }}
+      </h2>
+      <p class="promo-countdown-bar__subheading">
+        {{ section.settings.subheading_text }}
+      </p>
+    </div>
+
+    <div
+      class="promo-countdown-bar__timer"
+      data-countdown-end="{{ section.settings.end_date }}"
+    >
+      <div class="promo-countdown-bar__unit">
+        <span class="promo-countdown-bar__number" data-hours>00</span>
+        <span class="promo-countdown-bar__label">Hrs</span>
+      </div>
+      <span class="promo-countdown-bar__separator">:</span>
+      <div class="promo-countdown-bar__unit">
+        <span class="promo-countdown-bar__number" data-minutes>00</span>
+        <span class="promo-countdown-bar__label">Mins</span>
+      </div>
+      <span class="promo-countdown-bar__separator">:</span>
+      <div class="promo-countdown-bar__unit">
+        <span class="promo-countdown-bar__number" data-seconds>00</span>
+        <span class="promo-countdown-bar__label">Secs</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .promo-countdown-bar {
+    color: #ffffff;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .promo-countdown-bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding-left: var(--tcc-s-3);
+    padding-right: var(--tcc-s-3);
+  }
+
+  .promo-countdown-bar__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .promo-countdown-bar__heading {
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    font-weight: var(--tcc-fw-bold);
+    line-height: 1;
+    margin: 0;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .promo-countdown-bar__subheading {
+    font-family: var(--tcc-font-sans);
+    font-size: 12px;
+    line-height: 1.2;
+    margin: 4px 0 0;
+    color: #ffffff;
+    opacity: 0.85;
+    font-weight: var(--tcc-fw-body);
+  }
+
+  .promo-countdown-bar__timer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .promo-countdown-bar__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 36px;
+  }
+
+  .promo-countdown-bar__number {
+    font-family: var(--tcc-font-sans);
+    font-weight: var(--tcc-fw-display);
+    font-size: 20px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .promo-countdown-bar__label {
+    font-family: var(--tcc-font-sans);
+    font-size: 10px;
+    font-weight: var(--tcc-fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-top: 3px;
+  }
+
+  .promo-countdown-bar__separator {
+    font-family: var(--tcc-font-sans);
+    font-weight: var(--tcc-fw-display);
+    font-size: 18px;
+    line-height: 1;
+    opacity: 0.4;
+    transform: translateY(-6px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .promo-countdown-bar { padding: 8px 0; }
+    .promo-countdown-bar__inner {
+      gap: 14px;
+      flex-direction: column;
+    }
+    .promo-countdown-bar__heading { font-size: 11px; }
+    .promo-countdown-bar__subheading { font-size: 11px; }
+    .promo-countdown-bar__number { font-size: 18px; }
+    .promo-countdown-bar__timer { gap: 8px; }
+    .promo-countdown-bar__unit { min-width: 28px; }
+  }
+</style>
+
+<script>
+  (function () {
+    var STORAGE_KEY = 'tcc_countdown_end';
+    var timerEl = document.querySelector(
+      '[data-section-type="promo-countdown-bar"] .promo-countdown-bar__timer'
+    );
+    if (!timerEl) return;
+    var hoursEl = timerEl.querySelector('[data-hours]');
+    var minutesEl = timerEl.querySelector('[data-minutes]');
+    var secondsEl = timerEl.querySelector('[data-seconds]');
+    var intervalId;
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function getEndTime() {
+      try {
+        var stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          var t = parseInt(stored, 10);
+          if (t > Date.now()) return t;
+        }
+      } catch (e) {}
+      var midnight = new Date();
+      midnight.setHours(24, 0, 0, 0);
+      return midnight.getTime();
+    }
+
+    function renderCountdown(endTime) {
+      var diff = Math.max(0, endTime - Date.now());
+      var totalSeconds = Math.floor(diff / 1000);
+      hoursEl.textContent = pad(Math.floor(totalSeconds / 3600));
+      minutesEl.textContent = pad(Math.floor((totalSeconds % 3600) / 60));
+      secondsEl.textContent = pad(totalSeconds % 60);
+    }
+
+    function startCountdown() {
+      if (intervalId) clearInterval(intervalId);
+      var endTime = getEndTime();
+      renderCountdown(endTime);
+      intervalId = setInterval(function () {
+        renderCountdown(getEndTime());
+      }, 1000);
+    }
+    startCountdown();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Promo Countdown Bar",
+  "settings": [
+    { "type": "text", "id": "heading_text", "label": "Heading", "default": "Launch Pricing — 25% Off" },
+    { "type": "text", "id": "subheading_text", "label": "Subheading", "default": "Code applied at checkout. Offer ends tonight." },
+    { "type": "text", "id": "end_date", "label": "End date (ISO 8601, blank = midnight tonight)", "default": "midnight" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#0a1628" }
+  ],
+  "presets": [ { "name": "Promo Countdown Bar" } ]
+}
+{% endschema %}

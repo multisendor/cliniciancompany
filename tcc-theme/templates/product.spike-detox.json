@@ -420,11 +420,61 @@
     "sticky": {
       "type": "sticky-atc-bar",
       "settings": {}
+    },
+    "tabs": {
+      "type": "content-tabs",
+      "blocks": {
+        "t1": {
+          "type": "tab",
+          "settings": {
+            "label": "Ingredients",
+            "title": "One ingredient. Practitioner-grade dose.",
+            "body": "TCC nattokinase delivers 4,000 fibrinolytic units (FU) per serving — the dose used in human cardiovascular research. Wild-fermented Bacillus subtilis, traditional natto strain, no Vitamin K2.",
+            "checklist": "4,000 FU per capsule\nWild-fermented Bacillus subtilis\nVitamin K2 removed (blood-thinner safe)\nNo fillers, dyes, or proprietary blends",
+            "external_image_url": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_Ingredients_800x800.png?v=1775755784"
+          }
+        },
+        "t2": {
+          "type": "tab",
+          "settings": {
+            "label": "Science",
+            "title": "Backed by peer-reviewed research.",
+            "body": "Nattokinase has been studied for fibrinolytic activity, blood pressure modulation, and arterial elasticity across multiple human trials. We use the same dose and strain as the published research.",
+            "checklist": "Frontiers in Cardiovascular Medicine, 2022\nMolecules Journal, 2022 — comprehensive review\nCureus, 2024 — post-acute COVID protocol",
+            "external_image_url": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_Benefits_3df4d85b-ef56-4a4f-88cb-b6ceb2924baa_800x800.png?v=1773419148"
+          }
+        },
+        "t3": {
+          "type": "tab",
+          "settings": {
+            "label": "How to take",
+            "title": "One capsule daily. That's it.",
+            "body": "Take one capsule with water, ideally on an empty stomach (30 minutes before food works best). Some customers split into morning + evening doses — both protocols work.",
+            "checklist": "1 capsule daily, with water\nEmpty stomach for best absorption\nMorning dosing recommended\nSafe alongside daily vitamins",
+            "external_image_url": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_HowtoTake_800x800.png?v=1775755784"
+          }
+        },
+        "t4": {
+          "type": "tab",
+          "settings": {
+            "label": "Safety",
+            "title": "Designed for blood-thinner users.",
+            "body": "Vitamin K2 — present in most nattokinase products — interferes with anticoagulants like warfarin. We removed it. If you're on prescription blood thinners, talk to your doctor before starting any new supplement, including this one.",
+            "checklist": "K2 removed — safe with anticoagulants\nThird-party tested for heavy metals\nManufactured in FDA-registered facility\nGMP certified, every batch"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {
+        "eyebrow": "The Details",
+        "heading": "Everything you'd want to ask a clinician."
+      }
     }
   },
   "order": [
     "media",
     "buybox",
+    "tabs",
     "research",
     "benefits",
     "testimonials",

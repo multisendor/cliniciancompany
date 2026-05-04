@@ -1,0 +1,275 @@
+<div
+  data-section-type="wellness-timeline"
+  data-section-id="{{ section.id }}"
+  class="wellness-roadmap tcc-section-padding"
+  id="WellnessRoadmap-{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="roadmap__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    <h2 class="roadmap__heading tcc-heading">{{ section.settings.heading }}</h2>
+    {%- if section.settings.description != blank -%}
+      <p class="roadmap__description tcc-body">{{ section.settings.description }}</p>
+    {%- endif -%}
+
+    <div class="roadmap__container">
+      <div class="roadmap__progress-bar" id="Filler-{{ section.id }}"></div>
+
+      <div class="roadmap__steps">
+        {%- for block in section.blocks -%}
+          <div class="roadmap__step" {{ block.shopify_attributes }} data-roadmap-step>
+            <div class="roadmap__marker">
+              <div class="roadmap__marker-inner">
+                <span class="material-symbols-outlined">check</span>
+              </div>
+            </div>
+            <div class="roadmap__content">
+              {%- if block.settings.week_label != blank -%}
+                <span class="roadmap__label">{{ block.settings.week_label }}</span>
+              {%- endif -%}
+              {%- if block.settings.title != blank -%}
+                <h3 class="roadmap__title tcc-heading">{{ block.settings.title }}</h3>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <div class="roadmap__desc tcc-body">
+                  {{ block.settings.description | newline_to_br }}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wellness-roadmap {
+    background-color: var(--tcc-card);
+    position: relative;
+  }
+
+  .roadmap__eyebrow {
+    text-align: center;
+    margin: 0 0 0.75rem;
+  }
+
+  .roadmap__heading {
+    text-align: center;
+    font-size: var(--tcc-fs-h2);
+    font-weight: var(--tcc-fw-display);
+    letter-spacing: var(--tcc-ls-display);
+    line-height: var(--tcc-lh-tight);
+    color: var(--tcc-ink);
+    margin: 0 auto 1rem;
+    max-width: 700px;
+  }
+
+  .roadmap__description {
+    text-align: center;
+    color: var(--tcc-ink-soft);
+    margin: 0 auto 4rem;
+    max-width: 580px;
+    font-size: 16px;
+  }
+
+  .roadmap__container {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    border-left: 4px solid var(--tcc-line);
+    padding: 20px 0 20px 60px;
+  }
+
+  .roadmap__progress-bar {
+    position: absolute;
+    left: -4px;
+    top: 0;
+    width: 4px;
+    background-color: var(--tcc-ink);
+    height: 0;
+    z-index: 5;
+    border-radius: 10px;
+    transition: height 0.1s linear;
+  }
+
+  .roadmap__step {
+    position: relative;
+    margin-bottom: 5rem;
+  }
+  .roadmap__step:last-child { margin-bottom: 0; }
+
+  .roadmap__marker {
+    position: absolute;
+    left: -60px;
+    top: 0;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--tcc-card);
+    border: 3px solid var(--tcc-line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.4s ease;
+  }
+
+  .roadmap__marker-inner {
+    width: 26px;
+    height: 26px;
+    background: var(--tcc-line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+  }
+
+  .roadmap__marker-inner .material-symbols-outlined {
+    font-size: 16px;
+    color: #fff;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s ease;
+    font-variation-settings: 'FILL' 1, 'wght' 700;
+  }
+
+  .roadmap__step.is-active .roadmap__marker {
+    border-color: var(--tcc-ink);
+    transform: translateX(-50%) scale(1.1);
+  }
+  .roadmap__step.is-active .roadmap__marker-inner {
+    background: var(--tcc-ink);
+  }
+  .roadmap__step.is-active .material-symbols-outlined {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .roadmap__content {
+    opacity: 0.3;
+    transform: translateY(15px);
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .roadmap__step.is-active .roadmap__content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .roadmap__label {
+    display: block;
+    color: var(--tcc-ink);
+    font-weight: var(--tcc-fw-bold);
+    text-transform: uppercase;
+    font-size: var(--tcc-fs-eyebrow);
+    margin-bottom: 0.5rem;
+    letter-spacing: var(--tcc-ls-eyebrow);
+  }
+
+  .roadmap__title {
+    font-size: 22px;
+    font-weight: var(--tcc-fw-display);
+    letter-spacing: -0.3px;
+    color: var(--tcc-ink);
+    margin: 0 0 0.6rem;
+    line-height: var(--tcc-lh-tight);
+  }
+
+  .roadmap__desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--tcc-ink-soft);
+  }
+
+  @media screen and (max-width: 749px) {
+    .roadmap__heading { font-size: 24px; }
+    .roadmap__description { margin-bottom: 3rem; }
+    .roadmap__container {
+      margin-left: 50px;
+      margin-right: 0;
+      padding-left: 30px;
+      max-width: none;
+    }
+    .roadmap__marker {
+      left: -30px;
+      width: 32px;
+      height: 32px;
+    }
+    .roadmap__marker-inner {
+      width: 22px;
+      height: 22px;
+    }
+    .roadmap__title { font-size: 18px; }
+  }
+</style>
+
+<script>
+  (function() {
+    function init() {
+      const container = document.querySelector('#WellnessRoadmap-{{ section.id }} .roadmap__container');
+      const filler = document.querySelector('#Filler-{{ section.id }}');
+      const steps = Array.from(document.querySelectorAll('#WellnessRoadmap-{{ section.id }} [data-roadmap-step]'));
+      if(!filler || !steps.length || !container) return;
+
+      function update() {
+        const vh = window.innerHeight;
+        const trigger = vh * 0.55;
+        const containerRect = container.getBoundingClientRect();
+        const firstMarker = steps[0].getBoundingClientRect();
+        const lastMarker = steps[steps.length - 1].getBoundingClientRect();
+        let currentProgress = trigger - firstMarker.top;
+        let totalHeight = lastMarker.top - firstMarker.top;
+        let progressHeight = Math.max(0, Math.min(totalHeight, currentProgress));
+        const relativeTop = firstMarker.top - containerRect.top + 20;
+        filler.style.top = relativeTop + 'px';
+        filler.style.height = progressHeight + 'px';
+        steps.forEach(step => {
+          const rect = step.getBoundingClientRect();
+          if(rect.top + 20 < trigger) step.classList.add('is-active');
+          else step.classList.remove('is-active');
+        });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      setTimeout(update, 500);
+    }
+    document.addEventListener('DOMContentLoaded', init);
+    if(window.Shopify && Shopify.designMode) document.addEventListener('shopify:section:load', init);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Wellness Timeline",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Your Protocol" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What to expect, week by week" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Outcomes vary by individual. The milestones below reflect what most customers report on day-90 follow-up surveys." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "week_label", "label": "Week label" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "description", "label": "Description" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wellness Timeline",
+      "blocks": [
+        { "type": "step", "settings": { "week_label": "Days 1–7", "title": "Foundation", "description": "Start one capsule daily, ideally on an empty stomach. Most customers report no noticeable change in the first week — that's expected. The fibrinolytic activity is working at the molecular level." } },
+        { "type": "step", "settings": { "week_label": "Weeks 2–4", "title": "Early signals", "description": "Subtle shifts: warmer extremities, less afternoon fatigue, easier morning movement. This is your circulation getting back to baseline." } },
+        { "type": "step", "settings": { "week_label": "Weeks 5–8", "title": "Steady state", "description": "Your body is now in maintenance mode. This is when most customers see their cardiologist and get curious feedback on improving labs — blood pressure, lipid panel, inflammation markers." } },
+        { "type": "step", "settings": { "week_label": "Day 90+", "title": "Ongoing maintenance", "description": "Continue daily for cardiovascular maintenance. The 60-day money-back guarantee ends here, but the protocol is designed for long-term use alongside your existing routine." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,300 @@
+<div data-section-type="content-tabs" class="content-tabs tcc-section-padding">
+  <div class="content-tabs__inner tcc-page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="content-tabs__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="content-tabs__heading tcc-heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="content-tabs__buttons" role="tablist">
+        {%- for block in section.blocks -%}
+          <button
+            type="button"
+            role="tab"
+            class="content-tabs__button{% if forloop.first %} content-tabs__button--active{% endif %}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="content-tab-panel-{{ section.id }}-{{ forloop.index0 }}"
+            data-tab-index="{{ forloop.index0 }}"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.label }}
+          </button>
+        {%- endfor -%}
+      </div>
+
+      {%- for block in section.blocks -%}
+        <div
+          id="content-tab-panel-{{ section.id }}-{{ forloop.index0 }}"
+          class="content-tabs__panel{% if forloop.first %} content-tabs__panel--active{% endif %}"
+          role="tabpanel"
+          data-tab-panel="{{ forloop.index0 }}"
+          {% unless forloop.first %}hidden{% endunless %}
+        >
+          <div class="content-tabs__card">
+            <div class="content-tabs__card-text">
+              {%- if block.settings.title != blank -%}
+                <h3 class="content-tabs__card-title tcc-heading">{{ block.settings.title }}</h3>
+              {%- endif -%}
+              {%- if block.settings.body != blank -%}
+                <p class="content-tabs__card-body tcc-body">{{ block.settings.body }}</p>
+              {%- endif -%}
+              {%- if block.settings.checklist != blank -%}
+                <ul class="content-tabs__checklist">
+                  {%- assign checklist_items = block.settings.checklist | newline_to_br | split: '<br />' -%}
+                  {%- for item in checklist_items -%}
+                    {%- assign trimmed_item = item | strip -%}
+                    {%- if trimmed_item != blank -%}
+                      <li class="content-tabs__checklist-item tcc-body">
+                        <span class="material-symbols-outlined content-tabs__check-icon">check</span>
+                        <span>{{ trimmed_item }}</span>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+            {%- if block.settings.image != blank or block.settings.external_image_url != blank -%}
+              <div class="content-tabs__card-image">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.image.alt | escape | default: block.settings.title }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" loading="lazy">
+                {%- elsif block.settings.external_image_url != blank -%}
+                  <img src="{{ block.settings.external_image_url }}" alt="{{ block.settings.title | escape }}" width="600" height="600" loading="lazy">
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .content-tabs {
+    background: var(--tcc-bg);
+  }
+  .content-tabs__eyebrow {
+    text-align: center;
+    margin: 0 0 0.75rem;
+  }
+  .content-tabs__heading {
+    font-size: var(--tcc-fs-h2);
+    font-weight: var(--tcc-fw-display);
+    letter-spacing: var(--tcc-ls-display);
+    line-height: var(--tcc-lh-tight);
+    color: var(--tcc-ink);
+    text-align: center;
+    margin: 0 0 2.5rem 0;
+  }
+
+  .content-tabs__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .content-tabs__button {
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    font-weight: var(--tcc-fw-bold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1;
+    border-radius: var(--tcc-radius);
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    color: var(--tcc-ink-soft);
+    border: 1px solid var(--tcc-line);
+    white-space: nowrap;
+  }
+  .content-tabs__button--active {
+    background: var(--tcc-ink);
+    color: var(--tcc-bg);
+    border-color: var(--tcc-ink);
+  }
+  .content-tabs__button:hover:not(.content-tabs__button--active) {
+    background: var(--tcc-line);
+    color: var(--tcc-ink);
+  }
+
+  .content-tabs__panel { display: none; }
+  .content-tabs__panel--active { display: block; }
+  .content-tabs__panel[hidden] { display: none; }
+
+  .content-tabs__card {
+    background: var(--tcc-card);
+    border: 1px solid var(--tcc-line);
+    border-radius: var(--tcc-radius);
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .content-tabs__card:has(.content-tabs__card-image) {
+    grid-template-columns: 1fr auto;
+  }
+
+  .content-tabs__card-title {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: var(--tcc-fw-display);
+    letter-spacing: -0.3px;
+    margin: 0 0 1rem 0;
+    color: var(--tcc-ink);
+  }
+  .content-tabs__card-body {
+    font-size: 16px;
+    line-height: var(--tcc-lh-body);
+    color: var(--tcc-ink-soft);
+    margin: 0 0 1.25rem 0;
+  }
+
+  .content-tabs__checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .content-tabs__checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--tcc-ink);
+  }
+  .content-tabs__check-icon {
+    font-size: 20px;
+    color: var(--tcc-positive);
+    flex-shrink: 0;
+    font-variation-settings: 'FILL' 0, 'wght' 700;
+  }
+
+  .content-tabs__card-image {
+    max-width: 320px;
+    flex-shrink: 0;
+  }
+  .content-tabs__card-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--tcc-radius);
+    display: block;
+    object-fit: cover;
+  }
+
+  @media screen and (max-width: 749px) {
+    .content-tabs__heading { font-size: 24px; }
+    .content-tabs__button { font-size: 12px; padding: 12px 14px; }
+    .content-tabs__card { grid-template-columns: 1fr !important; padding: 1.5rem; gap: 1.5rem; }
+    .content-tabs__card-image { max-width: 100%; order: -1; }
+    .content-tabs__card-title { font-size: 19px; }
+    .content-tabs__card-body { font-size: 14px; }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('[data-section-type="content-tabs"]');
+    if (!section) return;
+    var buttons = section.querySelectorAll('.content-tabs__button');
+    var panels = section.querySelectorAll('.content-tabs__panel');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var index = this.getAttribute('data-tab-index');
+        buttons.forEach(function (btn) {
+          btn.classList.remove('content-tabs__button--active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(function (panel) {
+          panel.classList.remove('content-tabs__panel--active');
+          panel.setAttribute('hidden', '');
+        });
+        this.classList.add('content-tabs__button--active');
+        this.setAttribute('aria-selected', 'true');
+        var activePanel = section.querySelector('[data-tab-panel="' + index + '"]');
+        if (activePanel) {
+          activePanel.classList.add('content-tabs__panel--active');
+          activePanel.removeAttribute('hidden');
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Content Tabs",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Details" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everything you'd want to ask a clinician." }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Tab label", "default": "Tab" },
+        { "type": "text", "id": "title", "label": "Content title", "default": "Tab title" },
+        { "type": "textarea", "id": "body", "label": "Content body" },
+        { "type": "textarea", "id": "checklist", "label": "Checklist items", "info": "One item per line" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "external_image_url", "label": "External Image URL" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Content Tabs",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Ingredients",
+            "title": "One ingredient. Practitioner-grade dose.",
+            "body": "TCC nattokinase delivers 4,000 fibrinolytic units (FU) per serving — the dose used in human cardiovascular research. Wild-fermented Bacillus subtilis, traditional natto strain, no Vitamin K2.",
+            "checklist": "4,000 FU per capsule\nWild-fermented Bacillus subtilis\nVitamin K2 removed (blood-thinner safe)\nNo fillers, dyes, or proprietary blends"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Science",
+            "title": "Backed by peer-reviewed research.",
+            "body": "Nattokinase has been studied for fibrinolytic activity, blood pressure modulation, and arterial elasticity across multiple human trials. We use the same dose and strain as the published research.",
+            "checklist": "Frontiers in Cardiovascular Medicine, 2022\nMolecules Journal, 2022 — comprehensive review\nCureus, 2024 — post-acute COVID protocol"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "How to take",
+            "title": "One capsule daily. That's it.",
+            "body": "Take one capsule with water, ideally on an empty stomach (30 minutes before food works best). Some customers split into morning + evening doses — both protocols work.",
+            "checklist": "1 capsule daily, with water\nEmpty stomach for best absorption\nMorning dosing recommended\nSafe alongside daily vitamins"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Safety",
+            "title": "Designed for blood-thinner users.",
+            "body": "Vitamin K2 — present in most nattokinase products — interferes with anticoagulants like warfarin. We removed it. If you're on prescription blood thinners, talk to your doctor before starting any new supplement, including this one.",
+            "checklist": "K2 removed — safe with anticoagulants\nThird-party tested for heavy metals\nManufactured in FDA-registered facility\nGMP certified, every batch"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
