@@ -74,6 +74,50 @@
       padding-top: 0.5rem;
     }
   }
+
+  /* TCC header tokens — applies to live menu items and brand */
+  .header__menu-item.list-menu__item {
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    font-weight: var(--tcc-fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink);
+  }
+  .header__heading-link.link--text {
+    font-family: var(--tcc-font-sans);
+    font-size: 18px;
+    font-weight: var(--tcc-fw-bold);
+    letter-spacing: -0.3px;
+    color: var(--tcc-ink);
+  }
+
+  /* Fallback inline nav (used only when no Main menu is configured) */
+  .tcc-header-fallback-nav {
+    display: none;
+  }
+  @media screen and (min-width: 990px) {
+    .tcc-header-fallback-nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      grid-area: navigation;
+      justify-self: start;
+    }
+    .tcc-header-fallback-nav__item {
+      font-family: var(--tcc-font-sans);
+      font-size: 13px;
+      font-weight: var(--tcc-fw-bold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--tcc-ink);
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+    }
+    .tcc-header-fallback-nav__item:hover {
+      opacity: 0.6;
+    }
+  }
 </style>
 
 {%- style -%}
@@ -189,6 +233,19 @@
         endif
       endif
     %}
+
+    {%- comment -%}
+      Fallback inline nav when no Main menu is configured. Disappears
+      automatically once the merchant assigns a menu in the theme editor.
+    {%- endcomment -%}
+    {%- if section.settings.menu == blank -%}
+      <nav class="tcc-header-fallback-nav" aria-label="Primary">
+        <a href="{{ routes.collections_url }}/all" class="tcc-header-fallback-nav__item">Shop</a>
+        <a href="/products/spike-detox" class="tcc-header-fallback-nav__item">Spike Detox</a>
+        <a href="/pages/about" class="tcc-header-fallback-nav__item">About</a>
+        <a href="/#faq" class="tcc-header-fallback-nav__item">FAQ</a>
+      </nav>
+    {%- endif -%}
 
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
