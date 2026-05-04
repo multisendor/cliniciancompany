@@ -2,23 +2,310 @@
   "sections": {
     "hero": {
       "type": "hero-product-showcase",
-      "settings": {}
+      "settings": {
+        "background_color": "#ffffff",
+        "external_image_url": "",
+        "heading": "Pharmaceutical-strength nattokinase, formulated by clinicians.",
+        "subheading": "Clear arteries. Restored circulation.",
+        "body_text": "<p>Practitioner-grade nattokinase, dosed at 4,000 FU per serving and independently tested every batch — for the cardiovascular health you deserve.</p>",
+        "button_text": "Shop the Protocol",
+        "button_link": "/products/spike-detox",
+        "rating_text": "Rated 4.8 / 5 | Trusted By 50,000+"
+      }
     },
     "trust": {
       "type": "scrolling-promo-ticker",
-      "settings": {}
+      "blocks": {
+        "msg_1": {
+          "type": "message",
+          "settings": {
+            "icon": "verified_user",
+            "text": "Practitioner-Formulated"
+          }
+        },
+        "msg_2": {
+          "type": "message",
+          "settings": {
+            "icon": "science",
+            "text": "Independently Tested"
+          }
+        },
+        "msg_3": {
+          "type": "message",
+          "settings": {
+            "icon": "shield",
+            "text": "FDA-Registered Facility"
+          }
+        },
+        "msg_4": {
+          "type": "message",
+          "settings": {
+            "icon": "verified",
+            "text": "GMP Certified"
+          }
+        },
+        "msg_5": {
+          "type": "message",
+          "settings": {
+            "icon": "flag",
+            "text": "Made in the USA"
+          }
+        },
+        "msg_6": {
+          "type": "message",
+          "settings": {
+            "icon": "eco",
+            "text": "Vegan · Non-GMO"
+          }
+        }
+      },
+      "block_order": ["msg_1", "msg_2", "msg_3", "msg_4", "msg_5", "msg_6"],
+      "settings": {
+        "speed": 15,
+        "background_color": "#0a1628",
+        "text_color": "#ffffff"
+      }
     },
     "benefits": {
       "type": "benefits-grid",
-      "settings": {}
+      "blocks": {
+        "b1": {
+          "type": "benefit_card",
+          "settings": {
+            "title": "Clears Fibrin Deposits",
+            "description": "The body's natural mechanism for cardiovascular cleanup."
+          }
+        },
+        "b2": {
+          "type": "benefit_card",
+          "settings": {
+            "title": "Supports Healthy Circulation",
+            "description": "Studied to improve blood flow and arterial elasticity."
+          }
+        },
+        "b3": {
+          "type": "benefit_card",
+          "settings": {
+            "title": "Backed by 40 Years of Research",
+            "description": "Discovered in Tokyo, 1980; studied across 200+ clinical trials."
+          }
+        },
+        "b4": {
+          "type": "benefit_card",
+          "settings": {
+            "title": "Practitioner-Grade Dosing",
+            "description": "4,000 FU per serving — what your clinician would prescribe."
+          }
+        }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {
+        "heading": "Proven Benefits, Backed by Science",
+        "description": "Pharmaceutical-strength nattokinase, formulated by clinicians and studied across 40 years of cardiovascular research."
+      }
     },
     "comparison": {
       "type": "brand-comparison-table",
-      "settings": {}
+      "blocks": {
+        "brand_1": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Nattokinase Dose: 4,000 FU"
+          }
+        },
+        "brand_2": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Wild-fermented Bacillus subtilis"
+          }
+        },
+        "brand_3": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Third-Party Tested Every Batch"
+          }
+        },
+        "brand_4": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Vitamin K2 Removed (blood-thinner safe)"
+          }
+        },
+        "brand_5": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Vegan Capsules"
+          }
+        },
+        "brand_6": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Practitioner-Formulated"
+          }
+        },
+        "comp_1": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Nattokinase Dose: 1,000–2,000 FU"
+          }
+        },
+        "comp_2": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Lab-cultured fermentation"
+          }
+        },
+        "comp_3": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Rarely third-party tested"
+          }
+        },
+        "comp_4": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Vitamin K2 often present"
+          }
+        },
+        "comp_5": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Vegan capsules: mixed"
+          }
+        },
+        "comp_6": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Not practitioner-formulated"
+          }
+        },
+        "sum_1": {
+          "type": "summary_point",
+          "settings": {
+            "text": "Pharmaceutical-strength 4,000 FU dosing"
+          }
+        },
+        "sum_2": {
+          "type": "summary_point",
+          "settings": {
+            "text": "Independently tested, every batch"
+          }
+        },
+        "sum_3": {
+          "type": "summary_point",
+          "settings": {
+            "text": "Formulated by clinicians"
+          }
+        },
+        "sum_4": {
+          "type": "summary_point",
+          "settings": {
+            "text": "Safer for blood-thinner users"
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5",
+        "brand_6",
+        "comp_1",
+        "comp_2",
+        "comp_3",
+        "comp_4",
+        "comp_5",
+        "comp_6",
+        "sum_1",
+        "sum_2",
+        "sum_3",
+        "sum_4"
+      ],
+      "settings": {
+        "brand_name": "The Clinician Company",
+        "competitor_name": "Typical Store-Bought",
+        "heading": "The Clinician Company vs. Typical Store-Bought",
+        "button_text": "Try Risk-Free Today"
+      }
     },
     "faq": {
       "type": "bottom-faq",
-      "settings": {}
+      "blocks": {
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "title": "What is nattokinase?",
+            "content": "<p>Nattokinase is an enzyme extracted from natto, a traditional Japanese fermented soybean food. Discovered in Tokyo in 1980 by Dr. Hiroyuki Sumi, it's been studied for its effect on fibrin — a protein involved in blood clotting and arterial plaque.</p>"
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "title": "How is this different from store-bought nattokinase?",
+            "content": "<p>Most store-bought nattokinase is dosed at 1,000–2,000 FU per serving. The Clinician Company formulates at 4,000 FU — the dose practitioners actually use in clinical practice. Every batch is third-party tested and vitamin K2 is removed for safety with blood thinners.</p>"
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "title": "Is it safe to take with blood thinners?",
+            "content": "<p>Talk to your prescribing physician first. Our formulation removes vitamin K2 (which interferes with warfarin) but nattokinase itself has anti-coagulant effects. This is a conversation for your care team.</p>"
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "title": "How long until I notice a difference?",
+            "content": "<p>Most clinical studies measure outcomes over 8–12 weeks. Fibrin clearance and circulation markers shift gradually, not overnight.</p>"
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "title": "When should I take it?",
+            "content": "<p>On an empty stomach, ideally before bed or 30 minutes before a meal. Food can reduce enzyme activity.</p>"
+          }
+        },
+        "f6": {
+          "type": "faq",
+          "settings": {
+            "title": "Is this FDA-approved?",
+            "content": "<p>Dietary supplements are not FDA-approved; they're regulated differently from drugs. Our manufacturing facility is FDA-registered and follows GMP standards.</p>"
+          }
+        },
+        "f7": {
+          "type": "faq",
+          "settings": {
+            "title": "What's your refund policy?",
+            "content": "<p>60-day money-back guarantee. If you're not satisfied for any reason, email support@theclinicianco.com for a full refund.</p>"
+          }
+        },
+        "f8": {
+          "type": "faq",
+          "settings": {
+            "title": "Is this third-party tested?",
+            "content": "<p>Yes — every batch is independently tested for potency (FU activity), purity (heavy metals, microbials), and label accuracy. Certificates of Analysis available on request.</p>"
+          }
+        }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8"],
+      "settings": {
+        "heading": "Practitioner-grade answers to your questions",
+        "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below you'll find answers to the most common questions about <strong>nattokinase</strong>, how it works, safety with blood thinners, and how we ensure pharmaceutical-strength quality in every batch.</p>"
+      }
     }
   },
   "order": ["hero", "trust", "benefits", "comparison", "faq"]
