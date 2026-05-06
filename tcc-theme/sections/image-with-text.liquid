@@ -1,4 +1,42 @@
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+<style>
+  .image-with-text__brand-placeholder {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 55%),
+      linear-gradient(165deg, #1c3553 0%, #0a1628 55%, #050d1a 100%);
+    overflow: hidden;
+  }
+  .image-with-text__brand-placeholder-mark {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+  }
+  .image-with-text__brand-placeholder-mark:not(.image-with-text__brand-placeholder-mark--small):not(.image-with-text__brand-placeholder-mark--xs) {
+    width: 380px;
+    height: 380px;
+    top: -120px;
+    right: -140px;
+  }
+  .image-with-text__brand-placeholder-mark--small {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    left: -60px;
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  .image-with-text__brand-placeholder-mark--xs {
+    width: 80px;
+    height: 80px;
+    top: 40%;
+    left: 18%;
+    border-color: rgba(255, 255, 255, 0.04);
+  }
+  .image-with-text__media--placeholder { position: relative; min-height: 360px; }
+  .image-with-text__media--placeholder .placeholder-svg { display: none !important; }
+</style>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -55,7 +93,11 @@
                 | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
               }}
             {%- else -%}
-              {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              <div class="image-with-text__brand-placeholder" aria-hidden="true">
+                <span class="image-with-text__brand-placeholder-mark"></span>
+                <span class="image-with-text__brand-placeholder-mark image-with-text__brand-placeholder-mark--small"></span>
+                <span class="image-with-text__brand-placeholder-mark image-with-text__brand-placeholder-mark--xs"></span>
+              </div>
             {%- endif -%}
           </div>
         </div>
