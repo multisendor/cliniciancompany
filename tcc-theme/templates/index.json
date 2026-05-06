@@ -5,7 +5,7 @@
       "settings": {
         "background_color": "#ffffff",
         "external_image_url": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_Thumbnail.png?v=1773419148&width=1200",
-        "heading": "Pharmaceutical-strength nattokinase, formulated by clinicians.",
+        "heading": "Practitioner-grade nattokinase, formulated by clinicians.",
         "subheading": "Clear arteries. Restored circulation.",
         "body_text": "<p>Practitioner-grade nattokinase, dosed at 4,000 FU per serving and independently tested every batch — for the cardiovascular health you deserve.</p>",
         "button_text": "Shop the Protocol",
@@ -101,7 +101,7 @@
       "block_order": ["b1", "b2", "b3", "b4"],
       "settings": {
         "heading": "Proven Benefits, Backed by Science",
-        "description": "Pharmaceutical-strength nattokinase, formulated by clinicians and studied across 40 years of cardiovascular research."
+        "description": "Practitioner-grade nattokinase, formulated by clinicians and studied across 40 years of cardiovascular research."
       }
     },
     "comparison": {
@@ -194,7 +194,7 @@
         "sum_1": {
           "type": "summary_point",
           "settings": {
-            "text": "Pharmaceutical-strength 4,000 FU dosing"
+            "text": "Clinical-grade 4,000 FU dosing"
           }
         },
         "sum_2": {
@@ -304,7 +304,7 @@
       "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8"],
       "settings": {
         "heading": "Practitioner-grade answers to your questions",
-        "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below you'll find answers to the most common questions about <strong>nattokinase</strong>, how it works, safety with blood thinners, and how we ensure pharmaceutical-strength quality in every batch.</p>"
+        "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below you'll find answers to the most common questions about <strong>nattokinase</strong>, how it works, safety with blood thinners, and how we ensure practitioner-grade quality in every batch.</p>"
       }
     },
     "stats": {
@@ -328,7 +328,7 @@
         "p2": { "type": "problem_item", "settings": { "icon": "remove", "text": "Lab-cultured fermentation, not wild Bacillus subtilis" } },
         "p3": { "type": "problem_item", "settings": { "icon": "remove", "text": "Vitamin K2 added — risky for blood-thinner users" } },
         "p4": { "type": "problem_item", "settings": { "icon": "remove", "text": "Rarely third-party tested, batch-by-batch" } },
-        "s1": { "type": "solution_item", "settings": { "icon": "check", "text": "4,000 FU per serving — pharmaceutical strength" } },
+        "s1": { "type": "solution_item", "settings": { "icon": "check", "text": "4,000 FU per serving — practitioner-grade dose" } },
         "s2": { "type": "solution_item", "settings": { "icon": "check", "text": "Wild-fermented Bacillus subtilis, traditional natto strain" } },
         "s3": { "type": "solution_item", "settings": { "icon": "check", "text": "K2 removed — safe with anticoagulant therapy" } },
         "s4": { "type": "solution_item", "settings": { "icon": "check", "text": "Independently tested, every batch, results published" } }
