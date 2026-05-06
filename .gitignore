@@ -18,3 +18,20 @@ node_modules/
 
 # Donor theme — has its own git repo, never track from this repo
 Supplement Store/
+
+# Iteration screenshots (transient design work)
+tcc-iter*.png
+tcc-cart-*.png
+tcc-collection-*.png
+tcc-homepage-*.png
+tcc-pdp-*.png
+
+# Donor theme zip exports
+theme_export__*
+theme_export__*.zip
+
+# Old standalone teardown folder (superseded by .playwright-mcp/)
+spike-detox-teardown/
+
+# Playwright outputs
+.playwright-mcp/
