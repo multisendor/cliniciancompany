@@ -91,13 +91,6 @@
             "text": "Third-party tested every batch — COA published per lot"
           }
         },
-        "coa_link_1": {
-          "type": "coa_link",
-          "settings": {
-            "text": "Find your bottle's COA →",
-            "link": "#coa-transparency"
-          }
-        },
         "bundle_1": {
           "type": "bundle_option",
           "settings": {
@@ -133,7 +126,6 @@
         "benefit_3",
         "benefit_4",
         "benefit_5",
-        "coa_link_1",
         "bundle_1",
         "bundle_3pack",
         "bundle_6pack"
