@@ -1,0 +1,223 @@
+<div
+  class="hsa-fsa-strip"
+  data-section-type="hsa-fsa-strip"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="hsa-fsa-strip__row">
+
+      <div class="hsa-fsa-strip__icon-wrap" aria-hidden="true">
+        <span class="hsa-fsa-strip__icon">
+          <span class="hsa-fsa-strip__cross-v"></span>
+          <span class="hsa-fsa-strip__cross-h"></span>
+        </span>
+        {%- if section.settings.icon_label != blank -%}
+          <span class="hsa-fsa-strip__icon-label">{{ section.settings.icon_label }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="hsa-fsa-strip__text">
+        {%- if section.settings.primary_text != blank -%}
+          <p class="hsa-fsa-strip__primary">{{ section.settings.primary_text }}</p>
+        {%- endif -%}
+        {%- if section.settings.secondary_text != blank -%}
+          <p class="hsa-fsa-strip__secondary">{{ section.settings.secondary_text }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_link and section.settings.link_url != blank and section.settings.link_text != blank -%}
+        <div class="hsa-fsa-strip__cta">
+          <a class="hsa-fsa-strip__link" href="{{ section.settings.link_url }}">
+            {{ section.settings.link_text }}
+            <span class="hsa-fsa-strip__link-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .hsa-fsa-strip {
+    background: var(--tcc-bg);
+    border-top: 1px solid var(--tcc-line);
+    border-bottom: 1px solid var(--tcc-line);
+    padding-top: var(--tcc-s-3, 24px);
+    padding-bottom: var(--tcc-s-3, 24px);
+  }
+
+  .hsa-fsa-strip__row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--tcc-s-4, 32px);
+  }
+
+  .hsa-fsa-strip__icon-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--tcc-s-2, 16px);
+  }
+
+  .hsa-fsa-strip__icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--tcc-card, #ffffff);
+    border: 1px solid var(--tcc-line);
+    flex-shrink: 0;
+  }
+
+  .hsa-fsa-strip__cross-v,
+  .hsa-fsa-strip__cross-h {
+    position: absolute;
+    background: var(--tcc-ink);
+    border-radius: 1px;
+  }
+  .hsa-fsa-strip__cross-v {
+    width: 4px;
+    height: 18px;
+  }
+  .hsa-fsa-strip__cross-h {
+    width: 18px;
+    height: 4px;
+  }
+
+  .hsa-fsa-strip__icon-label {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink);
+  }
+
+  .hsa-fsa-strip__text {
+    min-width: 0;
+  }
+
+  .hsa-fsa-strip__primary {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    font-weight: 500;
+    color: var(--tcc-ink);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .hsa-fsa-strip__secondary {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.55;
+    margin: 4px 0 0;
+  }
+
+  .hsa-fsa-strip__cta {
+    flex-shrink: 0;
+  }
+
+  .hsa-fsa-strip__link {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--tcc-ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--tcc-ink);
+    padding-bottom: 2px;
+    transition: opacity 0.15s ease;
+  }
+
+  .hsa-fsa-strip__link:hover {
+    opacity: 0.7;
+  }
+
+  .hsa-fsa-strip__link-arrow {
+    transition: transform 0.15s ease;
+  }
+
+  .hsa-fsa-strip__link:hover .hsa-fsa-strip__link-arrow {
+    transform: translateX(2px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .hsa-fsa-strip__row {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      gap: var(--tcc-s-2, 16px);
+    }
+
+    .hsa-fsa-strip__icon-wrap {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hsa-fsa-strip__primary {
+      font-size: 15px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "HSA/FSA Strip",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "icon_label",
+      "label": "Icon label",
+      "default": "HSA/FSA"
+    },
+    {
+      "type": "text",
+      "id": "primary_text",
+      "label": "Primary text",
+      "default": "HSA/FSA Eligible — pay tax-advantaged with TrueMed"
+    },
+    {
+      "type": "text",
+      "id": "secondary_text",
+      "label": "Secondary text",
+      "default": "Coming soon — full TrueMed integration in Q2."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_link",
+      "label": "Show link",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Learn more"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HSA/FSA Strip"
+    }
+  ]
+}
+{% endschema %}

@@ -152,6 +152,58 @@
       "type": "sticky-atc-bar",
       "settings": {}
     },
+    "trust": {
+      "type": "trust-strip",
+      "blocks": {
+        "m1": {
+          "type": "mark",
+          "settings": {
+            "icon": "shield",
+            "label": "Third-party tested"
+          }
+        },
+        "m2": {
+          "type": "mark",
+          "settings": {
+            "icon": "lab",
+            "label": "GMP-certified"
+          }
+        },
+        "m3": {
+          "type": "mark",
+          "settings": {
+            "icon": "globe",
+            "label": "Made in USA"
+          }
+        },
+        "m4": {
+          "type": "mark",
+          "settings": {
+            "icon": "leaf",
+            "label": "Single ingredient"
+          }
+        },
+        "m5": {
+          "type": "mark",
+          "settings": {
+            "icon": "test_tube",
+            "label": "COA per batch"
+          }
+        },
+        "m6": {
+          "type": "mark",
+          "settings": {
+            "icon": "checkmark",
+            "label": "60-day money-back"
+          }
+        }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"],
+      "settings": {
+        "eyebrow": "What's behind every batch",
+        "heading": "Built for the people who read the label."
+      }
+    },
     "problem": {
       "type": "problem-statement",
       "settings": {
@@ -204,6 +256,47 @@
         "eyebrow": "How it works",
         "heading": "One enzyme. Four mechanisms studied.",
         "intro": "Nattokinase is a serine protease isolated from natto, the traditional Japanese fermented soybean food. Across peer-reviewed and preprint research, four distinct activities have been observed — from fibrin breakdown to cardiovascular metric improvement."
+      }
+    },
+    "outcome": {
+      "type": "outcome-stats",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "1,062",
+            "unit": "adults",
+            "label": "in the largest peer-reviewed nattokinase trial (Chen 2022, 12 months)"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "4,000",
+            "unit": "FU",
+            "label": "per capsule, dosed to your protocol — not hidden inside a proprietary blend"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "0",
+            "label": "adverse events reported in the Chen 2022 cohort"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "100%",
+            "label": "of batches third-party tested with COA published per lot"
+          }
+        }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {
+        "eyebrow": "Why customers stay",
+        "heading": "Practitioner-grade nattokinase, transparently dosed",
+        "background_style": "soft"
       }
     },
     "research": {
@@ -440,6 +533,16 @@
         "button_text": "Add to Cart"
       }
     },
+    "hsa": {
+      "type": "hsa-fsa-strip",
+      "settings": {
+        "icon_label": "HSA/FSA",
+        "primary_text": "HSA/FSA Eligible — pay tax-advantaged with TrueMed",
+        "secondary_text": "Coming soon — full TrueMed integration in Q2.",
+        "show_link": false,
+        "link_text": "Learn more"
+      }
+    },
     "faq": {
       "type": "bottom-faq",
       "blocks": {
@@ -544,12 +647,15 @@
     "media",
     "buybox",
     "sticky",
+    "trust",
     "problem",
     "mechanism",
+    "outcome",
     "research",
     "comparison",
     "social",
     "guarantee",
+    "hsa",
     "faq"
   ]
 }

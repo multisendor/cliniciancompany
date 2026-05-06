@@ -1,0 +1,317 @@
+<div
+  class="outcome-stats tcc-section-padding outcome-stats--{{ section.settings.background_style }}"
+  data-section-type="outcome-stats"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="outcome-stats__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="outcome-stats__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="outcome-stats__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.intro != blank -%}
+        <p class="outcome-stats__intro">{{ section.settings.intro }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="outcome-stats__grid">
+        {%- for block in section.blocks -%}
+          <div class="outcome-stats__cell" {{ block.shopify_attributes }}>
+            <div class="outcome-stats__value-row">
+              {%- if block.settings.value != blank -%}
+                <span class="outcome-stats__value">{{ block.settings.value }}</span>
+              {%- endif -%}
+              {%- if block.settings.unit != blank -%}
+                <span class="outcome-stats__unit">{{ block.settings.unit }}</span>
+              {%- endif -%}
+            </div>
+            {%- if block.settings.label != blank -%}
+              <p class="outcome-stats__label">{{ block.settings.label }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .outcome-stats--soft {
+    background: var(--tcc-bg);
+    color: var(--tcc-ink);
+  }
+
+  .outcome-stats--navy {
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
+      linear-gradient(165deg, #1c3553 0%, #0a1628 55%, #050d1a 100%);
+    color: #ffffff;
+  }
+
+  .outcome-stats__header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto var(--tcc-s-6, 48px);
+  }
+
+  .outcome-stats__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .outcome-stats--navy .outcome-stats__eyebrow {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .outcome-stats__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: 500;
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2, 16px);
+    line-height: 1.2;
+  }
+
+  .outcome-stats--navy .outcome-stats__heading {
+    color: #ffffff;
+  }
+
+  .outcome-stats__intro {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .outcome-stats--navy .outcome-stats__intro {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .outcome-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--tcc-s-3, 24px);
+  }
+
+  .outcome-stats__cell {
+    text-align: center;
+    padding: var(--tcc-s-3, 24px) var(--tcc-s-2, 16px);
+    border-left: 1px solid var(--tcc-line);
+  }
+
+  .outcome-stats--navy .outcome-stats__cell {
+    border-left-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .outcome-stats__cell:first-child {
+    border-left: none;
+  }
+
+  .outcome-stats__value-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: var(--tcc-s-2, 16px);
+  }
+
+  .outcome-stats__value {
+    font-family: var(--tcc-font-sans);
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--tcc-ink);
+  }
+
+  .outcome-stats--navy .outcome-stats__value {
+    color: #ffffff;
+  }
+
+  .outcome-stats__unit {
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+  }
+
+  .outcome-stats--navy .outcome-stats__unit {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .outcome-stats__label {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    line-height: 1.55;
+    color: var(--tcc-ink-soft);
+    margin: 0;
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .outcome-stats--navy .outcome-stats__label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media screen and (max-width: 989px) {
+    .outcome-stats__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--tcc-s-2, 16px);
+    }
+    .outcome-stats__cell {
+      border-left: none;
+      border-top: 1px solid var(--tcc-line);
+      padding-top: var(--tcc-s-3, 24px);
+    }
+    .outcome-stats--navy .outcome-stats__cell {
+      border-top-color: rgba(255, 255, 255, 0.12);
+    }
+    .outcome-stats__cell:nth-child(-n+2) {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .outcome-stats__grid {
+      grid-template-columns: 1fr;
+    }
+    .outcome-stats__cell {
+      border-left: none;
+      border-top: 1px solid var(--tcc-line);
+      padding-top: var(--tcc-s-3, 24px);
+    }
+    .outcome-stats--navy .outcome-stats__cell {
+      border-top-color: rgba(255, 255, 255, 0.12);
+    }
+    .outcome-stats__cell:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+    .outcome-stats__cell:nth-child(2) {
+      border-top: 1px solid var(--tcc-line);
+      padding-top: var(--tcc-s-3, 24px);
+    }
+    .outcome-stats--navy .outcome-stats__cell:nth-child(2) {
+      border-top-color: rgba(255, 255, 255, 0.12);
+    }
+    .outcome-stats__heading {
+      font-size: 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Outcome Stats",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why customers stay"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Practitioner-grade nattokinase, transparently dosed"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro paragraph (optional)"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background style",
+      "options": [
+        { "value": "soft", "label": "Soft (page background)" },
+        { "value": "navy", "label": "Navy (dark band)" }
+      ],
+      "default": "soft"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value (big numeral)",
+          "default": "&mdash;"
+        },
+        {
+          "type": "text",
+          "id": "unit",
+          "label": "Unit / suffix (optional)"
+        },
+        {
+          "type": "textarea",
+          "id": "label",
+          "label": "Label",
+          "default": "Stat label placeholder."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Outcome Stats",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "value": "1,062",
+            "unit": "adults",
+            "label": "in the largest peer-reviewed nattokinase trial (Chen 2022, 12 months)"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "4,000",
+            "unit": "FU",
+            "label": "per capsule, dosed to your protocol &mdash; not hidden inside a proprietary blend"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "0",
+            "label": "adverse events reported in the Chen 2022 cohort"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "100%",
+            "label": "of batches third-party tested with COA published per lot"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
