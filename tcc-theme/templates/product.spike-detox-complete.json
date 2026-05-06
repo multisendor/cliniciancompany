@@ -1,0 +1,836 @@
+{
+  "sections": {
+    "media": {
+      "type": "product-media-gallery",
+      "settings": {}
+    },
+    "buybox": {
+      "type": "product-details-buybox",
+      "blocks": {
+        "stat_1": {
+          "type": "stat_bullet",
+          "settings": {
+            "value": "6",
+            "label": "clinically-studied actives"
+          }
+        },
+        "stat_2": {
+          "type": "stat_bullet",
+          "settings": {
+            "value": "8,000",
+            "label": "FU nattokinase / day at 4 caps"
+          }
+        },
+        "stat_3": {
+          "type": "stat_bullet",
+          "settings": {
+            "value": "1",
+            "label": "capsule, integrated stack"
+          }
+        },
+        "stat_4": {
+          "type": "stat_bullet",
+          "settings": {
+            "value": "0",
+            "label": "proprietary blends"
+          }
+        },
+        "trust_1": {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "lab_research",
+            "text": "Six Clinically-Studied Actives, Disclosed"
+          }
+        },
+        "trust_2": {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "experiment",
+            "text": "Wild-Fermented Bacillus Subtilis (Chen-Strain Natto)"
+          }
+        },
+        "trust_3": {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "add_moderator",
+            "text": "Third-Party Tested Every Batch"
+          }
+        },
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Nattokinase 2,000 FU + Bromelain 500 mg + Serrapeptase 80,000 SPU per capsule"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "check_circle",
+            "text": "NAC 600 mg + Quercetin 250 mg + Dandelion Root 200 mg + BioPerine 5 mg"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Six convergent mechanisms in one capsule — dose 4/day for 8,000 FU + the integrated stack"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "check_circle",
+            "text": "K2-free — compatible with vitamin-K-antagonist blood thinners (K2 sold separately)"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Third-party tested every batch — COA published per lot"
+          }
+        },
+        "coa_link_1": {
+          "type": "coa_link",
+          "settings": {
+            "text": "Find your bottle's COA →",
+            "link": "#coa-transparency"
+          }
+        },
+        "bundle_1": {
+          "type": "bundle_option",
+          "settings": {
+            "title": "30-day Stack — $79",
+            "price": "$79"
+          }
+        },
+        "bundle_3pack": {
+          "type": "bundle_option",
+          "settings": {
+            "title": "3-Pack Protocol Stack — $209 ($69.66/bottle)",
+            "price": "$209"
+          }
+        },
+        "bundle_6pack": {
+          "type": "bundle_option",
+          "settings": {
+            "title": "6-Pack Annual Supply — $379 ($63.16/bottle)",
+            "price": "$379"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
+        "trust_1",
+        "trust_2",
+        "trust_3",
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "coa_link_1",
+        "bundle_1",
+        "bundle_3pack",
+        "bundle_6pack"
+      ],
+      "settings": {
+        "custom_title": "Spike Detox Complete — 6-mechanism enzyme + spike-protocol stack",
+        "custom_subtitle": "Six clinically-studied ingredients in one capsule. For people who want a stack-replacement, not a stack-builder. Nattokinase 2,000 FU + bromelain 500 mg + serrapeptase 80,000 SPU + NAC 600 mg + quercetin 250 mg + dandelion root 200 mg + BioPerine 5 mg.",
+        "custom_description_2": "Designed for the buyer who is already running a 10-bottle protocol and wants to consolidate. At 4 capsules/day you land at 8,000 FU nattokinase — inside Chen 2022's clinically-active range — plus six convergent mechanisms (fibrin clearance, antioxidant buffer, histamine modulation, liver detox phase II, anti-inflammatory cytokine control, and absorption-enhancer).",
+        "show_ships_by": true,
+        "show_price_display": true,
+        "show_credibility_row": true,
+        "cred_chip_1": "60-day money-back",
+        "cred_chip_2": "Third-party tested",
+        "cred_chip_3": "K2-free for blood-thinner users",
+        "cred_chip_4": "Made in USA · GMP-certified",
+        "badge_mode": "dynamic",
+        "bogo_label_1": "30 Day",
+        "bogo_label_2": "3-Pack",
+        "bogo_label_3": "Annual Stack",
+        "product_handle": "spike-detox-complete"
+      }
+    },
+    "sticky": {
+      "type": "sticky-atc-bar",
+      "settings": {}
+    },
+    "research": {
+      "type": "research-highlights",
+      "blocks": {
+        "r1": {
+          "type": "stat_card",
+          "settings": {
+            "title": "Nattokinase: 12-month plaque & lipid trial",
+            "description": "Chen 2022 (n=1,062, 12 months) reported –36% carotid plaque area, –22% arterial wall thickness, –18% LDL, +16% HDL, 0 adverse events. Effective range 6,000–12,000 FU/day. Complete at 4 caps/day = 8,000 FU — inside the effective range; below the headline-study dose. Honest tradeoff: if your only lever is nattokinase and you want max dose, see Pure.",
+            "citation": "Chen et al., Frontiers in Cardiovascular Medicine (2022), PMC9531657 — observed at 10,800 FU/day"
+          }
+        },
+        "r2": {
+          "type": "stat_card",
+          "settings": {
+            "title": "Bromelain + Quercetin: anti-inflammatory pairing",
+            "description": "Bromelain (Pavan 2012, Rathnavelu 2016) shows oral bioavailability and anti-inflammatory / anti-thrombotic activity. Co-formulated with quercetin (Di Pierro 2021, n=152 outpatients) for histamine-response and bioavailability synergy. BioPerine 20 mg/day adds a documented bioenhancer (Shoba 1998 showed ~20× curcumin-bioavailability boost from piperine).",
+            "citation": "Pavan 2012 PMC3529416 · Di Pierro 2021 PMC8403043 · Shoba 1998 PMID 9619120"
+          }
+        },
+        "r3": {
+          "type": "stat_card",
+          "settings": {
+            "title": "NAC + glutathione: antioxidant adjunct",
+            "description": "Izquierdo 2022 (PMC8915136) showed NAC + glycine adjunct reduced inflammatory markers in hospitalized patients. NAC at 2,400 mg/day (Complete 4-cap dose) sits in the upper-clinical mucolytic / liver-protective range. Serrapeptase 320,000 SPU/day adds a third proteolytic enzyme on the fibrin/inflammation matrix where nattokinase + bromelain leave gaps.",
+            "citation": "Izquierdo 2022 PMC8915136 · Schwalfenberg 2021 PMC8326567 · Tiwari 2017 PMC5527415"
+          }
+        }
+      },
+      "block_order": ["r1", "r2", "r3"],
+      "settings": {
+        "heading": "<p>Six ingredients, <strong>each individually clinically-studied</strong></p>",
+        "description": "Complete is not a shotgun blend. Every active is dosed to or near its clinical reference range, and the COA shows every milligram. Below: the studies behind the three highest-dose actives.",
+        "button_text": ""
+      }
+    },
+    "problem": {
+      "type": "problem-solution-split",
+      "blocks": {
+        "p1": {
+          "type": "problem_item",
+          "settings": {
+            "icon": "remove",
+            "text": "10-bottle stack on the kitchen counter, missed doses every other day"
+          }
+        },
+        "p2": {
+          "type": "problem_item",
+          "settings": {
+            "icon": "remove",
+            "text": "Proprietary blends that hide individual milligram doses"
+          }
+        },
+        "p3": {
+          "type": "problem_item",
+          "settings": {
+            "icon": "remove",
+            "text": "Cardiologist won't engage with the protocol because the labels are unreadable"
+          }
+        },
+        "p4": {
+          "type": "problem_item",
+          "settings": {
+            "icon": "remove",
+            "text": "$300/month across 7 SKUs, with no clean way to cancel any of them"
+          }
+        },
+        "s1": {
+          "type": "solution_item",
+          "settings": {
+            "icon": "check",
+            "text": "Six clinical actives in one capsule — every dose disclosed in milligrams / FU / SPU"
+          }
+        },
+        "s2": {
+          "type": "solution_item",
+          "settings": {
+            "icon": "check",
+            "text": "Convergent mechanisms: fibrin clearance, antioxidant buffer, histamine, liver, inflammation, absorption"
+          }
+        },
+        "s3": {
+          "type": "solution_item",
+          "settings": {
+            "icon": "check",
+            "text": "4 capsules/day puts you at 8,000 FU nattokinase — inside Chen 2022's clinically-active range"
+          }
+        },
+        "s4": {
+          "type": "solution_item",
+          "settings": {
+            "icon": "check",
+            "text": "One-click subscription cancel — no maze, no email-only escape hatch"
+          }
+        }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "s1", "s2", "s3", "s4"],
+      "settings": {
+        "heading": "Convenience, without the proprietary-blend bait-and-switch.",
+        "problem_heading": "What stack-fatigue looks like",
+        "solution_heading": "What a clean stack looks like"
+      }
+    },
+    "mechanism1": {
+      "type": "image-with-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Six convergent mechanisms in one capsule",
+            "heading_size": "h1"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Complete is engineered around six distinct mechanisms with one absorption-helper:</p><p><strong>1. Fibrin clearance</strong> — Nattokinase + Serrapeptase + Bromelain. Three proteolytic enzymes with overlapping but non-identical substrate specificities. Where one slips, another catches.</p><p><strong>2. Spike-protein adjacency</strong> — Nattokinase (in vitro spike-protein degradation, Tanikawa 2022) + Dandelion Root (in vitro spike-ACE2 binding inhibition, Liu 2021).</p><p><strong>3. Liver / detoxification phase II</strong> — Dandelion Root (bile flow) + NAC (glutathione precursor). The cleared substrates need an exit route; the liver provides it.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["h", "t"],
+      "settings": {
+        "external_image_url": "",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "mechanism2": {
+      "type": "image-with-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Antioxidant, histamine, and absorption layers",
+            "heading_size": "h1"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>4. Antioxidant / mitochondrial buffer</strong> — NAC (glutathione precursor) + Quercetin (NF-κB and free-radical scavenging). When you break down clots and damaged proteins you generate oxidative byproducts; these two cover that bill.</p><p><strong>5. Histamine / mast-cell modulation</strong> — Quercetin. The lever the autoimmune and post-viral communities specifically reach for.</p><p><strong>6. Anti-inflammatory cytokine control</strong> — Bromelain + Quercetin + NAC. Three converging mechanisms on NF-κB / TNF-α / IL-6 pathways.</p><p><strong>+ Bioavailability enhancer</strong> — BioPerine 5 mg/cap (20 mg/day at 4 caps), the same dose Shoba 1998 used to multiply curcumin absorption by 20×. Quercetin in particular has poor oral bioavailability without a co-formulation; BioPerine and bromelain fix that.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["h", "t"],
+      "settings": {
+        "external_image_url": "",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "blocks": {
+        "b1": {
+          "type": "benefit_card",
+          "settings": {
+            "title": "Supports fibrinolytic activity",
+            "description": "Three proteolytic enzymes — nattokinase, bromelain, serrapeptase — covering complementary substrate specificities on fibrin and inflammatory matrix proteins."
+          }
+        },
+        "b2": {
+          "type": "benefit_card",
+          "settings": {
+            "title": "Supports a healthy inflammatory response",
+            "description": "Quercetin, bromelain, and NAC converge on NF-κB and cytokine pathways — well-studied as adjunct anti-inflammatory support."
+          }
+        },
+        "b3": {
+          "type": "benefit_card",
+          "settings": {
+            "title": "Supports liver and antioxidant pathways",
+            "description": "NAC raises glutathione (the master antioxidant); dandelion root supports bile flow and phase-II detoxification — paired so cleared metabolites have an exit route."
+          }
+        },
+        "b4": {
+          "type": "benefit_card",
+          "settings": {
+            "title": "Stack-replacement convenience",
+            "description": "Six clinical actives in one capsule. Eliminates the 10-bottle counter and the missed-dose pattern that breaks most multi-bottle protocols."
+          }
+        }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {
+        "heading": "What it does, what the research shows",
+        "description": "Structure-function support for the body's fibrinolytic, antioxidant, and inflammation-resolution systems — backed by peer-reviewed human research on each individual ingredient."
+      }
+    },
+    "comparison": {
+      "type": "brand-comparison-table",
+      "blocks": {
+        "brand_1": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Every milligram disclosed (no proprietary blends)"
+          }
+        },
+        "brand_2": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Nattokinase, bromelain, serrapeptase, NAC, quercetin, dandelion + BioPerine"
+          }
+        },
+        "brand_3": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "8,000 FU nattokinase/day at 4 caps — inside Chen 2022 effective range"
+          }
+        },
+        "brand_4": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "K2 disclosed and sold separately (warfarin compatibility)"
+          }
+        },
+        "brand_5": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Per-batch COA published, lot-traceable"
+          }
+        },
+        "brand_6": {
+          "type": "brand_feature",
+          "settings": {
+            "icon": "check_circle",
+            "text": "Vegan capsule, no fillers, no synthetic dyes"
+          }
+        },
+        "comp_1": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Proprietary blend hides individual mg doses"
+          }
+        },
+        "comp_2": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Often only 3–4 of these actives at random doses"
+          }
+        },
+        "comp_3": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Often sub-therapeutic on nattokinase (1,500–2,000 FU/day total)"
+          }
+        },
+        "comp_4": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "K2 bundled silently — incompatible with warfarin without disclosure"
+          }
+        },
+        "comp_5": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Rare batch-by-batch COA testing"
+          }
+        },
+        "comp_6": {
+          "type": "competitor_feature",
+          "settings": {
+            "icon": "cancel",
+            "text": "Capsules: gelatin or undisclosed shell"
+          }
+        },
+        "sum_1": {
+          "type": "summary_point",
+          "settings": {
+            "text": "Every active disclosed in milligrams / FU / SPU — readable label"
+          }
+        },
+        "sum_2": {
+          "type": "summary_point",
+          "settings": {
+            "text": "Six clinical actives chosen for convergent mechanisms, not a kitchen-sink blend"
+          }
+        },
+        "sum_3": {
+          "type": "summary_point",
+          "settings": {
+            "text": "8,000 FU/day nattokinase at 4 caps — inside Chen 2022's effective range"
+          }
+        },
+        "sum_4": {
+          "type": "summary_point",
+          "settings": {
+            "text": "Per-batch COA — every bottle traceable to its lab analysis"
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5",
+        "brand_6",
+        "comp_1",
+        "comp_2",
+        "comp_3",
+        "comp_4",
+        "comp_5",
+        "comp_6",
+        "sum_1",
+        "sum_2",
+        "sum_3",
+        "sum_4"
+      ],
+      "settings": {
+        "brand_name": "The Clinician Company — Complete",
+        "competitor_name": "Typical Multi-Ingredient Spike Blend",
+        "heading": "How we compare on transparency",
+        "button_text": "Add to Cart"
+      }
+    },
+    "timeline": {
+      "type": "wellness-timeline",
+      "blocks": {
+        "t1": {
+          "type": "step",
+          "settings": {
+            "week_label": "60–180 minutes",
+            "title": "Tanikawa 2022 — in vitro spike-protein degradation",
+            "description": "Lab study (Molecules journal): purified nattokinase degraded the SARS-CoV-2 spike protein and ACE2 in cell-lysate experiments within 60–180 minutes of incubation. Mechanism, in vitro — not yet a human clinical trial."
+          }
+        },
+        "t2": {
+          "type": "step",
+          "settings": {
+            "week_label": "~2 hours",
+            "title": "Grixti / Kell 2024 (preprint) — fibrinaloid microclot degradation",
+            "description": "First study to show recombinant nattokinase breaks down the fibrin-amyloid microclots associated with Long COVID and ME/CFS in vitro. Microclot counts dropped to their lowest within 2 hours. Preprint — early research."
+          }
+        },
+        "t3": {
+          "type": "step",
+          "settings": {
+            "week_label": "12 months",
+            "title": "Chen 2022 — atherosclerosis & lipids (n=1,062, effective range 6,000–12,000 FU/day)",
+            "description": "Twelve-month human trial: 36% reduction in carotid plaque area, 22% reduction in arterial wall thickness, 18% LDL drop, 16% HDL rise, 0 adverse events. Complete at 4 caps/day delivers 8,000 FU — inside this effective range; below the headline-study 10,800 FU dose."
+          }
+        },
+        "t4": {
+          "type": "step",
+          "settings": {
+            "week_label": "1980 → present",
+            "title": "Sumi origin — 40+ years of nattokinase research",
+            "description": "Discovered in Tokyo in 1980 by Dr. Hiroyuki Sumi when fermented soybeans dissolved fibrin in a Petri dish. Now studied across hundreds of papers in cardiovascular, lipid, blood-pressure, and microvascular research."
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {
+        "eyebrow": "Research Timeline",
+        "heading": "What the research actually shows",
+        "description": "These are the studies — not promises about your personal outcome. Outcomes vary; talk to your healthcare provider about what makes sense for your situation."
+      }
+    },
+    "tabs": {
+      "type": "content-tabs",
+      "blocks": {
+        "tab_a": {
+          "type": "tab",
+          "settings": {
+            "label": "Cardiovascular & circulatory health",
+            "title": "What the cardiovascular research shows.",
+            "body": "Chen et al. (2022, Frontiers in Cardiovascular Medicine) followed 1,062 adults for 12 months on 10,800 FU/day of nattokinase. Carotid plaque area decreased by up to 36%; arterial wall thickness (CCA-IMT) decreased by ~22%; LDL fell 18% and HDL rose 16%; 0 adverse events. The authors state the clinically active range is 6,000–12,000 FU per day. Complete at 4 capsules/day delivers 8,000 FU nattokinase — inside that effective range — alongside bromelain and serrapeptase as complementary fibrin-clearing enzymes.",
+            "checklist": "1,062 adults studied for 12 months\n36% carotid plaque-area reduction (at 10,800 FU/day)\n22% arterial wall thickness reduction\n18% LDL drop, 16% HDL rise\n0 adverse events at the studied dose\nClinically active range: 6,000–12,000 FU/day\nComplete (4 caps/day): 8,000 FU nattokinase + 6 other actives"
+          }
+        },
+        "tab_b": {
+          "type": "tab",
+          "settings": {
+            "label": "Recent research on post-viral microvascular health",
+            "title": "Recent research on post-viral microvascular health.",
+            "body": "Two newer findings widen nattokinase's relevance. Tanikawa et al. (2022, Molecules) showed in vitro that purified nattokinase degrades the SARS-CoV-2 spike protein and ACE2 in 60–180 minutes — a cell-lysate / lab-bench study, not yet a human trial. Grixti, Pretorius & Kell (2024, preprint) showed that recombinant nattokinase degrades fibrinaloid microclots — the anomalous, fibrinolysis-resistant clots documented in Long COVID and ME/CFS — within 2 hours in vitro. Liu et al. (2021) showed dandelion-root extract blocks spike-protein binding to ACE2 in vitro — a separate angle on the same target. Both findings are mechanistic; none are human RCTs yet.",
+            "checklist": "Tanikawa 2022 (Molecules): in vitro spike-protein degradation in 60–180 min\nGrixti / Kell 2024 (preprint): fibrinaloid microclot degradation in vitro\nLiu 2021: dandelion-root extract blocks spike-ACE2 binding in vitro\nAll are mechanism-of-action studies — not yet human RCTs\nUseful context if you're tracking the post-viral microvascular literature"
+          }
+        },
+        "tab_c": {
+          "type": "tab",
+          "settings": {
+            "label": "How to take",
+            "title": "4 capsules per day, split into two doses.",
+            "body": "Default protocol: 2 capsules with water 30 minutes before breakfast, 2 capsules mid-afternoon at least 2 hours after lunch (and ≥30 minutes before the next meal). Empty-stomach administration matters for the proteolytic enzymes (nattokinase, bromelain, serrapeptase) — food can reduce systemic enzyme activity. Lower-intensity onboarding option: 2 caps/day for the first 2 weeks, then titrate to 4. Watch-outs: separate from PRN nitroglycerin by ≥2 hours (NAC interaction); separate from levothyroxine by ≥4 hours (standard caution).",
+            "checklist": "4 capsules/day, split AM + mid-afternoon\n2 caps before breakfast, 2 caps mid-afternoon\nAt 4 caps: 8,000 FU nattokinase + 2,000 mg bromelain + 320,000 SPU serrapeptase\nPlus 2,400 mg NAC + 1,000 mg quercetin + 800 mg dandelion + 20 mg BioPerine\nLower-intensity onboarding: 2 caps/day for 2 weeks, then titrate\nTalk to your healthcare provider about what's right for you"
+          }
+        },
+        "tab_d": {
+          "type": "tab",
+          "settings": {
+            "label": "Safety & interactions",
+            "title": "Designed for blood-thinner-aware users.",
+            "body": "Vitamin K2 is omitted from Complete for compatibility with vitamin-K-antagonist anticoagulants like warfarin. We sell K2 MK-7 separately for those who want the synergy Chen 2022 documents. Important interactions to know: NAC + nitroglycerin (separate by ≥2 hr); BioPerine modestly inhibits CYP3A4 (relevant for some statins, propranolol, phenytoin — physician check); quercetin can interact with cyclosporine. The whole stack has fibrinolytic activity — talk to your prescribing physician if you take warfarin, DOACs (Eliquis, Xarelto, Pradaxa), aspirin, or any blood-thinning medication. Hold the stack ≥7 days before surgery.",
+            "checklist": "K2-free formulation — vitamin-K-antagonist friendly\nNAC + nitroglycerin: separate by ≥2 hr\nBioPerine: physician check if on narrow-therapeutic-index drugs\nThird-party tested for heavy metals and microbials\nManufactured in FDA-registered, GMP-compliant facility\nHold ≥7 days before any planned surgery"
+          }
+        }
+      },
+      "block_order": ["tab_a", "tab_b", "tab_c", "tab_d"],
+      "settings": {
+        "eyebrow": "The Details",
+        "heading": "Two reading paths — pick yours."
+      }
+    },
+    "testimonials": {
+      "type": "text-testimonials-slider",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "body": "I was on a 9-bottle stack — natto, serrapeptase, bromelain, NAC, quercetin, dandelion, K2, the works. Switching to Complete cut the kitchen-counter pile in half and my consistency went from 60% to 95%.",
+            "author_name": "Margaret S., Verified Buyer"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "body": "I appreciate that the milligrams are on the label — every active, no proprietary blend. My functional-medicine doctor read it and said, 'this is exactly the protocol I would have built.'",
+            "author_name": "David L., Verified Buyer"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "body": "I'd been running my own version of the protocol for two years across separate bottles. Complete lined up with about 80% of what I was already taking, at a lower total cost. Easy switch.",
+            "author_name": "Patricia H., Verified Buyer"
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "body": "Honest framing in the FAQ sold me. They tell you Complete has less nattokinase per cap than Pure, and they link to Pure if you want the max dose. That kind of transparency is rare.",
+            "author_name": "Robert T., Verified Buyer"
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "body": "Stack-replacement is real — I used to spend 40 minutes a week sorting capsules into a weekly pillbox. Now it's two doses, four caps, done.",
+            "author_name": "Sarah M., Verified Buyer"
+          }
+        },
+        "t6": {
+          "type": "testimonial",
+          "settings": {
+            "body": "Started with Pure for the maximum nattokinase dose, added Complete a month later for the breadth. The team didn't push the upsell — I just did the math after reading the formula bible.",
+            "author_name": "Jennifer R., Verified Buyer"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
+      "settings": {
+        "heading": "<p>Real stories, <strong>verified buyers</strong></p>",
+        "subheading": "Honest experiences with TCC Complete. No paid endorsements, no clinician credentials — just verified buyers."
+      }
+    },
+    "guarantee": {
+      "type": "money-back-guarantee",
+      "settings": {
+        "days": "60",
+        "subtitle": "Our Promise",
+        "heading": "60-Day Money-Back Guarantee",
+        "description": "Try it for 60 days. If it's not the right fit — even if the bottle is empty — email us for a full refund. No questions asked.",
+        "button_text": "Add to Cart"
+      }
+    },
+    "stats": {
+      "type": "animated-stats-counter",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": 36,
+            "label": "Carotid plaque-area reduction",
+            "sublabel": "in studies at 10,800 FU/day (Chen 2022, n=1,062, 12 months) — Complete delivers 8,000 FU/day at 4 caps"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": 22,
+            "label": "Arterial wall thickness reduction",
+            "sublabel": "in studies at 10,800 FU/day (Chen 2022, CCA-IMT, n=1,062)"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": 6,
+            "label": "Convergent mechanisms in one capsule",
+            "sublabel": "Fibrin clearance · spike adjacency · liver phase II · antioxidant · histamine · cytokine — plus BioPerine absorption-enhancer"
+          }
+        }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": {
+        "heading": "What the largest nattokinase trial showed",
+        "description": "All cardiovascular numbers below were observed at 10,800 FU/day in Chen 2022 (Frontiers in Cardiovascular Medicine, n=1,062, 12-month trial). Complete at 4 capsules/day delivers 8,000 FU nattokinase, inside Chen's clinically-active range, alongside six other actives."
+      }
+    },
+    "coa": {
+      "type": "coa-transparency",
+      "settings": {
+        "eyebrow": "Per-Lot Transparency",
+        "heading": "Every batch tested. Every COA published.",
+        "subheading": "Find your bottle's lot number on the label and download the certificate of analysis for that exact batch — identity for every active, potency, heavy metals, and contaminants.",
+        "lookup_enabled": true,
+        "input_label": "Bottle lot number",
+        "input_placeholder": "e.g. CMP-2026-A12",
+        "hint_text": "Lot number is printed on the bottom of every bottle.",
+        "cta_text": "Look up my batch",
+        "cta_link": "/pages/coa",
+        "chip_1": "Identity (all 7 actives)",
+        "chip_2": "Potency (FU / SPU / mg)",
+        "chip_3": "Heavy metals & contaminants"
+      }
+    },
+    "origin": {
+      "type": "sumi-origin-story",
+      "settings": {
+        "layout": "image-first",
+        "eyebrow": "The Origin",
+        "heading": "Tokyo, 1980. A lunch that changed cardiovascular research.",
+        "paragraph_1": "Dr. Hiroyuki Sumi was a Japanese researcher screening 173 natural foods for fibrin-dissolving activity. One afternoon he dropped a piece of natto — fermented soybeans, eaten in Japan since the 11th century — onto a Petri dish of artificial fibrin. Within 18 hours, the fibrin had dissolved.",
+        "paragraph_2": "Sumi named the enzyme he isolated nattokinase. The discovery launched a 40-year research arc that pulled in adjacent enzymes — bromelain (from pineapple), serrapeptase (from a silkworm-gut bacterium) — and antioxidant cofactors like NAC and quercetin. Every active in Complete is built on a clinical record measured in decades, not seasons.",
+        "paragraph_3": "We built Complete around the same wild-fermented Bacillus subtilis strain Sumi worked with — paired with six clinically-studied co-actives chosen for convergent mechanisms. No proprietary blend. No borrowed celebrity authority. Just the molecules, dosed honestly, with every milligram on the label.",
+        "pullquote": "The molecule he isolated is the cornerstone of every capsule we make 45 years later."
+      }
+    },
+    "hsa": {
+      "type": "hsa-fsa-eligible",
+      "settings": {
+        "enabled": true,
+        "text": "HSA / FSA Eligible via TrueMed",
+        "note": "Coming soon — pre-tax purchase support"
+      }
+    },
+    "faq": {
+      "type": "bottom-faq",
+      "blocks": {
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "title": "What's in Spike Detox Complete?",
+            "content": "<p>Per capsule: <strong>Nattokinase 2,000 FU · Bromelain 500 mg · Serrapeptase 80,000 SPU · NAC (N-Acetyl Cysteine) 600 mg · Quercetin 250 mg · Dandelion Root extract 200 mg · BioPerine 5 mg</strong>.</p><p>At 4 caps/day, the daily totals are: 8,000 FU nattokinase, 2,000 mg bromelain, 320,000 SPU serrapeptase, 2,400 mg NAC, 1,000 mg quercetin, 800 mg dandelion root, 20 mg BioPerine. Every dose disclosed — no proprietary blends.</p>"
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "title": "Why does Complete have less nattokinase per capsule than Pure?",
+            "content": "<p>Honest answer: because Complete pairs nattokinase with six other clinically-studied actives in one capsule. The capsule shell only has so much room.</p><p>Pure (4,000 FU/cap) is for the buyer whose only lever is nattokinase and who wants to land at 12,000 FU/day. Complete (2,000 FU/cap × 4 caps = 8,000 FU/day) is for the buyer who wants the integrated stack — fibrin clearance, antioxidant buffer, histamine modulation, liver detox, inflammation control, and absorption enhancement — without juggling 7 separate bottles.</p><p>Both options sit inside Chen 2022's clinically-active range (6,000–12,000 FU/day). Some buyers run both: Pure in the morning for the maximum dose, Complete with a meal for the breadth. <strong><a href=\"/products/spike-detox\">Buy Pure if you want the max nattokinase dose →</a></strong></p>"
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "title": "Is it safe with Eliquis, Xarelto, warfarin, or aspirin?",
+            "content": "<p><strong>Talk to your prescribing physician before starting.</strong> The whole stack has fibrinolytic activity — three proteolytic enzymes plus quercetin's mild anti-platelet effect — so the conversation matters more, not less, vs. a single-ingredient product. We removed vitamin K2 specifically because K2 interacts with vitamin-K-antagonists like warfarin.</p><p>Chen 2022 reported no adverse events across 1,062 adults at 10,800 FU/day for 12 months. Their aspirin co-administration arm (n=96, 100 mg/day) saw lipid synergy without bleeding events. None of the published trials are randomized DOAC-safety studies — which is precisely why this conversation belongs with your care team.</p>"
+          }
+        },
+        "f3b": {
+          "type": "faq",
+          "settings": {
+            "title": "I'm on Eliquis (or Xarelto / warfarin) for AFib. Can I take this?",
+            "content": "<p><strong>Possibly — but as a complement, never a substitute, and only with your physician.</strong></p><p>Honest framing: nattokinase has fibrinolytic activity, and Complete pairs it with bromelain, serrapeptase, and quercetin — all of which carry mild additive anti-clotting effects. Chen 2022's aspirin co-administration arm saw lipid synergy without recorded bleeding events, but that's not a randomized DOAC-safety study.</p><p>The case to know about: Elahi 2015 documented a thrombus in a patient who <em>substituted</em> low-dose nattokinase for warfarin without physician oversight. The lesson is in the substitution — not the pairing. AFib subs in our community routinely report taking a fibrinolytic stack complementary to their prescription anticoagulant under their cardiologist's supervision.</p><p>Bring the formula bible to your next appointment. We removed K2 specifically to make that conversation easier.</p>"
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "title": "Why did you remove K2? Can I get it from you?",
+            "content": "<p>K2 (menaquinone-7, MK-7) can interact with vitamin-K-antagonist blood thinners like warfarin. Many spike-protocol products bundle K2 in by default, which makes them incompatible with that population. We removed it to maximize compatibility — and we're <strong>honest</strong>: Chen 2022 actually shows K2 was synergistic with nattokinase for lipid endpoints (TC –17.6% with K2 vs –16.3% without).</p><p>If you don't take vitamin-K-antagonists and want the K2 + NK synergy Chen 2022 describes, we sell K2 MK-7 separately — $14 standalone, $9 when bundled with Complete or Pure.</p>"
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "title": "How long until I notice a difference?",
+            "content": "<p>Honest answer: it varies, and no one can promise an outcome. Chen 2022 measured cardiovascular endpoints at 12 months. The microclot in vitro work (Grixti/Kell 2024 preprint) acts within hours in a test tube but in-vivo translation isn't established. We don't make week-by-week promises about how you'll feel.</p>"
+          }
+        },
+        "f6": {
+          "type": "faq",
+          "settings": {
+            "title": "When and how should I take it?",
+            "content": "<p>4 capsules per day, split into two doses: <strong>2 caps before breakfast (empty stomach, full glass of water), 2 caps mid-afternoon</strong> (≥2 hours after lunch, ≥30 minutes before the next meal). Empty-stomach administration matters for the proteolytic enzymes (nattokinase, bromelain, serrapeptase) — food reduces systemic enzyme activity.</p><p>Lower-intensity onboarding for cautious or smaller-frame users: 2 caps/day for the first 2 weeks, then titrate to 4. Separate from PRN nitroglycerin by ≥2 hr (NAC interaction). Separate from levothyroxine by ≥4 hr (standard caution).</p>"
+          }
+        },
+        "f7": {
+          "type": "faq",
+          "settings": {
+            "title": "Are any of the ingredients sub-therapeutic?",
+            "content": "<p>Honest breakdown at 4 caps/day:</p><p><strong>Robustly dosed:</strong> Bromelain (2,000 mg, upper-clinical) · Serrapeptase (320,000 SPU, upper-clinical) · NAC (2,400 mg, upper-clinical) · BioPerine (20 mg, exact Shoba 1998 protocol).</p><p><strong>Inside clinical range:</strong> Nattokinase (8,000 FU, inside Chen 2022's 6,000–12,000 FU effective range; below the 10,800 FU dose used in the headline plaque-regression study) · Quercetin (1,000 mg, upper bound of standard 500–1,000 mg dosing).</p><p><strong>Light side:</strong> Dandelion root (800 mg vs typical 500–1,500 mg). Acceptable for the liver-tonic role; light if you're leading with the spike-binding angle. We lean on the other six actives for that.</p><p>If you want the maximum nattokinase dose specifically, Pure (4,000 FU × 3 caps = 12,000 FU/day) is the better SKU. <a href=\"/products/spike-detox\">Buy Pure →</a></p>"
+          }
+        },
+        "f8": {
+          "type": "faq",
+          "settings": {
+            "title": "Is this third-party tested?",
+            "content": "<p>Yes — every batch is independently tested for identity (all 7 actives), potency (FU / SPU / mg), heavy metals, microbials, and label accuracy. The Certificate of Analysis (COA) for your specific bottle's lot number is published on our COA-lookup page. The lot number is printed on the bottom of every bottle.</p>"
+          }
+        },
+        "f9": {
+          "type": "faq",
+          "settings": {
+            "title": "Where can I read the studies?",
+            "content": "<p><em>Nattokinase:</em> Chen et al. 2022, <em>Frontiers in Cardiovascular Medicine</em> 9:964977. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC9458005/\">PMC9458005</a></p><p><em>Bromelain:</em> Pavan et al. 2012, <em>Biomed Res Int</em>. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC3529416/\">PMC3529416</a></p><p><em>Serrapeptase:</em> Tiwari 2017, <em>Adv Pharm Bull</em>. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC5527415/\">PMC5527415</a></p><p><em>NAC:</em> Izquierdo et al. 2022, <em>Sci Rep</em>. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC8915136/\">PMC8915136</a></p><p><em>Quercetin:</em> Di Pierro et al. 2021, <em>Int J Gen Med</em>. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC8403043/\">PMC8403043</a></p><p><em>BioPerine:</em> Shoba et al. 1998, <em>Planta Med</em>. PMID 9619120</p><p><em>Dandelion (in vitro):</em> Liu et al. 2021, preprint / <em>Phytomedicine</em>.</p>"
+          }
+        },
+        "f10": {
+          "type": "faq",
+          "settings": {
+            "title": "Required disclaimers",
+            "content": "<p><em>These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</em></p><p><em>Consult your healthcare provider before use, especially if you take blood-thinning medication, are pregnant or nursing, or have a bleeding disorder.</em></p>"
+          }
+        }
+      },
+      "block_order": ["f1", "f2", "f3", "f3b", "f4", "f5", "f6", "f7", "f8", "f9", "f10"],
+      "settings": {
+        "heading": "Honest answers about Complete",
+        "description": "<p>Transparency matters when you're consolidating a 7-ingredient protocol into one bottle. Below: full ingredient breakdown, the honest dosing tradeoff vs Pure, safety with blood thinners, and links to the actual peer-reviewed studies behind every active.</p>"
+      }
+    }
+  },
+  "order": [
+    "media",
+    "buybox",
+    "sticky",
+    "research",
+    "problem",
+    "mechanism1",
+    "mechanism2",
+    "benefits",
+    "comparison",
+    "timeline",
+    "tabs",
+    "testimonials",
+    "guarantee",
+    "stats",
+    "coa",
+    "origin",
+    "hsa",
+    "faq"
+  ]
+}

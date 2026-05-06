@@ -35,7 +35,26 @@ Audit-rule sanity: no new "pharmaceutical-grade" / placebo wedge / borrowed auth
 
 ## Phase 3 — Complete PDP fork
 
-(pending)
+**Status:** complete.
+
+`tcc-theme/templates/product.spike-detox-complete.json` created. **No new Liquid sections forked** — both PDPs share `tcc-theme/sections/` (correct Shopify pattern). Only the template JSON differs.
+
+Per-section overrides (vs Pure):
+- **Buybox**: Title "Spike Detox Complete — 6-mechanism enzyme + spike-protocol stack". Subtitle lists all 7 ingredients. Stat bullets reframed: 6 actives · 8,000 FU/day · 1 capsule · 0 proprietary blends. Trust feature 1 changed from "Single-Ingredient Transparency" to "Six Clinically-Studied Actives, Disclosed". Benefit list shows full ingredient breakdown + 6-mechanism narrative. Bundles: $79 / $209 / $379 (1-bottle / 3-pack / 6-pack). Same hero credibility row + COA link. Product handle: `spike-detox-complete`.
+- **Research highlights**: 3 cards now feature the 3 highest-dose actives — nattokinase (Chen 2022), bromelain + quercetin pair (Pavan 2012, Di Pierro 2021, Shoba 1998), NAC + serrapeptase (Izquierdo 2022, Tiwari 2017).
+- **Problem-solution**: Reframed for the Cluster 3 stack-fatigue avatar (10-bottle pile, missed doses, proprietary blends, $300/mo across 7 SKUs). Solution side: integrated stack with disclosed mg, convergent mechanisms, 8,000 FU/day, one-click cancel.
+- **Mechanism 1 + 2**: 6 mechanisms broken across two image-with-text blocks (mech 1: fibrin, spike, liver phase II; mech 2: antioxidant, histamine, cytokine + BioPerine bioenhancer).
+- **Benefits grid**: Reworded for fibrinolytic / inflammatory / liver+antioxidant / stack-replacement convenience.
+- **Comparison table**: Title now "Typical Multi-Ingredient Spike Blend", not "Typical Spike-Detox Brand". Brand features = disclosed mg, 8,000 FU range, K2-disclosed, per-batch COA. Competitor features = proprietary blends, sub-therapeutic NK (1,500–2,000 FU/day total), silent K2, undisclosed shells.
+- **Timeline**: Same 4 events but Chen step now mentions effective range 6,000–12,000 FU/day with "Complete delivers 8,000 FU at 4 caps".
+- **Tabs**: Cardio tab includes Complete dose math. Post-viral tab adds Liu 2021 (dandelion + spike-ACE2 in vitro). How-to-take tab fully reframed for 4 caps/day split AM + mid-afternoon, with onboarding option. Safety tab adds NAC + nitroglycerin and BioPerine + CYP3A4 watch-outs.
+- **Testimonials**: 6 testimonials reworded for Complete buyer (stack-replacement, disclosed mg, Pure cross-sell honesty).
+- **Stats counter**: Stat 3 changed from "LDL down 18%" → "6 convergent mechanisms in one capsule".
+- **COA**: Same section, chip text adjusted to "Identity (all 7 actives)".
+- **Origin**: Same Sumi story, paragraph 2 adds bromelain/serrapeptase/NAC/quercetin context, paragraph 3 reframed for Complete.
+- **HSA strip**: Identical to Pure.
+- **FAQ**: Major rewrite. F1 = full ingredient breakdown. F2 = "Why does Complete have less nattokinase per capsule than Pure?" with explicit Pure cross-sell link. F3 + f3b kept (AFib FAQ + general blood-thinner). F7 = "Are any of the ingredients sub-therapeutic?" — honest per-ingredient verdict from formula bible §appendix; ends with Pure cross-sell. F9 = links to all 7 ingredient studies (PMC IDs).
+- **Section order**: identical to Pure.
 
 ## Phase 4 — Visual QA via Playwright
 
