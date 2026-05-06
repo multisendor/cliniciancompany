@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "media": {
@@ -143,12 +152,12 @@
         "custom_subtitle": "Nattokinase Enzyme Capsules — supports natural fibrinolytic activity. 4,000 FU per capsule, dosed to your protocol: 1 capsule = 4,000 FU; 3 capsules = ~12,000 FU, within the 6,000–12,000 FU clinically active range identified in Chen 2022 (n=1,062, 12-month trial).",
         "custom_description_2": "Wild-fermented Bacillus subtilis. K2 removed for compatibility with vitamin-K-antagonist blood thinners (we sell K2 separately for those who want the synergy). Single ingredient, transparent label, third-party tested every batch.",
         "show_ships_by": true,
-        "show_price_display": true,
         "show_credibility_row": true,
         "cred_chip_1": "60-day money-back",
         "cred_chip_2": "Third-party tested",
         "cred_chip_3": "K2-free for blood-thinner users",
         "cred_chip_4": "Made in USA · GMP-certified",
+        "show_price_display": true,
         "badge_mode": "dynamic",
         "bogo_label_1": "30 Day",
         "bogo_label_2": "90 Day",
@@ -188,7 +197,11 @@
           }
         }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
         "heading": "<p>Backed by <strong>peer-reviewed clinical research</strong></p>",
         "description": "All headline outcomes below come from Chen 2022 — the largest nattokinase clinical study to date (n=1,062, 12 months) — at 10,800 FU/day. Stack our 4,000 FU capsule to your protocol.",
@@ -255,7 +268,16 @@
           }
         }
       },
-      "block_order": ["p1", "p2", "p3", "p4", "s1", "s2", "s3", "s4"],
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {
         "heading": "When every test comes back normal but you still don't feel right.",
         "problem_heading": "What you've been settling for",
@@ -280,9 +302,11 @@
           }
         }
       },
-      "block_order": ["h", "t"],
+      "block_order": [
+        "h",
+        "t"
+      ],
       "settings": {
-        "external_image_url": "",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -313,9 +337,11 @@
           }
         }
       },
-      "block_order": ["h", "t"],
+      "block_order": [
+        "h",
+        "t"
+      ],
       "settings": {
-        "external_image_url": "",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -360,7 +386,12 @@
           }
         }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
       "settings": {
         "heading": "What it does, what the research shows",
         "description": "Structure-function support for the body's natural fibrinolytic system — backed by peer-reviewed human research and a 40-year clinical record."
@@ -539,7 +570,12 @@
           }
         }
       },
-      "block_order": ["t1", "t2", "t3", "t4"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
       "settings": {
         "eyebrow": "Research Timeline",
         "heading": "What the research actually shows",
@@ -586,7 +622,12 @@
           }
         }
       },
-      "block_order": ["tab_a", "tab_b", "tab_c", "tab_d"],
+      "block_order": [
+        "tab_a",
+        "tab_b",
+        "tab_c",
+        "tab_d"
+      ],
       "settings": {
         "eyebrow": "The Details",
         "heading": "Two reading paths — pick yours."
@@ -638,7 +679,14 @@
           }
         }
       },
-      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
       "settings": {
         "heading": "<p>Real stories, <strong>verified buyers</strong></p>",
         "subheading": "Honest experiences with TCC nattokinase. No paid endorsements, no clinician credentials — just verified buyers."
@@ -682,7 +730,11 @@
           }
         }
       },
-      "block_order": ["s1", "s2", "s3"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
       "settings": {
         "heading": "What the largest nattokinase trial showed",
         "description": "All numbers below were observed at 10,800 FU/day in Chen 2022 (Frontiers in Cardiovascular Medicine, n=1,062, 12-month trial). Our 4,000 FU capsule lets you dose toward that clinically active range."
@@ -806,7 +858,19 @@
           }
         }
       },
-      "block_order": ["f1", "f2", "f3", "f3b", "f4", "f5", "f6", "f7", "f8", "f9", "f10"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f3b",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10"
+      ],
       "settings": {
         "heading": "Honest answers about nattokinase",
         "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below: dose justification, safety with blood-thinners, K2 framing, what happens when you stop, and links to the actual peer-reviewed studies.</p>"

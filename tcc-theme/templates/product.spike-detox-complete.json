@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "media": {
@@ -143,12 +152,12 @@
         "custom_subtitle": "Six clinically-studied ingredients in one capsule. For people who want a stack-replacement, not a stack-builder. Nattokinase 2,000 FU + bromelain 500 mg + serrapeptase 80,000 SPU + NAC 600 mg + quercetin 250 mg + dandelion root 200 mg + BioPerine 5 mg.",
         "custom_description_2": "Designed for the buyer who is already running a 10-bottle protocol and wants to consolidate. At 4 capsules/day you land at 8,000 FU nattokinase — inside Chen 2022's clinically-active range — plus six convergent mechanisms (fibrin clearance, antioxidant buffer, histamine modulation, liver detox phase II, anti-inflammatory cytokine control, and absorption-enhancer).",
         "show_ships_by": true,
-        "show_price_display": true,
         "show_credibility_row": true,
         "cred_chip_1": "60-day money-back",
         "cred_chip_2": "Third-party tested",
         "cred_chip_3": "K2-free for blood-thinner users",
         "cred_chip_4": "Made in USA · GMP-certified",
+        "show_price_display": true,
         "badge_mode": "dynamic",
         "bogo_label_1": "30 Day",
         "bogo_label_2": "3-Pack",
@@ -188,7 +197,11 @@
           }
         }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
         "heading": "<p>Six ingredients, <strong>each individually clinically-studied</strong></p>",
         "description": "Complete is not a shotgun blend. Every active is dosed to or near its clinical reference range, and the COA shows every milligram. Below: the studies behind the three highest-dose actives.",
@@ -255,7 +268,16 @@
           }
         }
       },
-      "block_order": ["p1", "p2", "p3", "p4", "s1", "s2", "s3", "s4"],
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {
         "heading": "Convenience, without the proprietary-blend bait-and-switch.",
         "problem_heading": "What stack-fatigue looks like",
@@ -280,9 +302,11 @@
           }
         }
       },
-      "block_order": ["h", "t"],
+      "block_order": [
+        "h",
+        "t"
+      ],
       "settings": {
-        "external_image_url": "",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -313,9 +337,11 @@
           }
         }
       },
-      "block_order": ["h", "t"],
+      "block_order": [
+        "h",
+        "t"
+      ],
       "settings": {
-        "external_image_url": "",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -360,7 +386,12 @@
           }
         }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
       "settings": {
         "heading": "What it does, what the research shows",
         "description": "Structure-function support for the body's fibrinolytic, antioxidant, and inflammation-resolution systems — backed by peer-reviewed human research on each individual ingredient."
@@ -539,7 +570,12 @@
           }
         }
       },
-      "block_order": ["t1", "t2", "t3", "t4"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
       "settings": {
         "eyebrow": "Research Timeline",
         "heading": "What the research actually shows",
@@ -586,7 +622,12 @@
           }
         }
       },
-      "block_order": ["tab_a", "tab_b", "tab_c", "tab_d"],
+      "block_order": [
+        "tab_a",
+        "tab_b",
+        "tab_c",
+        "tab_d"
+      ],
       "settings": {
         "eyebrow": "The Details",
         "heading": "Two reading paths — pick yours."
@@ -638,7 +679,14 @@
           }
         }
       },
-      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
       "settings": {
         "heading": "<p>Real stories, <strong>verified buyers</strong></p>",
         "subheading": "Honest experiences with TCC Complete. No paid endorsements, no clinician credentials — just verified buyers."
@@ -682,7 +730,11 @@
           }
         }
       },
-      "block_order": ["s1", "s2", "s3"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
       "settings": {
         "heading": "What the largest nattokinase trial showed",
         "description": "All cardiovascular numbers below were observed at 10,800 FU/day in Chen 2022 (Frontiers in Cardiovascular Medicine, n=1,062, 12-month trial). Complete at 4 capsules/day delivers 8,000 FU nattokinase, inside Chen's clinically-active range, alongside six other actives."
@@ -806,7 +858,19 @@
           }
         }
       },
-      "block_order": ["f1", "f2", "f3", "f3b", "f4", "f5", "f6", "f7", "f8", "f9", "f10"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f3b",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10"
+      ],
       "settings": {
         "heading": "Honest answers about Complete",
         "description": "<p>Transparency matters when you're consolidating a 7-ingredient protocol into one bottle. Below: full ingredient breakdown, the honest dosing tradeoff vs Pure, safety with blood thinners, and links to the actual peer-reviewed studies behind every active.</p>"
