@@ -100,3 +100,29 @@ Shopify CLI (3.91.0) was available. Started theme dev server at http://127.0.0.1
 - Complete: `.playwright-mcp/pdp-complete-2026-05-05/01..06-complete-*.png`
 
 **No deferred QA items**: both PDPs visually pass.
+
+---
+
+## Active blocker (2026-05-06) — Complete PDP renders only partial content on live
+
+**Symptom:** `https://gmmehe-01.myshopify.com/products/spike-detox-complete` renders only 10 of the 18 template sections. Complete-specific copy (Bromelain, Serrapeptase, "6-mechanism", "stack-replacement", "Six clinically-studied", "8,000 FU") does NOT appear. Only the title "Spike Detox Complete" renders correctly. Pure has the same partial-render problem on the preview theme but renders fine on live.
+
+**Sections rendering on live Complete:** media, buybox, sticky, research, benefits, comparison, testimonials, faq, guarantee, tabs.
+**Sections MISSING on live Complete:** problem, mechanism1, mechanism2, timeline, stats, coa, origin, hsa.
+
+**What's been verified:**
+- Local file `tcc-theme/templates/product.spike-detox-complete.json` is correct (43,408 bytes, 8× Bromelain, 18 sections in `order` array). This is the v1 fork from Phase 3 + sync(theme) cosmetic admin edits.
+- Product `spike-detox-complete` has `template_suffix = spike-detox-complete` set correctly (verified via `/products/spike-detox-complete.json`).
+- Pulled file from live Dawn was 17,492 bytes (the old stub Shopify admin had originally) — much smaller than our 43,408-byte local file.
+- An earlier `shopify theme push --theme=161776304364 --only=templates/...` failed silently because Shopify CLI requires `--allow-live` for live-theme pushes. After adding `--allow-live`, the push then errored with: *"Section type 'hsa-fsa-eligible' does not refer to an existing section file"* — confirming the dependency: live Dawn lacked our 3 new section files.
+- Pushed `sections/` + `templates/` together with `--allow-live`. Push reported success with no errors.
+- Live render still shows only 10 sections.
+
+**Hypotheses to test next session (ranked):**
+1. **JSONC comment header on the templates breaks storefront parsing** — both `product.spike-detox.json` and `product.spike-detox-complete.json` start with `/* IMPORTANT: file may be auto-generated */` since the sync(theme) commit. Shopify admin theme editor adds these. Storefront *might* parse only up to the first 10 sections it finds. Test: strip the comment header, push, recheck. **Try this first.**
+2. **CDN edge cache** — Shopify edge caches storefront HTML for 10–60s typically. Cache-busting with `?_=$timestamp` query param didn't help, but Shopify's section-rendering may have its own cache layer. Test: wait 5+ minutes, retry.
+3. **Shopify theme upload silently truncated the file or rejected sections** — the post-push pull returned an empty templates/ folder once (probably a CLI timing issue, but worth re-pulling fresh and diffing byte-for-byte).
+4. **One of the new section files (`coa-transparency`, `sumi-origin-story`, `hsa-fsa-eligible`) has a Liquid syntax error** that causes downstream sections to not render. Test: open each new section file, look for unclosed `{%- endif -%}` etc, push individually and recheck.
+
+**To unstick:** start with hypothesis 1 (strip the `/* */` header from both templates locally, commit, push to live with `--allow-live`, recheck render). 80% confidence that fixes it.
+
