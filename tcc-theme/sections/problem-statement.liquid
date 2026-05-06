@@ -1,0 +1,303 @@
+<div
+  class="problem-statement tcc-section-padding problem-statement--{{ section.settings.layout_image_side }}"
+  data-section-type="problem-statement"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="problem-statement__grid">
+
+      <div class="problem-statement__content">
+        {%- if section.settings.eyebrow_text != blank -%}
+          <p class="problem-statement__eyebrow tcc-eyebrow">{{ section.settings.eyebrow_text }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="problem-statement__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.paragraph_1 != blank -%}
+          <p class="problem-statement__paragraph">{{ section.settings.paragraph_1 }}</p>
+        {%- endif -%}
+        {%- if section.settings.paragraph_2 != blank -%}
+          <p class="problem-statement__paragraph">{{ section.settings.paragraph_2 }}</p>
+        {%- endif -%}
+        {%- if section.settings.paragraph_3 != blank -%}
+          <p class="problem-statement__paragraph">{{ section.settings.paragraph_3 }}</p>
+        {%- endif -%}
+      </div>
+
+      <figure class="problem-statement__visual" aria-hidden="true">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag:
+            loading: 'lazy',
+            sizes: '(min-width: 750px) 50vw, 100vw',
+            widths: '480, 760, 1200',
+            class: 'problem-statement__image'
+          }}
+        {%- else -%}
+          <div class="problem-statement__visual-frame">
+            <div class="problem-statement__visual-corner problem-statement__visual-corner--tl"></div>
+            <div class="problem-statement__visual-corner problem-statement__visual-corner--tr"></div>
+            <div class="problem-statement__visual-corner problem-statement__visual-corner--bl"></div>
+            <div class="problem-statement__visual-corner problem-statement__visual-corner--br"></div>
+            <div class="problem-statement__visual-text">
+              <span class="problem-statement__visual-eyebrow">Placeholder</span>
+              <span class="problem-statement__visual-headline">Visual goes here</span>
+              <span class="problem-statement__visual-rule"></span>
+              <span class="problem-statement__visual-detail">Replace with image or copy</span>
+            </div>
+            <div class="problem-statement__visual-motif problem-statement__visual-motif--a"></div>
+            <div class="problem-statement__visual-motif problem-statement__visual-motif--b"></div>
+          </div>
+        {%- endif -%}
+      </figure>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .problem-statement {
+    background: var(--tcc-bg);
+  }
+
+  .problem-statement__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--tcc-s-8, 64px);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .problem-statement--image_left .problem-statement__visual {
+    order: 1;
+  }
+  .problem-statement--image_left .problem-statement__content {
+    order: 2;
+  }
+  .problem-statement--image_right .problem-statement__visual {
+    order: 2;
+  }
+  .problem-statement--image_right .problem-statement__content {
+    order: 1;
+  }
+
+  .problem-statement__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .problem-statement__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: 500;
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-3, 24px);
+    line-height: 1.2;
+  }
+
+  .problem-statement__paragraph {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.65;
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .problem-statement__paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Visual block */
+  .problem-statement__visual {
+    margin: 0;
+    position: relative;
+  }
+
+  .problem-statement__image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--tcc-radius, 6px);
+    display: block;
+  }
+
+  .problem-statement__visual-frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--tcc-radius, 6px);
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 55%),
+      linear-gradient(165deg, #1c3553 0%, #0a1628 55%, #050d1a 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .problem-statement__visual-corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .problem-statement__visual-corner--tl { top: 18px; left: 18px; border-right: none; border-bottom: none; }
+  .problem-statement__visual-corner--tr { top: 18px; right: 18px; border-left: none; border-bottom: none; }
+  .problem-statement__visual-corner--bl { bottom: 18px; left: 18px; border-right: none; border-top: none; }
+  .problem-statement__visual-corner--br { bottom: 18px; right: 18px; border-left: none; border-top: none; }
+
+  .problem-statement__visual-text {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 var(--tcc-s-4, 32px);
+  }
+
+  .problem-statement__visual-eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+  }
+
+  .problem-statement__visual-headline {
+    font-family: var(--tcc-font-sans);
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 500;
+    line-height: 1.15;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .problem-statement__visual-rule {
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    margin-bottom: 16px;
+  }
+
+  .problem-statement__visual-detail {
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    max-width: 280px;
+  }
+
+  .problem-statement__visual-motif {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .problem-statement__visual-motif--a {
+    width: 240px;
+    height: 240px;
+    top: -60px;
+    right: -60px;
+  }
+
+  .problem-statement__visual-motif--b {
+    width: 160px;
+    height: 160px;
+    bottom: -40px;
+    left: -40px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .problem-statement__grid {
+      grid-template-columns: 1fr;
+      gap: var(--tcc-s-4, 32px);
+    }
+
+    .problem-statement--image_left .problem-statement__visual,
+    .problem-statement--image_right .problem-statement__visual {
+      order: 1;
+    }
+    .problem-statement--image_left .problem-statement__content,
+    .problem-statement--image_right .problem-statement__content {
+      order: 2;
+    }
+
+    .problem-statement__heading {
+      font-size: 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Problem Statement",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "The problem"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Headline goes here"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_1",
+      "label": "Paragraph 1",
+      "default": "Body paragraph 1 placeholder. Replace with the opening framing for the problem this product addresses."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_2",
+      "label": "Paragraph 2",
+      "default": "Body paragraph 2 placeholder. Sharpen the pain or expand the context."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_3",
+      "label": "Paragraph 3",
+      "default": "Body paragraph 3 placeholder. Optional — leave blank to hide."
+    },
+    {
+      "type": "select",
+      "id": "layout_image_side",
+      "label": "Image side",
+      "options": [
+        { "value": "image_left", "label": "Image on left" },
+        { "value": "image_right", "label": "Image on right" }
+      ],
+      "default": "image_right"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (optional — falls back to navy block)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Problem Statement"
+    }
+  ]
+}
+{% endschema %}
