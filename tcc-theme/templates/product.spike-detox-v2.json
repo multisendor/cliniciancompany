@@ -669,6 +669,64 @@
         "heading": "Honest answers about nattokinase",
         "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below: dose justification, safety with blood-thinners, K2 framing, what happens when you stop, and links to the actual peer-reviewed studies.</p>"
       }
+    },
+    "timeline": {
+      "type": "expectation-timeline",
+      "blocks": {
+        "tl1": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Week 1",
+            "title": "Establish your dose",
+            "description": "Most users start at 1 capsule (4,000 FU) on an empty stomach, 30 min before food. The body adjusts to fibrinolytic activity over 5&ndash;7 days."
+          }
+        },
+        "tl2": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Month 1",
+            "title": "Routine and consistency",
+            "description": "By week 3&ndash;4 most users have a stable cadence. Some increase to 2&ndash;3 capsules/day to land inside the 6,000&ndash;12,000 FU/day range identified in Chen 2022."
+          }
+        },
+        "tl3": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Month 3",
+            "title": "Lipid panel cadence",
+            "description": "Cholesterol changes in Chen 2022 were measured starting around the 3-month mark. Most physicians order a routine lipid panel at this point if you flagged the protocol with them at intake."
+          }
+        },
+        "tl4": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Month 6",
+            "title": "Carotid imaging window",
+            "description": "Carotid plaque area and intima-media thickness reductions in Chen 2022 were observed between months 6 and 12. If your clinician monitors carotid imaging, this is the conversation window."
+          }
+        },
+        "tl5": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Month 12",
+            "title": "Full Chen 2022 readout",
+            "description": "12-month outcomes in the Chen 2022 cohort (n=1,062, 10,800 FU/day): carotid plaque area &minus;36%, IMT &minus;22%, LDL &minus;18%, HDL +16%. These are observations from a single peer-reviewed trial, not guarantees of your individual outcome."
+          }
+        }
+      },
+      "block_order": [
+        "tl1",
+        "tl2",
+        "tl3",
+        "tl4",
+        "tl5"
+      ],
+      "settings": {
+        "eyebrow": "What to expect",
+        "heading": "Cardiovascular work happens on a long timeline.",
+        "intro": "Nattokinase is not a fast-acting drug. Below is what peer-reviewed research has observed at each milestone &mdash; framed as observations, not guarantees.",
+        "footnote": "Individual results vary. These are observations from peer-reviewed research, not promises. Talk to your physician before starting any nattokinase protocol."
+      }
     }
   },
   "order": [
@@ -681,6 +739,7 @@
     "outcome",
     "research",
     "comparison",
+    "timeline",
     "social",
     "guarantee",
     "hsa",

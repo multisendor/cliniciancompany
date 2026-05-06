@@ -1,0 +1,298 @@
+<div
+  class="expectation-timeline tcc-section-padding"
+  data-section-type="expectation-timeline"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="expectation-timeline__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="expectation-timeline__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="expectation-timeline__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.intro != blank -%}
+        <p class="expectation-timeline__intro">{{ section.settings.intro }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="expectation-timeline__grid">
+        {%- for block in section.blocks -%}
+          <article class="expectation-timeline__milestone" {{ block.shopify_attributes }}>
+            {%- if block.settings.time_label != blank -%}
+              <div class="expectation-timeline__time">{{ block.settings.time_label }}</div>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h3 class="expectation-timeline__milestone-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <p class="expectation-timeline__milestone-description">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="expectation-timeline__footnote">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .expectation-timeline {
+    background: var(--tcc-bg);
+  }
+
+  .expectation-timeline__header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto var(--tcc-s-6, 48px);
+  }
+
+  .expectation-timeline__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .expectation-timeline__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: 500;
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2, 16px);
+    line-height: 1.2;
+  }
+
+  .expectation-timeline__intro {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .expectation-timeline__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .expectation-timeline__grid::before {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: var(--tcc-line);
+  }
+
+  .expectation-timeline__milestone {
+    position: relative;
+    padding: 0 0 var(--tcc-s-5, 40px);
+  }
+
+  .expectation-timeline__milestone:last-child {
+    padding-bottom: 0;
+  }
+
+  .expectation-timeline__milestone::before {
+    content: "";
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--tcc-bg);
+    border: 2px solid var(--tcc-ink);
+    box-sizing: border-box;
+  }
+
+  .expectation-timeline__milestone::after {
+    content: "";
+    position: absolute;
+    left: -22px;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tcc-ink);
+  }
+
+  .expectation-timeline__time {
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--tcc-ink-soft);
+    text-transform: uppercase;
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .expectation-timeline__milestone-title {
+    font-family: var(--tcc-font-sans);
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2, 16px);
+    line-height: 1.2;
+  }
+
+  .expectation-timeline__milestone-description {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .expectation-timeline__footnote {
+    text-align: center;
+    margin: var(--tcc-s-5, 40px) auto 0;
+    max-width: 720px;
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 749px) {
+    .expectation-timeline__heading {
+      font-size: 24px;
+    }
+
+    .expectation-timeline__milestone-title {
+      font-size: 16px;
+    }
+
+    .expectation-timeline__milestone {
+      padding-bottom: var(--tcc-s-4, 32px);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Expectation Timeline",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "What to expect"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Cardiovascular work happens on a long timeline."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro paragraph",
+      "default": "Nattokinase is not a fast-acting drug. Below is what peer-reviewed research has observed at each milestone &mdash; framed as observations, not guarantees."
+    },
+    {
+      "type": "textarea",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "Individual results vary. These are observations from peer-reviewed research, not promises. Talk to your physician before starting any nattokinase protocol."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "milestone",
+      "name": "Milestone",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "time_label",
+          "label": "Time label",
+          "default": "Week 1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Milestone title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Milestone description placeholder."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Expectation Timeline",
+      "blocks": [
+        {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Week 1",
+            "title": "Establish your dose",
+            "description": "Most users start at 1 capsule (4,000 FU) on an empty stomach, 30 min before food. The body adjusts to fibrinolytic activity over 5&ndash;7 days."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Month 1",
+            "title": "Routine and consistency",
+            "description": "By week 3&ndash;4 most users have a stable cadence. Some increase to 2&ndash;3 capsules/day to land inside the 6,000&ndash;12,000 FU/day range identified in Chen 2022."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Month 3",
+            "title": "Lipid panel cadence",
+            "description": "Cholesterol changes in Chen 2022 were measured starting around the 3-month mark. Most physicians order a routine lipid panel at this point if you flagged the protocol with them at intake."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Month 6",
+            "title": "Carotid imaging window",
+            "description": "Carotid plaque area and intima-media thickness reductions in Chen 2022 were observed between months 6 and 12. If your clinician monitors carotid imaging, this is the conversation window."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "time_label": "Month 12",
+            "title": "Full Chen 2022 readout",
+            "description": "12-month outcomes in the Chen 2022 cohort (n=1,062, 10,800 FU/day): carotid plaque area &minus;36%, IMT &minus;22%, LDL &minus;18%, HDL +16%. These are observations from a single peer-reviewed trial, not guarantees of your individual outcome."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
