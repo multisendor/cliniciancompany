@@ -198,7 +198,14 @@
           }
         }
       },
-      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"],
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6"
+      ],
       "settings": {
         "eyebrow": "What's behind every batch",
         "heading": "Built for the people who read the label."
@@ -251,7 +258,12 @@
           }
         }
       },
-      "block_order": ["p1", "p2", "p3", "p4"],
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
       "settings": {
         "eyebrow": "How it works",
         "heading": "One enzyme. Four mechanisms studied.",
@@ -292,7 +304,12 @@
           }
         }
       },
-      "block_order": ["s1", "s2", "s3", "s4"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {
         "eyebrow": "Why customers stay",
         "heading": "Practitioner-grade nattokinase, transparently dosed",
@@ -327,7 +344,11 @@
           }
         }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
         "heading": "<p>Backed by <strong>peer-reviewed clinical research</strong></p>",
         "description": "All headline outcomes below come from Chen 2022 — the largest nattokinase clinical study to date (n=1,062, 12 months) — at 10,800 FU/day. Stack our 4,000 FU capsule to your protocol.",
@@ -517,7 +538,14 @@
           }
         }
       },
-      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
       "settings": {
         "heading": "<p>Real stories, <strong>verified buyers</strong></p>",
         "subheading": "Honest experiences with TCC nattokinase. No paid endorsements, no clinician credentials — just verified buyers."
