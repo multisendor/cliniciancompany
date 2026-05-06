@@ -1,0 +1,162 @@
+{%- if section.settings.enabled -%}
+<div
+  data-section-type="hsa-fsa-eligible"
+  data-section-id="{{ section.id }}"
+  class="hsa-fsa-strip"
+>
+  <div class="tcc-page-width">
+    <div class="hsa-fsa-strip__inner">
+      <span class="hsa-fsa-strip__icon" aria-hidden="true">
+        <span class="material-symbols-outlined">medical_services</span>
+      </span>
+      <span class="hsa-fsa-strip__text">
+        {{ section.settings.text | default: "HSA / FSA Eligible via TrueMed" }}
+      </span>
+      {%- if section.settings.note != blank -%}
+        <span class="hsa-fsa-strip__note">{{ section.settings.note }}</span>
+      {%- endif -%}
+      {%- if section.settings.link_text != blank and section.settings.link_url != blank -%}
+        <a class="hsa-fsa-strip__link" href="{{ section.settings.link_url }}">
+          {{ section.settings.link_text }}
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .hsa-fsa-strip {
+    background: var(--tcc-bg);
+    padding: var(--tcc-s-3) 0;
+    border-top: 1px solid var(--tcc-line);
+    border-bottom: 1px solid var(--tcc-line);
+  }
+
+  .hsa-fsa-strip__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--tcc-s-2);
+    flex-wrap: wrap;
+    text-align: center;
+    color: var(--tcc-ink);
+  }
+
+  .hsa-fsa-strip__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--tcc-card);
+    border: 1px solid var(--tcc-line);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .hsa-fsa-strip__icon .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--tcc-positive);
+    font-variation-settings: 'FILL' 1, 'wght' 600;
+  }
+
+  .hsa-fsa-strip__text {
+    font-size: var(--tcc-fs-body);
+    font-weight: var(--tcc-fw-medium);
+    color: var(--tcc-ink);
+  }
+
+  .hsa-fsa-strip__note {
+    font-size: var(--tcc-fs-small);
+    color: var(--tcc-ink-soft);
+    padding-left: var(--tcc-s-2);
+    border-left: 1px solid var(--tcc-line);
+  }
+
+  .hsa-fsa-strip__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--tcc-fs-small);
+    font-weight: var(--tcc-fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink);
+    text-decoration: none;
+    margin-left: var(--tcc-s-2);
+    transition: opacity 0.15s ease;
+  }
+
+  .hsa-fsa-strip__link:hover {
+    opacity: 0.7;
+    color: var(--tcc-ink);
+  }
+
+  .hsa-fsa-strip__link .material-symbols-outlined {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 540px) {
+    .hsa-fsa-strip__inner {
+      gap: var(--tcc-s-1);
+      font-size: var(--tcc-fs-small);
+    }
+
+    .hsa-fsa-strip__text {
+      font-size: var(--tcc-fs-small);
+    }
+
+    .hsa-fsa-strip__note {
+      flex-basis: 100%;
+      padding: 0;
+      border-left: 0;
+      margin-top: 4px;
+    }
+  }
+</style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "HSA/FSA Eligible Strip",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Enabled",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "HSA / FSA Eligible via TrueMed"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note (right of text)",
+      "default": "Coming soon — pre-tax purchase support"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text (optional)",
+      "default": ""
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL (optional)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HSA/FSA Eligible Strip"
+    }
+  ]
+}
+{% endschema %}

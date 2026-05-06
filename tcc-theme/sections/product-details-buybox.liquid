@@ -44,6 +44,27 @@
 
     <hr class="product-details-buybox__divider">
 
+    {%- if section.settings.show_credibility_row -%}
+      <ul class="product-details-buybox__cred-row" aria-label="Trust signals">
+        <li class="product-details-buybox__cred-chip">
+          <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+          <span>{{ section.settings.cred_chip_1 | default: "60-day money-back" }}</span>
+        </li>
+        <li class="product-details-buybox__cred-chip">
+          <span class="material-symbols-outlined" aria-hidden="true">science</span>
+          <span>{{ section.settings.cred_chip_2 | default: "Third-party tested" }}</span>
+        </li>
+        <li class="product-details-buybox__cred-chip">
+          <span class="material-symbols-outlined" aria-hidden="true">medical_services</span>
+          <span>{{ section.settings.cred_chip_3 | default: "K2-free for blood-thinner users" }}</span>
+        </li>
+        <li class="product-details-buybox__cred-chip">
+          <span class="material-symbols-outlined" aria-hidden="true">factory</span>
+          <span>{{ section.settings.cred_chip_4 | default: "Made in USA · GMP-certified" }}</span>
+        </li>
+      </ul>
+    {%- endif -%}
+
     {%- if section.settings.custom_subtitle != blank -%}
       <p class="product-details-buybox__subtitle tcc-body">{{ section.settings.custom_subtitle }}</p>
     {%- endif -%}
@@ -366,6 +387,47 @@
     border: none;
     border-top: 1px solid #e0e0e0;
     margin: 1rem 0 1.25rem;
+  }
+
+  /* Hero credibility row — 4 trust chips under the H1 area */
+  .product-details-buybox__cred-row {
+    list-style: none;
+    margin: 0 0 1.25rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .product-details-buybox__cred-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    background: var(--tcc-bg);
+    border: 1px solid var(--tcc-line);
+    border-radius: var(--tcc-radius);
+    font-size: 11.5px;
+    font-weight: var(--tcc-fw-medium);
+    line-height: 1.25;
+    color: var(--tcc-ink);
+  }
+
+  .product-details-buybox__cred-chip .material-symbols-outlined {
+    font-size: 16px;
+    color: var(--tcc-positive);
+    flex-shrink: 0;
+    font-variation-settings: 'FILL' 1, 'wght' 600;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-details-buybox__cred-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-details-buybox__cred-chip {
+      font-size: 11px;
+    }
   }
 
   .product-details-buybox__subtitle {
@@ -1433,6 +1495,40 @@
       "id": "show_ships_by",
       "label": "Show ships-by banner",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Hero credibility row (4 trust chips)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_credibility_row",
+      "label": "Show credibility row under title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cred_chip_1",
+      "label": "Chip 1",
+      "default": "60-day money-back"
+    },
+    {
+      "type": "text",
+      "id": "cred_chip_2",
+      "label": "Chip 2",
+      "default": "Third-party tested"
+    },
+    {
+      "type": "text",
+      "id": "cred_chip_3",
+      "label": "Chip 3",
+      "default": "K2-free for blood-thinner users"
+    },
+    {
+      "type": "text",
+      "id": "cred_chip_4",
+      "label": "Chip 4",
+      "default": "Made in USA · GMP-certified"
     },
     {
       "type": "checkbox",

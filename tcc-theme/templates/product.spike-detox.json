@@ -144,6 +144,11 @@
         "custom_description_2": "Wild-fermented Bacillus subtilis. K2 removed for compatibility with vitamin-K-antagonist blood thinners (we sell K2 separately for those who want the synergy). Single ingredient, transparent label, third-party tested every batch.",
         "show_ships_by": true,
         "show_price_display": true,
+        "show_credibility_row": true,
+        "cred_chip_1": "60-day money-back",
+        "cred_chip_2": "Third-party tested",
+        "cred_chip_3": "K2-free for blood-thinner users",
+        "cred_chip_4": "Made in USA · GMP-certified",
         "badge_mode": "dynamic",
         "bogo_label_1": "30 Day",
         "bogo_label_2": "90 Day",
@@ -683,6 +688,43 @@
         "description": "All numbers below were observed at 10,800 FU/day in Chen 2022 (Frontiers in Cardiovascular Medicine, n=1,062, 12-month trial). Our 4,000 FU capsule lets you dose toward that clinically active range."
       }
     },
+    "coa": {
+      "type": "coa-transparency",
+      "settings": {
+        "eyebrow": "Per-Lot Transparency",
+        "heading": "Every batch tested. Every COA published.",
+        "subheading": "Find your bottle's lot number on the label and download the certificate of analysis for that exact batch — identity, FU activity, heavy metals, and contaminants.",
+        "lookup_enabled": true,
+        "input_label": "Bottle lot number",
+        "input_placeholder": "e.g. ND4-2026-A12",
+        "hint_text": "Lot number is printed on the bottom of every bottle.",
+        "cta_text": "Look up my batch",
+        "cta_link": "/pages/coa",
+        "chip_1": "Identity",
+        "chip_2": "Potency (FU activity)",
+        "chip_3": "Heavy metals & contaminants"
+      }
+    },
+    "origin": {
+      "type": "sumi-origin-story",
+      "settings": {
+        "layout": "image-first",
+        "eyebrow": "The Origin",
+        "heading": "Tokyo, 1980. A lunch that changed cardiovascular research.",
+        "paragraph_1": "Dr. Hiroyuki Sumi was a Japanese researcher screening 173 natural foods for fibrin-dissolving activity. One afternoon he dropped a piece of natto — fermented soybeans, eaten in Japan since the 11th century — onto a Petri dish of artificial fibrin. Within 18 hours, the fibrin had dissolved.",
+        "paragraph_2": "Sumi named the enzyme he isolated nattokinase. The discovery launched a 40-year research arc — from Tokyo into the cardiovascular labs of Korea, Taiwan, China, and the United States. Today, hundreds of peer-reviewed papers exist on its activity in fibrinolysis, lipid management, and arterial health.",
+        "paragraph_3": "We built our product around the molecule Sumi isolated — sourced from the same wild-fermented Bacillus subtilis strain the research is conducted on. No proprietary blend. No borrowed celebrity authority. Just the enzyme, dosed honestly, with the FU activity printed on the front of every label.",
+        "pullquote": "The molecule he isolated is the same molecule we build around 45 years later."
+      }
+    },
+    "hsa": {
+      "type": "hsa-fsa-eligible",
+      "settings": {
+        "enabled": true,
+        "text": "HSA / FSA Eligible via TrueMed",
+        "note": "Coming soon — pre-tax purchase support"
+      }
+    },
     "faq": {
       "type": "bottom-faq",
       "blocks": {
@@ -705,6 +747,13 @@
           "settings": {
             "title": "Is it safe with Eliquis, Xarelto, warfarin, or aspirin?",
             "content": "<p><strong>Talk to your prescribing physician before starting.</strong> Nattokinase has fibrinolytic activity, so the conversation matters. We removed vitamin K2 specifically because K2 interacts with vitamin-K-antagonists like warfarin.</p><p>The peer-reviewed evidence: Chen 2022 reported no adverse events across 1,062 adults at 10,800 FU/day for 12 months. Their aspirin co-administration arm (n=96, 100 mg/day) was synergistic for lipids without bleeding events. None of the published trials are randomized safety studies in DOAC users — which is precisely why the conversation belongs with your care team, not us.</p>"
+          }
+        },
+        "f3b": {
+          "type": "faq",
+          "settings": {
+            "title": "I'm on Eliquis (or Xarelto / warfarin) for AFib. Can I take this?",
+            "content": "<p><strong>Possibly — but as a complement, never a substitute, and only with your physician.</strong></p><p>Honest framing: nattokinase has fibrinolytic activity. Chen 2022's aspirin co-administration arm (n=96, 100 mg/day for 12 months) saw lipid synergy without recorded bleeding events, and the broader 1,062-person trial reported zero adverse events at 10,800 FU/day. That's reassuring — but not a randomized DOAC-safety study, and it doesn't speak to your specific case.</p><p>The case to know about: Elahi 2015 documented a thrombus in a patient who <em>substituted</em> 2,000 FU/day nattokinase for warfarin without physician oversight. The lesson is in the substitution — not the pairing. Many AFib subs in our community report taking nattokinase complementary to their prescription anticoagulant under their cardiologist's supervision.</p><p>Bring the Chen 2022 paper to your next appointment. We removed K2 specifically to make that conversation easier.</p>"
           }
         },
         "f4": {
@@ -757,7 +806,7 @@
           }
         }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10"],
+      "block_order": ["f1", "f2", "f3", "f3b", "f4", "f5", "f6", "f7", "f8", "f9", "f10"],
       "settings": {
         "heading": "Honest answers about nattokinase",
         "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below: dose justification, safety with blood-thinners, K2 framing, what happens when you stop, and links to the actual peer-reviewed studies.</p>"
@@ -779,6 +828,9 @@
     "testimonials",
     "guarantee",
     "stats",
+    "coa",
+    "origin",
+    "hsa",
     "faq"
   ]
 }

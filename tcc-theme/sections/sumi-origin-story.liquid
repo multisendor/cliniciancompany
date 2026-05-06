@@ -1,0 +1,385 @@
+<div
+  data-section-type="sumi-origin-story"
+  data-section-id="{{ section.id }}"
+  class="sumi-origin tcc-section-padding sumi-origin--{{ section.settings.layout }}"
+  id="sumi-origin-{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="sumi-origin__grid">
+
+      <!-- Visual block — CSS-only typographic moment, no fake person photo -->
+      <figure class="sumi-origin__visual" aria-hidden="true">
+        <div class="sumi-origin__visual-frame">
+          <div class="sumi-origin__visual-corner sumi-origin__visual-corner--tl"></div>
+          <div class="sumi-origin__visual-corner sumi-origin__visual-corner--tr"></div>
+          <div class="sumi-origin__visual-corner sumi-origin__visual-corner--bl"></div>
+          <div class="sumi-origin__visual-corner sumi-origin__visual-corner--br"></div>
+
+          <div class="sumi-origin__visual-text">
+            <span class="sumi-origin__visual-eyebrow">Discovered</span>
+            <span class="sumi-origin__visual-city">Tokyo</span>
+            <span class="sumi-origin__visual-rule"></span>
+            <span class="sumi-origin__visual-year">1980</span>
+            <span class="sumi-origin__visual-detail">Dr. Hiroyuki Sumi · Chicago University of Medicine</span>
+          </div>
+
+          <!-- Subtle scientific motif: petri-dish circles -->
+          <div class="sumi-origin__visual-motif sumi-origin__visual-motif--a"></div>
+          <div class="sumi-origin__visual-motif sumi-origin__visual-motif--b"></div>
+        </div>
+
+        {%- if section.settings.caption != blank -%}
+          <figcaption class="sumi-origin__visual-caption">{{ section.settings.caption }}</figcaption>
+        {%- endif -%}
+      </figure>
+
+      <!-- Story content -->
+      <div class="sumi-origin__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="sumi-origin__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="sumi-origin__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.paragraph_1 != blank -%}
+          <p class="sumi-origin__paragraph">{{ section.settings.paragraph_1 }}</p>
+        {%- endif -%}
+        {%- if section.settings.paragraph_2 != blank -%}
+          <p class="sumi-origin__paragraph">{{ section.settings.paragraph_2 }}</p>
+        {%- endif -%}
+        {%- if section.settings.paragraph_3 != blank -%}
+          <p class="sumi-origin__paragraph">{{ section.settings.paragraph_3 }}</p>
+        {%- endif -%}
+
+        <div class="sumi-origin__pullquote">
+          <span class="sumi-origin__pullquote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="sumi-origin__pullquote-text">{{ section.settings.pullquote | default: "The molecule he isolated is the same molecule we build around 45 years later." }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sumi-origin {
+    background: var(--tcc-bg);
+  }
+
+  .sumi-origin__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--tcc-s-8);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .sumi-origin--text-first .sumi-origin__visual {
+    order: 2;
+  }
+
+  .sumi-origin--text-first .sumi-origin__content {
+    order: 1;
+  }
+
+  /* Visual block */
+  .sumi-origin__visual {
+    margin: 0;
+    position: relative;
+  }
+
+  .sumi-origin__visual-frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--tcc-radius);
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 55%),
+      linear-gradient(165deg, #1c3553 0%, #0a1628 55%, #050d1a 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 14px 40px rgba(10, 22, 40, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .sumi-origin__visual-corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: rgba(255, 255, 255, 0.35);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  .sumi-origin__visual-corner--tl {
+    top: 22px; left: 22px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .sumi-origin__visual-corner--tr {
+    top: 22px; right: 22px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+  }
+
+  .sumi-origin__visual-corner--bl {
+    bottom: 22px; left: 22px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .sumi-origin__visual-corner--br {
+    bottom: 22px; right: 22px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+  }
+
+  .sumi-origin__visual-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--tcc-s-6);
+    position: relative;
+    z-index: 2;
+  }
+
+  .sumi-origin__visual-eyebrow {
+    font-size: 11px;
+    font-weight: var(--tcc-fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: var(--tcc-s-2);
+  }
+
+  .sumi-origin__visual-city {
+    font-size: clamp(48px, 7vw, 84px);
+    font-weight: var(--tcc-fw-display);
+    letter-spacing: -2.5px;
+    line-height: 0.9;
+    margin-bottom: var(--tcc-s-2);
+  }
+
+  .sumi-origin__visual-rule {
+    width: 56px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    display: block;
+    margin: var(--tcc-s-1) 0;
+  }
+
+  .sumi-origin__visual-year {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: var(--tcc-fw-medium);
+    letter-spacing: 8px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: var(--tcc-s-3);
+    font-feature-settings: "tnum";
+  }
+
+  .sumi-origin__visual-detail {
+    font-size: 11px;
+    font-weight: var(--tcc-fw-medium);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    max-width: 24ch;
+    line-height: 1.5;
+  }
+
+  /* Decorative petri-dish motif */
+  .sumi-origin__visual-motif {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+  }
+
+  .sumi-origin__visual-motif--a {
+    width: 320px;
+    height: 320px;
+    top: -80px;
+    right: -100px;
+  }
+
+  .sumi-origin__visual-motif--b {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    left: -60px;
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .sumi-origin__visual-caption {
+    margin-top: var(--tcc-s-2);
+    font-size: var(--tcc-fs-small);
+    color: var(--tcc-ink-soft);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Content */
+  .sumi-origin__content {
+    max-width: 560px;
+  }
+
+  .sumi-origin__eyebrow {
+    margin: 0 0 var(--tcc-s-2);
+  }
+
+  .sumi-origin__heading {
+    font-size: var(--tcc-fs-h1);
+    font-weight: var(--tcc-fw-display);
+    letter-spacing: var(--tcc-ls-display);
+    line-height: var(--tcc-lh-tight);
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-4);
+  }
+
+  .sumi-origin__paragraph {
+    font-size: var(--tcc-fs-body);
+    line-height: var(--tcc-lh-body);
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-3);
+  }
+
+  .sumi-origin__paragraph:last-of-type {
+    margin-bottom: var(--tcc-s-4);
+  }
+
+  .sumi-origin__pullquote {
+    border-left: 3px solid var(--tcc-ink);
+    padding: var(--tcc-s-2) 0 var(--tcc-s-2) var(--tcc-s-3);
+    margin: 0;
+    position: relative;
+  }
+
+  .sumi-origin__pullquote-mark {
+    position: absolute;
+    top: -10px;
+    left: var(--tcc-s-2);
+    font-size: 56px;
+    font-weight: var(--tcc-fw-display);
+    color: var(--tcc-ink);
+    opacity: 0.12;
+    line-height: 1;
+  }
+
+  .sumi-origin__pullquote-text {
+    margin: 0;
+    font-size: 18px;
+    font-weight: var(--tcc-fw-medium);
+    line-height: 1.5;
+    color: var(--tcc-ink);
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 900px) {
+    .sumi-origin__grid {
+      grid-template-columns: 1fr;
+      gap: var(--tcc-s-6);
+    }
+
+    .sumi-origin--text-first .sumi-origin__visual,
+    .sumi-origin--text-first .sumi-origin__content {
+      order: initial;
+    }
+
+    .sumi-origin__visual-frame {
+      aspect-ratio: 16 / 11;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    .sumi-origin__heading {
+      font-size: 28px;
+    }
+
+    .sumi-origin__visual-frame {
+      aspect-ratio: 4 / 3;
+    }
+
+    .sumi-origin__visual-city {
+      font-size: 56px;
+    }
+
+    .sumi-origin__visual-year {
+      font-size: 28px;
+      letter-spacing: 6px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Sumi Origin Story",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "image-first", "label": "Visual left, text right" },
+        { "value": "text-first", "label": "Text left, visual right" }
+      ],
+      "default": "image-first"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Origin"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tokyo, 1980. A lunch that changed cardiovascular research."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_1",
+      "label": "Paragraph 1",
+      "default": "Dr. Hiroyuki Sumi was a Japanese researcher screening 173 natural foods for fibrin-dissolving activity. One afternoon he dropped a piece of natto — fermented soybeans, eaten in Japan since the 11th century — onto a Petri dish of artificial fibrin. Within 18 hours, the fibrin had dissolved."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_2",
+      "label": "Paragraph 2",
+      "default": "Sumi named the enzyme he isolated nattokinase. The discovery launched a 40-year research arc — from Tokyo into the cardiovascular labs of Korea, Taiwan, China, and the United States. Today, hundreds of peer-reviewed papers exist on its activity in fibrinolysis, lipid management, and arterial health."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_3",
+      "label": "Paragraph 3",
+      "default": "We built our product around the molecule Sumi isolated — sourced from the same wild-fermented Bacillus subtilis strain the research is conducted on. No proprietary blend. No borrowed celebrity authority. Just the enzyme, dosed honestly, with the FU activity printed on the front of every label."
+    },
+    {
+      "type": "text",
+      "id": "pullquote",
+      "label": "Pull quote",
+      "default": "The molecule he isolated is the same molecule we build around 45 years later."
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Image caption",
+      "default": ""
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sumi Origin Story"
+    }
+  ]
+}
+{% endschema %}
