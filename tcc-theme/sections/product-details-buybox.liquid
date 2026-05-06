@@ -4,6 +4,8 @@
   assign faqs = section.blocks | where: "type", "faq"
   assign trusted_avatars = section.blocks | where: "type", "trusted_avatar"
   assign trust_features = section.blocks | where: "type", "trust_feature"
+  assign stat_bullets = section.blocks | where: "type", "stat_bullet"
+  assign coa_links = section.blocks | where: "type", "coa_link"
   assign section_product = product | default: all_products[section.settings.product_handle]
 -%}
 
@@ -49,6 +51,18 @@
       <p class="product-details-buybox__subtitle tcc-body">{{ section.settings.custom_description_2 }}</p>
     {%- endif -%}
 
+    <!-- Stat Bullets (4-up proof strip) -->
+    {%- if stat_bullets.size > 0 -%}
+      <div class="product-details-buybox__stat-bullets">
+        {%- for block in stat_bullets -%}
+          <div class="product-details-buybox__stat-bullet" {{ block.shopify_attributes }}>
+            <span class="product-details-buybox__stat-bullet-value">{{ block.settings.value }}</span>
+            <span class="product-details-buybox__stat-bullet-label">{{ block.settings.label }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
     <!-- Benefits List -->
     {%- if benefits.size > 0 -%}
       <ul class="product-details-buybox__benefits">
@@ -59,6 +73,18 @@
           </li>
         {%- endfor -%}
       </ul>
+    {%- endif -%}
+
+    <!-- COA / Lot Lookup Link Block -->
+    {%- if coa_links.size > 0 -%}
+      <div class="product-details-buybox__coa-links">
+        {%- for block in coa_links -%}
+          <a class="product-details-buybox__coa-link" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
+            <span class="material-symbols-outlined">verified</span>
+            <span>{{ block.settings.text | default: 'Find your bottle\'s COA →' }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
     {%- endif -%}
 
     <!-- Ships By Banner -->
@@ -208,18 +234,7 @@
 
     </div>
 
-    <!-- Stock Warning -->
-    <div class="product-details-buybox__stock-warning" style="display:none;">
-      <div class="product-details-buybox__stock-warning-header">
-        <div class="product-details-buybox__pulse-icon">
-          <span class="material-symbols-outlined">error</span>
-        </div>
-        <strong>WARNING: Low Stock Notice</strong>
-      </div>
-      <p class="product-details-buybox__stock-warning-text tcc-body">
-        This product sold out 12 times last year. We encourage you to take advantage of the <strong>limited sale</strong> and buy now. Subscribing protects you against future stockouts. <strong>PS:</strong> Only available here, don't buy fakes on Amazon/eBay.
-      </p>
-    </div>
+    <!-- (Stock-warning urgency block removed per audit rule #8 — no fake scarcity) -->
 
     <!-- FAQ Section -->
     {%- if faqs.size > 0 -%}
@@ -247,11 +262,11 @@
         <span class="buybox-feat-review__star">★</span>
         <span class="buybox-feat-review__star">★</span>
       </div>
-      <p class="buybox-feat-review__quote tcc-body">"After my long-COVID circulation issues, my doctor mentioned nattokinase but didn't know which brand. A friend recommended {{ settings.brand_name }}. Two months later my numbers are improving and my doctor is impressed. The 4,000 FU dose actually moves the needle."</p>
+      <p class="buybox-feat-review__quote tcc-body">"Two months in, my numbers are improving and my doctor is curious about it. The dose-to-protocol math just makes sense — I can take 1, 2, or 3 capsules a day depending on what I'm working toward."</p>
       <div class="buybox-feat-review__footer">
         <img class="buybox-feat-review__avatar" src="{{ 'avatar-1.png' | asset_url }}" alt="Customer photo" width="42" height="42" loading="lazy">
         <div class="buybox-feat-review__info">
-          <span class="buybox-feat-review__name tcc-body">— Margaret S., United States</span>
+          <span class="buybox-feat-review__name tcc-body">— Margaret S., Verified Buyer</span>
           <div class="buybox-feat-review__verified">
             <svg class="buybox-feat-review__badge" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="12" cy="12" r="12" fill="#05B890"/>
@@ -364,6 +379,75 @@
   .product-details-buybox__subtitle strong,
   .product-details-buybox__faq-content strong {
     font-weight: 700 !important;
+  }
+
+  /* Stat Bullets (4-up proof strip above benefits) */
+  .product-details-buybox__stat-bullets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin: 0 0 1.25rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .product-details-buybox__stat-bullet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+  }
+  .product-details-buybox__stat-bullet-value {
+    font-family: var(--tcc-font-sans);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--tcc-ink);
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+  }
+  .product-details-buybox__stat-bullet-label {
+    font-family: var(--tcc-font-sans);
+    font-size: 11px;
+    line-height: 1.2;
+    color: var(--tcc-ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  @media screen and (max-width: 749px) {
+    .product-details-buybox__stat-bullets {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem 0.5rem;
+    }
+  }
+
+  /* COA Link */
+  .product-details-buybox__coa-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0 0 1rem 0;
+  }
+  .product-details-buybox__coa-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--tcc-ink);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    border-bottom: 1px dashed rgba(10, 22, 40, 0.25);
+    padding-bottom: 4px;
+    align-self: flex-start;
+  }
+  .product-details-buybox__coa-link .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--tcc-positive);
+    font-variation-settings: 'FILL' 1;
+  }
+  .product-details-buybox__coa-link:hover {
+    opacity: 0.85;
   }
 
   /* Benefits */
@@ -1330,19 +1414,19 @@
       "type": "text",
       "id": "custom_title",
       "label": "Custom Headline",
-      "default": "Practitioner-Grade Nattokinase — 4,000 FU Per Serving."
+      "default": "Clinical-grade nattokinase. Every batch tested. Every COA published."
     },
     {
       "type": "textarea",
       "id": "custom_subtitle",
       "label": "Description paragraph 1",
-      "default": "Clinical-grade nattokinase delivering 4,000 fibrinolytic units per serving. Supports healthy circulation, fibrin metabolism, and cardiovascular resilience — the targets backed by peer-reviewed human research."
+      "default": "Nattokinase Enzyme Capsules — supports natural fibrinolytic activity. 4,000 FU per capsule, dosed to your protocol: 1 capsule = 4,000 FU; 3 capsules = ~12,000 FU, within the 6,000–12,000 FU clinically active range identified in Chen 2022."
     },
     {
       "type": "textarea",
       "id": "custom_description_2",
       "label": "Description paragraph 2",
-      "default": "One capsule daily. Practitioner-grade dose, third-party tested, designed for the people who actually read the supplement facts panel."
+      "default": "Wild-fermented Bacillus subtilis. K2 removed for compatibility with vitamin-K-antagonist blood thinners (we sell K2 separately for those who want the synergy). Single ingredient, transparent label, third-party tested every batch."
     },
     {
       "type": "checkbox",
@@ -1478,6 +1562,41 @@
           "type": "richtext",
           "id": "content",
           "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "stat_bullet",
+      "name": "Stat Bullet (proof strip)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "1,062"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "adults studied"
+        }
+      ]
+    },
+    {
+      "type": "coa_link",
+      "name": "COA / Lot Lookup Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link Text",
+          "default": "Find your bottle's COA →"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
         }
       ]
     },

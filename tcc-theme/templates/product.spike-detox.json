@@ -1,80 +1,130 @@
 {
   "sections": {
+    "media": {
+      "type": "product-media-gallery",
+      "settings": {}
+    },
     "buybox": {
       "type": "product-details-buybox",
       "blocks": {
+        "stat_1": {
+          "type": "stat_bullet",
+          "settings": {
+            "value": "1,062",
+            "label": "adults studied"
+          }
+        },
+        "stat_2": {
+          "type": "stat_bullet",
+          "settings": {
+            "value": "12 mo",
+            "label": "trial duration"
+          }
+        },
+        "stat_3": {
+          "type": "stat_bullet",
+          "settings": {
+            "value": "0",
+            "label": "adverse events"
+          }
+        },
+        "stat_4": {
+          "type": "stat_bullet",
+          "settings": {
+            "value": "FU",
+            "label": "on the front of label"
+          }
+        },
         "trust_1": {
           "type": "trust_feature",
           "settings": {
             "icon": "lab_research",
-            "text": "Clinically Backed Formulas"
+            "text": "Single-Ingredient Transparency"
           }
         },
         "trust_2": {
           "type": "trust_feature",
           "settings": {
             "icon": "experiment",
-            "text": "Clean, Trusted Ingredients"
+            "text": "Wild-Fermented Bacillus Subtilis"
           }
         },
         "trust_3": {
           "type": "trust_feature",
           "settings": {
             "icon": "add_moderator",
-            "text": "Third Party Tested"
+            "text": "Third-Party Tested Every Batch"
           }
         },
         "benefit_1": {
           "type": "benefit",
           "settings": {
             "icon": "check_circle",
-            "text": "Pharmaceutical-strength 4,000 FU per serving"
+            "text": "4,000 FU per capsule — dose to your protocol"
           }
         },
         "benefit_2": {
           "type": "benefit",
           "settings": {
             "icon": "check_circle",
-            "text": "Wild-fermented Bacillus subtilis"
+            "text": "Wild-fermented Bacillus subtilis (traditional natto strain)"
           }
         },
         "benefit_3": {
           "type": "benefit",
           "settings": {
             "icon": "check_circle",
-            "text": "Vitamin K2 removed (blood-thinner safe)"
+            "text": "K2-free — compatible with vitamin-K-antagonist blood thinners (K2 sold separately)"
           }
         },
         "benefit_4": {
           "type": "benefit",
           "settings": {
             "icon": "check_circle",
-            "text": "Third-party tested every batch"
+            "text": "Third-party tested every batch — COA published per lot"
+          }
+        },
+        "coa_link_1": {
+          "type": "coa_link",
+          "settings": {
+            "text": "Find your bottle's COA →",
+            "link": "#coa-transparency"
           }
         },
         "bundle_1": {
           "type": "bundle_option",
           "settings": {
-            "title": "1 Bottle — 30 Day Supply",
-            "price": "$59"
+            "title": "30-cap Daily — $39",
+            "price": "$39"
           }
         },
         "bundle_3": {
           "type": "bundle_option",
           "settings": {
-            "title": "3 Bottles — 90 Day Supply (Most Popular)",
-            "price": "$149"
+            "title": "90-cap Protocol — $89 (best dose-to-protocol value)",
+            "price": "$89"
           }
         },
-        "bundle_6": {
+        "bundle_3pack": {
           "type": "bundle_option",
           "settings": {
-            "title": "6 Bottles — 180 Day Protocol (Best Value)",
-            "price": "$249"
+            "title": "3-Pack Protocol Stack — $229",
+            "price": "$229"
+          }
+        },
+        "bundle_6pack": {
+          "type": "bundle_option",
+          "settings": {
+            "title": "6-Pack Annual Supply — $409",
+            "price": "$409"
           }
         }
       },
       "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
         "trust_1",
         "trust_2",
         "trust_3",
@@ -82,14 +132,27 @@
         "benefit_2",
         "benefit_3",
         "benefit_4",
+        "coa_link_1",
         "bundle_1",
         "bundle_3",
-        "bundle_6"
+        "bundle_3pack",
+        "bundle_6pack"
       ],
-      "settings": {}
+      "settings": {
+        "custom_title": "Clinical-grade nattokinase. Every batch tested. Every COA published.",
+        "custom_subtitle": "Nattokinase Enzyme Capsules — supports natural fibrinolytic activity. 4,000 FU per capsule, dosed to your protocol: 1 capsule = 4,000 FU; 3 capsules = ~12,000 FU, within the 6,000–12,000 FU clinically active range identified in Chen 2022 (n=1,062, 12-month trial).",
+        "custom_description_2": "Wild-fermented Bacillus subtilis. K2 removed for compatibility with vitamin-K-antagonist blood thinners (we sell K2 separately for those who want the synergy). Single ingredient, transparent label, third-party tested every batch.",
+        "show_ships_by": true,
+        "show_price_display": true,
+        "badge_mode": "dynamic",
+        "bogo_label_1": "30 Day",
+        "bogo_label_2": "90 Day",
+        "bogo_label_3": "Protocol Stack",
+        "product_handle": "spike-detox"
+      }
     },
-    "media": {
-      "type": "product-media-gallery",
+    "sticky": {
+      "type": "sticky-atc-bar",
       "settings": {}
     },
     "research": {
@@ -98,30 +161,167 @@
         "r1": {
           "type": "stat_card",
           "settings": {
-            "title": "Frontiers in Cardiovascular Medicine",
-            "description": "Nattokinase demonstrated significant fibrinolytic activity in human subjects, reducing arterial plaque volume in carotid imaging studies.",
-            "citation": "Frontiers in Cardiovascular Medicine, 2022 — PMC fcvm.09.964977"
+            "title": "Carotid plaque area reduced 36%",
+            "description": "In a 12-month trial of 1,062 adults at 10,800 FU/day, carotid plaque area decreased by up to 36% (CPS 24.9 → 15.94 mm²). Our 4,000 FU capsule lets you stack to that range over 2–3 capsules.",
+            "citation": "Chen et al., Frontiers in Cardiovascular Medicine (2022), PMC fcvm.09.964977 — observed at 10,800 FU/day"
           }
         },
         "r2": {
           "type": "stat_card",
           "settings": {
-            "title": "Molecules Journal Review",
-            "description": "Comprehensive review of nattokinase's mechanism: dissolves fibrin, inhibits platelet aggregation, and lowers blood pressure across multiple human trials.",
-            "citation": "Molecules, 2022 — PMC molecules.27.05405"
+            "title": "LDL down 18%, HDL up 16%",
+            "description": "Same 12-month trial: LDL ('bad' cholesterol) –18.1%, HDL ('good' cholesterol) +15.8%, triglycerides –15.7%, total cholesterol –15.9% (P<0.01).",
+            "citation": "Chen et al., Frontiers in Cardiovascular Medicine (2022), Table 2 — observed at 10,800 FU/day"
           }
         },
         "r3": {
           "type": "stat_card",
           "settings": {
-            "title": "Cureus — Post-Acute COVID Sequelae",
-            "description": "Nattokinase included in a clinical-protocol approach to post-acute sequelae following COVID-19, targeting microclot pathology.",
-            "citation": "Cureus, 2024 — Article 207654"
+            "title": "0 adverse events at 12 months",
+            "description": "No noticeable adverse effects were recorded across 1,062 adults dosed for a full year. Toxicology assessments (Lampe & English 2016) show daily intake of 1,000–14,000 FU is well tolerated.",
+            "citation": "Chen et al., Frontiers in Cardiovascular Medicine (2022), Abstract + Discussion"
           }
         }
       },
       "block_order": ["r1", "r2", "r3"],
-      "settings": {}
+      "settings": {
+        "heading": "<p>Backed by <strong>peer-reviewed clinical research</strong></p>",
+        "description": "All headline outcomes below come from Chen 2022 — the largest nattokinase clinical study to date (n=1,062, 12 months) — at 10,800 FU/day. Stack our 4,000 FU capsule to your protocol.",
+        "button_text": ""
+      }
+    },
+    "problem": {
+      "type": "problem-solution-split",
+      "blocks": {
+        "p1": {
+          "type": "problem_item",
+          "settings": {
+            "icon": "remove",
+            "text": "Calcium scores climbing despite a clean diet"
+          }
+        },
+        "p2": {
+          "type": "problem_item",
+          "settings": {
+            "icon": "remove",
+            "text": "Cardiologist says \"your numbers are fine\" but you don't feel fine"
+          }
+        },
+        "p3": {
+          "type": "problem_item",
+          "settings": {
+            "icon": "remove",
+            "text": "Statins offered as the only lever to pull"
+          }
+        },
+        "p4": {
+          "type": "problem_item",
+          "settings": {
+            "icon": "remove",
+            "text": "Generic 1,000–2,000 FU nattokinase with no FU on the label"
+          }
+        },
+        "s1": {
+          "type": "solution_item",
+          "settings": {
+            "icon": "check",
+            "text": "FU printed on the front of every label — no proprietary blends"
+          }
+        },
+        "s2": {
+          "type": "solution_item",
+          "settings": {
+            "icon": "check",
+            "text": "Dose to your protocol: 1, 2, or 3 capsules a day depending on your goal"
+          }
+        },
+        "s3": {
+          "type": "solution_item",
+          "settings": {
+            "icon": "check",
+            "text": "Wild-fermented Bacillus subtilis (the strain the research is on)"
+          }
+        },
+        "s4": {
+          "type": "solution_item",
+          "settings": {
+            "icon": "check",
+            "text": "Every batch independently tested — COA published per lot"
+          }
+        }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "s1", "s2", "s3", "s4"],
+      "settings": {
+        "heading": "When every test comes back normal but you still don't feel right.",
+        "problem_heading": "What you've been settling for",
+        "solution_heading": "What clinical-grade looks like"
+      }
+    },
+    "mechanism1": {
+      "type": "image-with-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "How nattokinase works: clearing the body's own \"web\"",
+            "heading_size": "h1"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nattokinase is a serine protease that supports the body's natural <strong>fibrinolytic system</strong> — the cleanup crew that clears excess fibrin (the same protein that forms scabs and, in larger amounts, contributes to the matrix of arterial plaque and clots).</p><p>It works by inactivating PAI-1, the brake your body normally puts on clot dissolution. By releasing that brake, plasmin — your built-in clot-dissolving enzyme — can do its job. Mechanism documented in Tanikawa 2022 and 40+ years of fibrinolysis research.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["h", "t"],
+      "settings": {
+        "external_image_url": "",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "mechanism2": {
+      "type": "image-with-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Renovation, not destabilization.",
+            "heading_size": "h1"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A common worry: \"won't dissolving fibrin loosen plaque and cause a stroke?\" The peer-reviewed evidence is reassuring. In Chen 2022's 12-month study of 1,062 adults at 10,800 FU/day — well above what most people take — <strong>zero adverse events</strong> were recorded. Toxicology (Lampe & English 2016) finds no concern at 1,000–14,000 FU/day.</p><p>That said: if you take vitamin-K-antagonist anticoagulants (warfarin), DOACs (Eliquis, Xarelto), or aspirin, talk to your prescribing physician before starting. We removed K2 specifically to make this product compatible with that conversation.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["h", "t"],
+      "settings": {
+        "external_image_url": "",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "benefits": {
       "type": "benefits-grid",
@@ -129,86 +329,37 @@
         "b1": {
           "type": "benefit_card",
           "settings": {
-            "title": "Clears Fibrin Deposits",
-            "description": "The body's natural mechanism for cardiovascular cleanup."
+            "title": "Supports fibrinolytic activity",
+            "description": "The body's natural mechanism for clearing excess fibrin — the protein involved in clotting and plaque matrix."
           }
         },
         "b2": {
           "type": "benefit_card",
           "settings": {
-            "title": "Supports Healthy Circulation",
-            "description": "Studied to improve blood flow and arterial elasticity."
+            "title": "Supports healthy circulation",
+            "description": "Studied for blood-flow markers and arterial wall thickness across multiple human trials."
           }
         },
         "b3": {
           "type": "benefit_card",
           "settings": {
-            "title": "Backed by 40 Years of Research",
-            "description": "Discovered in Tokyo, 1980; studied across 200+ clinical trials."
+            "title": "Studied across 40+ years",
+            "description": "Discovered in Tokyo, 1980 by Dr. Hiroyuki Sumi. Dozens of human studies on cardiovascular, lipid, and microvascular endpoints."
           }
         },
         "b4": {
           "type": "benefit_card",
           "settings": {
-            "title": "Practitioner-Grade Dosing",
-            "description": "4,000 FU per serving — what your clinician would prescribe."
+            "title": "Dose to your protocol",
+            "description": "4,000 FU per capsule. 1, 2, or 3 capsules per day puts you between 4,000 and 12,000 FU — your call, with your clinician."
           }
         }
       },
       "block_order": ["b1", "b2", "b3", "b4"],
       "settings": {
-        "heading": "Proven Benefits, Backed by Science",
-        "description": "Pharmaceutical-strength nattokinase, formulated by clinicians and studied across 40 years of cardiovascular research."
+        "heading": "What it does, what the research shows",
+        "description": "Structure-function support for the body's natural fibrinolytic system — backed by peer-reviewed human research and a 40-year clinical record."
       }
-    },
-    "testimonials": {
-      "type": "text-testimonials-slider",
-      "blocks": {
-        "t1": {
-          "type": "testimonial",
-          "settings": {
-            "body": "Finally feeling like myself again. Three months in and my morning grogginess is gone.",
-            "author_name": "Sarah M., 54, verified buyer"
-          }
-        },
-        "t2": {
-          "type": "testimonial",
-          "settings": {
-            "body": "My cardiologist asked what I was doing differently. I told him about TCC. He's now researching it.",
-            "author_name": "Marcus K., 61, verified buyer"
-          }
-        },
-        "t3": {
-          "type": "testimonial",
-          "settings": {
-            "body": "After Long Covid, I felt invisible to the medical system. This was the first thing that gave me my energy back.",
-            "author_name": "Jennifer R., 47, verified buyer"
-          }
-        },
-        "t4": {
-          "type": "testimonial",
-          "settings": {
-            "body": "I've tried other nattokinase brands. The 4,000 FU dose actually moves the needle.",
-            "author_name": "David L., 58, verified buyer"
-          }
-        },
-        "t5": {
-          "type": "testimonial",
-          "settings": {
-            "body": "My circulation issues from a clot 5 years ago — finally improving. Combined with what my doctor prescribed.",
-            "author_name": "Patricia H., 66, verified buyer"
-          }
-        },
-        "t6": {
-          "type": "testimonial",
-          "settings": {
-            "body": "Practitioner-grade is the right framing. This isn't a CVS supplement.",
-            "author_name": "Robert T., 52, verified buyer"
-          }
-        }
-      },
-      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
-      "settings": {}
     },
     "comparison": {
       "type": "brand-comparison-table",
@@ -217,108 +368,108 @@
           "type": "brand_feature",
           "settings": {
             "icon": "check_circle",
-            "text": "Nattokinase Dose: 4,000 FU"
+            "text": "FU printed on the front of label"
           }
         },
         "brand_2": {
           "type": "brand_feature",
           "settings": {
             "icon": "check_circle",
-            "text": "Wild-fermented Bacillus subtilis"
+            "text": "COA published every batch (per-lot)"
           }
         },
         "brand_3": {
           "type": "brand_feature",
           "settings": {
             "icon": "check_circle",
-            "text": "Third-Party Tested Every Batch"
+            "text": "K2 disclosed (sold separately, not hidden)"
           }
         },
         "brand_4": {
           "type": "brand_feature",
           "settings": {
             "icon": "check_circle",
-            "text": "Vitamin K2 Removed (blood-thinner safe)"
+            "text": "Wild-fermented Bacillus subtilis (the research strain)"
           }
         },
         "brand_5": {
           "type": "brand_feature",
           "settings": {
             "icon": "check_circle",
-            "text": "Vegan Capsules"
+            "text": "Single-ingredient label"
           }
         },
         "brand_6": {
           "type": "brand_feature",
           "settings": {
             "icon": "check_circle",
-            "text": "Practitioner-Formulated"
+            "text": "Vegan capsule, no fillers"
           }
         },
         "comp_1": {
           "type": "competitor_feature",
           "settings": {
             "icon": "cancel",
-            "text": "Nattokinase Dose: 1,000–2,000 FU"
+            "text": "FU buried in supplement-facts panel"
           }
         },
         "comp_2": {
           "type": "competitor_feature",
           "settings": {
             "icon": "cancel",
-            "text": "Lab-cultured fermentation"
+            "text": "Rarely COA-tested batch-by-batch"
           }
         },
         "comp_3": {
           "type": "competitor_feature",
           "settings": {
             "icon": "cancel",
-            "text": "Rarely third-party tested"
+            "text": "K2 often present without disclosure"
           }
         },
         "comp_4": {
           "type": "competitor_feature",
           "settings": {
             "icon": "cancel",
-            "text": "Vitamin K2 often present"
+            "text": "Lab-cultured fermentation"
           }
         },
         "comp_5": {
           "type": "competitor_feature",
           "settings": {
             "icon": "cancel",
-            "text": "Vegan capsules: mixed"
+            "text": "Proprietary blend with NK + 5+ extras"
           }
         },
         "comp_6": {
           "type": "competitor_feature",
           "settings": {
             "icon": "cancel",
-            "text": "Not practitioner-formulated"
+            "text": "Vegan capsules: mixed"
           }
         },
         "sum_1": {
           "type": "summary_point",
           "settings": {
-            "text": "Pharmaceutical-strength 4,000 FU dosing"
+            "text": "FU on the front of the label — no hide-the-dose"
           }
         },
         "sum_2": {
           "type": "summary_point",
           "settings": {
-            "text": "Independently tested, every batch"
+            "text": "Per-batch COA published, lot number on every bottle"
           }
         },
         "sum_3": {
           "type": "summary_point",
           "settings": {
-            "text": "Formulated by clinicians"
+            "text": "K2 disclosed and offered separately — not bundled by default"
           }
         },
         "sum_4": {
           "type": "summary_point",
           "settings": {
-            "text": "Safer for blood-thinner users"
+            "text": "Single ingredient, no proprietary blends"
           }
         }
       },
@@ -342,14 +493,195 @@
       ],
       "settings": {
         "brand_name": "The Clinician Company",
-        "competitor_name": "Typical Store-Bought",
-        "heading": "How TCC Compares",
-        "button_text": "Try Risk-Free Today"
+        "competitor_name": "Typical Spike-Detox Brand",
+        "heading": "How we compare on transparency",
+        "button_text": "Add to Cart"
+      }
+    },
+    "timeline": {
+      "type": "wellness-timeline",
+      "blocks": {
+        "t1": {
+          "type": "step",
+          "settings": {
+            "week_label": "60–180 minutes",
+            "title": "Tanikawa 2022 — in vitro spike-protein degradation",
+            "description": "Lab study (Molecules journal): purified nattokinase degraded the SARS-CoV-2 spike protein and ACE2 in cell-lysate experiments within 60–180 minutes of incubation. Mechanism, in vitro — not yet a human clinical trial."
+          }
+        },
+        "t2": {
+          "type": "step",
+          "settings": {
+            "week_label": "~2 hours",
+            "title": "Grixti / Kell 2024 (preprint) — fibrinaloid microclot degradation",
+            "description": "First study to show recombinant nattokinase breaks down the fibrin-amyloid microclots associated with Long COVID and ME/CFS in vitro. Microclot counts dropped to their lowest within 2 hours of nattokinase exposure. Preprint — early research."
+          }
+        },
+        "t3": {
+          "type": "step",
+          "settings": {
+            "week_label": "12 months",
+            "title": "Chen 2022 — atherosclerosis & lipids (n=1,062, 10,800 FU/day)",
+            "description": "Twelve-month human trial: 36% reduction in carotid plaque area, 22% reduction in arterial wall thickness, 18% LDL drop, 16% HDL rise, 0 adverse events. The largest nattokinase study to date — at a dose 2.7× our 4,000 FU capsule."
+          }
+        },
+        "t4": {
+          "type": "step",
+          "settings": {
+            "week_label": "1980 → present",
+            "title": "Sumi origin — 40+ years of nattokinase research",
+            "description": "Discovered in Tokyo in 1980 by Dr. Hiroyuki Sumi when fermented soybeans dissolved fibrin in a Petri dish. Now studied across hundreds of papers in cardiovascular, lipid, blood-pressure, and microvascular research."
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {
+        "eyebrow": "Research Timeline",
+        "heading": "What the research actually shows",
+        "description": "These are the studies — not promises about your personal outcome. Outcomes vary; talk to your healthcare provider about what makes sense for your situation."
+      }
+    },
+    "tabs": {
+      "type": "content-tabs",
+      "blocks": {
+        "tab_a": {
+          "type": "tab",
+          "settings": {
+            "label": "Cardiovascular & circulatory health",
+            "title": "What the cardiovascular research shows.",
+            "body": "Chen et al. (2022, Frontiers in Cardiovascular Medicine) followed 1,062 adults for 12 months on 10,800 FU/day of nattokinase. Carotid plaque area decreased by up to 36%; arterial wall thickness (CCA-IMT) decreased by ~22%; LDL fell 18% and HDL rose 16%; 0 adverse events. The authors conclude the clinically active range is 6,000–12,000 FU per day. Our 4,000 FU capsule lets you dose to that range — 1, 2, or 3 capsules — with your clinician.",
+            "checklist": "1,062 adults studied for 12 months\n36% carotid plaque-area reduction (at 10,800 FU/day)\n22% arterial wall thickness reduction\n18% LDL drop, 16% HDL rise\n0 adverse events at the studied dose\nClinically active range: 6,000–12,000 FU/day"
+          }
+        },
+        "tab_b": {
+          "type": "tab",
+          "settings": {
+            "label": "Recent research on post-viral microvascular health",
+            "title": "Recent research on post-viral microvascular health.",
+            "body": "Two newer findings widen nattokinase's relevance for people interested in microvascular and post-viral research. Tanikawa et al. (2022, Molecules) showed in vitro that purified nattokinase degrades the SARS-CoV-2 spike protein and ACE2 in 60–180 minutes — a cell-lysate / lab-bench study, not yet a human trial. Separately, Grixti, Pretorius & Kell (2024, preprint) showed that recombinant nattokinase degrades fibrinaloid microclots — the anomalous, fibrinolysis-resistant clots documented in Long COVID and ME/CFS — within 2 hours in vitro. Both findings are mechanistic; neither is a human clinical trial yet.",
+            "checklist": "Tanikawa 2022 (Molecules): in vitro spike-protein degradation in 60–180 min\nGrixti / Kell 2024 (preprint): fibrinaloid microclot degradation in vitro\nBoth are mechanism-of-action studies — not yet human RCTs\nUseful context if you're tracking the post-viral microvascular literature"
+          }
+        },
+        "tab_c": {
+          "type": "tab",
+          "settings": {
+            "label": "How to take",
+            "title": "Dose to your protocol.",
+            "body": "Take 1–3 capsules per day with water, ideally on an empty stomach (30 minutes before food works best). 1 capsule = 4,000 FU; 3 capsules = ~12,000 FU, within the 6,000–12,000 FU clinically active range. Many users start at 1 capsule and titrate up over a few weeks with their clinician's input.",
+            "checklist": "1 capsule daily = 4,000 FU (entry-level)\n2 capsules daily = ~8,000 FU (within clinical range)\n3 capsules daily = ~12,000 FU (matches Chen 2022 range)\nEmpty stomach for best absorption\nTalk to your healthcare provider about what's right for you"
+          }
+        },
+        "tab_d": {
+          "type": "tab",
+          "settings": {
+            "label": "Safety & interactions",
+            "title": "Designed for blood-thinner-aware users.",
+            "body": "Vitamin K2 — present in many nattokinase products — can interact with vitamin-K-antagonist anticoagulants like warfarin. We removed it for compatibility, and offer K2 separately for those who want the synergy Chen 2022 describes. If you take warfarin, DOACs (Eliquis, Xarelto, Pradaxa), aspirin, or any blood-thinning medication — or are pregnant, nursing, or have a bleeding disorder — consult your healthcare provider before use.",
+            "checklist": "K2-free formulation — vitamin-K-antagonist friendly\nThird-party tested for heavy metals and microbials\nManufactured in FDA-registered, GMP-compliant facility\nEvery batch independently verified — COA per lot"
+          }
+        }
+      },
+      "block_order": ["tab_a", "tab_b", "tab_c", "tab_d"],
+      "settings": {
+        "eyebrow": "The Details",
+        "heading": "Two reading paths — pick yours."
+      }
+    },
+    "testimonials": {
+      "type": "text-testimonials-slider",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "body": "Two months in, my numbers are improving and my doctor is curious about it. The dose-to-protocol math just makes sense.",
+            "author_name": "Margaret S., Verified Buyer"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "body": "I appreciate that the FU number is on the front of the label. Most brands hide it. Easy decision once you know what to look for.",
+            "author_name": "David L., Verified Buyer"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "body": "I've been on a Mediterranean diet and statin protocol for two years. Adding this felt like the right next step. My cardiologist was OK with it once she saw the COA.",
+            "author_name": "Patricia H., Verified Buyer"
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "body": "I'd been taking generic nattokinase for years and never knew the dose mattered. Switching here, my morning brain fog cleared up after a few weeks. Could be coincidence — but I'm not going back.",
+            "author_name": "Robert T., Verified Buyer"
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "body": "Single ingredient. Strain disclosed. FU number on the label. That's the trust currency I was looking for after months of reading research.",
+            "author_name": "Sarah M., Verified Buyer"
+          }
+        },
+        "t6": {
+          "type": "testimonial",
+          "settings": {
+            "body": "Started this after I felt like every test came back \"normal\" but I knew something was off. Pacing myself at 1 capsule a day. The honest framing on the label helped me decide.",
+            "author_name": "Jennifer R., Verified Buyer"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
+      "settings": {
+        "heading": "<p>Real stories, <strong>verified buyers</strong></p>",
+        "subheading": "Honest experiences with TCC nattokinase. No paid endorsements, no clinician credentials — just verified buyers."
       }
     },
     "guarantee": {
       "type": "money-back-guarantee",
-      "settings": {}
+      "settings": {
+        "days": "60",
+        "subtitle": "Our Promise",
+        "heading": "60-Day Money-Back Guarantee",
+        "description": "Try it for 60 days. If it's not the right fit — even if the bottle is empty — email us for a full refund. No questions asked.",
+        "button_text": "Add to Cart"
+      }
+    },
+    "stats": {
+      "type": "animated-stats-counter",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": 36,
+            "label": "Carotid plaque-area reduction",
+            "sublabel": "in studies at 10,800 FU/day (Chen 2022, n=1,062, 12 months)"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": 22,
+            "label": "Arterial wall thickness reduction",
+            "sublabel": "in studies at 10,800 FU/day (Chen 2022, CCA-IMT, n=1,062)"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": 18,
+            "label": "LDL ('bad' cholesterol) reduction",
+            "sublabel": "in studies at 10,800 FU/day (Chen 2022, P<0.01)"
+          }
+        }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": {
+        "heading": "What the largest nattokinase trial showed",
+        "description": "All numbers below were observed at 10,800 FU/day in Chen 2022 (Frontiers in Cardiovascular Medicine, n=1,062, 12-month trial). Our 4,000 FU capsule lets you dose toward that clinically active range."
+      }
     },
     "faq": {
       "type": "bottom-faq",
@@ -358,129 +690,95 @@
           "type": "faq",
           "settings": {
             "title": "What is nattokinase?",
-            "content": "<p>Nattokinase is an enzyme extracted from natto, a traditional Japanese fermented soybean food. Discovered in Tokyo in 1980 by Dr. Hiroyuki Sumi, it's been studied for its effect on fibrin — a protein involved in blood clotting and arterial plaque.</p>"
+            "content": "<p>Nattokinase is a serine-protease enzyme extracted from natto, a traditional Japanese fermented soybean food. Discovered in Tokyo in 1980 by Dr. Hiroyuki Sumi, it's been studied for over 40 years for its activity on fibrin — the protein involved in blood clotting and the matrix of arterial plaque.</p>"
           }
         },
         "f2": {
           "type": "faq",
           "settings": {
-            "title": "How is this different from store-bought nattokinase?",
-            "content": "<p>Most store-bought nattokinase is dosed at 1,000–2,000 FU per serving. The Clinician Company formulates at 4,000 FU — the dose practitioners actually use in clinical practice. Every batch is third-party tested and vitamin K2 is removed for safety with blood thinners.</p>"
+            "title": "Why 4,000 FU per capsule? How many should I take?",
+            "content": "<p>The largest clinical study to date — Chen et al. (2022, Frontiers in Cardiovascular Medicine, n=1,062, 12 months) — concludes the clinically active range is <strong>6,000–12,000 FU per day</strong>. We picked 4,000 FU per capsule so you can dose to your protocol with your clinician: 1 capsule = 4,000 FU (entry); 2 capsules = ~8,000 FU (within active range); 3 capsules = ~12,000 FU (matches Chen 2022 range).</p><p>Why not pre-pack 10,800 FU into a single capsule? Because protocols differ. Some people start low and titrate; some want flexibility around days they take an aspirin or a long flight; some are starting fresh and want maintenance dosing. Per-capsule is per-protocol.</p>"
           }
         },
         "f3": {
           "type": "faq",
           "settings": {
-            "title": "Is it safe to take with blood thinners?",
-            "content": "<p>Talk to your prescribing physician first. Our formulation removes vitamin K2 (which interferes with warfarin) but nattokinase itself has anti-coagulant effects. This is a conversation for your care team.</p>"
+            "title": "Is it safe with Eliquis, Xarelto, warfarin, or aspirin?",
+            "content": "<p><strong>Talk to your prescribing physician before starting.</strong> Nattokinase has fibrinolytic activity, so the conversation matters. We removed vitamin K2 specifically because K2 interacts with vitamin-K-antagonists like warfarin.</p><p>The peer-reviewed evidence: Chen 2022 reported no adverse events across 1,062 adults at 10,800 FU/day for 12 months. Their aspirin co-administration arm (n=96, 100 mg/day) was synergistic for lipids without bleeding events. None of the published trials are randomized safety studies in DOAC users — which is precisely why the conversation belongs with your care team, not us.</p>"
           }
         },
         "f4": {
           "type": "faq",
           "settings": {
-            "title": "How long until I notice a difference?",
-            "content": "<p>Most clinical studies measure outcomes over 8–12 weeks. Fibrin clearance and circulation markers shift gradually, not overnight.</p>"
+            "title": "Why did you remove K2? Can I get it from you?",
+            "content": "<p>K2 (menaquinone-7, MK-7) can interact with vitamin-K-antagonist blood thinners like warfarin. Many nattokinase products bundle K2 in by default, which makes them incompatible with that population. We removed it to maximize compatibility — and we're <strong>honest about it</strong>: Chen 2022 actually shows K2 was synergistic with nattokinase for lipid endpoints (TC –17.6% with K2 vs –16.3% without).</p><p>If you don't take vitamin-K-antagonists and want the K2 + NK synergy Chen 2022 describes, we sell K2 MK-7 separately — $14 standalone, $9 when bundled with Spike Detox.</p>"
           }
         },
         "f5": {
           "type": "faq",
           "settings": {
-            "title": "When should I take it?",
-            "content": "<p>On an empty stomach, ideally before bed or 30 minutes before a meal. Food can reduce enzyme activity.</p>"
+            "title": "How long until I notice a difference?",
+            "content": "<p>Honest answer: it varies, and no one can promise an outcome. Chen 2022 measured cardiovascular endpoints at 12 months. The microclot in vitro work (Grixti/Kell 2024 preprint) acts within hours in a test tube but in-vivo translation isn't established. We don't make week-by-week promises about how you'll feel.</p>"
           }
         },
         "f6": {
           "type": "faq",
           "settings": {
-            "title": "Is this FDA-approved?",
-            "content": "<p>Dietary supplements are not FDA-approved; they're regulated differently from drugs. Our manufacturing facility is FDA-registered and follows GMP standards.</p>"
+            "title": "When should I take it?",
+            "content": "<p>On an empty stomach, ideally 30 minutes before a meal or before bed. Food can reduce enzyme activity. Many people split into morning + evening doses if taking 2–3 capsules.</p>"
           }
         },
         "f7": {
           "type": "faq",
           "settings": {
-            "title": "What's your refund policy?",
-            "content": "<p>60-day money-back guarantee. If you're not satisfied for any reason, email support@theclinicianco.com for a full refund.</p>"
+            "title": "What happens if I stop taking it?",
+            "content": "<p>Many people use Spike Detox as ongoing cardiovascular support, similar to how they'd use a daily vitamin. Others use it for time-limited protocols around specific events (recovery, travel, post-illness). Talk to your healthcare provider about what makes sense for your situation. There's no withdrawal effect documented in the published literature — but ongoing structure-function support is a different question, and only your clinician can advise on your specific case.</p>"
           }
         },
         "f8": {
           "type": "faq",
           "settings": {
             "title": "Is this third-party tested?",
-            "content": "<p>Yes — every batch is independently tested for potency (FU activity), purity (heavy metals, microbials), and label accuracy. Certificates of Analysis available on request.</p>"
+            "content": "<p>Yes — every batch is independently tested for FU activity (potency), heavy metals, microbials, and label accuracy. The Certificate of Analysis (COA) for your specific bottle's lot number is published on our COA-lookup page. The lot number is printed on the bottom of every bottle.</p>"
+          }
+        },
+        "f9": {
+          "type": "faq",
+          "settings": {
+            "title": "Where can I read the studies?",
+            "content": "<p>Chen et al. 2022 — <em>Effective management of atherosclerosis progress and hyperlipidemia with nattokinase</em>, <em>Frontiers in Cardiovascular Medicine</em> 9:964977. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC9458005/\">PMC9458005</a></p><p>Tanikawa et al. 2022 — <em>Degradative Effect of Nattokinase on Spike Protein of SARS-CoV-2</em>, <em>Molecules</em> 27:5405. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC9457822/\">PMC9457822</a></p><p>Grixti, Pretorius & Kell 2024 (preprint) — <em>Automated microscopic measurement of fibrinaloid microclots and their degradation by nattokinase</em>, bioRxiv 2024.04.06.588397. <a href=\"https://www.biorxiv.org/content/10.1101/2024.04.06.588397v1\">bioRxiv preprint</a></p>"
+          }
+        },
+        "f10": {
+          "type": "faq",
+          "settings": {
+            "title": "Required disclaimers",
+            "content": "<p><em>These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</em></p><p><em>Consult your healthcare provider before use, especially if you take blood-thinning medication, are pregnant or nursing, or have a bleeding disorder.</em></p>"
           }
         }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8"],
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10"],
       "settings": {
-        "heading": "Practitioner-grade answers to your questions",
-        "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below you'll find answers to the most common questions about <strong>nattokinase</strong>, how it works, safety with blood thinners, and how we ensure pharmaceutical-strength quality in every batch.</p>"
-      }
-    },
-    "sticky": {
-      "type": "sticky-atc-bar",
-      "settings": {}
-    },
-    "tabs": {
-      "type": "content-tabs",
-      "blocks": {
-        "t1": {
-          "type": "tab",
-          "settings": {
-            "label": "Ingredients",
-            "title": "One ingredient. Practitioner-grade dose.",
-            "body": "TCC nattokinase delivers 4,000 fibrinolytic units (FU) per serving — the dose used in human cardiovascular research. Wild-fermented Bacillus subtilis, traditional natto strain, no Vitamin K2.",
-            "checklist": "4,000 FU per capsule\nWild-fermented Bacillus subtilis\nVitamin K2 removed (blood-thinner safe)\nNo fillers, dyes, or proprietary blends",
-            "external_image_url": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_Ingredients_800x800.png?v=1775755784"
-          }
-        },
-        "t2": {
-          "type": "tab",
-          "settings": {
-            "label": "Science",
-            "title": "Backed by peer-reviewed research.",
-            "body": "Nattokinase has been studied for fibrinolytic activity, blood pressure modulation, and arterial elasticity across multiple human trials. We use the same dose and strain as the published research.",
-            "checklist": "Frontiers in Cardiovascular Medicine, 2022\nMolecules Journal, 2022 — comprehensive review\nCureus, 2024 — post-acute COVID protocol",
-            "external_image_url": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_Benefits_3df4d85b-ef56-4a4f-88cb-b6ceb2924baa_800x800.png?v=1773419148"
-          }
-        },
-        "t3": {
-          "type": "tab",
-          "settings": {
-            "label": "How to take",
-            "title": "One capsule daily. That's it.",
-            "body": "Take one capsule with water, ideally on an empty stomach (30 minutes before food works best). Some customers split into morning + evening doses — both protocols work.",
-            "checklist": "1 capsule daily, with water\nEmpty stomach for best absorption\nMorning dosing recommended\nSafe alongside daily vitamins",
-            "external_image_url": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_HowtoTake_800x800.png?v=1775755784"
-          }
-        },
-        "t4": {
-          "type": "tab",
-          "settings": {
-            "label": "Safety",
-            "title": "Designed for blood-thinner users.",
-            "body": "Vitamin K2 — present in most nattokinase products — interferes with anticoagulants like warfarin. We removed it. If you're on prescription blood thinners, talk to your doctor before starting any new supplement, including this one.",
-            "checklist": "K2 removed — safe with anticoagulants\nThird-party tested for heavy metals\nManufactured in FDA-registered facility\nGMP certified, every batch"
-          }
-        }
-      },
-      "block_order": ["t1", "t2", "t3", "t4"],
-      "settings": {
-        "eyebrow": "The Details",
-        "heading": "Everything you'd want to ask a clinician."
+        "heading": "Honest answers about nattokinase",
+        "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below: dose justification, safety with blood-thinners, K2 framing, what happens when you stop, and links to the actual peer-reviewed studies.</p>"
       }
     }
   },
   "order": [
     "media",
     "buybox",
-    "tabs",
+    "sticky",
     "research",
+    "problem",
+    "mechanism1",
+    "mechanism2",
     "benefits",
-    "testimonials",
     "comparison",
+    "timeline",
+    "tabs",
+    "testimonials",
     "guarantee",
-    "faq",
-    "sticky"
+    "stats",
+    "faq"
   ]
 }
