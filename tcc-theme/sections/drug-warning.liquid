@@ -1,0 +1,307 @@
+<div
+  class="drug-warning tcc-section-padding"
+  data-section-type="drug-warning"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="drug-warning__box" role="region" aria-label="Important safety information">
+      <div class="drug-warning__head">
+        <div class="drug-warning__icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <path d="M16 4 3 27h26L16 4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M16 13v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="16" cy="23.5" r="1.2" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="drug-warning__head-text">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="drug-warning__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="drug-warning__heading">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.intro != blank -%}
+            <p class="drug-warning__intro">{{ section.settings.intro }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="drug-warning__grid">
+          {%- for block in section.blocks -%}
+            <li class="drug-warning__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.condition != blank -%}
+                <span class="drug-warning__condition">{{ block.settings.condition }}</span>
+              {%- endif -%}
+              {%- if block.settings.detail != blank -%}
+                <span class="drug-warning__detail">{{ block.settings.detail }}</span>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.footer_disclaimer != blank -%}
+        <p class="drug-warning__footer">{{ section.settings.footer_disclaimer }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .drug-warning {
+    background: var(--tcc-bg);
+  }
+
+  .drug-warning__box {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #fdf8ec;
+    border: 1px solid #d8c9a3;
+    border-left: 4px solid #b88a2a;
+    border-radius: var(--tcc-radius, 6px);
+    padding: var(--tcc-s-4, 32px);
+  }
+
+  .drug-warning__head {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--tcc-s-3, 24px);
+    margin-bottom: var(--tcc-s-3, 24px);
+  }
+
+  .drug-warning__icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    color: #8a6516;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .drug-warning__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .drug-warning__head-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .drug-warning__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #8a6516;
+    margin: 0 0 var(--tcc-s-1, 8px);
+  }
+
+  .drug-warning__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: 600;
+    font-size: clamp(20px, 2.4vw, 24px);
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2, 16px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .drug-warning__intro {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .drug-warning__grid {
+    list-style: none;
+    margin: 0;
+    padding: var(--tcc-s-3, 24px) 0 0;
+    border-top: 1px solid rgba(184, 138, 42, 0.25);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--tcc-s-3, 24px);
+  }
+
+  .drug-warning__item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0;
+  }
+
+  .drug-warning__condition {
+    font-family: var(--tcc-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--tcc-ink);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+
+  .drug-warning__detail {
+    font-family: var(--tcc-font-sans);
+    font-size: 14px;
+    color: var(--tcc-ink-soft);
+    line-height: 1.55;
+  }
+
+  .drug-warning__footer {
+    margin: var(--tcc-s-3, 24px) 0 0;
+    padding-top: var(--tcc-s-3, 24px);
+    border-top: 1px solid rgba(184, 138, 42, 0.25);
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--tcc-ink-soft);
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 749px) {
+    .drug-warning__box {
+      padding: var(--tcc-s-3, 24px);
+    }
+
+    .drug-warning__head {
+      gap: var(--tcc-s-2, 16px);
+      margin-bottom: var(--tcc-s-2, 16px);
+    }
+
+    .drug-warning__icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .drug-warning__heading {
+      font-size: 19px;
+    }
+
+    .drug-warning__intro {
+      font-size: 15px;
+    }
+
+    .drug-warning__grid {
+      grid-template-columns: 1fr;
+      gap: var(--tcc-s-2, 16px);
+      padding-top: var(--tcc-s-2, 16px);
+    }
+
+    .drug-warning__footer {
+      font-size: 12.5px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Drug Warning",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Important safety information"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Talk to your physician before starting nattokinase if any of the following apply."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Nattokinase has fibrinolytic (clot-dissolving) activity. It can interact with anticoagulant and antiplatelet therapy. The list below is not exhaustive &mdash; consult your prescribing clinician."
+    },
+    {
+      "type": "textarea",
+      "id": "footer_disclaimer",
+      "label": "Footer disclaimer",
+      "default": "These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your physician before use, especially if pregnant, nursing, on prescription medications, or scheduled for surgery."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "warning_item",
+      "name": "Warning item",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "text",
+          "id": "condition",
+          "label": "Condition",
+          "default": "Condition placeholder"
+        },
+        {
+          "type": "textarea",
+          "id": "detail",
+          "label": "Detail",
+          "default": "Detail placeholder."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drug Warning",
+      "blocks": [
+        {
+          "type": "warning_item",
+          "settings": {
+            "condition": "Anticoagulant therapy",
+            "detail": "Eliquis, Xarelto, warfarin, heparin &mdash; nattokinase compounds the fibrinolytic effect. Never use as a substitute for prescribed therapy."
+          }
+        },
+        {
+          "type": "warning_item",
+          "settings": {
+            "condition": "Antiplatelet therapy",
+            "detail": "Aspirin, clopidogrel (Plavix). Increased bleeding risk when combined."
+          }
+        },
+        {
+          "type": "warning_item",
+          "settings": {
+            "condition": "Active bleeding disorder",
+            "detail": "Hemophilia, recent GI bleed, recent stroke. Nattokinase is not appropriate."
+          }
+        },
+        {
+          "type": "warning_item",
+          "settings": {
+            "condition": "Pre- or post-surgical window",
+            "detail": "Stop at least 14 days before any planned surgical or dental procedure. Resume only with surgeon clearance."
+          }
+        },
+        {
+          "type": "warning_item",
+          "settings": {
+            "condition": "Pregnancy or nursing",
+            "detail": "Insufficient safety data. Do not use without obstetric guidance."
+          }
+        },
+        {
+          "type": "warning_item",
+          "settings": {
+            "condition": "Soy allergy",
+            "detail": "Nattokinase is derived from fermented soybeans. Trace soy proteins may remain even after purification."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

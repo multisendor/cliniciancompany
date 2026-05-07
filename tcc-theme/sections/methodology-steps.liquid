@@ -1,0 +1,243 @@
+<div
+  class="methodology-steps tcc-section-padding"
+  data-section-type="methodology-steps"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="methodology-steps__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="methodology-steps__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="methodology-steps__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.intro != blank -%}
+        <p class="methodology-steps__intro">{{ section.settings.intro }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="methodology-steps__grid">
+        {%- for block in section.blocks -%}
+          <article class="methodology-steps__step" {{ block.shopify_attributes }}>
+            {%- if block.settings.step_number != blank -%}
+              <div class="methodology-steps__number">{{ block.settings.step_number }}</div>
+            {%- endif -%}
+            {%- if block.settings.step_title != blank -%}
+              <h3 class="methodology-steps__step-title">{{ block.settings.step_title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.step_description != blank -%}
+              <p class="methodology-steps__step-description">{{ block.settings.step_description }}</p>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .methodology-steps {
+    background: var(--tcc-bg);
+  }
+
+  .methodology-steps__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto var(--tcc-s-6, 48px);
+  }
+
+  .methodology-steps__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .methodology-steps__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: 500;
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2, 16px);
+    line-height: 1.2;
+  }
+
+  .methodology-steps__intro {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .methodology-steps__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--tcc-s-6, 48px);
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .methodology-steps__step {
+    position: relative;
+    padding: 0 var(--tcc-s-3, 24px);
+  }
+
+  .methodology-steps__step + .methodology-steps__step::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: calc(var(--tcc-s-6, 48px) / -2);
+    width: 1px;
+    background: var(--tcc-line);
+  }
+
+  .methodology-steps__number {
+    font-family: var(--tcc-font-sans);
+    font-size: clamp(36px, 4vw, 44px);
+    font-weight: 800;
+    color: var(--tcc-ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--tcc-s-2, 16px);
+    opacity: 0.92;
+  }
+
+  .methodology-steps__step-title {
+    font-family: var(--tcc-font-sans);
+    font-weight: 700;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2, 16px);
+    line-height: 1.2;
+  }
+
+  .methodology-steps__step-description {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .methodology-steps__grid {
+      grid-template-columns: 1fr;
+      gap: var(--tcc-s-4, 32px);
+    }
+
+    .methodology-steps__step {
+      padding: 0;
+    }
+
+    .methodology-steps__step + .methodology-steps__step {
+      padding-top: var(--tcc-s-4, 32px);
+      border-top: 1px solid var(--tcc-line);
+    }
+
+    .methodology-steps__step + .methodology-steps__step::before {
+      display: none;
+    }
+
+    .methodology-steps__heading {
+      font-size: 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Methodology Steps",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "How we make it"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Three steps. No shortcuts."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "From traditional fermentation to peer-reviewed lab testing, here&#39;s the path each batch takes before it reaches you."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "step_title",
+          "label": "Step title",
+          "default": "Step title"
+        },
+        {
+          "type": "textarea",
+          "id": "step_description",
+          "label": "Step description",
+          "default": "Step description placeholder."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Methodology Steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "01",
+            "step_title": "Source",
+            "step_description": "We use a wild-fermented Bacillus subtilis var. natto strain &mdash; the same strain traditional Japanese natto producers have used for generations. Soybeans are non-GMO, traceable, third-party verified."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "02",
+            "step_title": "Ferment",
+            "step_description": "Multi-day fermentation in a controlled environment, then enzymatic extraction and purification. We remove vitamin K2 (menaquinone-7) so the product is compatible with vitamin-K-antagonist blood thinners. K2 is sold separately for those who want it."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "03",
+            "step_title": "Test",
+            "step_description": "Every production lot is tested by a third-party lab for identity, FU activity (potency), heavy metals (Pb, As, Cd, Hg), and microbials. The COA is published before the bottle ships. You can look up your bottle&#39;s lot number on the page above."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
