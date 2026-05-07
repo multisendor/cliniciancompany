@@ -1,0 +1,293 @@
+<div
+  class="special-offer-callout tcc-section-padding"
+  data-section-type="special-offer-callout"
+  data-section-id="{{ section.id }}"
+  style="background: {{ section.settings.bg }};"
+>
+  <div class="tcc-page-width">
+    <div class="special-offer-callout__inner">
+
+      {%- comment -%} Left: product image {%- endcomment -%}
+      <div class="special-offer-callout__media">
+        {%- if section.settings.image != blank -%}
+          <img
+            class="special-offer-callout__img"
+            src="{{ section.settings.image | image_url: width: 600 }}"
+            srcset="
+              {{ section.settings.image | image_url: width: 300 }} 300w,
+              {{ section.settings.image | image_url: width: 600 }} 600w
+            "
+            sizes="(max-width: 749px) 80vw, 45vw"
+            alt="{{ section.settings.image.alt | escape }}"
+            loading="lazy"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+          >
+        {%- else -%}
+          <div class="special-offer-callout__img-placeholder">
+            <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" aria-hidden="true">
+              <rect x="20" y="10" width="120" height="180" rx="12" stroke="currentColor" stroke-width="2" fill="none"/>
+              <rect x="50" y="30" width="60" height="60" rx="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <line x1="20" y1="110" x2="140" y2="110" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="60" y="125" width="40" height="8" rx="4" fill="currentColor" opacity="0.3"/>
+              <rect x="70" y="143" width="20" height="6" rx="3" fill="currentColor" opacity="0.2"/>
+            </svg>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right: text + bullets + CTA {%- endcomment -%}
+      <div class="special-offer-callout__content">
+
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="special-offer-callout__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.headline != blank -%}
+          <h2 class="special-offer-callout__headline">{{ section.settings.headline }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.offer_text != blank -%}
+          <p class="special-offer-callout__offer">{{ section.settings.offer_text }}</p>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="special-offer-callout__bullets" role="list">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'bullet' and block.settings.text != blank -%}
+                <li class="special-offer-callout__bullet" {{ block.shopify_attributes }}>
+                  <span class="special-offer-callout__check" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+                      <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/>
+                      <path d="M6.5 10 L9 12.5 L13.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{{ block.settings.text }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.cta_url != blank and section.settings.cta_text != blank -%}
+          <a class="special-offer-callout__cta tcc-btn" href="{{ section.settings.cta_url }}">
+            {{ section.settings.cta_text }}
+          </a>
+        {%- elsif section.settings.cta_text != blank -%}
+          <a class="special-offer-callout__cta tcc-btn" href="#">{{ section.settings.cta_text }}</a>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .special-offer-callout {
+    border-radius: 0;
+  }
+
+  .special-offer-callout__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--tcc-s-5, 40px);
+    align-items: center;
+  }
+
+  .special-offer-callout__media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .special-offer-callout__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .special-offer-callout__img-placeholder {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 3 / 4;
+    background: rgba(0,0,0,0.06);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0,0,0,0.3);
+    margin: 0 auto;
+  }
+
+  .special-offer-callout__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tcc-s-3, 24px);
+  }
+
+  .special-offer-callout__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0;
+  }
+
+  .special-offer-callout__headline {
+    font-family: var(--tcc-font-sans);
+    font-weight: 700;
+    font-size: clamp(20px, 2.8vw, 32px);
+    color: var(--tcc-ink);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .special-offer-callout__offer {
+    font-family: var(--tcc-font-sans);
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 700;
+    color: var(--tcc-ink);
+    margin: 0;
+    padding: 10px 18px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .special-offer-callout__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .special-offer-callout__bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink);
+    line-height: 1.45;
+  }
+
+  .special-offer-callout__check {
+    flex-shrink: 0;
+    color: var(--tcc-ink);
+    margin-top: 2px;
+    display: inline-flex;
+  }
+
+  .special-offer-callout__cta {
+    align-self: flex-start;
+    text-decoration: none;
+  }
+
+  /* --- Tablet (749px) --- */
+  @media screen and (max-width: 749px) {
+    .special-offer-callout__inner {
+      grid-template-columns: 1fr;
+      gap: var(--tcc-s-4, 32px);
+      text-align: center;
+    }
+    .special-offer-callout__bullet {
+      text-align: left;
+    }
+    .special-offer-callout__cta {
+      align-self: center;
+    }
+    .special-offer-callout__offer {
+      display: block;
+    }
+  }
+
+  /* --- Mobile (599px) --- */
+  @media screen and (max-width: 599px) {
+    .special-offer-callout__img-placeholder {
+      max-width: 200px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Special Offer Callout",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "SPECIAL OFFER ON NOW!"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Try Spike Detox Risk-Free with our First Time Buyer's Offer!"
+    },
+    {
+      "type": "text",
+      "id": "offer_text",
+      "label": "Offer line",
+      "default": "Buy 2 Bottles Get 1 Free"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Buy Now & Save"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "color_background",
+      "id": "bg",
+      "label": "Background color",
+      "default": "linear-gradient(180deg, rgba(255,247,232,1) 0%, rgba(255,247,232,1) 100%)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Bullet",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Bullet text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Special Offer Callout",
+      "blocks": [
+        { "type": "bullet", "settings": { "text": "60-day money-back guarantee" } },
+        { "type": "bullet", "settings": { "text": "Ships from US warehouse" } },
+        { "type": "bullet", "settings": { "text": "Single-ingredient transparency" } },
+        { "type": "bullet", "settings": { "text": "Cancel anytime, no commitment" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
