@@ -184,3 +184,48 @@ QA findings (from Playwright screenshots 2026-05-07):
 10. Real ingredient infographic art for image_band instances on Complete.
 11. Pure: 25-section cap means `inline_review` + `rating` sections couldn't fit; consider whether to drop something else to fit them.
 
+
+---
+
+## Phase 5b — Post-build correction + platform blocker (2026-05-07)
+
+Initial QA report had stale findings; deeper curl-based verification on the actual live domain `cliniciancompany.com` (myshopify URL redirects there) revealed:
+
+**Verified live state (`curl + grep data-section-type`):**
+
+- **Pure PDP `/products/spike-detox`**: renders **all 25/25 template sections**. `kaching-bundles__product-page-widget` mount div IS in HTML — Kaching app hydrates via JS at runtime; if not visually present, it's an app/JS issue not a template issue. New sections all rendering (subscription-features, symptom-grid, special-offer-callout, video-testimonials, brand-comparison-table, 6-stage timeline, etc.).
+- **Complete PDP `/products/spike-detox-complete`**: renders **12/16 template sections** (not 9 or 10 as earlier reported). Confirmed rendering: media, buybox shell, sticky-ATC, video-testimonials, press-strip ("FEATURED ON"), **all 4 image-band sections** (16 placeholder class refs in HTML), testimonials slider, benefits-grid (ingredients), bottom-faq, cross-sell-products. Missing: doctor_block (image-with-text), reviews (intentional hidden placeholder), newsletter (rich-text).
+
+**The hard blocker — Shopify is silently rejecting buybox file modifications on this live theme:**
+
+- 6 Phase 1 new section liquids deployed cleanly ✓
+- 5 Phase 2 buybox snippets deployed (live = HEAD) ✓
+- Phase 2 buybox liquid + sticky-atc liquid: **CHANGES SILENTLY REVERTED.** CLI returns "Theme upload complete" + "now live" but the live HTML never reflects modifications.
+- Verification: inserted a `<!-- DEBUG_2026_05_07 -->` comment at line 1 of buybox file → push success → curl live → ZERO matches. File modifications do not deploy.
+- Tried (all rejected): full-theme push, `--publish` flag, `--allow-live`, `--strict`, `settings_data.json` cache-bust marker, copying buybox to a renamed file `product-details-buybox-complete.liquid` and updating the Complete template's `type` field — Shopify reverted the template `type` change on the live theme within seconds.
+- Settings + block additions on the existing buybox section DO push through (template title, cred chips, block instances all appear). Only modifications to the section liquid file content + section type renaming fail.
+
+This is a Shopify platform-level lock or app-imposed restriction. Not bypassable from CLI.
+
+**Open admin investigations for human:**
+1. `https://gmmehe-01.myshopify.com/admin/apps` — look for Theme Lock, Section Studio, Locksmith, or any page-builder/theme-management app. Disable or uninstall.
+2. Open the buybox in the admin theme editor (`https://gmmehe-01.myshopify.com/admin/themes/161862353132/editor`) and try editing it there. If admin editor save works, force-deploy via that route. If admin save also fails, escalate to Shopify support.
+3. Section `type` field is suspected to be immutable for existing instances on this theme — that would explain the template `type` revert. May need to delete the buybox section instance and re-add it with the new type.
+
+**Pragmatic ship state (committed locally + on live):**
+
+Pure PDP is essentially complete. Complete PDP has the heavy structural lift in: 4 image-bands, standalone video-testimonials carousel, "FEATURED ON" press strip, ingredient grid, FAQ, cross-sell, founder block, comparison, sticky-ATC, FDA disclaimer.
+
+**Stuck pending Shopify lock investigation:**
+- Complete buybox-internal new blocks: warning chip, member callout, embedded video carousel, OTP/Subscribe radios, accordion-with-cross-sell.
+- Complete sticky-ATC price-pair display (compare-at strikethrough).
+- 3 minor Complete sections: doctor_block (image-with-text), reviews placeholder, newsletter rich-text.
+
+Commit history for this phase:
+- `8892ff1 fb5f951 468bcc8 ec1eaab 80dbeca fbaa04d` — 6 new sections (Phase 1, all deployed)
+- `4467a5c 8040c29` — Phase 2 buybox refactor (committed locally, deployment blocked on live)
+- `66c31fa` — sync(theme) overwrote Phase 2 buybox locally (caught + restored)
+- `f2883a9 4424e14` — Phase 3 templates (deployed, Pure 25/25, Complete 12/16)
+- `e7cbbfc` — restored Phase 2 buybox content from 8040c29 (committed locally, deployment still blocked)
+- `cbc7413` — Phase 5 STATUS append (initial QA findings, partially superseded by this addendum)
+
