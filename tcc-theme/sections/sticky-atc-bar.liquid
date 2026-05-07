@@ -8,6 +8,14 @@
   <div class="sticky-atc-bar__inner">
     <div class="sticky-atc-bar__info">
       <span class="sticky-atc-bar__product-title">{{ product.title | default: settings.brand_name }}</span>
+      <div class="sticky-atc-bar__price-pair">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="sticky-atc__price">{{ product.price | money }}</span>
+          <span class="sticky-atc__price--compare">{{ product.compare_at_price | money }}</span>
+        {%- else -%}
+          <span class="sticky-atc__price">{{ product.price | money }}</span>
+        {%- endif -%}
+      </div>
     </div>
 
     <div class="sticky-atc-bar__actions">
@@ -106,6 +114,29 @@
 
   .sticky-atc-bar__button:hover {
     opacity: 0.85;
+  }
+
+  .sticky-atc-bar__price-pair {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 3px;
+  }
+
+  .sticky-atc-bar__price-pair .sticky-atc__price {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    font-weight: 700;
+    color: var(--tcc-ink);
+  }
+
+  .sticky-atc__price--compare {
+    color: var(--tcc-ink-soft);
+    text-decoration: line-through;
+    margin-left: 8px;
+    font-weight: 400;
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
   }
 
   @media screen and (max-width: 749px) {

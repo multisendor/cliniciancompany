@@ -6,6 +6,10 @@
   assign trust_features = section.blocks | where: "type", "trust_feature"
   assign stat_bullets = section.blocks | where: "type", "stat_bullet"
   assign coa_links = section.blocks | where: "type", "coa_link"
+  assign warning_chips = section.blocks | where: "type", "warning_chip"
+  assign member_callouts = section.blocks | where: "type", "member_callout"
+  assign embedded_video_carousels = section.blocks | where: "type", "embedded_video_carousel"
+  assign accordion_cross_sells = section.blocks | where: "type", "accordion_with_cross_sell"
   assign section_product = product | default: all_products[section.settings.product_handle]
 -%}
 
@@ -16,6 +20,24 @@
 >
   <div class="product-details-buybox__inner tcc-page-width">
 
+
+    <!-- Warning Chips (per-template opt-in via warning_chip block type) -->
+    {%- if warning_chips.size > 0 -%}
+      <div class="product-details-buybox__warning-chips">
+        {%- for block in warning_chips -%}
+          {% render 'buybox-warning-chip', block: block %}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <!-- Member Callouts (per-template opt-in via member_callout block type) -->
+    {%- if member_callouts.size > 0 -%}
+      <div class="product-details-buybox__member-callouts">
+        {%- for block in member_callouts -%}
+          {% render 'buybox-member-callout', block: block %}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
 
     <!-- Star Rating -->
     <div class="product-details-buybox__rating">
@@ -84,6 +106,13 @@
       </div>
     {%- endif -%}
 
+    <!-- Embedded Video Carousel (per-template opt-in via embedded_video_carousel block type) -->
+    {%- if embedded_video_carousels.size > 0 -%}
+      {%- for block in embedded_video_carousels -%}
+        {% render 'buybox-embedded-video', block: block %}
+      {%- endfor -%}
+    {%- endif -%}
+
     <!-- Benefits List -->
     {%- if benefits.size > 0 -%}
       <ul class="product-details-buybox__benefits">
@@ -145,8 +174,13 @@
         {%- endif -%}
 
 
-        <!-- Kaching Bundles Manual Embed Anchor -->
-        <div class="kaching-bundles__product-page-widget"></div>
+        {%- if section.settings.purchase_mode == 'otp_vs_subscribe' -%}
+          <!-- OTP vs Subscribe radio cards -->
+          {% render 'buybox-otp-vs-subscribe', product: section_product, section: section %}
+        {%- else -%}
+          <!-- Kaching Bundles Manual Embed Anchor -->
+          <div class="kaching-bundles__product-page-widget"></div>
+        {%- endif -%}
 
         <!-- Apps (Additional) -->
         {%- for block in section.blocks -%}
@@ -256,6 +290,15 @@
     </div>
 
     <!-- (Stock-warning urgency block removed per audit rule #8 — no fake scarcity) -->
+
+    <!-- Accordion Cross-Sell (per-template opt-in via accordion_with_cross_sell block type) -->
+    {%- if accordion_cross_sells.size > 0 -%}
+      <div class="product-details-buybox__accordion-xsells">
+        {%- for block in accordion_cross_sells -%}
+          {% render 'buybox-accordion-cross-sell', block: block %}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
 
     <!-- FAQ Section -->
     {%- if faqs.size > 0 -%}
@@ -1707,9 +1750,6 @@
       ]
     },
     {
-      "type": "@app"
-    },
-    {
       "type": "warning_chip",
       "name": "Warning chip",
       "limit": 2,
@@ -1849,6 +1889,9 @@
           "label": "Cross-sell product 3"
         }
       ]
+    },
+    {
+      "type": "@app"
     }
   ],
   "presets": [
