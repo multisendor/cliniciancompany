@@ -1,0 +1,432 @@
+<div
+  class="coa-callout tcc-section-padding"
+  data-section-type="coa-callout"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="coa-callout__grid">
+
+      <div class="coa-callout__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="coa-callout__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="coa-callout__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.body_text != blank -%}
+          <p class="coa-callout__body">{{ section.settings.body_text }}</p>
+        {%- endif -%}
+
+        <ul class="coa-callout__chips" aria-label="What we test for">
+          {%- if section.settings.chip_1 != blank -%}
+            <li class="coa-callout__chip">{{ section.settings.chip_1 }}</li>
+          {%- endif -%}
+          {%- if section.settings.chip_2 != blank -%}
+            <li class="coa-callout__chip">{{ section.settings.chip_2 }}</li>
+          {%- endif -%}
+          {%- if section.settings.chip_3 != blank -%}
+            <li class="coa-callout__chip">{{ section.settings.chip_3 }}</li>
+          {%- endif -%}
+        </ul>
+
+        <form
+          class="coa-callout__form"
+          {% if section.settings.lookup_url != blank %}action="{{ section.settings.lookup_url }}" method="get"{% endif %}
+          role="search"
+        >
+          {%- if section.settings.lookup_label != blank -%}
+            <label class="coa-callout__form-label" for="coa-callout-lot-{{ section.id }}">{{ section.settings.lookup_label }}</label>
+          {%- endif -%}
+          <div class="coa-callout__form-row">
+            <input
+              class="coa-callout__form-input"
+              id="coa-callout-lot-{{ section.id }}"
+              type="text"
+              name="lot"
+              placeholder="{{ section.settings.lookup_placeholder | escape }}"
+              autocomplete="off"
+              {% if section.settings.lookup_url == blank %}disabled{% endif %}
+            >
+            <button
+              class="coa-callout__form-button"
+              type="submit"
+              {% if section.settings.lookup_url == blank %}disabled aria-disabled="true"{% endif %}
+            >
+              {{ section.settings.lookup_button_text }}
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="coa-callout__visual" aria-hidden="true">
+        <div class="coa-callout__seal">
+          <div class="coa-callout__seal-ring"></div>
+          <div class="coa-callout__seal-inner">
+            {%- if section.settings.seal_top_label != blank -%}
+              <span class="coa-callout__seal-top">{{ section.settings.seal_top_label }}</span>
+            {%- endif -%}
+            {%- if section.settings.seal_main_label != blank -%}
+              <span class="coa-callout__seal-main">{{ section.settings.seal_main_label }}</span>
+            {%- endif -%}
+            <span class="coa-callout__seal-rule"></span>
+            {%- if section.settings.seal_bottom_label != blank -%}
+              <span class="coa-callout__seal-bottom">{{ section.settings.seal_bottom_label }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .coa-callout {
+    background: var(--tcc-bg);
+  }
+
+  .coa-callout__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--tcc-s-8, 64px);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .coa-callout__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .coa-callout__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: 500;
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-3, 24px);
+    line-height: 1.2;
+  }
+
+  .coa-callout__body {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.65;
+    margin: 0 0 var(--tcc-s-3, 24px);
+  }
+
+  .coa-callout__chips {
+    list-style: none;
+    margin: 0 0 var(--tcc-s-4, 32px);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .coa-callout__chip {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    font-weight: 500;
+    color: var(--tcc-ink);
+    background: rgba(28, 53, 83, 0.06);
+    border: 1px solid var(--tcc-line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    line-height: 1.3;
+  }
+
+  .coa-callout__form {
+    margin: 0;
+  }
+
+  .coa-callout__form-label {
+    display: block;
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    font-weight: 600;
+    color: var(--tcc-ink);
+    margin: 0 0 8px;
+  }
+
+  .coa-callout__form-row {
+    display: flex;
+    gap: 8px;
+    max-width: 460px;
+  }
+
+  .coa-callout__form-input {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--tcc-font-sans);
+    font-size: 15px;
+    color: var(--tcc-ink);
+    background: var(--tcc-bg);
+    border: 1px solid var(--tcc-line);
+    border-radius: var(--tcc-radius, 6px);
+    padding: 10px 14px;
+    line-height: 1.4;
+  }
+
+  .coa-callout__form-input:focus {
+    outline: none;
+    border-color: var(--tcc-ink);
+  }
+
+  .coa-callout__form-input:disabled {
+    background: rgba(0, 0, 0, 0.02);
+    color: var(--tcc-ink-soft);
+    cursor: not-allowed;
+  }
+
+  .coa-callout__form-button {
+    flex-shrink: 0;
+    font-family: var(--tcc-font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #0a1628;
+    border: 1px solid #0a1628;
+    border-radius: var(--tcc-radius, 6px);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    line-height: 1.4;
+  }
+
+  .coa-callout__form-button:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  .coa-callout__form-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Seal */
+  .coa-callout__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .coa-callout__seal {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .coa-callout__seal-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+      conic-gradient(
+        from 0deg,
+        rgba(255, 255, 255, 0.25) 0deg,
+        rgba(255, 255, 255, 0.05) 90deg,
+        rgba(255, 255, 255, 0.25) 180deg,
+        rgba(255, 255, 255, 0.05) 270deg,
+        rgba(255, 255, 255, 0.25) 360deg
+      );
+    padding: 6px;
+    box-sizing: border-box;
+  }
+
+  .coa-callout__seal-ring::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 55%),
+      linear-gradient(165deg, #1c3553 0%, #0a1628 55%, #050d1a 100%);
+  }
+
+  .coa-callout__seal-inner {
+    position: absolute;
+    inset: 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 24px;
+    z-index: 1;
+  }
+
+  .coa-callout__seal-top {
+    font-family: var(--tcc-font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+  }
+
+  .coa-callout__seal-main {
+    font-family: var(--tcc-font-sans);
+    font-size: clamp(24px, 2.6vw, 30px);
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+
+  .coa-callout__seal-rule {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    margin: 12px 0;
+  }
+
+  .coa-callout__seal-bottom {
+    font-family: var(--tcc-font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media screen and (max-width: 989px) {
+    .coa-callout__grid {
+      grid-template-columns: 1fr;
+      gap: var(--tcc-s-4, 32px);
+    }
+    .coa-callout__visual {
+      order: 1;
+    }
+    .coa-callout__content {
+      order: 2;
+    }
+    .coa-callout__seal {
+      width: 220px;
+      height: 220px;
+    }
+    .coa-callout__heading {
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (max-width: 599px) {
+    .coa-callout__form-row {
+      flex-direction: column;
+    }
+    .coa-callout__form-button {
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "COA Callout",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Independently tested"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Every batch. Every COA. Published per lot."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "We send every production lot to a third-party lab for identity, FU activity (potency), heavy metals, and microbials. The COA for your bottle&#39;s lot number is published before the bottle ships. Look it up below."
+    },
+    {
+      "type": "text",
+      "id": "chip_1",
+      "label": "Chip 1",
+      "default": "Identity"
+    },
+    {
+      "type": "text",
+      "id": "chip_2",
+      "label": "Chip 2",
+      "default": "FU activity"
+    },
+    {
+      "type": "text",
+      "id": "chip_3",
+      "label": "Chip 3",
+      "default": "Heavy metals & microbials"
+    },
+    {
+      "type": "text",
+      "id": "lookup_label",
+      "label": "Lookup label",
+      "default": "Find your bottle's COA"
+    },
+    {
+      "type": "text",
+      "id": "lookup_placeholder",
+      "label": "Lookup placeholder",
+      "default": "Lot number on the bottle"
+    },
+    {
+      "type": "text",
+      "id": "lookup_button_text",
+      "label": "Lookup button text",
+      "default": "Look up"
+    },
+    {
+      "type": "url",
+      "id": "lookup_url",
+      "label": "Lookup form action URL (optional — leave blank to disable form)"
+    },
+    {
+      "type": "header",
+      "content": "Seal labels"
+    },
+    {
+      "type": "text",
+      "id": "seal_top_label",
+      "label": "Seal top label",
+      "default": "COA"
+    },
+    {
+      "type": "text",
+      "id": "seal_main_label",
+      "label": "Seal main label",
+      "default": "Published"
+    },
+    {
+      "type": "text",
+      "id": "seal_bottom_label",
+      "label": "Seal bottom label",
+      "default": "Per lot"
+    }
+  ],
+  "presets": [
+    {
+      "name": "COA Callout"
+    }
+  ]
+}
+{% endschema %}

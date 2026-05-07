@@ -1,0 +1,346 @@
+<div
+  class="origin-story tcc-section-padding origin-story--{{ section.settings.layout_image_side }}"
+  data-section-type="origin-story"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="origin-story__grid">
+
+      <div class="origin-story__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="origin-story__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="origin-story__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.paragraph_1 != blank -%}
+          <p class="origin-story__paragraph">{{ section.settings.paragraph_1 }}</p>
+        {%- endif -%}
+        {%- if section.settings.paragraph_2 != blank -%}
+          <p class="origin-story__paragraph">{{ section.settings.paragraph_2 }}</p>
+        {%- endif -%}
+        {%- if section.settings.paragraph_3 != blank -%}
+          <p class="origin-story__paragraph">{{ section.settings.paragraph_3 }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.pull_quote != blank -%}
+          <blockquote class="origin-story__quote">
+            <p class="origin-story__quote-text">{{ section.settings.pull_quote }}</p>
+            {%- if section.settings.pull_quote_attribution != blank -%}
+              <cite class="origin-story__quote-cite">{{ section.settings.pull_quote_attribution }}</cite>
+            {%- endif -%}
+          </blockquote>
+        {%- endif -%}
+      </div>
+
+      <figure class="origin-story__visual" aria-hidden="true">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag:
+            loading: 'lazy',
+            sizes: '(min-width: 750px) 50vw, 100vw',
+            widths: '480, 760, 1200',
+            class: 'origin-story__image'
+          }}
+        {%- else -%}
+          <div class="origin-story__visual-frame">
+            <div class="origin-story__visual-corner origin-story__visual-corner--tl"></div>
+            <div class="origin-story__visual-corner origin-story__visual-corner--tr"></div>
+            <div class="origin-story__visual-corner origin-story__visual-corner--bl"></div>
+            <div class="origin-story__visual-corner origin-story__visual-corner--br"></div>
+            <div class="origin-story__visual-petri origin-story__visual-petri--a"></div>
+            <div class="origin-story__visual-petri origin-story__visual-petri--b"></div>
+            <div class="origin-story__visual-text">
+              <span class="origin-story__visual-eyebrow">Origin</span>
+              <span class="origin-story__visual-headline">MIYAZAKI &middot; 1980</span>
+              <span class="origin-story__visual-rule"></span>
+              <span class="origin-story__visual-detail">173 foods tested. One cleared the clot.</span>
+            </div>
+          </div>
+        {%- endif -%}
+      </figure>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .origin-story {
+    background: var(--tcc-bg);
+  }
+
+  .origin-story__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--tcc-s-8, 64px);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .origin-story--image_left .origin-story__visual {
+    order: 1;
+  }
+  .origin-story--image_left .origin-story__content {
+    order: 2;
+  }
+  .origin-story--image_right .origin-story__visual {
+    order: 2;
+  }
+  .origin-story--image_right .origin-story__content {
+    order: 1;
+  }
+
+  .origin-story__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .origin-story__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: 500;
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-3, 24px);
+    line-height: 1.2;
+  }
+
+  .origin-story__paragraph {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.65;
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .origin-story__quote {
+    margin: var(--tcc-s-4, 32px) 0 0;
+    padding: 4px 0 4px var(--tcc-s-3, 24px);
+    border-left: 2px solid var(--tcc-ink);
+  }
+
+  .origin-story__quote-text {
+    font-family: var(--tcc-font-sans);
+    font-size: clamp(17px, 1.6vw, 19px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--tcc-ink);
+    margin: 0 0 8px;
+  }
+
+  .origin-story__quote-cite {
+    display: block;
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--tcc-ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Visual block */
+  .origin-story__visual {
+    margin: 0;
+    position: relative;
+  }
+
+  .origin-story__image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--tcc-radius, 6px);
+    display: block;
+  }
+
+  .origin-story__visual-frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--tcc-radius, 6px);
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 55%),
+      linear-gradient(165deg, #1c3553 0%, #0a1628 55%, #050d1a 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .origin-story__visual-corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .origin-story__visual-corner--tl { top: 18px; left: 18px; border-right: none; border-bottom: none; }
+  .origin-story__visual-corner--tr { top: 18px; right: 18px; border-left: none; border-bottom: none; }
+  .origin-story__visual-corner--bl { bottom: 18px; left: 18px; border-right: none; border-top: none; }
+  .origin-story__visual-corner--br { bottom: 18px; right: 18px; border-left: none; border-top: none; }
+
+  .origin-story__visual-petri {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .origin-story__visual-petri--a {
+    width: 260px;
+    height: 260px;
+    top: -50px;
+    right: -70px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+  }
+
+  .origin-story__visual-petri--b {
+    width: 180px;
+    height: 180px;
+    bottom: -40px;
+    left: -50px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 65%);
+  }
+
+  .origin-story__visual-text {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 var(--tcc-s-4, 32px);
+  }
+
+  .origin-story__visual-eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+  }
+
+  .origin-story__visual-headline {
+    font-family: var(--tcc-font-sans);
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 500;
+    line-height: 1.15;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .origin-story__visual-rule {
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    margin-bottom: 16px;
+  }
+
+  .origin-story__visual-detail {
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    max-width: 280px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .origin-story__grid {
+      grid-template-columns: 1fr;
+      gap: var(--tcc-s-4, 32px);
+    }
+
+    .origin-story--image_left .origin-story__visual,
+    .origin-story--image_right .origin-story__visual {
+      order: 1;
+    }
+    .origin-story--image_left .origin-story__content,
+    .origin-story--image_right .origin-story__content {
+      order: 2;
+    }
+
+    .origin-story__heading {
+      font-size: 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Origin Story",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Origin"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Miyazaki, 1980. The accident that became a category."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_1",
+      "label": "Paragraph 1",
+      "default": "Dr. Hiroyuki Sumi, a researcher at Miyazaki Medical College, was looking for natural substances that dissolve fibrin. He tested 173 foods on Petri dishes coated with artificial blood clots."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_2",
+      "label": "Paragraph 2",
+      "default": "Most foods did nothing. One traditional Japanese fermented soybean dish &mdash; natto &mdash; cleared the clot in under 18 hours. Sumi named the responsible enzyme nattokinase."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_3",
+      "label": "Paragraph 3",
+      "default": "Forty years later, peer-reviewed cardiovascular research has built on that single moment. Spike Detox is part of that lineage &mdash; one ingredient, transparently dosed."
+    },
+    {
+      "type": "textarea",
+      "id": "pull_quote",
+      "label": "Pull quote",
+      "default": "&ldquo;The most fibrinolytically active food I have ever encountered.&rdquo;"
+    },
+    {
+      "type": "text",
+      "id": "pull_quote_attribution",
+      "label": "Pull quote attribution",
+      "default": "Dr. Hiroyuki Sumi, Miyazaki Medical College"
+    },
+    {
+      "type": "select",
+      "id": "layout_image_side",
+      "label": "Image side",
+      "options": [
+        { "value": "image_left", "label": "Image on left" },
+        { "value": "image_right", "label": "Image on right" }
+      ],
+      "default": "image_left"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (optional &mdash; falls back to navy block)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Origin Story"
+    }
+  ]
+}
+{% endschema %}

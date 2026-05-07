@@ -1,0 +1,233 @@
+<div
+  class="press-strip tcc-section-padding"
+  data-section-type="press-strip"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="press-strip__band">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="press-strip__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="press-strip__row" role="list">
+          {%- for block in section.blocks -%}
+            <li class="press-strip__cell" {{ block.shopify_attributes }}>
+              {%- if block.settings.link_url != blank -%}
+                <a
+                  class="press-strip__link"
+                  href="{{ block.settings.link_url }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+              {%- endif -%}
+              {%- if block.settings.logo_image != blank -%}
+                {{ block.settings.logo_image | image_url: width: 360 | image_tag:
+                  loading: 'lazy',
+                  widths: '180, 360',
+                  class: 'press-strip__logo',
+                  alt: block.settings.text_label
+                }}
+              {%- else -%}
+                <span class="press-strip__label">{{ block.settings.text_label }}</span>
+              {%- endif -%}
+              {%- if block.settings.link_url != blank -%}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.note != blank -%}
+        <p class="press-strip__note">{{ section.settings.note }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .press-strip {
+    background: var(--tcc-bg);
+  }
+
+  .press-strip__band {
+    border-top: 1px solid var(--tcc-line);
+    border-bottom: 1px solid var(--tcc-line);
+    padding: var(--tcc-s-4, 32px) 0;
+    text-align: center;
+  }
+
+  .press-strip__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-3, 24px);
+  }
+
+  .press-strip__row {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--tcc-s-3, 24px);
+    align-items: center;
+  }
+
+  .press-strip__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 var(--tcc-s-2, 16px);
+  }
+
+  .press-strip__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .press-strip__link:hover {
+    opacity: 0.7;
+  }
+
+  .press-strip__logo {
+    max-height: 40px;
+    width: auto;
+    height: auto;
+    display: block;
+    filter: grayscale(100%);
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+  }
+
+  .press-strip__link:hover .press-strip__logo {
+    opacity: 1;
+  }
+
+  .press-strip__label {
+    font-family: var(--tcc-font-serif, Georgia, "Times New Roman", serif);
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--tcc-ink-soft);
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+  }
+
+  .press-strip__note {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.55;
+    margin: var(--tcc-s-3, 24px) 0 0;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: 989px) {
+    .press-strip__row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--tcc-s-3, 24px) var(--tcc-s-2, 16px);
+    }
+  }
+
+  @media screen and (max-width: 599px) {
+    .press-strip__row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .press-strip__label {
+      font-size: 14px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Press Strip",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Featured on"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note (optional)",
+      "default": "Editorial coverage of cardiovascular and post-viral research."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo image (optional &mdash; falls back to text label)"
+        },
+        {
+          "type": "text",
+          "id": "text_label",
+          "label": "Text label",
+          "default": "Outlet"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press Strip",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "text_label": "Frontiers in Medicine"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "text_label": "Molecules"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "text_label": "bioRxiv"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "text_label": "PubMed Central"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

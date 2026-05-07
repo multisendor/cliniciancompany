@@ -790,6 +790,75 @@
         "product_handle": "spike-detox",
         "background_style": "navy"
       }
+    },
+    "press": {
+      "type": "press-strip",
+      "blocks": {
+        "l1": {
+          "type": "logo",
+          "settings": {
+            "text_label": "Frontiers in Medicine"
+          }
+        },
+        "l2": {
+          "type": "logo",
+          "settings": {
+            "text_label": "Molecules"
+          }
+        },
+        "l3": {
+          "type": "logo",
+          "settings": {
+            "text_label": "bioRxiv"
+          }
+        },
+        "l4": {
+          "type": "logo",
+          "settings": {
+            "text_label": "PubMed Central"
+          }
+        }
+      },
+      "block_order": [
+        "l1",
+        "l2",
+        "l3",
+        "l4"
+      ],
+      "settings": {
+        "eyebrow": "Featured on",
+        "note": "Editorial coverage of cardiovascular and post-viral research."
+      }
+    },
+    "coa": {
+      "type": "coa-callout",
+      "settings": {
+        "eyebrow": "Independently tested",
+        "heading": "Every batch. Every COA. Published per lot.",
+        "body_text": "We send every production lot to a third-party lab for identity, FU activity (potency), heavy metals, and microbials. The COA for your bottle's lot number is published before the bottle ships. Look it up below.",
+        "chip_1": "Identity",
+        "chip_2": "FU activity",
+        "chip_3": "Heavy metals & microbials",
+        "lookup_label": "Find your bottle's COA",
+        "lookup_placeholder": "Lot number on the bottle",
+        "lookup_button_text": "Look up",
+        "seal_top_label": "COA",
+        "seal_main_label": "Published",
+        "seal_bottom_label": "Per lot"
+      }
+    },
+    "origin": {
+      "type": "origin-story",
+      "settings": {
+        "eyebrow": "Origin",
+        "heading": "Miyazaki, 1980. The accident that became a category.",
+        "paragraph_1": "Dr. Hiroyuki Sumi, a researcher at Miyazaki Medical College, was looking for natural substances that dissolve fibrin. He tested 173 foods on Petri dishes coated with artificial blood clots.",
+        "paragraph_2": "Most foods did nothing. One traditional Japanese fermented soybean dish — natto — cleared the clot in under 18 hours. Sumi named the responsible enzyme nattokinase.",
+        "paragraph_3": "Forty years later, peer-reviewed cardiovascular research has built on that single moment. Spike Detox is part of that lineage — one ingredient, transparently dosed.",
+        "pull_quote": "“The most fibrinolytically active food I have ever encountered.”",
+        "pull_quote_attribution": "Dr. Hiroyuki Sumi, Miyazaki Medical College",
+        "layout_image_side": "image_left"
+      }
     }
   },
   "order": [
@@ -801,11 +870,14 @@
     "mechanism",
     "compact_faq",
     "outcome",
+    "press",
     "research",
     "comparison",
+    "coa",
     "timeline",
     "social",
     "cta_repeat",
+    "origin",
     "guarantee",
     "hsa",
     "faq"
