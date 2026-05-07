@@ -727,6 +727,69 @@
         "intro": "Nattokinase is not a fast-acting drug. Below is what peer-reviewed research has observed at each milestone &mdash; framed as observations, not guarantees.",
         "footnote": "Individual results vary. These are observations from peer-reviewed research, not promises. Talk to your physician before starting any nattokinase protocol."
       }
+    },
+    "compact_faq": {
+      "type": "compact-faq",
+      "blocks": {
+        "cf1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is this just nattokinase, or is it a blend?",
+            "answer": "<p>Just nattokinase. One ingredient, 4,000 FU per capsule. We do not hide the dose inside a proprietary blend, and we do not bundle in K2 or other co-factors that complicate it for blood-thinner users.</p>"
+          }
+        },
+        "cf2": {
+          "type": "faq",
+          "settings": {
+            "question": "Why 4,000 FU per capsule and not more?",
+            "answer": "<p>4,000 FU is the highest single-capsule dose that lets you stack to whatever range your protocol calls for. The largest peer-reviewed trial (Chen 2022, n=1,062, 12 months) identified 6,000–12,000 FU/day as clinically active. One, two, or three capsules — you decide with your clinician.</p>"
+          }
+        },
+        "cf3": {
+          "type": "faq",
+          "settings": {
+            "question": "I'm on a blood thinner. Can I take this?",
+            "answer": "<p><strong>Talk to your prescribing physician first.</strong> Nattokinase has fibrinolytic activity. It can interact with anticoagulants like Eliquis, Xarelto, warfarin, and aspirin. It is not a substitute for your prescribed therapy. We address this in detail in the deeper FAQ.</p>"
+          }
+        },
+        "cf4": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I notice anything?",
+            "answer": "<p>Honest answer: it varies. Chen 2022 measured cardiovascular markers (lipids, carotid plaque) starting around month 3, with the strongest signals between months 6 and 12. Nattokinase is not a fast-acting drug.</p>"
+          }
+        },
+        "cf5": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it third-party tested?",
+            "answer": "<p>Yes — every batch. Identity, FU activity, heavy metals, microbials. COA published per lot.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cf1",
+        "cf2",
+        "cf3",
+        "cf4",
+        "cf5"
+      ],
+      "settings": {
+        "eyebrow": "Before you decide",
+        "heading": "Quick answers to the questions buyers ask first",
+        "intro": "If you're considering Spike Detox, these are the questions other buyers send us most often. The deeper FAQ at the bottom of this page covers the science, dosing math, drug-interaction detail, and disclaimers."
+      }
+    },
+    "cta_repeat": {
+      "type": "repeat-cta",
+      "settings": {
+        "eyebrow": "Built for the people who read the label",
+        "heading": "Single ingredient. Disclosed dose. Tested per batch.",
+        "subheading": "If it's not the right fit, email us within 60 days — even an empty bottle — for a full refund. No questions asked.",
+        "button_text": "Add to Cart",
+        "product_handle": "spike-detox",
+        "background_style": "navy"
+      }
     }
   },
   "order": [
@@ -736,11 +799,13 @@
     "trust",
     "problem",
     "mechanism",
+    "compact_faq",
     "outcome",
     "research",
     "comparison",
     "timeline",
     "social",
+    "cta_repeat",
     "guarantee",
     "hsa",
     "faq"

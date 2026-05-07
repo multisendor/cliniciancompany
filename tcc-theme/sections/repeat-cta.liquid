@@ -1,0 +1,206 @@
+{%- assign repeat_cta_product = all_products[section.settings.product_handle] -%}
+<div
+  class="repeat-cta tcc-section-padding repeat-cta--{{ section.settings.background_style }}"
+  data-section-type="repeat-cta"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    <div class="repeat-cta__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="repeat-cta__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="repeat-cta__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="repeat-cta__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+
+      {%- if repeat_cta_product != blank and repeat_cta_product.selected_or_first_available_variant != blank -%}
+        <form action="/cart/add" method="post" class="repeat-cta__form" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{{ repeat_cta_product.selected_or_first_available_variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+          <button type="submit" class="repeat-cta__button">
+            {{ section.settings.button_text }}
+          </button>
+        </form>
+      {%- else -%}
+        <a class="repeat-cta__button" href="/products/{{ section.settings.product_handle }}">
+          {{ section.settings.button_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .repeat-cta--soft {
+    background: var(--tcc-bg);
+    color: var(--tcc-ink);
+  }
+
+  .repeat-cta--navy {
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
+      linear-gradient(165deg, #1c3553 0%, #0a1628 55%, #050d1a 100%);
+    color: #ffffff;
+  }
+
+  .repeat-cta__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .repeat-cta__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+
+  .repeat-cta--navy .repeat-cta__eyebrow {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .repeat-cta__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: 500;
+    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2, 16px);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .repeat-cta--navy .repeat-cta__heading {
+    color: #ffffff;
+  }
+
+  .repeat-cta__subheading {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    line-height: 1.6;
+    margin: 0 0 var(--tcc-s-4, 32px);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .repeat-cta--navy .repeat-cta__subheading {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .repeat-cta__form {
+    margin: var(--tcc-s-4, 32px) 0 0;
+  }
+
+  .repeat-cta__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    padding: 16px 36px;
+    min-width: 220px;
+    border-radius: 999px;
+    border: 1px solid var(--tcc-ink);
+    background: var(--tcc-ink);
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .repeat-cta__button:hover {
+    opacity: 0.85;
+  }
+
+  .repeat-cta--navy .repeat-cta__button {
+    background: #ffffff;
+    color: #0a1628;
+    border-color: #ffffff;
+  }
+
+  .repeat-cta--navy .repeat-cta__button:hover {
+    opacity: 0.92;
+  }
+
+  @media screen and (max-width: 749px) {
+    .repeat-cta__heading {
+      font-size: 22px;
+    }
+    .repeat-cta__subheading {
+      font-size: 15px;
+    }
+    .repeat-cta__button {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Repeat CTA",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Built for the people who read the label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Single ingredient. Disclosed dose. Tested per batch."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "If it's not the right fit, email us within 60 days &mdash; even an empty bottle &mdash; for a full refund. No questions asked."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "text",
+      "id": "product_handle",
+      "label": "Product handle",
+      "default": "spike-detox"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background style",
+      "options": [
+        { "value": "soft", "label": "Soft (page background)" },
+        { "value": "navy", "label": "Navy (dark band)" }
+      ],
+      "default": "navy"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Repeat CTA"
+    }
+  ]
+}
+{% endschema %}
