@@ -126,3 +126,61 @@ Shopify CLI (3.91.0) was available. Started theme dev server at http://127.0.0.1
 
 **To unstick:** start with hypothesis 1 (strip the `/* */` header from both templates locally, commit, push to live with `--allow-live`, recheck render). 80% confidence that fixes it.
 
+---
+
+## Phase 5 — Mirror references (TWC + Resilia)
+
+**Status:** complete (with QA findings).
+**Date:** 2026-05-06.
+
+User direction (this session): CONTRACT-5 audit rules relaxed; conversion-first build with urgency tactics, named authority, video carousels, OTP/Sub radio, cross-sell. Mandatory carve-outs: FDA disclaimer + no explicit cure claims.
+
+Reference targets:
+- Complete ← www.twc.health/products/ultimate-spike-detox (16 template sections mirrored)
+- Pure ← try.resilia.shop/rsl (25 template sections; plan said 27 — Shopify product templates have a hard 25-section cap, dropped `inline_review` and `rating` as least structurally significant)
+
+Built (6 new sections): video-testimonials, cross-sell-products, image-band, subscription-features, symptom-grid, special-offer-callout.
+
+Buybox refactor: warning_chip / member_callout / embedded_video_carousel / accordion_with_cross_sell block types + OTP-vs-Subscribe purchase mode + sticky-ATC price-pair display. Per-template opt-in; Pure PDP unchanged at runtime.
+
+Resolved blocker: Complete PDP was previously rendering only 10/18 sections (JSONC comment header bug). Fresh rewrite with no comment header = all 16 sections render.
+
+**Mid-build incident:** Phase 3 sub-agent's `shopify theme pull` grabbed a stale CDN copy of buybox + sticky-atc that didn't yet have Phase 2's Liquid render code. The agent committed the deletion as a sync commit (66c31fa). Phase 3 then re-added the schema but not the Liquid. Caught and restored from commit 8040c29 (commit e7cbbfc). Lesson: **pre-Phase-N pulls should be skipped if a recent push hasn't fully propagated through Shopify CDN, or the agent should diff against expected post-push state before committing the pull as "sync"**.
+
+QA artifacts: `.playwright-mcp/pdp-mirror-2026-05-06/01..06-*.png`
+
+QA findings (from Playwright screenshots 2026-05-07):
+
+**Complete PDP:**
+- 10 distinct content sections rendered in `main` (media, buybox, sticky-ATC bar, video-testimonials, press-strip/FEATURED ON, testimonials slider, image-with-text/doctor block, benefits-grid, FAQ, cross-sell-products). Missing from the 16-section spec: image_band_1/2/3/4 (4 image bands not rendering — possibly not wired into template or section type not found).
+- Buybox rendering: OTP/Subscribe radio cards NOT visible — buybox shows plain `$89.99` + "Add To Cart | $89.99" button. The `purchase_mode: otp_vs_subscribe` may not be wired or the snippet `buybox-otp-vs-subscribe.liquid` is missing.
+- Warning chip pill: NOT visible in the buybox top area.
+- Member callout link: NOT visible in the buybox.
+- Embedded video carousel in buybox: NOT visible as a buybox block — BUT a standalone `video-testimonials` section renders correctly with 3 dark placeholder thumbnail cards ("YOUR HEALTH. YOUR STORIES." / "Real customers, real recovery.") below the sticky ATC bar.
+- Accordion with cross-sell in buybox: NOT visible as a buybox block.
+- Sticky ATC bar: visible at bottom of viewport ("Spike Detox Complete" + "Add to Cart" button). Price-pair (crossed-out compare-at) not verifiable since `compare_at_price` not set on this product.
+- FDA disclaimer: present in footer.
+- Section count: 10 rendered vs 16 expected — 6 sections (4 image-bands + 2 missing buybox-block renderings) not appearing. The image-band section type may not be pushed/registered, or the 4 image_band instances are in the template JSON but the section file errors silently.
+
+**Pure PDP:**
+- 23 distinct content sections rendered in `main` (all major sections visible): media, buybox, subscription-features, money-back-guarantee, research-highlights, benefits-grid, symptom-grid (8 tiles correct), short-timeline (3 stages), testimonials-slider, problem-state, sumi-origin-story, outcome-stats, image-with-text, video-testimonials (4 cards: Shaun/Gina/Taylor/James), repeat-CTA ×3, trust-strip (6 icons), long-timeline (6 stages: week1/month1/2mo/3mo/6mo/12mo), brand-comparison-table, special-offer-callout (SPECIAL OFFER ON NOW!), promo-countdown-bar (live countdown visible), FAQ (10 Qs), footer-CTA.
+- Bundle picker (Kaching widget): NOT rendered — buybox shows plain `$89.99` + "Add To Cart | $89.99". The 3-radio-card bundle widget is absent. This is the primary regression for Pure.
+- No new buybox blocks (warning chip, member callout, etc.) visible on Pure — correct, Pure is unchanged per spec.
+- Sticky ATC bar: NOT confirmed visible in Pure (no sticky-atc-bar section block observed in snapshot). This may be missing from the Pure template or rendered off-screen.
+- New sections all rendering correctly: subscription-features (3-icon strip), symptom-grid (8 tiles), special-offer-callout (Buy 2 Get 1 Free banner with image placeholder + bullet list), video-testimonials (4 placeholder cards), promo-countdown-bar (live countdown).
+- FAQ: 10 questions present including "Important disclosures" block with FDA disclaimer.
+- Section count: 23 rendered vs 25 expected — within acceptable range given 25-section cap and exclusion of `inline_review` + `rating`.
+
+**Open issues for human:**
+1. **CRITICAL — Bundle picker (Kaching) missing from Pure:** The 3-radio-card bundle widget is not rendering. The Kaching app embed or widget code may have been lost during template rebuild. Human action needed: re-inspect `product.spike-detox.json` template for the Kaching block type, verify the Kaching app is installed and the app block is present in the template.
+2. **CRITICAL — Complete PDP missing 4 image-band sections + all 4 new buybox block types (warning_chip, member_callout, embedded_video, accordion_cross_sell):** The `image-band.liquid` section file may not have been pushed to the theme, or the `buybox-otp-vs-subscribe.liquid` and buybox snippet files are missing. Human action: verify all 6 new section files and 4 buybox snippet files are present on the theme.
+3. **MODERATE — Sticky ATC bar not confirmed on Pure PDP:** May be a rendering/z-index issue on mobile, or missing from Pure template order. Check that `sticky-atc-bar` section is in `product.spike-detox.json` order array.
+4. **LOW — OTP/Subscribe radio mode not active on Complete:** Complete buybox shows plain ATC instead of the 2-radio-card OTP vs Subscribe layout. Likely the `purchase_mode: otp_vs_subscribe` setting is in the JSON but the Liquid branch or snippet is missing.
+5. Real customer videos for video-testimonials thumbs (all dark placeholders).
+6. Real Founder's Note headshot/quote for doctor_block on Complete.
+7. Real cross-sell partner SKUs for cross-sell-products section.
+8. Okendo (or alt) reviews module install.
+9. Real "Featured On" outlet logos.
+10. Real ingredient infographic art for image_band instances on Complete.
+11. Pure: 25-section cap means `inline_review` + `rating` sections couldn't fit; consider whether to drop something else to fit them.
+
