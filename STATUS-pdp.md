@@ -229,3 +229,40 @@ Commit history for this phase:
 - `e7cbbfc` — restored Phase 2 buybox content from 8040c29 (committed locally, deployment still blocked)
 - `cbc7413` — Phase 5 STATUS append (initial QA findings, partially superseded by this addendum)
 
+
+## Phase 5c — Final visual QA + corrections (2026-05-07)
+
+After multiple QA passes had inconsistent reads, a final Playwright pass with adequate JS-hydration time + curl verification yielded:
+
+**Complete PDP — actually 16/16 sections rendering** (not 12/16 as earlier reported). Earlier counts used `data-section-type` attribute matches; that attribute is project-specific to our new sections, NOT present on default Shopify section types (`image-with-text`, `rich-text`). All 16 `shopify-section-template--__<id>` wrappers exist; content rendering for doctor_block ("Detox Stronger. Bounce Back Faster.", "Founder"), ingredients, FAQ, video-testimonials, image-bands, FEATURED ON, cross-sell, sticky-ATC, FDA disclaimer all confirmed.
+
+**Pure PDP — 25/25 sections rendering structurally.** All new sections visible (subscription-features, symptom-grid 8 tiles, special-offer-callout "SPECIAL OFFER ON NOW!", video-testimonials 4 cards, Kaching bundle widget mount div present, comparison table, 6-stage timeline, FAQ with FDA disclaimer, footer CTA, etc.).
+
+**Final shipping state:**
+
+| Layer | State |
+|---|---|
+| Pure PDP architecture | ✅ Complete — 25/25 sections rendering |
+| Complete PDP architecture | ✅ Complete — 16/16 sections rendering |
+| 6 new section liquids | ✅ Deployed |
+| 5 buybox snippets | ✅ Deployed (but currently unused — buybox file modifications blocked) |
+| Audit-rule relaxation | ✅ Applied — urgency tactics, named authority, video carousels, "TODAY ONLY" all intentionally retained |
+| FDA disclaimer | ✅ Present on both PDPs (footer + last FAQ block) |
+| Buybox-internal new blocks (Complete) | ❌ Stuck on Shopify platform lock (see Phase 5b) |
+| Sticky-ATC price-pair (Complete) | ❌ Stuck on same lock |
+| 3 minor Complete sections | ✅ Actually rendering — earlier QA reports were stale |
+
+**NEW issue surfaced (separate from buybox lock):**
+
+Pure's Kaching bundle widget mount div is in the DOM but the app is not injecting content — the `.kaching-bundles__product-page-widget` container shows `display: none` with zero children at runtime. Pure shoppers see plain ATC at $89.99 with no 1-bottle/3-pack/6-pack radio cards.
+
+Probable causes (in order):
+1. Kaching app not configured for this product SKU. Open `https://gmmehe-01.myshopify.com/admin/apps` → Kaching Bundles → ensure the `spike-detox` product has a bundle plan.
+2. Kaching app disabled or uninstalled on the store. Check apps list.
+3. Kaching app requires an `@app` block to be added inside the buybox section instance via admin theme editor (the v2 reference template did not have one in JSON, suggesting the app block was added at a higher level — maybe globally enabled on the theme).
+
+**Recommended human actions:**
+1. Investigate buybox lock (Phase 5b actions) → unblock the 5 new buybox blocks.
+2. Investigate Kaching app config → unblock Pure bundle picker.
+3. Remove leftover root-level PNGs (`complete-pdp-*.png`, `pure-pdp-*.png`, `task7-*.png`, `task8-*.png`, `v3-*.png`) from working directory if not needed for reference — they are not committed.
+
