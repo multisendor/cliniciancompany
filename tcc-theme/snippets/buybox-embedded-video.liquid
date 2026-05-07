@@ -1,0 +1,241 @@
+{%- comment -%}
+  buybox-embedded-video.liquid
+  Variables: block (the section block object)
+  Usage: {% render 'buybox-embedded-video', block: block %}
+{%- endcomment -%}
+
+{%- assign has_any_card = false -%}
+{%- if block.settings.name_1 != blank or block.settings.thumb_1 != blank or block.settings.video_1 != blank -%}
+  {%- assign has_any_card = true -%}
+{%- elsif block.settings.name_2 != blank or block.settings.thumb_2 != blank -%}
+  {%- assign has_any_card = true -%}
+{%- elsif block.settings.name_3 != blank or block.settings.thumb_3 != blank -%}
+  {%- assign has_any_card = true -%}
+{%- endif -%}
+
+<div class="buybox-embedded-video" {{ block.shopify_attributes }}>
+  {%- if block.settings.eyebrow != blank -%}
+    <p class="buybox-embedded-video__eyebrow">{{ block.settings.eyebrow }}</p>
+  {%- endif -%}
+
+  <div class="buybox-embedded-video__track">
+    {%- comment -%}Card 1{%- endcomment -%}
+    {%- if block.settings.name_1 != blank or block.settings.thumb_1 != blank -%}
+      <div class="buybox-embedded-video__card">
+        {%- if block.settings.video_1 != blank -%}
+          <a class="buybox-embedded-video__thumb-wrap" href="{{ block.settings.video_1 }}" target="_blank" rel="noopener">
+        {%- else -%}
+          <div class="buybox-embedded-video__thumb-wrap buybox-embedded-video__thumb-wrap--no-link">
+        {%- endif -%}
+          {%- if block.settings.thumb_1 != blank -%}
+            <img
+              class="buybox-embedded-video__thumb"
+              src="{{ block.settings.thumb_1 | image_url: width: 240 }}"
+              srcset="{{ block.settings.thumb_1 | image_url: width: 120 }} 120w, {{ block.settings.thumb_1 | image_url: width: 240 }} 240w"
+              sizes="120px"
+              alt="{{ block.settings.name_1 | escape }}"
+              width="120"
+              height="160"
+              loading="lazy"
+            >
+          {%- else -%}
+            <div class="buybox-embedded-video__thumb buybox-embedded-video__thumb--placeholder"></div>
+          {%- endif -%}
+          <span class="buybox-embedded-video__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+              <circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.9)"/>
+              <path d="M10 8.5l6 3.5-6 3.5V8.5Z" fill="#0a1628"/>
+            </svg>
+          </span>
+        {%- if block.settings.video_1 != blank -%}
+          </a>
+        {%- else -%}
+          </div>
+        {%- endif -%}
+        {%- if block.settings.name_1 != blank -%}
+          <p class="buybox-embedded-video__name">{{ block.settings.name_1 }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%}Card 2{%- endcomment -%}
+    {%- if block.settings.name_2 != blank or block.settings.thumb_2 != blank -%}
+      <div class="buybox-embedded-video__card">
+        {%- if block.settings.video_2 != blank -%}
+          <a class="buybox-embedded-video__thumb-wrap" href="{{ block.settings.video_2 }}" target="_blank" rel="noopener">
+        {%- else -%}
+          <div class="buybox-embedded-video__thumb-wrap buybox-embedded-video__thumb-wrap--no-link">
+        {%- endif -%}
+          {%- if block.settings.thumb_2 != blank -%}
+            <img
+              class="buybox-embedded-video__thumb"
+              src="{{ block.settings.thumb_2 | image_url: width: 240 }}"
+              srcset="{{ block.settings.thumb_2 | image_url: width: 120 }} 120w, {{ block.settings.thumb_2 | image_url: width: 240 }} 240w"
+              sizes="120px"
+              alt="{{ block.settings.name_2 | escape }}"
+              width="120"
+              height="160"
+              loading="lazy"
+            >
+          {%- else -%}
+            <div class="buybox-embedded-video__thumb buybox-embedded-video__thumb--placeholder"></div>
+          {%- endif -%}
+          <span class="buybox-embedded-video__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+              <circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.9)"/>
+              <path d="M10 8.5l6 3.5-6 3.5V8.5Z" fill="#0a1628"/>
+            </svg>
+          </span>
+        {%- if block.settings.video_2 != blank -%}
+          </a>
+        {%- else -%}
+          </div>
+        {%- endif -%}
+        {%- if block.settings.name_2 != blank -%}
+          <p class="buybox-embedded-video__name">{{ block.settings.name_2 }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%}Card 3{%- endcomment -%}
+    {%- if block.settings.name_3 != blank or block.settings.thumb_3 != blank -%}
+      <div class="buybox-embedded-video__card">
+        {%- if block.settings.video_3 != blank -%}
+          <a class="buybox-embedded-video__thumb-wrap" href="{{ block.settings.video_3 }}" target="_blank" rel="noopener">
+        {%- else -%}
+          <div class="buybox-embedded-video__thumb-wrap buybox-embedded-video__thumb-wrap--no-link">
+        {%- endif -%}
+          {%- if block.settings.thumb_3 != blank -%}
+            <img
+              class="buybox-embedded-video__thumb"
+              src="{{ block.settings.thumb_3 | image_url: width: 240 }}"
+              srcset="{{ block.settings.thumb_3 | image_url: width: 120 }} 120w, {{ block.settings.thumb_3 | image_url: width: 240 }} 240w"
+              sizes="120px"
+              alt="{{ block.settings.name_3 | escape }}"
+              width="120"
+              height="160"
+              loading="lazy"
+            >
+          {%- else -%}
+            <div class="buybox-embedded-video__thumb buybox-embedded-video__thumb--placeholder"></div>
+          {%- endif -%}
+          <span class="buybox-embedded-video__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+              <circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.9)"/>
+              <path d="M10 8.5l6 3.5-6 3.5V8.5Z" fill="#0a1628"/>
+            </svg>
+          </span>
+        {%- if block.settings.video_3 != blank -%}
+          </a>
+        {%- else -%}
+          </div>
+        {%- endif -%}
+        {%- if block.settings.name_3 != blank -%}
+          <p class="buybox-embedded-video__name">{{ block.settings.name_3 }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .buybox-embedded-video {
+    margin-bottom: 16px;
+  }
+
+  .buybox-embedded-video__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 10px 0;
+  }
+
+  .buybox-embedded-video__track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 4px;
+  }
+
+  .buybox-embedded-video__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .buybox-embedded-video__card {
+    flex: 0 0 calc(33.333% - 7px);
+    min-width: 100px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .buybox-embedded-video__thumb-wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .buybox-embedded-video__thumb-wrap--no-link {
+    cursor: default;
+  }
+
+  .buybox-embedded-video__thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .buybox-embedded-video__thumb--placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--tcc-ink, #0a1628) 0%, #1a2840 100%);
+  }
+
+  .buybox-embedded-video__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+    transition: transform 0.15s ease;
+  }
+
+  .buybox-embedded-video__thumb-wrap:hover .buybox-embedded-video__play {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .buybox-embedded-video__name {
+    font-family: var(--tcc-font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--tcc-ink);
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 749px) {
+    .buybox-embedded-video__card {
+      flex: 0 0 calc(40% - 5px);
+    }
+  }
+</style>

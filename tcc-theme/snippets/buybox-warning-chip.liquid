@@ -1,0 +1,56 @@
+{%- comment -%}
+  buybox-warning-chip.liquid
+  Variables: block (the section block object)
+  Usage: {% render 'buybox-warning-chip', block: block %}
+{%- endcomment -%}
+
+<div class="buybox-warning-chip" style="--chip-tint: {{ block.settings.tint }};" {{ block.shopify_attributes }}>
+  {%- if block.settings.icon == 'info' -%}
+    <svg class="buybox-warning-chip__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true">
+      <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M10 9v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="10" cy="6.5" r="0.75" fill="currentColor"/>
+    </svg>
+  {%- else -%}
+    <svg class="buybox-warning-chip__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true">
+      <path d="M10 3L18 17H2L10 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M10 8v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="10" cy="14" r="0.75" fill="currentColor"/>
+    </svg>
+  {%- endif -%}
+  <span class="buybox-warning-chip__text">{{ block.settings.text }}</span>
+</div>
+
+<style>
+  .buybox-warning-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--chip-tint, #fef2e8);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 100px;
+    padding: 6px 14px 6px 10px;
+    margin-bottom: 12px;
+  }
+
+  .buybox-warning-chip__icon {
+    flex-shrink: 0;
+    color: #b45309;
+    width: 16px;
+    height: 16px;
+  }
+
+  .buybox-warning-chip__text {
+    font-family: var(--tcc-font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: #92400e;
+    line-height: 1.3;
+  }
+
+  @media screen and (max-width: 749px) {
+    .buybox-warning-chip__text {
+      font-size: 11.5px;
+    }
+  }
+</style>
