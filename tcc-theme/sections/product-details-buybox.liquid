@@ -174,8 +174,13 @@
         {%- endif -%}
 
 
-        <!-- Kaching Bundles Manual Embed Anchor -->
-        <div class="kaching-bundles__product-page-widget"></div>
+        {%- if section.settings.purchase_mode == 'otp_vs_subscribe' -%}
+          <!-- OTP vs Subscribe radio cards -->
+          {% render 'buybox-otp-vs-subscribe', product: section_product, section: section %}
+        {%- else -%}
+          <!-- Kaching Bundles Manual Embed Anchor -->
+          <div class="kaching-bundles__product-page-widget"></div>
+        {%- endif -%}
 
         <!-- Apps (Additional) -->
         {%- for block in section.blocks -%}
@@ -1613,6 +1618,16 @@
       "id": "product_handle",
       "label": "Product Handle (for non-product pages)",
       "default": "spike-detox"
+    },
+    {
+      "type": "select",
+      "id": "purchase_mode",
+      "label": "Purchase mode",
+      "options": [
+        { "value": "bundle", "label": "Bundle picker (Kaching widget) — default" },
+        { "value": "otp_vs_subscribe", "label": "OTP vs Subscribe radio cards" }
+      ],
+      "default": "bundle"
     }
   ],
   "blocks": [

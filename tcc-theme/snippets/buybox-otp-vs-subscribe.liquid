@@ -1,0 +1,512 @@
+{%- comment -%}
+  buybox-otp-vs-subscribe.liquid
+  Variables: product, section
+  Usage: {% render 'buybox-otp-vs-subscribe', product: product, section: section %}
+
+  Renders 2 stacked radio cards: One-Time Purchase + Subscribe & Save.
+  Subscribe is default-selected. If product has no selling_plan_groups, degrades to OTP-only.
+  Form posts to /cart/add with variant ID and (when subscribe selected) selling_plan ID.
+{%- endcomment -%}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign has_selling_plans = false -%}
+{%- if product.selling_plan_groups.size > 0 -%}
+  {%- assign has_selling_plans = true -%}
+{%- endif -%}
+
+{%- comment -%}Pick the first selling plan from the first group{%- endcomment -%}
+{%- assign first_selling_plan = nil -%}
+{%- if has_selling_plans -%}
+  {%- assign first_selling_plan = product.selling_plan_groups.first.selling_plans.first -%}
+{%- endif -%}
+
+<div class="buybox-otp-sub" id="BuyboxOtpSub-{{ section.id }}">
+  <form
+    class="buybox-otp-sub__form"
+    action="/cart/add"
+    method="post"
+    id="buybox-otp-sub-form-{{ section.id }}"
+    data-section-id="{{ section.id }}"
+  >
+    <input type="hidden" name="id" value="{{ current_variant.id }}" id="buybox-otp-sub-variant-{{ section.id }}">
+    <input type="hidden" name="selling_plan" value="" id="buybox-otp-sub-plan-{{ section.id }}">
+
+    <div class="buybox-otp-sub__cards" role="radiogroup" aria-label="Purchase options">
+
+      {%- comment -%}--- Card 1: One-Time Purchase ---{%- endcomment -%}
+      <label
+        class="buybox-otp-sub__card{% unless has_selling_plans %} buybox-otp-sub__card--selected{% endunless %}"
+        id="buybox-otp-label-otp-{{ section.id }}"
+      >
+        <input
+          type="radio"
+          name="buybox_purchase_mode_{{ section.id }}"
+          value="otp"
+          class="buybox-otp-sub__radio"
+          data-mode="otp"
+          {% unless has_selling_plans %}checked{% endunless %}
+        >
+        <div class="buybox-otp-sub__card-inner">
+          <div class="buybox-otp-sub__card-header">
+            <span class="buybox-otp-sub__card-dot" aria-hidden="true"></span>
+            <span class="buybox-otp-sub__card-name">One-Time Purchase</span>
+          </div>
+          <div class="buybox-otp-sub__card-pricing">
+            <span class="buybox-otp-sub__price" id="buybox-otp-price-otp-{{ section.id }}">
+              {{ current_variant.price | money }}
+            </span>
+            {%- if current_variant.compare_at_price > current_variant.price -%}
+              <span class="buybox-otp-sub__compare" id="buybox-otp-compare-otp-{{ section.id }}">
+                {{ current_variant.compare_at_price | money }}
+              </span>
+            {%- endif -%}
+          </div>
+        </div>
+      </label>
+
+      {%- comment -%}--- Card 2: Subscribe & Save (only if selling plans exist) ---{%- endcomment -%}
+      {%- if has_selling_plans -%}
+        {%- assign sub_plan = first_selling_plan -%}
+        {%- comment -%}Calculate subscribe price: try to get it from the first variant's selling plan allocation{%- endcomment -%}
+        {%- assign sub_allocation = nil -%}
+        {%- for allocation in current_variant.selling_plan_allocations -%}
+          {%- if allocation.selling_plan.id == sub_plan.id -%}
+            {%- assign sub_allocation = allocation -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <label
+          class="buybox-otp-sub__card buybox-otp-sub__card--subscribe buybox-otp-sub__card--selected"
+          id="buybox-otp-label-sub-{{ section.id }}"
+        >
+          <input
+            type="radio"
+            name="buybox_purchase_mode_{{ section.id }}"
+            value="subscribe"
+            class="buybox-otp-sub__radio"
+            data-mode="subscribe"
+            data-plan-id="{{ sub_plan.id }}"
+            checked
+          >
+          <div class="buybox-otp-sub__card-inner">
+            <div class="buybox-otp-sub__card-header">
+              <span class="buybox-otp-sub__card-dot" aria-hidden="true"></span>
+              <span class="buybox-otp-sub__card-name">Subscribe &amp; Save</span>
+              <span class="buybox-otp-sub__badge">Best Value</span>
+            </div>
+            <div class="buybox-otp-sub__card-pricing">
+              {%- if sub_allocation != nil -%}
+                <span class="buybox-otp-sub__price" id="buybox-otp-price-sub-{{ section.id }}">
+                  {{ sub_allocation.price | money }}
+                </span>
+                {%- if sub_allocation.compare_at_price > sub_allocation.price -%}
+                  <span class="buybox-otp-sub__compare" id="buybox-otp-compare-sub-{{ section.id }}">
+                    {{ sub_allocation.compare_at_price | money }}
+                  </span>
+                {%- endif -%}
+              {%- else -%}
+                <span class="buybox-otp-sub__price" id="buybox-otp-price-sub-{{ section.id }}">
+                  {{ current_variant.price | money }}
+                </span>
+              {%- endif -%}
+              <span class="buybox-otp-sub__save-tag">{{ sub_plan.name }}</span>
+            </div>
+            <ul class="buybox-otp-sub__bullets">
+              <li class="buybox-otp-sub__bullet">
+                <svg class="buybox-otp-sub__bullet-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" aria-hidden="true">
+                  <path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Delivery every 30 days
+              </li>
+              <li class="buybox-otp-sub__bullet">
+                <svg class="buybox-otp-sub__bullet-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" aria-hidden="true">
+                  <path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Re-Stock Priority
+              </li>
+              <li class="buybox-otp-sub__bullet">
+                <svg class="buybox-otp-sub__bullet-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" aria-hidden="true">
+                  <path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Exclusive Discounts
+              </li>
+            </ul>
+          </div>
+        </label>
+      {%- endif -%}
+
+    </div>
+
+    {%- comment -%}Quantity stepper{%- endcomment -%}
+    <div class="buybox-otp-sub__qty-row">
+      <label class="buybox-otp-sub__qty-label" for="buybox-otp-qty-{{ section.id }}">Qty</label>
+      <div class="buybox-otp-sub__qty-stepper">
+        <button type="button" class="buybox-otp-sub__qty-btn buybox-otp-sub__qty-btn--minus" aria-label="Decrease quantity" data-qty-target="buybox-otp-qty-{{ section.id }}">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" aria-hidden="true">
+            <path d="M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <input
+          type="number"
+          name="quantity"
+          id="buybox-otp-qty-{{ section.id }}"
+          class="buybox-otp-sub__qty-input"
+          value="1"
+          min="1"
+          max="10"
+          aria-label="Quantity"
+        >
+        <button type="button" class="buybox-otp-sub__qty-btn buybox-otp-sub__qty-btn--plus" aria-label="Increase quantity" data-qty-target="buybox-otp-qty-{{ section.id }}">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" aria-hidden="true">
+            <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {%- comment -%}Add to Cart button{%- endcomment -%}
+    <button
+      type="submit"
+      name="add"
+      class="buybox-otp-sub__atc product-details-buybox__add-to-cart"
+    >
+      <span class="buybox-otp-sub__atc-label">Add To Cart</span>
+      <span class="product-details-buybox__atc-divider">|</span>
+      <span class="buybox-otp-sub__atc-price" id="buybox-otp-atc-price-{{ section.id }}">{{ current_variant.price | money }}</span>
+    </button>
+
+  </form>
+</div>
+
+<style>
+  .buybox-otp-sub {
+    margin: 1rem 0;
+  }
+
+  .buybox-otp-sub__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .buybox-otp-sub__card {
+    display: block;
+    border: 2px solid var(--tcc-line, #e0e0e0);
+    border-radius: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    background: #fff;
+  }
+
+  .buybox-otp-sub__card:hover {
+    border-color: var(--tcc-ink, #0a1628);
+  }
+
+  .buybox-otp-sub__card--selected {
+    border-color: var(--tcc-ink, #0a1628);
+    box-shadow: 0 0 0 1px var(--tcc-ink, #0a1628);
+  }
+
+  .buybox-otp-sub__card--subscribe {
+    background: #f9fbff;
+  }
+
+  .buybox-otp-sub__radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .buybox-otp-sub__card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .buybox-otp-sub__card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .buybox-otp-sub__card-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--tcc-line, #ccc);
+    flex-shrink: 0;
+    position: relative;
+    background: #fff;
+    transition: border-color 0.15s ease;
+  }
+
+  .buybox-otp-sub__card--selected .buybox-otp-sub__card-dot {
+    border-color: var(--tcc-ink, #0a1628);
+  }
+
+  .buybox-otp-sub__card--selected .buybox-otp-sub__card-dot::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background: var(--tcc-ink, #0a1628);
+  }
+
+  .buybox-otp-sub__card-name {
+    font-family: var(--tcc-font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tcc-ink);
+    line-height: 1;
+  }
+
+  .buybox-otp-sub__badge {
+    margin-left: auto;
+    background: var(--tcc-ink, #0a1628);
+    color: #fff;
+    font-family: var(--tcc-font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 100px;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  .buybox-otp-sub__card-pricing {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .buybox-otp-sub__price {
+    font-family: var(--tcc-font-sans);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--tcc-ink);
+    line-height: 1;
+  }
+
+  .buybox-otp-sub__compare {
+    font-family: var(--tcc-font-sans);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--tcc-ink-soft);
+    text-decoration: line-through;
+  }
+
+  .buybox-otp-sub__save-tag {
+    font-family: var(--tcc-font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--tcc-positive, #05B890);
+    background: rgba(5, 184, 144, 0.1);
+    border: 1px solid rgba(5, 184, 144, 0.3);
+    padding: 3px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+
+  .buybox-otp-sub__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 2px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .buybox-otp-sub__bullet {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--tcc-font-sans);
+    font-size: 12.5px;
+    color: var(--tcc-ink-soft);
+    line-height: 1.3;
+  }
+
+  .buybox-otp-sub__bullet-icon {
+    flex-shrink: 0;
+    color: var(--tcc-positive, #05B890);
+  }
+
+  .buybox-otp-sub__qty-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .buybox-otp-sub__qty-label {
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tcc-ink);
+  }
+
+  .buybox-otp-sub__qty-stepper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--tcc-line, #e0e0e0);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .buybox-otp-sub__qty-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--tcc-ink);
+    transition: background 0.15s ease;
+  }
+
+  .buybox-otp-sub__qty-btn:hover {
+    background: rgba(10, 22, 40, 0.06);
+  }
+
+  .buybox-otp-sub__qty-input {
+    width: 44px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid var(--tcc-line, #e0e0e0);
+    border-right: 1px solid var(--tcc-line, #e0e0e0);
+    font-family: var(--tcc-font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tcc-ink);
+    -moz-appearance: textfield;
+    height: 36px;
+    padding: 0;
+  }
+
+  .buybox-otp-sub__qty-input::-webkit-inner-spin-button,
+  .buybox-otp-sub__qty-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .buybox-otp-sub__atc {
+    width: 100%;
+    padding: 1.8rem 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background: var(--tcc-ink);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: var(--tcc-font-sans);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: opacity 0.2s ease;
+    font-size: 15.2px;
+    font-weight: 500;
+  }
+
+  .buybox-otp-sub__atc:hover {
+    opacity: 0.88;
+  }
+
+  .buybox-otp-sub__atc-label {
+    font-size: 15.2px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.01em;
+  }
+
+  .buybox-otp-sub__atc-price {
+    font-size: 15.2px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  @media screen and (max-width: 749px) {
+    .buybox-otp-sub__price {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    var wrapper = document.getElementById('BuyboxOtpSub-{{ section.id }}');
+    if (!wrapper) return;
+
+    var radios = wrapper.querySelectorAll('.buybox-otp-sub__radio');
+    var planInput = document.getElementById('buybox-otp-sub-plan-{{ section.id }}');
+    var atcPriceEl = document.getElementById('buybox-otp-atc-price-{{ section.id }}');
+    var cards = wrapper.querySelectorAll('.buybox-otp-sub__card');
+
+    // Qty stepper
+    wrapper.querySelectorAll('.buybox-otp-sub__qty-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var targetId = btn.getAttribute('data-qty-target');
+        var input = document.getElementById(targetId);
+        if (!input) return;
+        var val = parseInt(input.value, 10) || 1;
+        if (btn.classList.contains('buybox-otp-sub__qty-btn--minus')) {
+          if (val > 1) input.value = val - 1;
+        } else {
+          if (val < 10) input.value = val + 1;
+        }
+      });
+    });
+
+    function selectCard(radio) {
+      // Update card selected classes
+      cards.forEach(function(card) { card.classList.remove('buybox-otp-sub__card--selected'); });
+      var label = radio.closest('.buybox-otp-sub__card');
+      if (label) label.classList.add('buybox-otp-sub__card--selected');
+
+      // Update selling_plan hidden field
+      var mode = radio.getAttribute('data-mode');
+      if (mode === 'subscribe') {
+        var planId = radio.getAttribute('data-plan-id');
+        if (planInput) planInput.value = planId || '';
+        // Update ATC price to subscribe price
+        var subPriceEl = document.getElementById('buybox-otp-price-sub-{{ section.id }}');
+        if (subPriceEl && atcPriceEl) atcPriceEl.textContent = subPriceEl.textContent;
+      } else {
+        if (planInput) planInput.value = '';
+        // Update ATC price to OTP price
+        var otpPriceEl = document.getElementById('buybox-otp-price-otp-{{ section.id }}');
+        if (otpPriceEl && atcPriceEl) atcPriceEl.textContent = otpPriceEl.textContent;
+      }
+    }
+
+    radios.forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        selectCard(radio);
+      });
+    });
+
+    // Init: trigger for the checked radio
+    radios.forEach(function(radio) {
+      if (radio.checked) selectCard(radio);
+    });
+
+    // Also init the selling_plan from the checked subscribe radio on load
+    radios.forEach(function(radio) {
+      if (radio.checked && radio.getAttribute('data-mode') === 'subscribe') {
+        if (planInput) planInput.value = radio.getAttribute('data-plan-id') || '';
+      }
+    });
+  })();
+</script>
