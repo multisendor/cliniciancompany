@@ -1,0 +1,299 @@
+<div
+  class="image-band image-band--pad-{{ section.settings.padding }}"
+  data-section-type="image-band"
+  data-section-id="{{ section.id }}"
+>
+  {%- comment -%} Full-width image container — no tcc-page-width here {%- endcomment -%}
+  <div class="image-band__media-wrap">
+    {%- if section.settings.image != blank -%}
+      <img
+        class="image-band__img"
+        src="{{ section.settings.image | image_url: width: 1600 }}"
+        srcset="
+          {{ section.settings.image | image_url: width: 600 }} 600w,
+          {{ section.settings.image | image_url: width: 900 }} 900w,
+          {{ section.settings.image | image_url: width: 1200 }} 1200w,
+          {{ section.settings.image | image_url: width: 1600 }} 1600w
+        "
+        sizes="100vw"
+        alt="{{ section.settings.image_alt | default: section.settings.image.alt | escape }}"
+        loading="lazy"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.height }}"
+      >
+    {%- else -%}
+      <div class="image-band__placeholder image-band__placeholder--{{ section.settings.placeholder_variant }}"></div>
+    {%- endif -%}
+
+    {%- if section.settings.overlay_position != 'none' -%}
+      <div class="image-band__overlay image-band__overlay--{{ section.settings.overlay_position }}">
+        <div class="tcc-page-width">
+          <div class="image-band__overlay-inner">
+            {%- if section.settings.headline != blank -%}
+              <h2 class="image-band__headline">{{ section.settings.headline }}</h2>
+            {%- endif -%}
+            {%- if section.settings.sub_headline != blank -%}
+              <p class="image-band__sub-headline">{{ section.settings.sub_headline }}</p>
+            {%- endif -%}
+            {%- if section.settings.cta_url != blank and section.settings.cta_text != blank -%}
+              <a class="image-band__cta tcc-btn" href="{{ section.settings.cta_url }}">{{ section.settings.cta_text }}</a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- assign _has_below_text = false -%}
+  {%- if section.settings.headline != blank or section.settings.sub_headline != blank -%}
+    {%- assign _has_below_text = true -%}
+  {%- endif -%}
+  {%- if section.settings.cta_url != blank and section.settings.cta_text != blank -%}
+    {%- assign _has_below_text = true -%}
+  {%- endif -%}
+  {%- if section.settings.overlay_position == 'none' and _has_below_text -%}
+    <div class="tcc-page-width">
+      <div class="image-band__below-text">
+        {%- if section.settings.headline != blank -%}
+          <h2 class="image-band__headline image-band__headline--below">{{ section.settings.headline }}</h2>
+        {%- endif -%}
+        {%- if section.settings.sub_headline != blank -%}
+          <p class="image-band__sub-headline image-band__sub-headline--below">{{ section.settings.sub_headline }}</p>
+        {%- endif -%}
+        {%- if section.settings.cta_url != blank and section.settings.cta_text != blank -%}
+          <a class="image-band__cta tcc-btn" href="{{ section.settings.cta_url }}">{{ section.settings.cta_text }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<style>
+  .image-band {
+    background: var(--tcc-bg);
+  }
+
+  /* Padding variants applied around the media wrap */
+  .image-band--pad-sm { padding: var(--tcc-s-3, 24px) 0; }
+  .image-band--pad-md { padding: var(--tcc-s-4, 32px) 0; }
+  .image-band--pad-lg { padding: var(--tcc-s-5, 40px) 0; }
+
+  .image-band__media-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .image-band__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* CSS placeholders */
+  .image-band__placeholder {
+    width: 100%;
+    min-height: 360px;
+  }
+
+  .image-band__placeholder--navy {
+    background: linear-gradient(135deg, var(--tcc-ink, #111827) 0%, #1a2840 100%);
+  }
+  .image-band__placeholder--warm {
+    background: linear-gradient(135deg, #3d2b1f 0%, #6b4423 100%);
+  }
+  .image-band__placeholder--muted {
+    background: linear-gradient(135deg, #f0ede8 0%, #e5e0d8 100%);
+  }
+
+  /* Overlay positioning */
+  .image-band__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .image-band__overlay--center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .image-band__overlay--bottom_left {
+    align-items: flex-end;
+    padding-bottom: var(--tcc-s-5, 40px);
+  }
+
+  .image-band__overlay--bottom_right {
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-bottom: var(--tcc-s-5, 40px);
+    text-align: right;
+  }
+
+  .image-band__overlay .tcc-page-width {
+    width: 100%;
+  }
+
+  .image-band__overlay-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tcc-s-2, 16px);
+    max-width: 600px;
+  }
+
+  .image-band__overlay--center .image-band__overlay-inner {
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .image-band__overlay--bottom_right .image-band__overlay-inner {
+    margin-left: auto;
+    align-items: flex-end;
+  }
+
+  /* Overlay text styles */
+  .image-band__headline {
+    font-family: var(--tcc-font-sans);
+    font-weight: 700;
+    font-size: clamp(22px, 3vw, 40px);
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  }
+
+  .image-band__sub-headline {
+    font-family: var(--tcc-font-sans);
+    font-size: clamp(14px, 1.6vw, 18px);
+    color: rgba(255,255,255,0.9);
+    margin: 0;
+    line-height: 1.5;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+
+  /* Below-text variant (overlay_position = none but headline set) */
+  .image-band__below-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tcc-s-2, 16px);
+    padding: var(--tcc-s-3, 24px) 0;
+  }
+
+  .image-band__headline--below {
+    font-family: var(--tcc-font-sans);
+    font-weight: 600;
+    font-size: clamp(20px, 2.4vw, 30px);
+    color: var(--tcc-ink);
+    margin: 0;
+    line-height: 1.25;
+    text-shadow: none;
+  }
+
+  .image-band__sub-headline--below {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    color: var(--tcc-ink-soft);
+    margin: 0;
+    line-height: 1.5;
+    text-shadow: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .image-band__placeholder {
+      min-height: 220px;
+    }
+    .image-band__overlay--bottom_left,
+    .image-band__overlay--bottom_right {
+      padding-bottom: var(--tcc-s-3, 24px);
+    }
+  }
+
+  @media screen and (max-width: 599px) {
+    .image-band--pad-lg { padding: var(--tcc-s-3, 24px) 0; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Image Band",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline overlay (optional)"
+    },
+    {
+      "type": "text",
+      "id": "sub_headline",
+      "label": "Sub-headline (optional)"
+    },
+    {
+      "type": "select",
+      "id": "overlay_position",
+      "label": "Overlay position",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "bottom_left", "label": "Bottom-left" },
+        { "value": "bottom_right", "label": "Bottom-right" },
+        { "value": "none", "label": "None (image only)" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select",
+      "id": "padding",
+      "label": "Vertical padding",
+      "options": [
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" }
+      ],
+      "default": "md"
+    },
+    {
+      "type": "select",
+      "id": "placeholder_variant",
+      "label": "Placeholder (when no image)",
+      "options": [
+        { "value": "navy", "label": "Navy gradient" },
+        { "value": "warm", "label": "Warm gradient" },
+        { "value": "muted", "label": "Muted (light)" }
+      ],
+      "default": "navy"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL (optional)"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Band"
+    }
+  ]
+}
+{% endschema %}
