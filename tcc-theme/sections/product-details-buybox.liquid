@@ -1575,6 +1575,16 @@
       "id": "product_handle",
       "label": "Product Handle (for non-product pages)",
       "default": "spike-detox"
+    },
+    {
+      "type": "select",
+      "id": "purchase_mode",
+      "label": "Purchase mode",
+      "options": [
+        { "value": "bundle", "label": "Bundle picker (Kaching widget) — default" },
+        { "value": "otp_vs_subscribe", "label": "OTP vs Subscribe radio cards" }
+      ],
+      "default": "bundle"
     }
   ],
   "blocks": [
@@ -1698,6 +1708,147 @@
     },
     {
       "type": "@app"
+    },
+    {
+      "type": "warning_chip",
+      "name": "Warning chip",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "alert", "label": "Alert" },
+            { "value": "info", "label": "Info" }
+          ],
+          "default": "alert"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Do Not Use if Pregnant, Nursing, or on Blood Thinners"
+        },
+        {
+          "type": "color",
+          "id": "tint",
+          "label": "Tint color",
+          "default": "#fef2e8"
+        }
+      ]
+    },
+    {
+      "type": "member_callout",
+      "name": "Member callout",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Members Save 15%"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "embedded_video_carousel",
+      "name": "Embedded video carousel",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "YOUR HEALTH. YOUR STORIES."
+        },
+        {
+          "type": "image_picker",
+          "id": "thumb_1",
+          "label": "Thumbnail 1"
+        },
+        {
+          "type": "text",
+          "id": "name_1",
+          "label": "Name 1",
+          "default": "Shaun"
+        },
+        {
+          "type": "url",
+          "id": "video_1",
+          "label": "Video URL 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumb_2",
+          "label": "Thumbnail 2"
+        },
+        {
+          "type": "text",
+          "id": "name_2",
+          "label": "Name 2",
+          "default": "Gina"
+        },
+        {
+          "type": "url",
+          "id": "video_2",
+          "label": "Video URL 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumb_3",
+          "label": "Thumbnail 3"
+        },
+        {
+          "type": "text",
+          "id": "name_3",
+          "label": "Name 3",
+          "default": "Taylor"
+        },
+        {
+          "type": "url",
+          "id": "video_3",
+          "label": "Video URL 3"
+        }
+      ]
+    },
+    {
+      "type": "accordion_with_cross_sell",
+      "name": "Accordion w/ cross-sell",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Accordion title",
+          "default": "Pairs well with"
+        },
+        {
+          "type": "richtext",
+          "id": "intro",
+          "label": "Intro"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Cross-sell product 1"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Cross-sell product 2"
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "Cross-sell product 3"
+        }
+      ]
     }
   ],
   "presets": [
