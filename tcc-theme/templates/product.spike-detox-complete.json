@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "media": {
@@ -188,7 +197,6 @@
         "bundle_6pack"
       ],
       "settings": {
-        "purchase_mode": "otp_vs_subscribe",
         "custom_title": "Spike Detox Complete — 6-mechanism enzyme + spike-protocol stack",
         "custom_subtitle": "Six clinically-studied ingredients in one capsule. For people who want a stack-replacement, not a stack-builder. Nattokinase 2,000 FU + bromelain 500 mg + serrapeptase 80,000 SPU + NAC 600 mg + quercetin 250 mg + dandelion root 200 mg + BioPerine 5 mg.",
         "custom_description_2": "Designed for the buyer who is already running a 10-bottle protocol and wants to consolidate. At 4 capsules/day you land at 8,000 FU nattokinase — inside Chen 2022's clinically-active range — plus six convergent mechanisms (fibrin clearance, antioxidant buffer, histamine modulation, liver detox phase II, anti-inflammatory cytokine control, and absorption-enhancer).",
@@ -203,7 +211,8 @@
         "bogo_label_1": "30 Day",
         "bogo_label_2": "3-Pack",
         "bogo_label_3": "Annual Stack",
-        "product_handle": "spike-detox-complete"
+        "product_handle": "spike-detox-complete",
+        "purchase_mode": "otp_vs_subscribe"
       }
     },
     "sticky": {
@@ -212,10 +221,6 @@
     },
     "video_stories": {
       "type": "video-testimonials",
-      "settings": {
-        "eyebrow": "YOUR HEALTH. YOUR STORIES.",
-        "heading": "Real customers, real recovery."
-      },
       "blocks": {
         "vc1": {
           "type": "video_card",
@@ -242,7 +247,15 @@
           }
         }
       },
-      "block_order": ["vc1", "vc2", "vc3"]
+      "block_order": [
+        "vc1",
+        "vc2",
+        "vc3"
+      ],
+      "settings": {
+        "eyebrow": "YOUR HEALTH. YOUR STORIES.",
+        "heading": "Real customers, real recovery."
+      }
     },
     "featured_on": {
       "type": "press-strip",
@@ -278,7 +291,13 @@
           }
         }
       },
-      "block_order": ["logo1", "logo2", "logo3", "logo4", "logo5"],
+      "block_order": [
+        "logo1",
+        "logo2",
+        "logo3",
+        "logo4",
+        "logo5"
+      ],
       "settings": {
         "eyebrow": "FEATURED ON"
       }
@@ -286,8 +305,8 @@
     "image_band_1": {
       "type": "image-band",
       "settings": {
-        "padding": "lg",
         "overlay_position": "none",
+        "padding": "lg",
         "placeholder_variant": "navy"
       }
     },
@@ -330,7 +349,13 @@
           }
         }
       },
-      "block_order": ["t1", "t2", "t3", "t4", "t5"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5"
+      ],
       "settings": {
         "heading": "<p>Real stories, <strong>verified buyers</strong></p>",
         "subheading": "Honest experiences with TCC Complete."
@@ -354,7 +379,10 @@
           }
         }
       },
-      "block_order": ["h", "t"],
+      "block_order": [
+        "h",
+        "t"
+      ],
       "settings": {
         "height": "small",
         "desktop_image_width": "medium",
@@ -371,16 +399,16 @@
     "image_band_2": {
       "type": "image-band",
       "settings": {
-        "padding": "md",
         "overlay_position": "none",
+        "padding": "md",
         "placeholder_variant": "warm"
       }
     },
     "image_band_3": {
       "type": "image-band",
       "settings": {
-        "padding": "md",
         "overlay_position": "none",
+        "padding": "md",
         "placeholder_variant": "muted"
       }
     },
@@ -430,7 +458,14 @@
           }
         }
       },
-      "block_order": ["ing1", "ing2", "ing3", "ing4", "ing5", "ing6"],
+      "block_order": [
+        "ing1",
+        "ing2",
+        "ing3",
+        "ing4",
+        "ing5",
+        "ing6"
+      ],
       "settings": {
         "heading": "Every active. Every milligram. Disclosed.",
         "description": "Seven clinically-studied ingredients, dosed to or near their clinical reference ranges. No proprietary blends — every milligram on the label."
@@ -503,7 +538,17 @@
           }
         }
       },
-      "block_order": ["fq1", "fq2", "fq3", "fq4", "fq5", "fq6", "fq7", "fq8", "fq9"],
+      "block_order": [
+        "fq1",
+        "fq2",
+        "fq3",
+        "fq4",
+        "fq5",
+        "fq6",
+        "fq7",
+        "fq8",
+        "fq9"
+      ],
       "settings": {
         "heading": "Honest answers about Complete",
         "description": "<p>Transparency matters when you're consolidating a multi-ingredient protocol into one capsule. Below: ingredient sourcing, clinical evidence, dosing, allergens, and required disclaimers.</p>"
@@ -554,7 +599,12 @@
           }
         }
       },
-      "block_order": ["cs1", "cs2", "cs3", "cs4"],
+      "block_order": [
+        "cs1",
+        "cs2",
+        "cs3",
+        "cs4"
+      ],
       "settings": {
         "heading": "You May Also Like",
         "sub_heading": "Clinician-selected complements to your Complete protocol"
@@ -563,22 +613,18 @@
     "image_band_4": {
       "type": "image-band",
       "settings": {
-        "padding": "md",
         "overlay_position": "none",
+        "padding": "md",
         "placeholder_variant": "navy"
       }
     },
     "reviews": {
       "type": "rich-text",
-      "settings": {
-        "content": "<!-- reviews module slot — install Okendo or alt to populate -->"
-      }
+      "settings": {}
     },
     "newsletter": {
       "type": "rich-text",
-      "settings": {
-        "content": "<p>Stay Connected — Subscribe and follow us to get <strong>15% off</strong>.</p>"
-      }
+      "settings": {}
     }
   },
   "order": [

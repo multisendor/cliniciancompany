@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "media": {
@@ -176,7 +185,11 @@
           }
         }
       },
-      "block_order": ["sf1", "sf2", "sf3"],
+      "block_order": [
+        "sf1",
+        "sf2",
+        "sf3"
+      ],
       "settings": {
         "show_dividers": true
       }
@@ -219,7 +232,11 @@
           }
         }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
         "heading": "<p>The Science Behind <strong>Spike Detox</strong></p>",
         "description": "Why this single ingredient earns its place in your routine. All headline outcomes from Chen 2022 — the largest nattokinase clinical study to date (n=1,062, 12 months).",
@@ -251,7 +268,11 @@
           }
         }
       },
-      "block_order": ["c1", "c2", "c3"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
       "settings": {
         "heading": "One Ingredient. Total Transparency.",
         "description": "Pure is a single-ingredient product — nattokinase only. Every FU number on the front of the label. No proprietary blends, no hidden co-factors."
@@ -325,7 +346,16 @@
           }
         }
       },
-      "block_order": ["sy1", "sy2", "sy3", "sy4", "sy5", "sy6", "sy7", "sy8"],
+      "block_order": [
+        "sy1",
+        "sy2",
+        "sy3",
+        "sy4",
+        "sy5",
+        "sy6",
+        "sy7",
+        "sy8"
+      ],
       "settings": {
         "eyebrow": "WHAT SPIKE DETOX MAY HELP WITH",
         "heading": "If any of these sound familiar…"
@@ -359,7 +389,11 @@
           }
         }
       },
-      "block_order": ["ts1", "ts2", "ts3"],
+      "block_order": [
+        "ts1",
+        "ts2",
+        "ts3"
+      ],
       "settings": {
         "eyebrow": "What to expect",
         "heading": "Cardiovascular work happens on a long timeline.",
@@ -369,9 +403,7 @@
     },
     "who_for": {
       "type": "rich-text",
-      "settings": {
-        "content": "<h2>Who Spike Detox is for…</h2><ul><li>Anyone who's had COVID and never quite bounced back</li><li>Adults concerned about cardiovascular load post-2020</li><li>People who've been on multiple supplement protocols and want to consolidate</li><li>Health-conscious adults who read every label</li><li>Practitioners and their patients who want disclosed mg per active</li></ul>"
-      }
+      "settings": {}
     },
     "testimonial_repeat": {
       "type": "text-testimonials-slider",
@@ -391,7 +423,10 @@
           }
         }
       },
-      "block_order": ["tr1", "tr2"],
+      "block_order": [
+        "tr1",
+        "tr2"
+      ],
       "settings": {
         "heading": "<p>More from <strong>verified buyers</strong></p>",
         "subheading": ""
@@ -455,7 +490,12 @@
           }
         }
       },
-      "block_order": ["s1", "s2", "s3", "s4"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {
         "eyebrow": "Why customers stay",
         "heading": "Practitioner-grade nattokinase, transparently dosed",
@@ -480,7 +520,10 @@
           }
         }
       },
-      "block_order": ["h", "t"],
+      "block_order": [
+        "h",
+        "t"
+      ],
       "settings": {
         "height": "small",
         "desktop_image_width": "medium",
@@ -496,10 +539,6 @@
     },
     "video_stories": {
       "type": "video-testimonials",
-      "settings": {
-        "eyebrow": "YOUR HEALTH. YOUR STORIES.",
-        "heading": "Real customers, real recovery."
-      },
       "blocks": {
         "vc1": {
           "type": "video_card",
@@ -534,7 +573,16 @@
           }
         }
       },
-      "block_order": ["vc1", "vc2", "vc3", "vc4"]
+      "block_order": [
+        "vc1",
+        "vc2",
+        "vc3",
+        "vc4"
+      ],
+      "settings": {
+        "eyebrow": "YOUR HEALTH. YOUR STORIES.",
+        "heading": "Real customers, real recovery."
+      }
     },
     "cta_repeat": {
       "type": "repeat-cta",
@@ -593,7 +641,14 @@
           }
         }
       },
-      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"],
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6"
+      ],
       "settings": {
         "eyebrow": "What's behind every batch",
         "heading": "Built for the people who read the label."
@@ -651,7 +706,14 @@
           }
         }
       },
-      "block_order": ["tl1", "tl2", "tl3", "tl4", "tl5", "tl6"],
+      "block_order": [
+        "tl1",
+        "tl2",
+        "tl3",
+        "tl4",
+        "tl5",
+        "tl6"
+      ],
       "settings": {
         "eyebrow": "What to expect",
         "heading": "Cardiovascular work happens on a long timeline.",
@@ -772,9 +834,22 @@
         }
       },
       "block_order": [
-        "brand_1", "brand_2", "brand_3", "brand_4", "brand_5", "brand_6",
-        "comp_1", "comp_2", "comp_3", "comp_4", "comp_5", "comp_6",
-        "sum_1", "sum_2", "sum_3", "sum_4"
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5",
+        "brand_6",
+        "comp_1",
+        "comp_2",
+        "comp_3",
+        "comp_4",
+        "comp_5",
+        "comp_6",
+        "sum_1",
+        "sum_2",
+        "sum_3",
+        "sum_4"
       ],
       "settings": {
         "brand_name": "The Clinician Company",
@@ -811,7 +886,12 @@
           }
         }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
       "settings": {
         "eyebrow": "SPECIAL OFFER ON NOW!",
         "headline": "Try Spike Detox Risk-Free with our First Time Buyer's Offer!",
@@ -822,10 +902,7 @@
     },
     "promo_bar": {
       "type": "promo-countdown-bar",
-      "settings": {
-        "text": "TODAY ONLY: UP TO 70%",
-        "show_countdown": false
-      }
+      "settings": {}
     },
     "cta_repeat_2": {
       "type": "repeat-cta",
@@ -837,9 +914,7 @@
     },
     "exclusivity": {
       "type": "rich-text",
-      "settings": {
-        "content": "<p><strong>Note:</strong> Not Available on Amazon or eBay.</p>"
-      }
+      "settings": {}
     },
     "faq": {
       "type": "bottom-faq",
@@ -915,7 +990,18 @@
           }
         }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10"
+      ],
       "settings": {
         "heading": "Honest answers about nattokinase",
         "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below: dose justification, safety with blood-thinners, K2 framing, and links to the actual peer-reviewed studies.</p>"
