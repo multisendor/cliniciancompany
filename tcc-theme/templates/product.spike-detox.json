@@ -93,7 +93,7 @@
         "custom_subtitle": "Nattokinase Enzyme Capsules — supports natural fibrinolytic activity. 4,000 FU per capsule, dosed to your protocol.",
         "custom_description_2": "Wild-fermented Bacillus subtilis. K2 removed for compatibility with vitamin-K-antagonist blood thinners (we sell K2 separately for those who want the synergy). Single ingredient, transparent label, third-party tested every batch.",
         "show_ships_by": true,
-        "show_credibility_row": true,
+        "show_credibility_row": false,
         "cred_chip_1": "60-day money-back",
         "cred_chip_2": "Third-party tested",
         "cred_chip_3": "K2-free for blood-thinner users",
