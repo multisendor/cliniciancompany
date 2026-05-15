@@ -1,0 +1,247 @@
+{%- comment -%}
+  Alternating Row — single-row image+text section. Instantiate multiple
+  times per template with opposite `image_side` values for alternating
+  layouts. See origin-story.liquid for the sibling single-row pattern.
+{%- endcomment -%}
+
+<section
+  class="alternating-row tcc-section-padding alternating-row--{{ section.settings.image_side }} alternating-row--bg-{{ section.settings.background_style }}"
+  data-section-id="{{ section.id }}"
+>
+  <div class="alternating-row__grid">
+    <div class="alternating-row__visual">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+              loading: 'lazy',
+              widths: '400,600,800,1000,1200',
+              sizes: '(max-width: 768px) 100vw, 50vw',
+              alt: section.settings.image_alt,
+              class: 'alternating-row__image'
+        }}
+      {%- elsif section.settings.image_asset_filename != blank -%}
+        <img
+          src="{{ section.settings.image_asset_filename | asset_url }}"
+          alt="{{ section.settings.image_alt | escape }}"
+          class="alternating-row__image"
+          loading="lazy"
+        >
+      {%- elsif section.settings.image_external_url != blank -%}
+        <img
+          src="{{ section.settings.image_external_url }}"
+          alt="{{ section.settings.image_alt | escape }}"
+          class="alternating-row__image"
+          loading="lazy"
+        >
+      {%- else -%}
+        <div class="alternating-row__image-fallback" aria-hidden="true"></div>
+      {%- endif -%}
+    </div>
+
+    <div class="alternating-row__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="alternating-row__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      <h2 class="alternating-row__heading tcc-heading">{{ section.settings.heading }}</h2>
+
+      {%- if section.settings.body_paragraph_1 != blank -%}
+        <p class="alternating-row__body">{{ section.settings.body_paragraph_1 }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.body_paragraph_2 != blank -%}
+        <p class="alternating-row__body">{{ section.settings.body_paragraph_2 }}</p>
+      {%- endif -%}
+
+      {%- assign has_bullets = false -%}
+      {%- if section.settings.bullet_1 != blank or section.settings.bullet_2 != blank or section.settings.bullet_3 != blank or section.settings.bullet_4 != blank -%}
+        {%- assign has_bullets = true -%}
+      {%- endif -%}
+
+      {%- if has_bullets -%}
+        {%- if section.settings.bullets_intro != blank -%}
+          <p class="alternating-row__bullets-intro">{{ section.settings.bullets_intro }}</p>
+        {%- endif -%}
+        <ul class="alternating-row__bullets">
+          {%- if section.settings.bullet_1 != blank -%}<li>{{ section.settings.bullet_1 }}</li>{%- endif -%}
+          {%- if section.settings.bullet_2 != blank -%}<li>{{ section.settings.bullet_2 }}</li>{%- endif -%}
+          {%- if section.settings.bullet_3 != blank -%}<li>{{ section.settings.bullet_3 }}</li>{%- endif -%}
+          {%- if section.settings.bullet_4 != blank -%}<li>{{ section.settings.bullet_4 }}</li>{%- endif -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.closing_paragraph != blank -%}
+        <p class="alternating-row__body alternating-row__body--closing">{{ section.settings.closing_paragraph }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .alternating-row {
+    overflow: hidden;
+  }
+  .alternating-row--bg-cream { background-color: #f4f3ed; }
+  .alternating-row--bg-white { background-color: #ffffff; }
+  .alternating-row--bg-bg    { background-color: var(--tcc-bg); }
+
+  .alternating-row__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--tcc-s-6);
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .alternating-row--image_left .alternating-row__visual { order: 1; }
+  .alternating-row--image_left .alternating-row__content { order: 2; }
+  .alternating-row--image_right .alternating-row__visual { order: 2; }
+  .alternating-row--image_right .alternating-row__content { order: 1; }
+
+  .alternating-row__image,
+  .alternating-row__image-fallback {
+    width: 100%;
+    height: auto;
+    border-radius: var(--tcc-radius);
+    display: block;
+  }
+  .alternating-row__image-fallback {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #efeee8, #e6e5df);
+  }
+
+  .alternating-row__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow);
+    letter-spacing: var(--tcc-ls-eyebrow);
+    text-transform: uppercase;
+    font-weight: var(--tcc-fw-bold);
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-2);
+  }
+
+  .alternating-row__heading {
+    font-family: var(--tcc-font-sans);
+    font-weight: var(--tcc-fw-display);
+    font-size: var(--tcc-fs-h2);
+    line-height: var(--tcc-lh-tight);
+    letter-spacing: var(--tcc-ls-display);
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-3);
+  }
+
+  .alternating-row__body {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body);
+    line-height: var(--tcc-lh-body);
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-3);
+  }
+  .alternating-row__body:last-child {
+    margin-bottom: 0;
+  }
+
+  .alternating-row__bullets-intro {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body);
+    line-height: var(--tcc-lh-body);
+    font-weight: var(--tcc-fw-medium);
+    color: var(--tcc-ink);
+    margin: 0 0 var(--tcc-s-2);
+  }
+
+  .alternating-row__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--tcc-s-3);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .alternating-row__bullets li {
+    position: relative;
+    padding-left: 22px;
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body);
+    line-height: var(--tcc-lh-body);
+    color: var(--tcc-ink);
+  }
+  .alternating-row__bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--tcc-positive);
+  }
+
+  @media (max-width: 768px) {
+    .alternating-row__grid {
+      grid-template-columns: 1fr;
+      gap: var(--tcc-s-4);
+    }
+    .alternating-row--image_left .alternating-row__visual,
+    .alternating-row--image_right .alternating-row__visual {
+      order: 1;
+    }
+    .alternating-row--image_left .alternating-row__content,
+    .alternating-row--image_right .alternating-row__content {
+      order: 2;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Alternating Row",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    { "type": "text",         "id": "eyebrow",              "label": "Eyebrow (optional)" },
+    { "type": "text",         "id": "heading",              "label": "Heading", "default": "Heading goes here" },
+    { "type": "textarea",     "id": "body_paragraph_1",     "label": "Body paragraph 1" },
+    { "type": "textarea",     "id": "body_paragraph_2",     "label": "Body paragraph 2 (optional)" },
+    { "type": "text",         "id": "bullets_intro",        "label": "Bullet list intro (optional)" },
+    { "type": "text",         "id": "bullet_1",             "label": "Bullet 1 (optional)" },
+    { "type": "text",         "id": "bullet_2",             "label": "Bullet 2 (optional)" },
+    { "type": "text",         "id": "bullet_3",             "label": "Bullet 3 (optional)" },
+    { "type": "text",         "id": "bullet_4",             "label": "Bullet 4 (optional)" },
+    { "type": "textarea",     "id": "closing_paragraph",    "label": "Closing paragraph (optional)" },
+    { "type": "image_picker", "id": "image",                "label": "Image (preferred)" },
+    { "type": "text",         "id": "image_asset_filename", "label": "Image — theme asset filename (fallback, e.g. benefit-heart.jpg)" },
+    { "type": "text",         "id": "image_external_url",   "label": "Image — external URL (fallback)" },
+    { "type": "text",         "id": "image_alt",            "label": "Image alt text" },
+    {
+      "type": "select",
+      "id": "image_side",
+      "label": "Image side",
+      "options": [
+        { "value": "image_left",  "label": "Image on left" },
+        { "value": "image_right", "label": "Image on right" }
+      ],
+      "default": "image_right"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background",
+      "options": [
+        { "value": "cream", "label": "Cream (#f4f3ed)" },
+        { "value": "white", "label": "White" },
+        { "value": "bg",    "label": "Theme off-white (--tcc-bg)" }
+      ],
+      "default": "cream"
+    }
+  ],
+  "presets": [
+    { "name": "Alternating Row" }
+  ]
+}
+{% endschema %}
