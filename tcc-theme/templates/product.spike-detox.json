@@ -11,60 +11,16 @@
   "sections": {
     "media": {
       "type": "product-media-gallery",
-      "settings": {}
+      "settings": {
+        "trust_heading": "Why Trust Us as Your Wellness Partner?",
+        "trust_bg_image_url": "",
+        "product_handle": "spike-detox",
+        "placeholder_image_url": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_Thumbnail.png?v=1773419148&width=800"
+      }
     },
     "buybox": {
       "type": "product-details-buybox",
       "blocks": {
-        "stat_1": {
-          "type": "stat_bullet",
-          "settings": {
-            "value": "1,062",
-            "label": "adults in trial"
-          }
-        },
-        "stat_2": {
-          "type": "stat_bullet",
-          "settings": {
-            "value": "12 mo",
-            "label": "trial length"
-          }
-        },
-        "stat_3": {
-          "type": "stat_bullet",
-          "settings": {
-            "value": "0",
-            "label": "adverse events"
-          }
-        },
-        "stat_4": {
-          "type": "stat_bullet",
-          "settings": {
-            "value": "4,000",
-            "label": "FU per capsule"
-          }
-        },
-        "trust_1": {
-          "type": "trust_feature",
-          "settings": {
-            "icon": "lab_research",
-            "text": "Single-Ingredient Transparency"
-          }
-        },
-        "trust_2": {
-          "type": "trust_feature",
-          "settings": {
-            "icon": "experiment",
-            "text": "Wild-Fermented Bacillus Subtilis"
-          }
-        },
-        "trust_3": {
-          "type": "trust_feature",
-          "settings": {
-            "icon": "add_moderator",
-            "text": "Third-Party Tested Every Batch"
-          }
-        },
         "benefit_1": {
           "type": "benefit",
           "settings": {
@@ -123,13 +79,6 @@
         }
       },
       "block_order": [
-        "stat_1",
-        "stat_2",
-        "stat_3",
-        "stat_4",
-        "trust_1",
-        "trust_2",
-        "trust_3",
         "benefit_1",
         "benefit_2",
         "benefit_3",
@@ -140,8 +89,8 @@
         "bundle_6pack"
       ],
       "settings": {
-        "custom_title": "Clinical-grade nattokinase. Every batch tested. Every COA published.",
-        "custom_subtitle": "Nattokinase Enzyme Capsules — supports natural fibrinolytic activity. 4,000 FU per capsule, dosed to your protocol: 1 capsule = 4,000 FU; 3 capsules = ~12,000 FU, within the 6,000–12,000 FU clinically active range identified in Chen 2022 (n=1,062, 12-month trial).",
+        "custom_title": "Ultimate Spike Detox",
+        "custom_subtitle": "Nattokinase Enzyme Capsules — supports natural fibrinolytic activity. 4,000 FU per capsule, dosed to your protocol.",
         "custom_description_2": "Wild-fermented Bacillus subtilis. K2 removed for compatibility with vitamin-K-antagonist blood thinners (we sell K2 separately for those who want the synergy). Single ingredient, transparent label, third-party tested every batch.",
         "show_ships_by": true,
         "show_credibility_row": true,
@@ -151,10 +100,12 @@
         "cred_chip_4": "Made in USA · GMP-certified",
         "show_price_display": true,
         "badge_mode": "dynamic",
+        "sale_badge_text": "Limited Time Offer",
         "bogo_label_1": "30 Day",
         "bogo_label_2": "90 Day",
         "bogo_label_3": "Protocol Stack",
-        "product_handle": "spike-detox"
+        "product_handle": "spike-detox",
+        "purchase_mode": "bundle"
       }
     },
     "subscription": {
@@ -201,7 +152,9 @@
         "subtitle": "Our Promise",
         "heading": "Feel better or it's free!",
         "description": "Try it for 60 days. If it's not the right fit — even if the bottle is empty — email us for a full refund. No questions asked.",
-        "button_text": "Add to Cart"
+        "button_text": "Add to Cart",
+        "button_link": "",
+        "external_image_url": ""
       }
     },
     "how_it_works": {
@@ -240,7 +193,8 @@
       "settings": {
         "heading": "<p>The Science Behind <strong>Spike Detox</strong></p>",
         "description": "Why this single ingredient earns its place in your routine. All headline outcomes from Chen 2022 — the largest nattokinase clinical study to date (n=1,062, 12 months).",
-        "button_text": ""
+        "button_text": "",
+        "button_link": ""
       }
     },
     "compounds": {
@@ -403,7 +357,14 @@
     },
     "who_for": {
       "type": "rich-text",
-      "settings": {}
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     },
     "testimonial_repeat": {
       "type": "text-testimonials-slider",
@@ -411,15 +372,19 @@
         "tr1": {
           "type": "testimonial",
           "settings": {
+            "title": "",
             "body": "I'd been taking generic nattokinase for years and never knew the dose mattered. Switching here, my morning brain fog cleared up after a few weeks. Could be coincidence — but I'm not going back.",
-            "author_name": "Robert T., Verified Buyer"
+            "author_name": "Robert T., Verified Buyer",
+            "external_author_image_url": ""
           }
         },
         "tr2": {
           "type": "testimonial",
           "settings": {
+            "title": "",
             "body": "Single ingredient. Strain disclosed. FU number on the label. That's the trust currency I was looking for after months of reading research.",
-            "author_name": "Sarah M., Verified Buyer"
+            "author_name": "Sarah M., Verified Buyer",
+            "external_author_image_url": ""
           }
         }
       },
@@ -479,6 +444,7 @@
           "type": "stat",
           "settings": {
             "value": "0",
+            "unit": "",
             "label": "adverse events reported in the Chen 2022 cohort"
           }
         },
@@ -486,6 +452,7 @@
           "type": "stat",
           "settings": {
             "value": "100%",
+            "unit": "",
             "label": "of batches third-party tested with COA published per lot"
           }
         }
@@ -499,6 +466,7 @@
       "settings": {
         "eyebrow": "Why customers stay",
         "heading": "Practitioner-grade nattokinase, transparently dosed",
+        "intro": "",
         "background_style": "soft"
       }
     },
@@ -528,9 +496,11 @@
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
+        "image_behavior": "none",
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
         "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-1",
         "padding_top": 60,
@@ -545,6 +515,7 @@
           "settings": {
             "name": "Shaun",
             "caption": "His story.",
+            "video_url": "",
             "duration": "1:24"
           }
         },
@@ -553,6 +524,7 @@
           "settings": {
             "name": "Gina",
             "caption": "Her story.",
+            "video_url": "",
             "duration": "0:56"
           }
         },
@@ -561,6 +533,7 @@
           "settings": {
             "name": "Taylor",
             "caption": "Their story.",
+            "video_url": "",
             "duration": "1:12"
           }
         },
@@ -569,6 +542,7 @@
           "settings": {
             "name": "James",
             "caption": "His recovery.",
+            "video_url": "",
             "duration": "1:38"
           }
         }
@@ -581,7 +555,8 @@
       ],
       "settings": {
         "eyebrow": "YOUR HEALTH. YOUR STORIES.",
-        "heading": "Real customers, real recovery."
+        "heading": "Real customers, real recovery.",
+        "layout": "horizontal"
       }
     },
     "cta_repeat": {
@@ -852,6 +827,7 @@
         "sum_4"
       ],
       "settings": {
+        "product": "",
         "brand_name": "The Clinician Company",
         "competitor_name": "Typical Spike-Detox Brand",
         "heading": "How we compare on transparency",
@@ -897,16 +873,25 @@
         "headline": "Try Spike Detox Risk-Free with our First Time Buyer's Offer!",
         "offer_text": "Buy 2 Bottles Get 1 Free",
         "cta_text": "Buy Now & Save",
+        "cta_url": "",
         "bg": "#fff7e8"
       }
     },
     "promo_bar": {
       "type": "promo-countdown-bar",
-      "settings": {}
+      "settings": {
+        "heading_text": "Launch Pricing — 25% Off",
+        "subheading_text": "Code applied at checkout. Offer ends tonight.",
+        "end_date": "midnight",
+        "background_color": "#0a1628"
+      }
     },
     "cta_repeat_2": {
       "type": "repeat-cta",
       "settings": {
+        "eyebrow": "Built for the people who read the label",
+        "heading": "Single ingredient. Disclosed dose. Tested per batch.",
+        "subheading": "If it's not the right fit, email us within 60 days &mdash; even an empty bottle &mdash; for a full refund. No questions asked.",
         "button_text": "BUY NOW & SAVE",
         "product_handle": "spike-detox",
         "background_style": "navy"
@@ -914,7 +899,14 @@
     },
     "exclusivity": {
       "type": "rich-text",
-      "settings": {}
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     },
     "faq": {
       "type": "bottom-faq",
