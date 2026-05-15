@@ -15,7 +15,7 @@ cd "/Users/jonas/Documents/IDE/Health Store/tcc-theme"
 shopify theme pull --theme=<TARGET_THEME_ID> --nodelete
 ```
 
-- **Default `TARGET_THEME_ID`**: the active "Spike Detox v1 Preview" theme is `161862353132` (unpublished). When this theme becomes live (or is replaced), update this number in this file in the same commit that publishes.
+- **Default `TARGET_THEME_ID`**: `161862353132` ("Spike Detox v1 Preview") — **this is now the LIVE theme** (published as of 2026-05-15). Pushes to it affect the live storefront. Per CONTRACT-2 you MUST get explicit user authorization in the same conversation before pushing. When a new preview theme replaces it as the working target, update this number.
 - The user and their staff edit via the Shopify admin theme editor in real time. **They WILL make changes between Claude Code sessions.** Pulling first preserves those.
 - **`--nodelete`** is mandatory: pull should never delete local files Shopify doesn't know about (we have local-only working files like `STATUS-pdp.md`).
 - After pulling, **`git status`** to see what came down. If anything came down, **commit it as a separate "sync from Shopify admin" commit** BEFORE making your own edits, so the human's work is preserved on its own commit and your edits are diffable separately.
