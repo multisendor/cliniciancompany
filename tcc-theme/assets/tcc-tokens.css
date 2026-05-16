@@ -68,6 +68,28 @@ body {
   background: #ffffff !important;
 }
 
+/* ------------------------------------------------------------
+   Brand accent color — single source of truth.
+   Drives all CTAs + accent cards. Set globally via theme editor
+   → settings.cta_bold_bg_color → :root --tcc-cta-accent.
+   Forced with !important so inline section overrides cannot
+   override the global accent.
+   ------------------------------------------------------------ */
+.product-details-buybox__add-to-cart--bold,
+.sticky-atc__btn--bold,
+.bottom-faq__cta,
+.video-testimonials__cta,
+.one-ingredient-split__card {
+  background: var(--tcc-cta-accent, #1e40af) !important;
+}
+.product-details-buybox__add-to-cart--bold:hover,
+.sticky-atc__btn--bold:hover,
+.bottom-faq__cta:hover,
+.video-testimonials__cta:hover {
+  background: var(--tcc-cta-accent, #1e40af) !important;
+  filter: brightness(0.88);
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--tcc-font-sans);
   color: var(--tcc-ink);
