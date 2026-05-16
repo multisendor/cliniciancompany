@@ -1002,8 +1002,13 @@
         "f10"
       ],
       "settings": {
-        "heading": "Honest answers about nattokinase",
-        "description": "<p>Transparency matters when it comes to cardiovascular supplements. Below: dose justification, safety with blood-thinners, K2 framing, and links to the actual peer-reviewed studies.</p>"
+        "heading": "Frequently Asked Questions",
+        "description": "",
+        "show_cta": true,
+        "cta_text": "BUY NOW & SAVE",
+        "cta_link": "/products/spike-detox",
+        "cta_bg_color": "#095946",
+        "guarantee_text": "30-Day Money Back Guarantee"
       }
     },
     "footer_cta": {
