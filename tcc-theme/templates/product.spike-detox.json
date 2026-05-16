@@ -719,7 +719,7 @@
         "pi1": {
           "type": "icon_item",
           "settings": {
-            "icon_url": "https://img.funnelish.com/55043/562602/1730121662-Pure%20&%20Potent%20icon.png",
+            "icon_url": "https://cdn.shopify.com/s/files/1/0827/3621/8348/files/tcc-promise-icon-1-clean-traceable-blue.png?v=1778925762",
             "icon_alt": "Clean and traceable",
             "label": "Clean and Traceable"
           }
@@ -727,7 +727,7 @@
         "pi2": {
           "type": "icon_item",
           "settings": {
-            "icon_url": "https://img.funnelish.com/55043/562602/1730121915-Freshly%20Harvested%20icon.png",
+            "icon_url": "https://cdn.shopify.com/s/files/1/0827/3621/8348/files/tcc-promise-icon-2-wild-fermented-blue.png?v=1778925762",
             "icon_alt": "Wild fermented",
             "label": "Wild-Fermented"
           }
@@ -735,7 +735,7 @@
         "pi3": {
           "type": "icon_item",
           "settings": {
-            "icon_url": "https://img.funnelish.com/55043/562602/1730121972-No%20Additives%20icon.png",
+            "icon_url": "https://cdn.shopify.com/s/files/1/0827/3621/8348/files/tcc-promise-icon-3-no-additives-blue.png?v=1778925762",
             "icon_alt": "No artificial additives",
             "label": "No Artificial Additives"
           }
@@ -743,7 +743,7 @@
         "pi4": {
           "type": "icon_item",
           "settings": {
-            "icon_url": "https://img.funnelish.com/55043/562602/1730122022-Gluten%20Free%20icon.png",
+            "icon_url": "https://cdn.shopify.com/s/files/1/0827/3621/8348/files/tcc-promise-icon-4-gluten-free-blue.png?v=1778925762",
             "icon_alt": "Gluten free",
             "label": "Gluten Free"
           }
@@ -751,7 +751,7 @@
         "pi5": {
           "type": "icon_item",
           "settings": {
-            "icon_url": "https://img.funnelish.com/55043/562602/1730122084-Non-GMO%20icon.png",
+            "icon_url": "https://cdn.shopify.com/s/files/1/0827/3621/8348/files/tcc-promise-icon-5-non-gmo-blue.png?v=1778925762",
             "icon_alt": "Non-GMO",
             "label": "Non-GMO"
           }
@@ -759,7 +759,7 @@
         "pi6": {
           "type": "icon_item",
           "settings": {
-            "icon_url": "https://img.funnelish.com/55043/562602/1730122196-Made%20in%20a%20USA%20FDA%20icon.png",
+            "icon_url": "https://cdn.shopify.com/s/files/1/0827/3621/8348/files/tcc-promise-icon-6-fda-registered-blue.png?v=1778925762",
             "icon_alt": "Manufactured in an FDA-registered facility",
             "label": "Manufactured in an FDA-Registered Facility"
           }
