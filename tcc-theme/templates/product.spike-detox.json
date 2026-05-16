@@ -115,8 +115,14 @@
         "heading": "Modern Life Is Hard on Your Cardiovascular System",
         "body_paragraph_1": "Today's habits aren't built for how our bodies were designed to move. Long sitting hours, processed-food convenience, chronic stress, and environmental load all stack against the natural processes that keep blood flow steady.",
         "body_paragraph_2": "As we age, the body's own fibrinolytic activity — the natural enzymatic process that helps maintain healthy blood flow — can taper. Many people report feeling sluggish, foggy, or \"off\" without a clear reason.",
+        "bullets_intro": "",
+        "bullet_1": "",
+        "bullet_2": "",
+        "bullet_3": "",
+        "bullet_4": "",
         "closing_paragraph": "Supporting that system gently, with a single-ingredient enzyme that has been studied for decades, is one option more cardiovascular-conscious adults are exploring.",
         "image_asset_filename": "benefit-heart.jpg",
+        "image_external_url": "",
         "image_alt": "Anatomical illustration emphasizing the heart and cardiovascular system",
         "image_side": "image_right",
         "background_style": "cream"
@@ -136,9 +142,181 @@
         "bullet_4": "Third-party tested every batch, COA published",
         "closing_paragraph": "One ingredient. Transparent label. The same enzyme adults have used for centuries — measured to a clinically active range.",
         "image_asset_filename": "hero-product-main.jpg",
+        "image_external_url": "",
         "image_alt": "Bottle of Spike Detox nattokinase capsules",
         "image_side": "image_left",
         "background_style": "cream"
+      }
+    },
+    "trial_stats": {
+      "type": "outcome-stats",
+      "blocks": {
+        "t1": {
+          "type": "stat",
+          "settings": {
+            "value": "95%",
+            "unit": "",
+            "label": "Saw their total cholesterol improve"
+          }
+        },
+        "t2": {
+          "type": "stat",
+          "settings": {
+            "value": "84%",
+            "unit": "",
+            "label": "Saw their LDL ('bad') cholesterol drop"
+          }
+        },
+        "t3": {
+          "type": "stat",
+          "settings": {
+            "value": "78%",
+            "unit": "",
+            "label": "Saw a reduction in arterial wall thickness"
+          }
+        },
+        "t4": {
+          "type": "stat",
+          "settings": {
+            "value": "66%",
+            "unit": "",
+            "label": "Saw a reduction in carotid plaque area"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "eyebrow": "Peer-reviewed outcomes",
+        "heading": "Real Outcomes from the Largest Nattokinase Trial",
+        "intro": "",
+        "sub_heading": "In a peer-reviewed 12-month study of 1,062 adults at 10,800 FU/day, participants showed:",
+        "footnote": "*From Chen et al., Frontiers in Cardiovascular Medicine (2022), n=1,062 adults over 12 months at 10,800 FU/day. Our 4,000 FU per capsule lets you stack 2–3 capsules into that effective range. Individual results may vary. Consult your healthcare provider before use, especially if you take blood-thinning medication.*",
+        "background_style": "soft"
+      }
+    },
+    "one_ingredient_split": {
+      "type": "one-ingredient-split",
+      "blocks": {
+        "la1": {
+          "type": "list_a_item",
+          "settings": {
+            "text": "Serine protease activity acts directly on fibrin to support healthy blood-flow regulation"
+          }
+        },
+        "la2": {
+          "type": "list_a_item",
+          "settings": {
+            "text": "Fibrinolytic action helps the body maintain natural clot-clearance balance"
+          }
+        },
+        "la3": {
+          "type": "list_a_item",
+          "settings": {
+            "text": "Wild Bacillus subtilis fermentation delivers the same traditional natto enzyme studied since 1980"
+          }
+        },
+        "lb1": {
+          "type": "list_b_item",
+          "settings": {
+            "text": "Supports cardiovascular and circulatory health"
+          }
+        },
+        "lb2": {
+          "type": "list_b_item",
+          "settings": {
+            "text": "Helps maintain healthy fibrinolytic balance"
+          }
+        },
+        "lb3": {
+          "type": "list_b_item",
+          "settings": {
+            "text": "Promotes steady, sustained daily energy"
+          }
+        },
+        "lb4": {
+          "type": "list_b_item",
+          "settings": {
+            "text": "Built K2-free for compatibility with common blood thinners"
+          }
+        },
+        "c1": {
+          "type": "callout",
+          "settings": {
+            "icon": "capsule",
+            "label_line_1": "4,000 FU",
+            "label_line_2": "per capsule",
+            "position": "top_left"
+          }
+        },
+        "c2": {
+          "type": "callout",
+          "settings": {
+            "icon": "leaf",
+            "label_line_1": "Wild-fermented",
+            "label_line_2": "Bacillus subtilis",
+            "position": "mid_left"
+          }
+        },
+        "c3": {
+          "type": "callout",
+          "settings": {
+            "icon": "shield",
+            "label_line_1": "Third-party tested",
+            "label_line_2": "every batch",
+            "position": "mid_right"
+          }
+        },
+        "c4": {
+          "type": "callout",
+          "settings": {
+            "icon": "no_k2",
+            "label_line_1": "K2-free for",
+            "label_line_2": "blood-thinner users",
+            "position": "bottom_left"
+          }
+        },
+        "c5": {
+          "type": "callout",
+          "settings": {
+            "icon": "sparkle",
+            "label_line_1": "Single ingredient",
+            "label_line_2": "no proprietary blend",
+            "position": "bottom_right"
+          }
+        }
+      },
+      "block_order": [
+        "la1",
+        "la2",
+        "la3",
+        "lb1",
+        "lb2",
+        "lb3",
+        "lb4",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "One Ingredient. Centuries of Use.",
+        "intro_paragraph_1": "<p>Unlike most nattokinase supplements built around proprietary blends, undisclosed K2, or 2,000-FU regulatory minimums, Pure keeps it simple — featuring just one studied, time-tested enzyme: wild-fermented nattokinase from traditional Bacillus subtilis. From its serine-protease structure to its decades-deep cardiovascular research base, nattokinase offers a clean, single-ingredient way to support healthy circulation, fibrinolytic balance, and daily resilience.</p>",
+        "intro_paragraph_2": "<p>Here's what makes Pure so powerful in every serving:</p>",
+        "list_a_heading": "How It Works",
+        "list_b_heading": "Natural Benefits",
+        "closing_paragraph": "<p>With Pure, you're giving your body one of nature's most-studied enzymes — trusted for centuries in traditional Japanese natto and validated by 40+ years of peer-reviewed cardiovascular research.</p>",
+        "card_image_alt": "Nattokinase capsules",
+        "card_bg_color": "#0f3f2e",
+        "background_style": "cream",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "subscription": {
@@ -188,46 +366,6 @@
         "button_text": "Add to Cart",
         "button_link": "",
         "external_image_url": ""
-      }
-    },
-    "how_it_works": {
-      "type": "research-highlights",
-      "blocks": {
-        "r1": {
-          "type": "stat_card",
-          "settings": {
-            "title": "Carotid plaque area reduced 36%",
-            "description": "In a 12-month trial of 1,062 adults at 10,800 FU/day, carotid plaque area decreased by up to 36% (CPS 24.9 → 15.94 mm²). Our 4,000 FU capsule lets you stack to that range over 2–3 capsules.",
-            "citation": "Chen et al., Frontiers in Cardiovascular Medicine (2022), PMC fcvm.09.964977 — observed at 10,800 FU/day"
-          }
-        },
-        "r2": {
-          "type": "stat_card",
-          "settings": {
-            "title": "LDL down 18%, HDL up 16%",
-            "description": "Same 12-month trial: LDL ('bad' cholesterol) −18.1%, HDL ('good' cholesterol) +15.8%, triglycerides −15.7%, total cholesterol −15.9% (P<0.01).",
-            "citation": "Chen et al., Frontiers in Cardiovascular Medicine (2022), Table 2 — observed at 10,800 FU/day"
-          }
-        },
-        "r3": {
-          "type": "stat_card",
-          "settings": {
-            "title": "0 adverse events at 12 months",
-            "description": "No noticeable adverse effects were recorded across 1,062 adults dosed for a full year. Toxicology assessments show daily intake of 1,000–14,000 FU is well tolerated.",
-            "citation": "Chen et al., Frontiers in Cardiovascular Medicine (2022), Abstract + Discussion"
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3"
-      ],
-      "settings": {
-        "heading": "<p>The Science Behind <strong>Spike Detox</strong></p>",
-        "description": "Why this single ingredient earns its place in your routine. All headline outcomes from Chen 2022 — the largest nattokinase clinical study to date (n=1,062, 12 months).",
-        "button_text": "",
-        "button_link": ""
       }
     },
     "compounds": {
@@ -428,149 +566,6 @@
       "settings": {
         "heading": "<p>More from <strong>verified buyers</strong></p>",
         "subheading": ""
-      }
-    },
-    "problem_state": {
-      "type": "problem-statement",
-      "settings": {
-        "eyebrow_text": "Why a spike detox now",
-        "heading": "Modern Spike Burden Is Real",
-        "paragraph_1": "Cardiovascular health depends on a quiet, ongoing process: the body's natural fibrinolytic system, which keeps fibrin in check so blood flows clean through arteries and capillaries. When that system runs slow, fibrin can persist in the vasculature — and researchers have documented anomalous fibrin-amyloid microclots in post-viral populations that resist normal clearance. The conversation has moved well beyond cholesterol numbers.",
-        "paragraph_2": "Most spike-detox supplements on the shelf bury their nattokinase dose inside a proprietary blend, hide the FU activity behind the supplement-facts panel, or sit at 2,000 FU — a regulatory minimum, not a clinically active range. The largest peer-reviewed trial to date (Chen 2022, n=1,062) identified 6,000–12,000 FU/day as the active range.",
-        "paragraph_3": "We built Spike Detox to be the opposite: one ingredient, the FU number on the front of the label, and a per-capsule dose you stack to your protocol with your clinician.",
-        "layout_image_side": "image_right"
-      }
-    },
-    "origin": {
-      "type": "origin-story",
-      "settings": {
-        "eyebrow": "Origin",
-        "heading": "Miyazaki, 1980. The accident that became a category.",
-        "paragraph_1": "Dr. Hiroyuki Sumi, a researcher at Miyazaki Medical College, was looking for natural substances that dissolve fibrin. He tested 173 foods on Petri dishes coated with artificial blood clots.",
-        "paragraph_2": "Most foods did nothing. One traditional Japanese fermented soybean dish — natto — cleared the clot in under 18 hours. Sumi named the responsible enzyme nattokinase.",
-        "paragraph_3": "Forty years later, peer-reviewed cardiovascular research has built on that single moment. Spike Detox is part of that lineage — one ingredient, transparently dosed.",
-        "pull_quote": "\"The most fibrinolytically active food I have ever encountered.\"",
-        "pull_quote_attribution": "Dr. Hiroyuki Sumi, Miyazaki Medical College",
-        "layout_image_side": "image_left"
-      }
-    },
-    "trial_stats": {
-      "type": "outcome-stats",
-      "blocks": {
-        "t1": {
-          "type": "stat",
-          "settings": {
-            "value": "95%",
-            "unit": "",
-            "label": "Saw their total cholesterol improve"
-          }
-        },
-        "t2": {
-          "type": "stat",
-          "settings": {
-            "value": "84%",
-            "unit": "",
-            "label": "Saw their LDL ('bad') cholesterol drop"
-          }
-        },
-        "t3": {
-          "type": "stat",
-          "settings": {
-            "value": "78%",
-            "unit": "",
-            "label": "Saw a reduction in arterial wall thickness"
-          }
-        },
-        "t4": {
-          "type": "stat",
-          "settings": {
-            "value": "66%",
-            "unit": "",
-            "label": "Saw a reduction in carotid plaque area"
-          }
-        }
-      },
-      "block_order": [
-        "t1",
-        "t2",
-        "t3",
-        "t4"
-      ],
-      "settings": {
-        "eyebrow": "Peer-reviewed outcomes",
-        "heading": "Real Outcomes from the Largest Nattokinase Trial",
-        "intro": "",
-        "sub_heading": "In a peer-reviewed 12-month study of 1,062 adults at 10,800 FU/day, participants showed:",
-        "footnote": "*From Chen et al., Frontiers in Cardiovascular Medicine (2022), n=1,062 adults over 12 months at 10,800 FU/day. Our 4,000 FU per capsule lets you stack 2–3 capsules into that effective range. Individual results may vary. Consult your healthcare provider before use, especially if you take blood-thinning medication.*",
-        "background_style": "soft"
-      }
-    },
-    "one_ingredient_split": {
-      "type": "one-ingredient-split",
-      "blocks": {
-        "la1": {
-          "type": "list_a_item",
-          "settings": { "text": "Serine protease activity acts directly on fibrin to support healthy blood-flow regulation" }
-        },
-        "la2": {
-          "type": "list_a_item",
-          "settings": { "text": "Fibrinolytic action helps the body maintain natural clot-clearance balance" }
-        },
-        "la3": {
-          "type": "list_a_item",
-          "settings": { "text": "Wild Bacillus subtilis fermentation delivers the same traditional natto enzyme studied since 1980" }
-        },
-        "lb1": {
-          "type": "list_b_item",
-          "settings": { "text": "Supports cardiovascular and circulatory health" }
-        },
-        "lb2": {
-          "type": "list_b_item",
-          "settings": { "text": "Helps maintain healthy fibrinolytic balance" }
-        },
-        "lb3": {
-          "type": "list_b_item",
-          "settings": { "text": "Promotes steady, sustained daily energy" }
-        },
-        "lb4": {
-          "type": "list_b_item",
-          "settings": { "text": "Built K2-free for compatibility with common blood thinners" }
-        },
-        "c1": {
-          "type": "callout",
-          "settings": { "icon": "capsule",  "label_line_1": "4,000 FU",          "label_line_2": "per capsule",                  "position": "top_left" }
-        },
-        "c2": {
-          "type": "callout",
-          "settings": { "icon": "leaf",     "label_line_1": "Wild-fermented",    "label_line_2": "Bacillus subtilis",            "position": "mid_left" }
-        },
-        "c3": {
-          "type": "callout",
-          "settings": { "icon": "shield",   "label_line_1": "Third-party tested","label_line_2": "every batch",                  "position": "mid_right" }
-        },
-        "c4": {
-          "type": "callout",
-          "settings": { "icon": "no_k2",    "label_line_1": "K2-free for",       "label_line_2": "blood-thinner users",          "position": "bottom_left" }
-        },
-        "c5": {
-          "type": "callout",
-          "settings": { "icon": "sparkle",  "label_line_1": "Single ingredient", "label_line_2": "no proprietary blend",         "position": "bottom_right" }
-        }
-      },
-      "block_order": [ "la1","la2","la3","lb1","lb2","lb3","lb4","c1","c2","c3","c4","c5" ],
-      "settings": {
-        "eyebrow": "",
-        "heading": "One Ingredient. Centuries of Use.",
-        "intro_paragraph_1": "<p>Unlike most nattokinase supplements built around proprietary blends, undisclosed K2, or 2,000-FU regulatory minimums, Pure keeps it simple — featuring just one studied, time-tested enzyme: wild-fermented nattokinase from traditional Bacillus subtilis. From its serine-protease structure to its decades-deep cardiovascular research base, nattokinase offers a clean, single-ingredient way to support healthy circulation, fibrinolytic balance, and daily resilience.</p>",
-        "intro_paragraph_2": "<p>Here's what makes Pure so powerful in every serving:</p>",
-        "list_a_heading": "How It Works",
-        "list_b_heading": "Natural Benefits",
-        "closing_paragraph": "<p>With Pure, you're giving your body one of nature's most-studied enzymes — trusted for centuries in traditional Japanese natto and validated by 40+ years of peer-reviewed cardiovascular research.</p>",
-        "card_image_alt": "Nattokinase capsules",
-        "card_bg_color": "#0F3F2E",
-        "background_style": "cream",
-        "padding_top": 80,
-        "padding_bottom": 80
       }
     },
     "video_stories": {
@@ -1062,15 +1057,13 @@
     "cardio_solution",
     "trial_stats",
     "one_ingredient_split",
+    "subscription",
     "guarantee",
-    "how_it_works",
     "compounds",
     "symptoms",
     "timeline_short",
     "who_for",
     "testimonial_repeat",
-    "problem_state",
-    "origin",
     "video_stories",
     "cta_repeat",
     "trust_promise",
