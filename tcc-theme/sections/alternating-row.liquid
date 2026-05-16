@@ -42,13 +42,14 @@
       {%- endif -%}
     </div>
 
-    <div class="alternating-row__content">
+    <div class="alternating-row__heading-area">
       {%- if section.settings.eyebrow != blank -%}
         <p class="alternating-row__eyebrow">{{ section.settings.eyebrow }}</p>
       {%- endif -%}
-
       <h2 class="alternating-row__heading tcc-heading">{{ section.settings.heading }}</h2>
+    </div>
 
+    <div class="alternating-row__body-area">
       {%- if section.settings.body_paragraph_1 != blank -%}
         <p class="alternating-row__body">{{ section.settings.body_paragraph_1 }}</p>
       {%- endif -%}
@@ -93,16 +94,27 @@
   .alternating-row__grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--tcc-s-6);
+    column-gap: var(--tcc-s-6);
+    row-gap: var(--tcc-s-3);
     max-width: 1200px;
     margin: 0 auto;
-    align-items: center;
+    align-items: start;
   }
 
-  .alternating-row--image_left .alternating-row__visual { order: 1; }
-  .alternating-row--image_left .alternating-row__content { order: 2; }
-  .alternating-row--image_right .alternating-row__visual { order: 2; }
-  .alternating-row--image_right .alternating-row__content { order: 1; }
+  .alternating-row--image_right .alternating-row__grid {
+    grid-template-areas:
+      "heading visual"
+      "body    visual";
+  }
+  .alternating-row--image_left .alternating-row__grid {
+    grid-template-areas:
+      "visual heading"
+      "visual body";
+  }
+
+  .alternating-row__heading-area { grid-area: heading; }
+  .alternating-row__visual       { grid-area: visual; align-self: center; }
+  .alternating-row__body-area    { grid-area: body; }
 
   .alternating-row__image,
   .alternating-row__image-fallback {
@@ -133,7 +145,7 @@
     line-height: var(--tcc-lh-tight);
     letter-spacing: var(--tcc-ls-display);
     color: var(--tcc-ink);
-    margin: 0 0 var(--tcc-s-3);
+    margin: 0;
   }
 
   .alternating-row__body {
@@ -187,17 +199,15 @@
   }
 
   @media (max-width: 768px) {
-    .alternating-row__grid {
+    .alternating-row--image_left .alternating-row__grid,
+    .alternating-row--image_right .alternating-row__grid {
       grid-template-columns: 1fr;
-      gap: var(--tcc-s-4);
-    }
-    .alternating-row--image_left .alternating-row__visual,
-    .alternating-row--image_right .alternating-row__visual {
-      order: 1;
-    }
-    .alternating-row--image_left .alternating-row__content,
-    .alternating-row--image_right .alternating-row__content {
-      order: 2;
+      grid-template-areas:
+        "heading"
+        "visual"
+        "body";
+      column-gap: 0;
+      row-gap: var(--tcc-s-3);
     }
   }
 </style>
