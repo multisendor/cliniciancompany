@@ -542,9 +542,13 @@
         "vc4"
       ],
       "settings": {
-        "eyebrow": "YOUR HEALTH. YOUR STORIES.",
-        "heading": "Real customers, real recovery.",
-        "layout": "horizontal"
+        "eyebrow": "",
+        "heading": "See Why This Centuries-Old Enzyme Is Trusted Daily for Cardiovascular Health",
+        "layout": "horizontal",
+        "show_cta": true,
+        "cta_text": "BUY NOW & SAVE",
+        "cta_link": "/products/spike-detox",
+        "guarantee_text": "30-Day Money Back Guarantee"
       }
     },
     "cta_repeat": {
