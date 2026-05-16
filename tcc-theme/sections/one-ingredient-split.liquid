@@ -263,6 +263,64 @@
   .one-ingredient-split__figure-placeholder span:nth-child(3) { grid-column: 3 / 4; grid-row: 1 / 2; transform: translateX(-8px); }
   .one-ingredient-split__figure-placeholder span:nth-child(4) { grid-column: 1 / 3; grid-row: 2 / 3; transform: translate(20px, -8px); }
   .one-ingredient-split__figure-placeholder span:nth-child(5) { grid-column: 2 / 4; grid-row: 2 / 3; transform: translate(-20px, -8px); }
+
+  /* ===== Callouts ===== */
+  .one-ingredient-split__callouts {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .one-ingredient-split__callout {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-align: center;
+    max-width: 140px;
+    pointer-events: auto;
+  }
+  .one-ingredient-split__callout-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.9);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+  .one-ingredient-split__callout-icon svg { width: 22px; height: 22px; }
+  .one-ingredient-split__callout-label {
+    display: flex;
+    flex-direction: column;
+    line-height: 16px;
+  }
+  .one-ingredient-split__callout-line1 { font-size: 13px; font-weight: 600; }
+  .one-ingredient-split__callout-line2 { font-size: 13px; font-weight: 400; opacity: 0.9; }
+
+  /* Position variants — anchored to the 5 Resilia corners. */
+  .one-ingredient-split__callout--top_left     { top: 32px;    left: 32px;   align-items: flex-start; text-align: left; }
+  .one-ingredient-split__callout--mid_left     { top: 50%;     left: 16px;   transform: translateY(-50%); align-items: flex-start; text-align: left; }
+  .one-ingredient-split__callout--mid_right    { top: 50%;     right: 16px;  transform: translateY(-50%); align-items: flex-end;   text-align: right; }
+  .one-ingredient-split__callout--bottom_left  { bottom: 32px; left: 32px;   align-items: flex-start; text-align: left; }
+  .one-ingredient-split__callout--bottom_right { bottom: 32px; right: 32px;  align-items: flex-end;   text-align: right; }
+
+  /* ===== Dotted leader lines (desktop only) ===== */
+  .one-ingredient-split__leaders {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible;
+  }
+  @media (max-width: 749px) {
+    .one-ingredient-split__leaders { display: none; }
+  }
 </style>
 
 {% schema %}
