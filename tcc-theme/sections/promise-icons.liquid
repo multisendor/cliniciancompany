@@ -1,0 +1,216 @@
+{%- comment -%}
+  Promise Icons — Resilia "Resilia Promise" trust-icons grid 1:1
+  6 cells, each: large green outlined icon + bold dark-navy label.
+  Desktop (>=990px): 6 columns × 1 row (Resilia's actual desktop layout)
+  Tablet (750-989px): 3 columns × 2 rows
+  Mobile (<750px): 2 columns × 3 rows
+{%- endcomment -%}
+
+<div
+  class="promise-icons tcc-section-padding promise-icons--{{ section.settings.background_style }}"
+  data-section-type="promise-icons"
+  data-section-id="{{ section.id }}"
+>
+  <div class="tcc-page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="promise-icons__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="promise-icons__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'icon_item' -%}
+            <div class="promise-icons__cell" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon_url != blank -%}
+                <div class="promise-icons__icon-wrap">
+                  <img
+                    class="promise-icons__icon"
+                    src="{{ block.settings.icon_url }}"
+                    alt="{{ block.settings.icon_alt | escape }}"
+                    loading="lazy"
+                    width="100"
+                    height="100"
+                  >
+                </div>
+              {%- endif -%}
+              {%- if block.settings.label != blank -%}
+                <p class="promise-icons__label">{{ block.settings.label }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .promise-icons--white {
+    background: #ffffff;
+    color: var(--tcc-ink, #0a1628);
+  }
+
+  .promise-icons--cream {
+    background: var(--tcc-bg, #f7f3ec);
+    color: var(--tcc-ink, #0a1628);
+  }
+
+  .promise-icons__heading {
+    text-align: center;
+    margin: 0 auto var(--tcc-s-6, 48px);
+    font-family: var(--tcc-font-display, var(--tcc-font-serif, Georgia, serif));
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--tcc-ink, #0a1628);
+    max-width: 760px;
+  }
+
+  .promise-icons__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 36px;
+    align-items: start;
+  }
+
+  .promise-icons__cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    padding: 0 4px;
+  }
+
+  .promise-icons__icon-wrap {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .promise-icons__icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .promise-icons__label {
+    margin: 0;
+    font-family: var(--tcc-font-sans, system-ui, sans-serif);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--tcc-ink, #0a1628);
+    max-width: 16ch;
+  }
+
+  @media (min-width: 750px) {
+    .promise-icons__heading {
+      font-size: clamp(32px, 3vw, 40px);
+      margin-bottom: 56px;
+    }
+
+    .promise-icons__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 24px;
+      row-gap: 48px;
+    }
+
+    .promise-icons__icon-wrap {
+      width: 100px;
+      height: 100px;
+    }
+
+    .promise-icons__label {
+      font-size: 16px;
+      max-width: 20ch;
+    }
+  }
+
+  @media (min-width: 990px) {
+    .promise-icons__grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      column-gap: 16px;
+      row-gap: 0;
+    }
+
+    .promise-icons__icon-wrap {
+      width: 96px;
+      height: 96px;
+    }
+
+    .promise-icons__label {
+      font-size: 15px;
+      max-width: 18ch;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Promise Icons",
+  "tag": "section",
+  "class": "section-promise-icons",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Spike Detox Promise"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "cream", "label": "Cream" }
+      ],
+      "default": "white"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_item",
+      "name": "Icon item",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_url",
+          "label": "Icon URL (external CDN or upload)",
+          "info": "Paste a full https:// URL to a PNG/SVG icon. Use simple line-art green outlined illustrations."
+        },
+        {
+          "type": "text",
+          "id": "icon_alt",
+          "label": "Icon alt text"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Clean and Traceable"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promise Icons",
+      "blocks": [
+        { "type": "icon_item" },
+        { "type": "icon_item" },
+        { "type": "icon_item" },
+        { "type": "icon_item" },
+        { "type": "icon_item" },
+        { "type": "icon_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}

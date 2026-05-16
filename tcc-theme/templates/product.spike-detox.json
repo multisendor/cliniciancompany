@@ -658,6 +658,64 @@
         "heading": "Built for the people who read the label."
       }
     },
+    "promise_icons": {
+      "type": "promise-icons",
+      "blocks": {
+        "pi1": {
+          "type": "icon_item",
+          "settings": {
+            "icon_url": "https://img.funnelish.com/55043/562602/1730121662-Pure%20&%20Potent%20icon.png",
+            "icon_alt": "Clean and traceable",
+            "label": "Clean and Traceable"
+          }
+        },
+        "pi2": {
+          "type": "icon_item",
+          "settings": {
+            "icon_url": "https://img.funnelish.com/55043/562602/1730121915-Freshly%20Harvested%20icon.png",
+            "icon_alt": "Wild fermented",
+            "label": "Wild-Fermented"
+          }
+        },
+        "pi3": {
+          "type": "icon_item",
+          "settings": {
+            "icon_url": "https://img.funnelish.com/55043/562602/1730121972-No%20Additives%20icon.png",
+            "icon_alt": "No artificial additives",
+            "label": "No Artificial Additives"
+          }
+        },
+        "pi4": {
+          "type": "icon_item",
+          "settings": {
+            "icon_url": "https://img.funnelish.com/55043/562602/1730122022-Gluten%20Free%20icon.png",
+            "icon_alt": "Gluten free",
+            "label": "Gluten Free"
+          }
+        },
+        "pi5": {
+          "type": "icon_item",
+          "settings": {
+            "icon_url": "https://img.funnelish.com/55043/562602/1730122084-Non-GMO%20icon.png",
+            "icon_alt": "Non-GMO",
+            "label": "Non-GMO"
+          }
+        },
+        "pi6": {
+          "type": "icon_item",
+          "settings": {
+            "icon_url": "https://img.funnelish.com/55043/562602/1730122196-Made%20in%20a%20USA%20FDA%20icon.png",
+            "icon_alt": "Manufactured in an FDA-registered facility",
+            "label": "Manufactured in an FDA-Registered Facility"
+          }
+        }
+      },
+      "block_order": ["pi1", "pi2", "pi3", "pi4", "pi5", "pi6"],
+      "settings": {
+        "heading": "Spike Detox Promise",
+        "background_style": "white"
+      }
+    },
     "timeline_long": {
       "type": "expectation-timeline",
       "blocks": {
@@ -726,141 +784,34 @@
       }
     },
     "comparison": {
-      "type": "brand-comparison-table",
+      "type": "comparison-vs",
       "blocks": {
-        "brand_1": {
-          "type": "brand_feature",
-          "settings": {
-            "icon": "check_circle",
-            "text": "FU printed on the front of label"
-          }
-        },
-        "brand_2": {
-          "type": "brand_feature",
-          "settings": {
-            "icon": "check_circle",
-            "text": "COA published every batch (per-lot)"
-          }
-        },
-        "brand_3": {
-          "type": "brand_feature",
-          "settings": {
-            "icon": "check_circle",
-            "text": "K2 disclosed (sold separately, not hidden)"
-          }
-        },
-        "brand_4": {
-          "type": "brand_feature",
-          "settings": {
-            "icon": "check_circle",
-            "text": "Wild-fermented Bacillus subtilis (the research strain)"
-          }
-        },
-        "brand_5": {
-          "type": "brand_feature",
-          "settings": {
-            "icon": "check_circle",
-            "text": "Single-ingredient label"
-          }
-        },
-        "brand_6": {
-          "type": "brand_feature",
-          "settings": {
-            "icon": "check_circle",
-            "text": "Vegan capsule, no fillers"
-          }
-        },
-        "comp_1": {
-          "type": "competitor_feature",
-          "settings": {
-            "icon": "cancel",
-            "text": "FU buried in supplement-facts panel"
-          }
-        },
-        "comp_2": {
-          "type": "competitor_feature",
-          "settings": {
-            "icon": "cancel",
-            "text": "Rarely COA-tested batch-by-batch"
-          }
-        },
-        "comp_3": {
-          "type": "competitor_feature",
-          "settings": {
-            "icon": "cancel",
-            "text": "K2 often present without disclosure"
-          }
-        },
-        "comp_4": {
-          "type": "competitor_feature",
-          "settings": {
-            "icon": "cancel",
-            "text": "Lab-cultured fermentation"
-          }
-        },
-        "comp_5": {
-          "type": "competitor_feature",
-          "settings": {
-            "icon": "cancel",
-            "text": "Proprietary blend with NK + 5+ extras"
-          }
-        },
-        "comp_6": {
-          "type": "competitor_feature",
-          "settings": {
-            "icon": "cancel",
-            "text": "Vegan capsules: mixed"
-          }
-        },
-        "sum_1": {
-          "type": "summary_point",
-          "settings": {
-            "text": "FU on the front of the label — no hide-the-dose"
-          }
-        },
-        "sum_2": {
-          "type": "summary_point",
-          "settings": {
-            "text": "Per-batch COA published, lot number on every bottle"
-          }
-        },
-        "sum_3": {
-          "type": "summary_point",
-          "settings": {
-            "text": "K2 disclosed and offered separately — not bundled by default"
-          }
-        },
-        "sum_4": {
-          "type": "summary_point",
-          "settings": {
-            "text": "Single ingredient, no proprietary blends"
-          }
-        }
+        "r1":  { "type": "row", "settings": { "feature_label": "4,000 FU per capsule (clinical dose)",            "brand_check": "yes", "competitor_check": "no" } },
+        "r2":  { "type": "row", "settings": { "feature_label": "Wild-fermented Bacillus subtilis",                "brand_check": "yes", "competitor_check": "no" } },
+        "r3":  { "type": "row", "settings": { "feature_label": "Single ingredient — no proprietary blend",        "brand_check": "yes", "competitor_check": "no" } },
+        "r4":  { "type": "row", "settings": { "feature_label": "K2-free for blood-thinner compatibility",         "brand_check": "yes", "competitor_check": "no" } },
+        "r5":  { "type": "row", "settings": { "feature_label": "FU number printed on the front of the label",     "brand_check": "yes", "competitor_check": "no" } },
+        "r6":  { "type": "row", "settings": { "feature_label": "Per-batch COA published (lookup by lot)",         "brand_check": "yes", "competitor_check": "no" } },
+        "r7":  { "type": "row", "settings": { "feature_label": "Backed by Chen 2022 (n=1,062, 12 months)",        "brand_check": "yes", "competitor_check": "no" } },
+        "r8":  { "type": "row", "settings": { "feature_label": "Dose-flexible (stack 1–3 caps to your protocol)", "brand_check": "yes", "competitor_check": "no" } },
+        "r9":  { "type": "row", "settings": { "feature_label": "Proprietary blends with undisclosed amounts",     "brand_check": "no",  "competitor_check": "yes" } },
+        "r10": { "type": "row", "settings": { "feature_label": "K2 bundled without clinician disclosure",         "brand_check": "no",  "competitor_check": "yes" } },
+        "r11": { "type": "row", "settings": { "feature_label": "2,000 FU regulatory minimum — sub-clinical",      "brand_check": "no",  "competitor_check": "yes" } }
       },
       "block_order": [
-        "brand_1",
-        "brand_2",
-        "brand_3",
-        "brand_4",
-        "brand_5",
-        "brand_6",
-        "comp_1",
-        "comp_2",
-        "comp_3",
-        "comp_4",
-        "comp_5",
-        "comp_6",
-        "sum_1",
-        "sum_2",
-        "sum_3",
-        "sum_4"
+        "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11"
       ],
       "settings": {
-        "product": "",
-        "brand_name": "The Clinician Company",
-        "competitor_name": "Typical Spike-Detox Brand",
-        "heading": "How we compare on transparency",
-        "button_text": "Add to Cart"
+        "heading": "Why Spike Detox Outperforms Typical Nattokinase Supplements",
+        "brand_name": "Spike Detox",
+        "brand_image_url": "https://www.twc.health/cdn/shop/files/SIG_UltSpike_Thumbnail.png?v=1773419148&width=400",
+        "competitor_name": "Typical Nattokinase Supplements",
+        "competitor_image_url": "https://cdn.shopify.com/s/files/1/0610/8862/8312/files/typical-bottle.png",
+        "subhead": "Which delivers more real benefits?",
+        "show_cta": true,
+        "cta_text": "BUY NOW & SAVE",
+        "cta_link": "/products/spike-detox",
+        "guarantee_text": "60-day money-back guarantee"
       }
     },
     "special_offer": {
@@ -1037,6 +988,7 @@
     "video_stories",
     "cta_repeat",
     "trust_promise",
+    "promise_icons",
     "timeline_long",
     "comparison",
     "special_offer",
