@@ -44,7 +44,14 @@
         "id": "cta_bold_style",
         "label": "Use bold ADD TO CART button style",
         "default": true,
-        "info": "Renders the buy-box Add-to-Cart button as a deep-forest pill with bold uppercase 'ADD TO CART' (Resilia-style). Uncheck to revert to the dark navy 'Add To Cart | $price' button."
+        "info": "Renders the buy-box Add-to-Cart button as a full pill with bold uppercase 'ADD TO CART' (Resilia-style). Uncheck to revert to the dark navy 'Add To Cart | $price' button."
+      },
+      {
+        "type": "color",
+        "id": "cta_bold_bg_color",
+        "label": "Bold CTA background color",
+        "default": "#1e40af",
+        "info": "Only used when 'Use bold ADD TO CART button style' is on. Affects the main buy-box CTA and the mobile sticky ATC."
       }
     ]
   },

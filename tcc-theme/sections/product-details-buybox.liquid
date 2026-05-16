@@ -191,8 +191,7 @@
         {%- endfor -%}
 
         <!-- Add to Cart -->
-        <!-- DEBUG3 brand=[{{ settings.brand_short }}] cta_bold=[{{ settings.cta_bold_style }}] cta_truthy=[{% if settings.cta_bold_style %}YES{% else %}NO{% endif %}] keys_present=[{% for k in settings %}{{ k[0] }}|{% endfor %}] -->
-        <button type="submit" name="add" class="product-details-buybox__add-to-cart{% if settings.cta_bold_style %} product-details-buybox__add-to-cart--bold{% endif %}">
+        <button type="submit" name="add" class="product-details-buybox__add-to-cart{% if settings.cta_bold_style %} product-details-buybox__add-to-cart--bold{% endif %}"{% if settings.cta_bold_style %} style="--cta-bold-bg: {{ settings.cta_bold_bg_color }};"{% endif %}>
           {%- if settings.cta_bold_style -%}
             <span class="product-details-buybox__atc-label product-details-buybox__atc-label--bold">Add To Cart</span>
             {%- comment -%} Keep price + compare nodes in DOM (hidden) so the price-sync JS can write into them without errors. {%- endcomment -%}
@@ -224,7 +223,7 @@
 
     <!-- Mobile Sticky ATC -->
     <div class="sticky-atc" id="sticky-atc-{{ section.id }}" aria-hidden="true">
-      <button type="button" class="sticky-atc__btn{% if settings.cta_bold_style %} sticky-atc__btn--bold{% endif %}" id="sticky-atc-btn-{{ section.id }}">
+      <button type="button" class="sticky-atc__btn{% if settings.cta_bold_style %} sticky-atc__btn--bold{% endif %}" id="sticky-atc-btn-{{ section.id }}"{% if settings.cta_bold_style %} style="--cta-bold-bg: {{ settings.cta_bold_bg_color }};"{% endif %}>
         {%- if settings.cta_bold_style -%}
           <span class="sticky-atc__label sticky-atc__label--bold">Add To Cart</span>
           {%- comment -%} Hidden but kept in DOM so the price-mirror JS doesn't error. {%- endcomment -%}
@@ -694,16 +693,17 @@
     text-decoration: line-through;
   }
 
-  /* === Bold ADD TO CART variant — Resilia parity (try.resilia.shop/rsl) === */
+  /* === Bold ADD TO CART variant — Resilia geometry, color via settings.cta_bold_bg_color === */
   .product-details-buybox__add-to-cart--bold {
-    background: #095946;
+    background: var(--cta-bold-bg, #1e40af);
     color: #F6F9FE;
     border-radius: 30px;
     padding: 12px 10px;
-    transition: background-color 0.2s ease;
+    transition: filter 0.2s ease;
   }
   .product-details-buybox__add-to-cart--bold:hover {
-    background: #074234;
+    background: var(--cta-bold-bg, #1e40af);
+    filter: brightness(0.88);
     opacity: 1;
   }
   .product-details-buybox__add-to-cart--bold:disabled,
@@ -721,14 +721,15 @@
   }
   /* Sticky (mobile) bold variant — matches the mobile Resilia button */
   .sticky-atc__btn--bold {
-    background: #095946;
+    background: var(--cta-bold-bg, #1e40af);
     color: #F6F9FE;
     border-radius: 30px;
     padding: 12px 10px;
-    transition: background-color 0.2s ease;
+    transition: filter 0.2s ease;
   }
   .sticky-atc__btn--bold:hover {
-    background: #074234;
+    background: var(--cta-bold-bg, #1e40af);
+    filter: brightness(0.88);
     opacity: 1;
   }
   .sticky-atc__label--bold {
