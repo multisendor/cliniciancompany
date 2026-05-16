@@ -1,0 +1,533 @@
+<div
+  data-section-type="special-offer-split"
+  class="special-offer-split tcc-section-padding"
+>
+  <div class="special-offer-split__inner tcc-page-width">
+    <div class="special-offer-split__grid">
+
+      {%- comment -%} LEFT: testimonial card {%- endcomment -%}
+      <aside class="special-offer-split__quote-card" aria-label="Customer testimonial">
+        {%- if section.settings.quote_eyebrow != blank -%}
+          <div class="special-offer-split__rating">
+            <span class="special-offer-split__stars" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#f5b82e" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#f5b82e" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#f5b82e" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#f5b82e" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#f5b82e" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01z"/></svg>
+            </span>
+            <span class="special-offer-split__rating-text">Rated 5.0 &middot; {{ section.settings.quote_eyebrow }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.quote_lead != blank or section.settings.quote_accent_word != blank -%}
+          <blockquote class="special-offer-split__pull">
+            <span class="special-offer-split__pull-lead">{{ section.settings.quote_lead }}</span>
+            {%- if section.settings.quote_accent_word != blank -%}
+              <span class="special-offer-split__pull-accent">{{ section.settings.quote_accent_word }}</span>
+            {%- endif -%}
+          </blockquote>
+        {%- endif -%}
+
+        {%- if section.settings.quote_body != blank -%}
+          <p class="special-offer-split__quote-body">{{ section.settings.quote_body }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.quote_attribution != blank -%}
+          <p class="special-offer-split__attribution">{{ section.settings.quote_attribution }}</p>
+        {%- endif -%}
+
+        <div class="special-offer-split__quote-image-wrap">
+          {%- if section.settings.quote_image_url != blank -%}
+            <img
+              class="special-offer-split__quote-image"
+              src="{{ section.settings.quote_image_url }}"
+              alt="{{ section.settings.quote_attribution | escape }}"
+              loading="lazy"
+            >
+          {%- else -%}
+            <div class="special-offer-split__quote-image-placeholder" aria-hidden="true">
+              <span>Real customer photography pending</span>
+            </div>
+          {%- endif -%}
+        </div>
+      </aside>
+
+      {%- comment -%} RIGHT: offer panel {%- endcomment -%}
+      <div class="special-offer-split__offer">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="special-offer-split__heading tcc-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.intro != blank -%}
+          <div class="special-offer-split__intro tcc-body">{{ section.settings.intro }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.bullets_heading != blank -%}
+          <p class="special-offer-split__bullets-heading">{{ section.settings.bullets_heading }}</p>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="special-offer-split__bullets" role="list">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'bullet' -%}
+                <li class="special-offer-split__bullet" {{ block.shopify_attributes }}>
+                  <span class="special-offer-split__bullet-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="5 12 10 17 19 7"></polyline>
+                    </svg>
+                  </span>
+                  <span class="special-offer-split__bullet-text">
+                    <strong>{{ block.settings.text }}</strong>
+                    {%- if block.settings.subtext != blank -%}
+                      <em class="special-offer-split__bullet-sub">{{ block.settings.subtext }}</em>
+                    {%- endif -%}
+                  </span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.callout != blank -%}
+          <p class="special-offer-split__callout">{{ section.settings.callout }}</p>
+        {%- endif -%}
+
+        <a
+          class="special-offer-split__cta"
+          href="{{ section.settings.cta_link | default: '/products/spike-detox' }}"
+        >
+          {{ section.settings.cta_text | default: 'ADD TO CART & SAVE' }}
+        </a>
+
+        <div class="special-offer-split__payments" aria-label="Accepted payment methods">
+          <span class="special-offer-split__pay-pill" aria-label="PayPal">PayPal</span>
+          <span class="special-offer-split__pay-pill" aria-label="Visa">VISA</span>
+          <span class="special-offer-split__pay-pill" aria-label="Mastercard">MC</span>
+          <span class="special-offer-split__pay-pill" aria-label="American Express">AmEx</span>
+          <span class="special-offer-split__pay-pill" aria-label="Discover">Discover</span>
+          <span class="special-offer-split__pay-pill" aria-label="Google Pay">G Pay</span>
+          <span class="special-offer-split__pay-pill" aria-label="Apple Pay">&#63743; Pay</span>
+        </div>
+
+        {%- if section.settings.security_text != blank -%}
+          <p class="special-offer-split__security">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            <span>{{ section.settings.security_text }}</span>
+          </p>
+        {%- endif -%}
+
+        {%- if section.settings.availability_note != blank -%}
+          <p class="special-offer-split__availability"><em>{{ section.settings.availability_note }}</em></p>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Special Offer Split — TCC adaptation of Resilia's two-column offer block.
+     Blue accents (not green), inherits brand fonts, uses muted-blue card. */
+  .special-offer-split {
+    background-color: #ffffff;
+  }
+  .special-offer-split__inner {
+    max-width: 1200px;
+  }
+  .special-offer-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  /* LEFT card */
+  .special-offer-split__quote-card {
+    background-color: var(--tcc-section-muted, #EEF1F8);
+    border-radius: 24px;
+    padding: 36px 36px 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .special-offer-split__rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .special-offer-split__stars {
+    display: inline-flex;
+    gap: 2px;
+  }
+  .special-offer-split__rating-text {
+    font-family: var(--tcc-font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: #0a1628;
+    letter-spacing: 0.2px;
+  }
+  .special-offer-split__pull {
+    font-family: var(--tcc-font-heading);
+    font-size: 34px;
+    line-height: 1.18;
+    font-weight: 700;
+    color: #0a1628;
+    margin: 0 0 18px;
+  }
+  .special-offer-split__pull-accent {
+    color: var(--tcc-cta-accent, #1e40af);
+  }
+  .special-offer-split__quote-body {
+    font-family: var(--tcc-font-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    color: #2a3340;
+    margin: 0 0 16px;
+  }
+  .special-offer-split__attribution {
+    font-family: var(--tcc-font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: #0a1628;
+    margin: 0 0 24px;
+  }
+  .special-offer-split__quote-image-wrap {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .special-offer-split__quote-image {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    display: block;
+  }
+  .special-offer-split__quote-image-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: rgba(30, 64, 175, 0.08);
+    border: 1px dashed rgba(30, 64, 175, 0.35);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(10, 22, 40, 0.55);
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  /* RIGHT panel */
+  .special-offer-split__offer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 8px 0;
+  }
+  .special-offer-split__heading {
+    font-family: var(--tcc-font-heading);
+    font-size: 38px;
+    line-height: 1.12;
+    font-weight: 800;
+    color: #0a1628;
+    margin: 0 0 14px;
+    letter-spacing: -0.5px;
+  }
+  .special-offer-split__intro {
+    font-family: var(--tcc-font-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    color: #2a3340;
+    margin: 0 0 22px;
+  }
+  .special-offer-split__intro p { margin: 0 0 10px; }
+  .special-offer-split__bullets-heading {
+    font-family: var(--tcc-font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    color: #0a1628;
+    margin: 0 0 14px;
+  }
+  .special-offer-split__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .special-offer-split__bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .special-offer-split__bullet-icon {
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--tcc-cta-accent, #1e40af);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .special-offer-split__bullet-text {
+    font-family: var(--tcc-font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    color: #0a1628;
+  }
+  .special-offer-split__bullet-text strong {
+    font-weight: 600;
+  }
+  .special-offer-split__bullet-sub {
+    display: block;
+    font-size: 14px;
+    font-style: italic;
+    color: #555c66;
+    margin-top: 2px;
+    font-weight: 400;
+  }
+  .special-offer-split__callout {
+    font-family: var(--tcc-font-heading);
+    font-size: 22px;
+    font-weight: 800;
+    color: #0a1628;
+    margin: 0 0 18px;
+    letter-spacing: 0.2px;
+  }
+  .special-offer-split__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: var(--tcc-cta-accent, #1e40af) !important;
+    color: #f6f9fe !important;
+    text-decoration: none;
+    border-radius: 30px;
+    padding: 18px 24px;
+    font-family: var(--tcc-font-sans);
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: 0.36px;
+    text-transform: uppercase;
+    transition: filter 0.2s ease;
+    margin-bottom: 18px;
+  }
+  .special-offer-split__cta:hover {
+    filter: brightness(0.88);
+    color: #f6f9fe !important;
+  }
+  .special-offer-split__payments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .special-offer-split__pay-pill {
+    font-family: var(--tcc-font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #2a3340;
+    background: #f3f5fa;
+    border: 1px solid rgba(10, 22, 40, 0.08);
+    border-radius: 6px;
+    padding: 6px 10px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
+  .special-offer-split__security {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--tcc-font-sans);
+    font-size: 14px;
+    color: #2a3340;
+    margin: 0 0 6px;
+  }
+  .special-offer-split__security svg { color: var(--tcc-cta-accent, #1e40af); }
+  .special-offer-split__availability {
+    font-family: var(--tcc-font-sans);
+    font-size: 13px;
+    color: #555c66;
+    margin: 0;
+  }
+
+  @media (max-width: 749px) {
+    .special-offer-split__grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    /* On mobile the quote card stays first (above the offer) per spec. */
+    .special-offer-split__quote-card {
+      padding: 24px 22px 0;
+      border-radius: 20px;
+    }
+    .special-offer-split__pull {
+      font-size: 26px;
+    }
+    .special-offer-split__quote-body {
+      font-size: 15.5px;
+    }
+    .special-offer-split__heading {
+      font-size: 28px;
+    }
+    .special-offer-split__intro {
+      font-size: 15.5px;
+    }
+    .special-offer-split__bullets-heading {
+      font-size: 17px;
+    }
+    .special-offer-split__bullet-text {
+      font-size: 15px;
+    }
+    .special-offer-split__callout {
+      font-size: 18px;
+    }
+    .special-offer-split__cta {
+      font-size: 16px;
+      padding: 16px 20px;
+      letter-spacing: 0.32px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Special Offer Split",
+  "tag": "section",
+  "class": "section-special-offer-split",
+  "settings": [
+    { "type": "header", "content": "Offer panel (right column)" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Start your Spike Detox protocol"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro paragraph",
+      "default": "<p>Start with the same single-ingredient enzyme studied in the largest 12-month nattokinase trial — backed by a 60-day money-back guarantee, even on empty bottles.</p>"
+    },
+    {
+      "type": "text",
+      "id": "bullets_heading",
+      "label": "Bullet list heading",
+      "default": "What you get when you start today:"
+    },
+    {
+      "type": "text",
+      "id": "callout",
+      "label": "Bold callout line (optional — leave blank to hide)",
+      "default": "Stack & Save — Annual Supply protocols available."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "ADD TO CART & SAVE"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "text",
+      "id": "security_text",
+      "label": "Security line",
+      "default": "All transactions are secure and encrypted"
+    },
+    {
+      "type": "text",
+      "id": "availability_note",
+      "label": "Availability note",
+      "default": "Available only at thecliniciancompany.com — never sold on Amazon or eBay."
+    },
+
+    { "type": "header", "content": "Testimonial card (left column)" },
+    {
+      "type": "text",
+      "id": "quote_eyebrow",
+      "label": "Rating eyebrow text",
+      "default": "Trusted by clinicians and patients"
+    },
+    {
+      "type": "text",
+      "id": "quote_lead",
+      "label": "Pull quote — lead text",
+      "info": "Larger leading line of the pull quote.",
+      "default": "\"The first nattokinase I felt confident handing my"
+    },
+    {
+      "type": "text",
+      "id": "quote_accent_word",
+      "label": "Pull quote — accent word (rendered in TCC blue)",
+      "default": "patients.\""
+    },
+    {
+      "type": "richtext",
+      "id": "quote_body",
+      "label": "Quote body",
+      "default": "<p>The label tells you exactly what's in it — 4,000 FU per capsule, single-ingredient, third-party tested. That's the conversation I want to have with someone before I recommend anything.</p>"
+    },
+    {
+      "type": "text",
+      "id": "quote_attribution",
+      "label": "Attribution",
+      "default": "— Sarah M."
+    },
+    {
+      "type": "url",
+      "id": "quote_image_url",
+      "label": "Quote image URL",
+      "info": "Real customer photography needed. Leave blank to render a polite placeholder."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Bullet",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Bullet text",
+          "default": "Bullet copy here"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Sub-text (italic, optional)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Special Offer Split",
+      "blocks": [
+        { "type": "bullet", "settings": { "text": "Spike Detox 90-cap Protocol — best dose-to-protocol value", "subtext": "clinically-active range built into one bottle" } },
+        { "type": "bullet", "settings": { "text": "Single-ingredient practitioner-grade nattokinase — 4,000 FU per capsule" } },
+        { "type": "bullet", "settings": { "text": "60-Day Money-Back Guarantee — even if the bottle is empty" } },
+        { "type": "bullet", "settings": { "text": "Free shipping on every order" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

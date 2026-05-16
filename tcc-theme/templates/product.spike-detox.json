@@ -807,6 +807,61 @@
         "background_color": "#0a1628"
       }
     },
+    "special_offer_split": {
+      "type": "special-offer-split",
+      "blocks": {
+        "b1": {
+          "type": "bullet",
+          "settings": {
+            "text": "Spike Detox 90-cap Protocol — best dose-to-protocol value",
+            "subtext": "clinically-active range built into one bottle (Chen 2022, 6,000–12,000 FU/day)"
+          }
+        },
+        "b2": {
+          "type": "bullet",
+          "settings": {
+            "text": "Single-ingredient practitioner-grade nattokinase — 4,000 FU per capsule",
+            "subtext": ""
+          }
+        },
+        "b3": {
+          "type": "bullet",
+          "settings": {
+            "text": "60-Day Money-Back Guarantee — even if the bottle is empty",
+            "subtext": ""
+          }
+        },
+        "b4": {
+          "type": "bullet",
+          "settings": {
+            "text": "Free shipping on every order",
+            "subtext": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "heading": "Start your Spike Detox protocol",
+        "intro": "<p>Start with the same single-ingredient enzyme studied in the largest 12-month nattokinase trial — backed by a 60-day money-back guarantee, even on empty bottles.</p>",
+        "bullets_heading": "What you get when you start today:",
+        "callout": "Stack & Save — Annual Supply protocols available.",
+        "cta_text": "ADD TO CART & SAVE",
+        "cta_link": "/products/spike-detox",
+        "security_text": "All transactions are secure and encrypted",
+        "availability_note": "Available only at thecliniciancompany.com — never sold on Amazon or eBay.",
+        "quote_eyebrow": "Trusted by clinicians and patients",
+        "quote_lead": "\"The first nattokinase I felt confident handing my",
+        "quote_accent_word": "patients.\"",
+        "quote_body": "<p>The label tells you exactly what's in it — 4,000 FU per capsule, single-ingredient, third-party tested. That's the conversation I want to have with someone before I recommend anything.</p>",
+        "quote_attribution": "— Sarah M.",
+        "quote_image_url": ""
+      }
+    },
     "faq": {
       "type": "bottom-faq",
       "blocks": {
@@ -919,6 +974,7 @@
     "promise_icons",
     "comparison",
     "promo_bar",
+    "special_offer_split",
     "faq"
   ]
 }
