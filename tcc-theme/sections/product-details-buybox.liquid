@@ -317,20 +317,27 @@
       </div>
     {%- endif -%}
 
-    <!-- FAQ Section -->
+    <!-- FAQ Section (Resilia-style: inside the buy column on desktop, stacked on mobile) -->
     {%- if faqs.size > 0 -%}
-      <div class="product-details-buybox__faqs">
-        {%- for block in faqs -%}
-          <details class="product-details-buybox__faq" {{ block.shopify_attributes }}>
-            <summary class="product-details-buybox__faq-summary tcc-heading">
-              <span>{{ block.settings.title }}</span>
-              <span class="material-symbols-outlined product-details-buybox__faq-icon">expand_more</span>
-            </summary>
-            <div class="product-details-buybox__faq-content tcc-body">
-              {{ block.settings.content }}
-            </div>
-          </details>
-        {%- endfor -%}
+      <div class="product-details-buybox__faq-block">
+        {%- if section.settings.faq_heading != blank -%}
+          <h3 class="product-details-buybox__faq-heading tcc-heading">{{ section.settings.faq_heading }}</h3>
+        {%- endif -%}
+        <div class="product-details-buybox__faqs">
+          {%- for block in faqs -%}
+            <details class="product-details-buybox__faq" {{ block.shopify_attributes }}>
+              <summary class="product-details-buybox__faq-summary tcc-heading">
+                <span class="product-details-buybox__faq-question">{{ block.settings.title }}</span>
+                <svg class="product-details-buybox__faq-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </summary>
+              <div class="product-details-buybox__faq-content tcc-body">
+                {{ block.settings.content }}
+              </div>
+            </details>
+          {%- endfor -%}
+        </div>
       </div>
     {%- endif -%}
 
@@ -955,45 +962,105 @@
     color: #C62828;
   }
 
-  /* FAQ Section */
+  /* FAQ Section — Resilia-style, sits inside the buy column on desktop */
+  .product-details-buybox__faq-block {
+    margin-top: 1.5rem;
+  }
+
+  .product-details-buybox__faq-heading.tcc-heading {
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 700 !important;
+    margin: 0 0 0.75rem 0;
+    color: var(--tcc-ink);
+  }
+
   .product-details-buybox__faqs {
-    margin-top: 2rem;
-    border-top: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .product-details-buybox__faq {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--tcc-line, #e0e0e0);
+  }
+
+  .product-details-buybox__faq:first-child {
+    border-top: 1px solid var(--tcc-line, #e0e0e0);
   }
 
   .product-details-buybox__faq-summary.tcc-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.4rem 0;
+    padding: 18px 0;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 16px;
+    line-height: 1.4;
     font-weight: 700 !important;
     list-style: none;
-    color: #1a1a1a;
+    user-select: none;
+    gap: 1.25rem;
+    color: var(--tcc-ink);
   }
 
-  .product-details-buybox__faq-icon {
-    font-size: 22px;
+  .product-details-buybox__faq-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .product-details-buybox__faq-summary::marker {
+    display: none;
+    content: '';
+  }
+
+  .product-details-buybox__faq-question {
+    flex: 1;
+  }
+
+  .product-details-buybox__faq-chevron {
     flex-shrink: 0;
-    transition: transform 0.2s ease;
-    color: #1a1a1a;
+    color: var(--tcc-ink);
+    opacity: 0.55;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
-  details[open] .product-details-buybox__faq-icon {
+  .product-details-buybox__faq-summary:hover .product-details-buybox__faq-chevron {
+    opacity: 0.85;
+  }
+
+  .product-details-buybox__faq[open] .product-details-buybox__faq-chevron {
     transform: rotate(180deg);
   }
 
   .product-details-buybox__faq-content {
-    padding: 0 0 1.25rem 0;
-    font-size: 14.25px;
-    line-height: 1.65;
-    color: var(--tcc-ink);
-    opacity: 0.8;
+    padding: 0 0 18px 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4a4a4a;
+  }
+
+  .product-details-buybox__faq-content p {
+    margin: 0 0 0.6rem 0;
+  }
+
+  .product-details-buybox__faq-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-details-buybox__faq-heading.tcc-heading {
+      font-size: 20px;
+    }
+
+    .product-details-buybox__faq-summary.tcc-heading {
+      padding: 16px 0;
+      font-size: 15.5px;
+    }
+
+    .product-details-buybox__faq-content {
+      padding-bottom: 16px;
+      font-size: 14.5px;
+    }
   }
 
   /* Featured Review Card */
@@ -1572,6 +1639,16 @@
       "id": "show_ships_by",
       "label": "Show ships-by banner",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "In-column FAQ (Resilia-style)"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ heading (renders above the in-column accordion)",
+      "default": "Frequently Asked Questions"
     },
     {
       "type": "header",

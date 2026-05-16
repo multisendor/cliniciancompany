@@ -76,6 +76,48 @@
             "title": "6-Pack Annual Supply — $409",
             "price": "$409"
           }
+        },
+        "ft1": {
+          "type": "faq",
+          "settings": {
+            "title": "How Does It Work?",
+            "content": "<p>Nattokinase is a serine protease — a protein-cutting enzyme — that acts directly on fibrin and inactivates PAI-1, the body's natural brake on fibrin clearance. In the largest 12-month trial to date (Chen 2022, n=1,062), cardiovascular markers including carotid plaque area, arterial wall thickness, LDL, and HDL improved significantly at 6,000–12,000 FU/day with zero adverse events.</p>"
+          }
+        },
+        "ft2": {
+          "type": "faq",
+          "settings": {
+            "title": "What Can Spike Detox Help With?",
+            "content": "<p>Spike Detox is built around a single studied enzyme that supports natural fibrinolytic activity — the body's process for maintaining healthy blood flow. People stack it for cardiovascular and circulatory support, healthy lipid balance, and steady daily resilience. Structure-function support only — talk to your physician about your specific situation.</p>"
+          }
+        },
+        "ft3": {
+          "type": "faq",
+          "settings": {
+            "title": "When Will I See Results?",
+            "content": "<p>It varies, and no one can promise an outcome. Chen 2022 measured cardiovascular endpoints at 12 months — lipid panel shifts started around month 3, and carotid imaging changes were observed between months 6 and 12. Nattokinase is daily long-term cardiovascular support, not a fast-acting drug.</p>"
+          }
+        },
+        "ft4": {
+          "type": "faq",
+          "settings": {
+            "title": "How Long Until I Get It?",
+            "content": "<p>Orders ship from our US warehouse within 1 business day. Standard delivery lands in 3–6 business days depending on your zip code. You'll get a tracking link the moment your bottle leaves the warehouse.</p>"
+          }
+        },
+        "ft5": {
+          "type": "faq",
+          "settings": {
+            "title": "Who Can Use It?",
+            "content": "<p>Healthy adults supporting long-term cardiovascular health. <strong>If you take prescription blood thinners</strong> (warfarin, Eliquis, Xarelto, aspirin), <strong>talk to your prescribing physician before starting.</strong> Not intended for pregnant or nursing women, individuals with bleeding disorders, or anyone under 18 without clinician supervision.</p>"
+          }
+        },
+        "ft6": {
+          "type": "faq",
+          "settings": {
+            "title": "Results or Full Refund Guarantee",
+            "content": "<p>Try Spike Detox for 60 days. If you don't feel it's the right fit for your protocol — even if the bottle is empty — email us for a full refund. No questions asked, no return shipping required.</p>"
+          }
         }
       },
       "block_order": [
@@ -86,12 +128,19 @@
         "bundle_1",
         "bundle_3",
         "bundle_3pack",
-        "bundle_6pack"
+        "bundle_6pack",
+        "ft1",
+        "ft2",
+        "ft3",
+        "ft4",
+        "ft5",
+        "ft6"
       ],
       "settings": {
         "custom_title": "Ultimate Spike Detox",
         "custom_subtitle": "Nattokinase Enzyme Capsules — supports natural fibrinolytic activity. 4,000 FU per capsule, dosed to your protocol.",
         "custom_description_2": "Wild-fermented Bacillus subtilis. K2 removed for compatibility with vitamin-K-antagonist blood thinners (we sell K2 separately for those who want the synergy). Single ingredient, transparent label, third-party tested every batch.",
+        "faq_heading": "Frequently Asked Questions",
         "show_ships_by": true,
         "show_credibility_row": false,
         "cred_chip_1": "60-day money-back",
@@ -1043,8 +1092,6 @@
   "order": [
     "media",
     "buybox",
-    "guarantee",
-    "faq_top",
     "cardio_problem",
     "cardio_solution",
     "trial_stats",
