@@ -92,6 +92,17 @@ body {
 .one-ingredient-split__card {
   background: var(--tcc-cta-accent, #1e40af) !important;
 }
+
+/* Muted section background — single source of truth.
+   Drives bottom-faq + comparison-vs section backgrounds.
+   Forced with !important because the admin editor has now
+   stripped the var() reference inside the section liquid
+   files THREE times, restoring a hardcoded #eef0e8 sage cream.
+   This rule wins regardless. */
+.bottom-faq,
+.comparison-vs {
+  background-color: var(--tcc-section-muted, #EEF1F8) !important;
+}
 .product-details-buybox__add-to-cart--bold:hover,
 .sticky-atc__btn--bold:hover,
 .bottom-faq__cta:hover,
