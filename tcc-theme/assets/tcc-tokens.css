@@ -187,16 +187,33 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.92;
   transform: translateY(-1px);
 }
-/* Primary-variant CTAs (hero "Shop the Protocol", sticky ATC, etc.) use the
-   dynamic brand accent so they update with the theme-editor color picker.
-   Base .tcc-btn (used for ATC-style dark buttons in image-band / cross-sell)
-   stays on --tcc-ink. */
+/* Primary-variant CTAs (hero "Shop the Protocol", sticky ATC, etc.):
+   - Dynamic brand accent (updates with the theme-editor color picker)
+   - Resilia-spec sizing matching the BUY NOW pill used everywhere else
+     on the site (bottom-faq, video-testimonials, comparison-vs, etc.):
+     18px font, 0.36px letter-spacing, 18px/24px padding, 30px pill radius.
+   Base .tcc-btn (image-band / cross-sell) stays on --tcc-ink + 6px radius. */
 .tcc-btn--primary {
   background: var(--tcc-cta-accent, #1e40af) !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.36px !important;
+  padding: 18px 24px !important;
+  border-radius: 30px !important;
+  text-transform: uppercase;
 }
 .tcc-btn--primary:hover {
   filter: brightness(0.92);
   opacity: 1;
+}
+@media (max-width: 749px) {
+  .tcc-btn--primary {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.32px !important;
+    padding: 16px 20px !important;
+  }
 }
 .tcc-btn--secondary {
   background: transparent;
