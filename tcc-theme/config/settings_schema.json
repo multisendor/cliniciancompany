@@ -37,6 +37,18 @@
     ]
   },
   {
+    "name": "Product page — buy box",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cta_bold_style",
+        "label": "Use bold ADD TO CART button style",
+        "default": false,
+        "info": "Replaces the buy-box Add-to-Cart button with a large dark-green pill that reads 'ADD TO CART' (no inline price)."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {

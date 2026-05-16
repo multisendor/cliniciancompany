@@ -191,11 +191,19 @@
         {%- endfor -%}
 
         <!-- Add to Cart -->
-        <button type="submit" name="add" class="product-details-buybox__add-to-cart">
-          <span class="product-details-buybox__atc-label">Add To Cart</span>
-          <span class="product-details-buybox__atc-divider">|</span>
-          <span class="product-details-buybox__atc-price" data-btn-price></span>
-          <span class="product-details-buybox__atc-compare" data-btn-compare></span>
+        <button type="submit" name="add" class="product-details-buybox__add-to-cart{% if settings.cta_bold_style %} product-details-buybox__add-to-cart--bold{% endif %}">
+          {%- if settings.cta_bold_style -%}
+            <span class="product-details-buybox__atc-label product-details-buybox__atc-label--bold">Add To Cart</span>
+            {%- comment -%} Keep price + compare nodes in DOM (hidden) so the price-sync JS can write into them without errors. {%- endcomment -%}
+            <span class="product-details-buybox__atc-divider" aria-hidden="true" hidden>|</span>
+            <span class="product-details-buybox__atc-price" data-btn-price aria-hidden="true" hidden></span>
+            <span class="product-details-buybox__atc-compare" data-btn-compare aria-hidden="true" hidden></span>
+          {%- else -%}
+            <span class="product-details-buybox__atc-label">Add To Cart</span>
+            <span class="product-details-buybox__atc-divider">|</span>
+            <span class="product-details-buybox__atc-price" data-btn-price></span>
+            <span class="product-details-buybox__atc-compare" data-btn-compare></span>
+          {%- endif -%}
           {%- render 'loading-spinner' -%}
         </button>
       {%- endform -%}
@@ -215,11 +223,19 @@
 
     <!-- Mobile Sticky ATC -->
     <div class="sticky-atc" id="sticky-atc-{{ section.id }}" aria-hidden="true">
-      <button type="button" class="sticky-atc__btn" id="sticky-atc-btn-{{ section.id }}">
-        <span class="sticky-atc__label">Add To Cart</span>
-        <span class="sticky-atc__divider">|</span>
-        <span class="sticky-atc__price" id="sticky-atc-price-{{ section.id }}"></span>
-        <span class="sticky-atc__compare" id="sticky-atc-compare-{{ section.id }}"></span>
+      <button type="button" class="sticky-atc__btn{% if settings.cta_bold_style %} sticky-atc__btn--bold{% endif %}" id="sticky-atc-btn-{{ section.id }}">
+        {%- if settings.cta_bold_style -%}
+          <span class="sticky-atc__label sticky-atc__label--bold">Add To Cart</span>
+          {%- comment -%} Hidden but kept in DOM so the price-mirror JS doesn't error. {%- endcomment -%}
+          <span class="sticky-atc__divider" aria-hidden="true" hidden>|</span>
+          <span class="sticky-atc__price" id="sticky-atc-price-{{ section.id }}" aria-hidden="true" hidden></span>
+          <span class="sticky-atc__compare" id="sticky-atc-compare-{{ section.id }}" aria-hidden="true" hidden></span>
+        {%- else -%}
+          <span class="sticky-atc__label">Add To Cart</span>
+          <span class="sticky-atc__divider">|</span>
+          <span class="sticky-atc__price" id="sticky-atc-price-{{ section.id }}"></span>
+          <span class="sticky-atc__compare" id="sticky-atc-compare-{{ section.id }}"></span>
+        {%- endif -%}
       </button>
     </div>
 
@@ -675,6 +691,58 @@
     font-weight: 400;
     color: rgba(255,255,255,0.45);
     text-decoration: line-through;
+  }
+
+  /* === Bold ADD TO CART variant (toggled via settings.cta_bold_style) === */
+  .product-details-buybox__add-to-cart--bold {
+    background: #0F3F2E;
+    border-radius: 999px;
+    padding: 22px 32px;
+    transition: background-color 0.2s ease;
+  }
+  .product-details-buybox__add-to-cart--bold:hover {
+    background: #0A3324;
+    opacity: 1;
+  }
+  .product-details-buybox__add-to-cart--bold:disabled,
+  .product-details-buybox__add-to-cart--bold[aria-disabled="true"] {
+    background: #7A8F87;
+    cursor: not-allowed;
+  }
+  .product-details-buybox__atc-label--bold {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+  /* Sticky (mobile) bold variant */
+  .sticky-atc__btn--bold {
+    background: #0F3F2E;
+    border-radius: 999px;
+    padding: 18px 28px;
+    transition: background-color 0.2s ease;
+  }
+  .sticky-atc__btn--bold:hover {
+    background: #0A3324;
+    opacity: 1;
+  }
+  .sticky-atc__label--bold {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+  @media screen and (max-width: 749px) {
+    .product-details-buybox__add-to-cart--bold {
+      padding: 18px 24px;
+    }
+    .product-details-buybox__atc-label--bold {
+      font-size: 18px;
+    }
   }
 
   /* ATC Trust Badges */
