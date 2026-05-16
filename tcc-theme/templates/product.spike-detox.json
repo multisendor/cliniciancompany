@@ -454,52 +454,54 @@
         "layout_image_side": "image_left"
       }
     },
-    "survey_stats": {
+    "trial_stats": {
       "type": "outcome-stats",
       "blocks": {
-        "s1": {
+        "t1": {
           "type": "stat",
           "settings": {
-            "value": "1,062",
-            "unit": "adults",
-            "label": "in the largest peer-reviewed nattokinase trial (Chen 2022, 12 months)"
-          }
-        },
-        "s2": {
-          "type": "stat",
-          "settings": {
-            "value": "4,000",
-            "unit": "FU",
-            "label": "per capsule, dosed to your protocol — not hidden inside a proprietary blend"
-          }
-        },
-        "s3": {
-          "type": "stat",
-          "settings": {
-            "value": "0",
+            "value": "95%",
             "unit": "",
-            "label": "adverse events reported in the Chen 2022 cohort"
+            "label": "Saw their total cholesterol improve"
           }
         },
-        "s4": {
+        "t2": {
           "type": "stat",
           "settings": {
-            "value": "100%",
+            "value": "84%",
             "unit": "",
-            "label": "of batches third-party tested with COA published per lot"
+            "label": "Saw their LDL ('bad') cholesterol drop"
+          }
+        },
+        "t3": {
+          "type": "stat",
+          "settings": {
+            "value": "78%",
+            "unit": "",
+            "label": "Saw a reduction in arterial wall thickness"
+          }
+        },
+        "t4": {
+          "type": "stat",
+          "settings": {
+            "value": "66%",
+            "unit": "",
+            "label": "Saw a reduction in carotid plaque area"
           }
         }
       },
       "block_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4"
+        "t1",
+        "t2",
+        "t3",
+        "t4"
       ],
       "settings": {
-        "eyebrow": "Why customers stay",
-        "heading": "Practitioner-grade nattokinase, transparently dosed",
+        "eyebrow": "Peer-reviewed outcomes",
+        "heading": "Real Outcomes from the Largest Nattokinase Trial",
         "intro": "",
+        "sub_heading": "In a peer-reviewed 12-month study of 1,062 adults at 10,800 FU/day, participants showed:",
+        "footnote": "*From Chen et al., Frontiers in Cardiovascular Medicine (2022), n=1,062 adults over 12 months at 10,800 FU/day. Our 4,000 FU per capsule lets you stack 2–3 capsules into that effective range. Individual results may vary. Consult your healthcare provider before use, especially if you take blood-thinning medication.*",
         "background_style": "soft"
       }
     },
@@ -1027,6 +1029,7 @@
     "buybox",
     "cardio_problem",
     "cardio_solution",
+    "trial_stats",
     "subscription",
     "guarantee",
     "how_it_works",
@@ -1037,7 +1040,6 @@
     "testimonial_repeat",
     "problem_state",
     "origin",
-    "survey_stats",
     "one_ingredient",
     "video_stories",
     "cta_repeat",

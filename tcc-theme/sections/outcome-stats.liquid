@@ -16,6 +16,10 @@
       {%- endif -%}
     </div>
 
+    {%- if section.settings.sub_heading != blank -%}
+      <p class="outcome-stats__sub-heading">{{ section.settings.sub_heading }}</p>
+    {%- endif -%}
+
     {%- if section.blocks.size > 0 -%}
       <div class="outcome-stats__grid">
         {%- for block in section.blocks -%}
@@ -34,6 +38,10 @@
           </div>
         {%- endfor -%}
       </div>
+    {%- endif -%}
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="outcome-stats__footnote">{{ section.settings.footnote }}</p>
     {%- endif -%}
   </div>
 </div>
@@ -94,6 +102,36 @@
 
   .outcome-stats--navy .outcome-stats__intro {
     color: rgba(255, 255, 255, 0.75);
+  }
+
+  .outcome-stats__sub-heading {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-body, 16px);
+    font-weight: var(--tcc-fw-bold, 700);
+    color: var(--tcc-ink);
+    line-height: 1.45;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto var(--tcc-s-6, 48px);
+  }
+
+  .outcome-stats--navy .outcome-stats__sub-heading {
+    color: #ffffff;
+  }
+
+  .outcome-stats__footnote {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-small, 13px);
+    font-weight: var(--tcc-fw-bold, 700);
+    color: var(--tcc-ink);
+    line-height: 1.55;
+    text-align: center;
+    max-width: 900px;
+    margin: var(--tcc-s-6, 48px) auto 0;
+  }
+
+  .outcome-stats--navy .outcome-stats__footnote {
+    color: rgba(255, 255, 255, 0.85);
   }
 
   .outcome-stats__grid {
@@ -238,6 +276,18 @@
       "type": "textarea",
       "id": "intro",
       "label": "Intro paragraph (optional)"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub-heading above the stat grid (optional)",
+      "info": "Bolder mid-line setup like 'In a peer-reviewed 12-month study, participants showed:'"
+    },
+    {
+      "type": "textarea",
+      "id": "footnote",
+      "label": "Footnote / disclaimer below the stat grid (optional)",
+      "info": "Use for source attribution and 'individual results may vary' disclaimer."
     },
     {
       "type": "select",
