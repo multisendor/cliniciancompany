@@ -250,8 +250,8 @@
         "background_style": "soft"
       }
     },
-    "one_ingredient_split": {
-      "type": "one-ingredient-split",
+    "one_ingredient_image": {
+      "type": "one-ingredient-image",
       "settings": {
         "image_url": "",
         "image_alt": "Spike Detox bottle with key benefits — 4,000 FU per capsule, wild-fermented Bacillus subtilis, K2-free, third-party tested, single ingredient"
@@ -852,7 +852,7 @@
     "cardio_problem",
     "cardio_solution",
     "trial_stats",
-    "one_ingredient_split",
+    "one_ingredient_image",
     "ingredients_carousel",
     "timeline_zigzag",
     "testimonial_repeat",
