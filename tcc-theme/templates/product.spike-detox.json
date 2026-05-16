@@ -573,43 +573,6 @@
         "padding_bottom": 80
       }
     },
-    "one_ingredient": {
-      "type": "image-with-text",
-      "blocks": {
-        "h": {
-          "type": "heading",
-          "settings": {
-            "heading": "One Ingredient. Endless Spike Defense.",
-            "heading_size": "h1"
-          }
-        },
-        "t": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pure is deliberately single-ingredient — nattokinase only. 4,000 FU per capsule, the FU number on the front label, and a per-batch COA you can look up by lot number. No proprietary blends. No undisclosed K2. No borrowed celebrity authority.</p><p>Stack 1, 2, or 3 capsules to land at the dose your protocol calls for. The research range (6,000–12,000 FU/day per Chen 2022) is within reach at 2–3 capsules. You decide — with your clinician.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "h",
-        "t"
-      ],
-      "settings": {
-        "height": "small",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
     "video_stories": {
       "type": "video-testimonials",
       "blocks": {
