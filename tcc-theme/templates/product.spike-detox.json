@@ -319,43 +319,6 @@
         "padding_bottom": 80
       }
     },
-    "subscription": {
-      "type": "subscription-features",
-      "blocks": {
-        "sf1": {
-          "type": "feature",
-          "settings": {
-            "icon": "refresh",
-            "heading": "Auto-refill every 30 days",
-            "sub": "Set it and forget it"
-          }
-        },
-        "sf2": {
-          "type": "feature",
-          "settings": {
-            "icon": "x_circle",
-            "heading": "Cancel anytime",
-            "sub": "No commitments"
-          }
-        },
-        "sf3": {
-          "type": "feature",
-          "settings": {
-            "icon": "truck",
-            "heading": "3-6 day delivery",
-            "sub": "Ships from US warehouse"
-          }
-        }
-      },
-      "block_order": [
-        "sf1",
-        "sf2",
-        "sf3"
-      ],
-      "settings": {
-        "show_dividers": true
-      }
-    },
     "guarantee": {
       "type": "money-back-guarantee",
       "settings": {
@@ -366,41 +329,6 @@
         "button_text": "Add to Cart",
         "button_link": "",
         "external_image_url": ""
-      }
-    },
-    "compounds": {
-      "type": "benefits-grid",
-      "blocks": {
-        "c1": {
-          "type": "benefit_card",
-          "settings": {
-            "title": "Nattokinase 4,000 FU",
-            "description": "Serine protease from wild-fermented Bacillus subtilis. Supports fibrinolytic activity — studied across cardiovascular, lipid, and microvascular research. Dose to your protocol: 1 cap = 4,000 FU; 3 caps = 12,000 FU."
-          }
-        },
-        "c2": {
-          "type": "benefit_card",
-          "settings": {
-            "title": "BioPerine (optional add-on)",
-            "description": "Standardized black pepper bioenhancer. Available in the Complete formula for those who want the full enzyme stack. Pure stays single-ingredient for maximum flexibility and blood-thinner compatibility."
-          }
-        },
-        "c3": {
-          "type": "benefit_card",
-          "settings": {
-            "title": "Wild-Fermented Bacillus Subtilis",
-            "description": "Traditional natto fermentation strain — the same process Sumi worked with in 1980. Not lab-cultured. Not a synthetic analog. The source matters for the enzyme's activity profile."
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3"
-      ],
-      "settings": {
-        "heading": "One Ingredient. Total Transparency.",
-        "description": "Pure is a single-ingredient product — nattokinase only. Every FU number on the front of the label. No proprietary blends, no hidden co-factors."
       }
     },
     "ingredients_carousel": {
@@ -483,89 +411,6 @@
         "heading": "Science-Backed Ingredients",
         "subheading": "",
         "background_color": "#f2f7f9"
-      }
-    },
-    "symptoms": {
-      "type": "symptom-grid",
-      "blocks": {
-        "sy1": {
-          "type": "symptom",
-          "settings": {
-            "emoji": "🧠",
-            "heading": "Brain fog",
-            "body": "Mental haze that makes simple tasks feel heavy."
-          }
-        },
-        "sy2": {
-          "type": "symptom",
-          "settings": {
-            "emoji": "🫁",
-            "heading": "Breathing tightness",
-            "body": "Shortness of breath after mild exertion or even at rest."
-          }
-        },
-        "sy3": {
-          "type": "symptom",
-          "settings": {
-            "emoji": "💓",
-            "heading": "Heart racing",
-            "body": "Palpitations or higher resting heart rate than your baseline."
-          }
-        },
-        "sy4": {
-          "type": "symptom",
-          "settings": {
-            "emoji": "🪫",
-            "heading": "Persistent fatigue",
-            "body": "Tired even after a full night's sleep."
-          }
-        },
-        "sy5": {
-          "type": "symptom",
-          "settings": {
-            "emoji": "👅",
-            "heading": "Taste / smell off",
-            "body": "Lingering changes from a past infection."
-          }
-        },
-        "sy6": {
-          "type": "symptom",
-          "settings": {
-            "emoji": "💤",
-            "heading": "Disrupted sleep",
-            "body": "Waking up multiple times or unable to drop into deep sleep."
-          }
-        },
-        "sy7": {
-          "type": "symptom",
-          "settings": {
-            "emoji": "🦴",
-            "heading": "Joint stiffness",
-            "body": "Aches and stiffness, especially in the morning."
-          }
-        },
-        "sy8": {
-          "type": "symptom",
-          "settings": {
-            "emoji": "🛡️",
-            "heading": "Lowered resilience",
-            "body": "Catching every bug going around the house."
-          }
-        }
-      },
-      "block_order": [
-        "sy1",
-        "sy2",
-        "sy3",
-        "sy4",
-        "sy5",
-        "sy6",
-        "sy7",
-        "sy8"
-      ],
-      "settings": {
-        "eyebrow": "WHAT SPIKE DETOX MAY HELP WITH",
-        "heading": "If any of these sound familiar…"
       }
     },
     "timeline_short": {
@@ -1139,11 +984,8 @@
     "cardio_solution",
     "trial_stats",
     "one_ingredient_split",
-    "subscription",
     "guarantee",
-    "compounds",
     "ingredients_carousel",
-    "symptoms",
     "timeline_short",
     "who_for",
     "testimonial_repeat",
