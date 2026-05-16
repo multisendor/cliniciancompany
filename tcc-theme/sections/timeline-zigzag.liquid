@@ -11,10 +11,8 @@
     {%- if section.blocks.size > 0 -%}
       <ol class="timeline-zigzag__list" role="list">
         {%- for block in section.blocks -%}
-          {%- assign side = 'right' -%}
-          {%- assign idx = forloop.index0 -%}
-          {%- cycle 'left', 'right' -%}
-          {%- if forloop.index0 | modulo: 2 == 0 -%}
+          {%- assign mod = forloop.index0 | modulo: 2 -%}
+          {%- if mod == 0 -%}
             {%- assign side = 'right' -%}
           {%- else -%}
             {%- assign side = 'left' -%}
