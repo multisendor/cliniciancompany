@@ -13,7 +13,10 @@
   --tcc-ink-soft: #4a5b78;
   --tcc-line: #e8eef5;
   --tcc-card: #ffffff;
-  --tcc-positive: #00a86b;
+  /* "Positive" / check / bullet color — redirected to the theme accent
+     (was #00a86b green) so every check icon, bullet dot, and verified
+     badge follows the brand-blue picker. */
+  --tcc-positive: var(--tcc-cta-accent, #1e40af);
   --tcc-urgent: #c8281a;
   --tcc-accent-blue: #1e40af;
 
