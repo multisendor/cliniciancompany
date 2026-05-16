@@ -267,10 +267,19 @@
     color: #fff !important;
   }
   /* Match Resilia top-bar sizing (try.resilia.shop/rsl): 52px tall, 18px/21.6 wt 700 */
-  .tcc-promo-bar .utility-bar__grid,
-  .tcc-promo-bar .announcement-bar {
+  /* Reset the theme's nested padding so we control total height in ONE place. */
+  .tcc-promo-bar .utility-bar__grid {
     padding-top: 15px !important;
     padding-bottom: 15px !important;
+  }
+  .tcc-promo-bar .announcement-bar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .tcc-promo-bar .announcement-bar__message {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
   }
   .tcc-promo-bar a,
   .tcc-promo-bar .announcement-bar__message {
@@ -282,8 +291,7 @@
     text-transform: none !important;
   }
   @media screen and (max-width: 749px) {
-    .tcc-promo-bar .utility-bar__grid,
-    .tcc-promo-bar .announcement-bar {
+    .tcc-promo-bar .utility-bar__grid {
       padding-top: 12px !important;
       padding-bottom: 12px !important;
     }
