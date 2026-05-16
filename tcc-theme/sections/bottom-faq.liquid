@@ -4,8 +4,8 @@
 >
   <div class="bottom-faq__inner tcc-page-width">
     <div class="bottom-faq__layout">
-      
-      <!-- Left Column: Heading & Text -->
+
+      <!-- Heading & Text (top) -->
       <div class="bottom-faq__header">
         {%- if section.settings.heading != blank -%}
           <h2 class="bottom-faq__heading tcc-heading">{{ section.settings.heading }}</h2>
@@ -17,15 +17,16 @@
         {%- endif -%}
       </div>
 
-      <!-- Right Column: Accordion -->
+      <!-- Accordion (below heading, full width) -->
       {%- if section.blocks.size > 0 -%}
         <div class="bottom-faq__list">
           {%- for block in section.blocks -%}
             <details class="bottom-faq__item" {{ block.shopify_attributes }}>
               <summary class="bottom-faq__summary tcc-heading">
-                <span>{{ block.settings.title }}</span>
-                <span class="bottom-faq__icon-plus">+</span>
-                <span class="bottom-faq__icon-minus">−</span>
+                <span class="bottom-faq__question">{{ block.settings.title }}</span>
+                <svg class="bottom-faq__chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </summary>
               <div class="bottom-faq__content tcc-body">
                 {{ block.settings.content }}
@@ -45,22 +46,18 @@
   }
 
   .bottom-faq__layout {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
-    align-items: start;
+    display: block;
   }
 
   .bottom-faq__header {
-    position: sticky;
-    top: 2rem;
+    margin: 0 0 2.5rem 0;
   }
 
   .bottom-faq__heading {
     font-size: 31.2px;
     line-height: 1.2;
     font-weight: 500;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1rem 0;
     color: var(--tcc-ink);
     text-align: left;
   }
@@ -70,6 +67,7 @@
     line-height: 1.6;
     color: var(--tcc-ink);
     opacity: 0.7;
+    max-width: 720px;
   }
 
   .bottom-faq__description p {
@@ -100,11 +98,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 0;
+    padding: 24px 0;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 19px;
     line-height: 1.4;
-    font-weight: 500;
+    font-weight: 700;
     list-style: none;
     user-select: none;
     gap: 2rem;
@@ -120,65 +118,59 @@
     content: '';
   }
 
-  .bottom-faq__icon-plus,
-  .bottom-faq__icon-minus {
-    font-size: 24px;
-    line-height: 1;
-    color: var(--tcc-ink);
-    opacity: 0.4;
+  .bottom-faq__question {
+    flex: 1;
+  }
+
+  .bottom-faq__chevron {
     flex-shrink: 0;
-    font-family: Arial, sans-serif;
-    font-weight: 300;
+    color: var(--tcc-ink);
+    opacity: 0.55;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
-  .bottom-faq__icon-minus {
-    display: none;
+  .bottom-faq__summary:hover .bottom-faq__chevron {
+    opacity: 0.85;
   }
 
-  .bottom-faq__item[open] .bottom-faq__icon-plus {
-    display: none;
-  }
-
-  .bottom-faq__item[open] .bottom-faq__icon-minus {
-    display: block;
+  .bottom-faq__item[open] .bottom-faq__chevron {
+    transform: rotate(180deg);
   }
 
   .bottom-faq__content {
-    padding: 0 0 1.5rem 0;
-    font-size: 15.2px;
-    line-height: 1.7;
-    color: var(--tcc-ink);
-    opacity: 0.8;
+    padding: 0 0 24px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #4a4a4a;
   }
 
-  @media screen and (max-width: 1024px) {
-    .bottom-faq__layout {
-      gap: 2rem;
-    }
+  .bottom-faq__content p {
+    margin: 0 0 0.75rem 0;
+  }
+
+  .bottom-faq__content p:last-child {
+    margin-bottom: 0;
   }
 
   @media screen and (max-width: 749px) {
-    .bottom-faq__layout {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
     .bottom-faq__header {
-      position: static;
+      margin-bottom: 1.75rem;
     }
 
     .bottom-faq__heading {
       font-size: 28px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .bottom-faq__summary {
-      padding: 1.25rem 0;
-      font-size: 15px;
+      padding: 20px 0;
+      font-size: 17px;
+      gap: 1.25rem;
     }
 
     .bottom-faq__content {
-      font-size: 14.5px;
+      padding-bottom: 20px;
+      font-size: 15.5px;
     }
   }
 </style>
