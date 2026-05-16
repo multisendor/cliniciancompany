@@ -16,8 +16,12 @@
   --tcc-urgent: #c8281a;
   --tcc-accent-blue: #1e40af;
 
-  /* --- Type --- */
-  --tcc-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* --- Type ---
+     Both vars chain through Dawn's --font-body-family / --font-heading-family,
+     which are set in theme.liquid from the theme editor's font pickers
+     (Theme settings → Typography). Inter is the fallback if Dawn vars are unset. */
+  --tcc-font-sans: var(--font-body-family, 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif);
+  --tcc-font-heading: var(--font-heading-family, 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif);
   --tcc-fs-display: clamp(40px, 6vw, 64px);
   --tcc-fs-h1: clamp(32px, 4vw, 48px);
   --tcc-fs-h2: clamp(24px, 3vw, 32px);
@@ -46,6 +50,11 @@
   /* --- Radius / elevation --- */
   --tcc-radius: 6px;
   --tcc-shadow-card: 0 1px 3px rgba(10, 22, 40, 0.06);
+
+  /* Defensive fallback: if admin editor strips the settings_schema entry
+     for section_muted_bg_color, theme.liquid won't set --tcc-section-muted,
+     so this default keeps the cream-equivalent muted blue alive. */
+  --tcc-section-muted: #EEF1F8;
 }
 
 /* Global resets bound to tokens */
@@ -93,7 +102,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--tcc-font-sans);
+  font-family: var(--tcc-font-heading);
   color: var(--tcc-ink);
   letter-spacing: var(--tcc-ls-display);
   line-height: var(--tcc-lh-tight);

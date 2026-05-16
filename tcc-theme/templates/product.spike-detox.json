@@ -140,8 +140,8 @@
         "custom_title": "Ultimate Spike Detox",
         "custom_subtitle": "Nattokinase Enzyme Capsules — supports natural fibrinolytic activity. 4,000 FU per capsule, dosed to your protocol.",
         "custom_description_2": "Wild-fermented Bacillus subtilis. K2 removed for compatibility with vitamin-K-antagonist blood thinners (we sell K2 separately for those who want the synergy). Single ingredient, transparent label, third-party tested every batch.",
-        "faq_heading": "Frequently Asked Questions",
         "show_ships_by": true,
+        "faq_heading": "Frequently Asked Questions",
         "show_credibility_row": false,
         "cred_chip_1": "60-day money-back",
         "cred_chip_2": "Third-party tested",
@@ -368,61 +368,6 @@
         "padding_bottom": 80
       }
     },
-    "timeline_zigzag": {
-      "type": "timeline-zigzag",
-      "blocks": {
-        "tz1": {
-          "type": "milestone",
-          "settings": {
-            "time_label": "1 Week",
-            "description": "<p>Most users start at 1 capsule (4,000 FU) on an empty stomach, 30 min before food. The body adjusts to fibrinolytic activity over 5–7 days.</p>"
-          }
-        },
-        "tz2": {
-          "type": "milestone",
-          "settings": {
-            "time_label": "1 Month",
-            "description": "<p>By week 3–4 most users have a stable cadence. Some increase to 2–3 capsules/day to land inside the 6,000–12,000 FU/day range identified in Chen 2022.</p>"
-          }
-        },
-        "tz3": {
-          "type": "milestone",
-          "settings": {
-            "time_label": "2 Months",
-            "description": "<p>Energy and cognitive clarity are subjective — no promises on timeline. Keep a simple log so you have something to share with your clinician at month 3.</p>"
-          }
-        },
-        "tz4": {
-          "type": "milestone",
-          "settings": {
-            "time_label": "3 Months",
-            "description": "<p>Cholesterol changes in Chen 2022 were measured starting around the 3-month mark. Most physicians order a routine lipid panel at this point if you flagged the protocol with them at intake.</p>"
-          }
-        },
-        "tz5": {
-          "type": "milestone",
-          "settings": {
-            "time_label": "6 Months",
-            "description": "<p>Carotid plaque area and intima-media thickness reductions in Chen 2022 were observed between months 6 and 12. If your clinician monitors carotid imaging, this is the conversation window.</p>"
-          }
-        },
-        "tz6": {
-          "type": "milestone",
-          "settings": {
-            "time_label": "12 Months",
-            "description": "<p>12-month outcomes in the Chen 2022 cohort (n=1,062, 10,800 FU/day): carotid plaque area −36%, IMT −22%, LDL −18%, HDL +16%. These are observations from a single peer-reviewed trial, not guarantees.</p>"
-          }
-        }
-      },
-      "block_order": ["tz1", "tz2", "tz3", "tz4", "tz5", "tz6"],
-      "settings": {
-        "heading": "What You Might Expect from Daily Use of Spike Detox",
-        "show_cta": true,
-        "cta_text": "BUY NOW & SAVE",
-        "cta_link": "/products/spike-detox",
-        "guarantee_text": "30-Day Money Back Guarantee"
-      }
-    },
     "ingredients_carousel": {
       "type": "ingredients-carousel",
       "blocks": {
@@ -505,55 +450,66 @@
         "background_color": "#f2f7f9"
       }
     },
-    "timeline_short": {
-      "type": "expectation-timeline",
+    "timeline_zigzag": {
+      "type": "timeline-zigzag",
       "blocks": {
-        "ts1": {
+        "tz1": {
           "type": "milestone",
           "settings": {
-            "time_label": "First few days",
-            "title": "Establish your dose",
-            "description": "Most users start at 1 capsule (4,000 FU) on an empty stomach, 30 min before food. The body adjusts to fibrinolytic activity over 5–7 days."
+            "time_label": "1 Week",
+            "description": "<p>Most users start at 1 capsule (4,000 FU) on an empty stomach, 30 min before food. The body adjusts to fibrinolytic activity over 5–7 days.</p>"
           }
         },
-        "ts2": {
+        "tz2": {
           "type": "milestone",
           "settings": {
-            "time_label": "2–3 weeks",
-            "title": "Routine and consistency",
-            "description": "By week 3 most users have a stable cadence. Many increase to 2–3 capsules/day to land inside the 6,000–12,000 FU/day range identified in Chen 2022."
+            "time_label": "1 Month",
+            "description": "<p>By week 3–4 most users have a stable cadence. Some increase to 2–3 capsules/day to land inside the 6,000–12,000 FU/day range identified in Chen 2022.</p>"
           }
         },
-        "ts3": {
+        "tz3": {
           "type": "milestone",
           "settings": {
-            "time_label": "Ongoing",
-            "title": "Long-term cardiovascular support",
-            "description": "Chen 2022 measured cardiovascular endpoints at 12 months. Nattokinase is not a fast-acting drug — it is daily support for long-term fibrinolytic and vascular health."
+            "time_label": "2 Months",
+            "description": "<p>Energy and cognitive clarity are subjective — no promises on timeline. Keep a simple log so you have something to share with your clinician at month 3.</p>"
+          }
+        },
+        "tz4": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "3 Months",
+            "description": "<p>Cholesterol changes in Chen 2022 were measured starting around the 3-month mark. Most physicians order a routine lipid panel at this point if you flagged the protocol with them at intake.</p>"
+          }
+        },
+        "tz5": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "6 Months",
+            "description": "<p>Carotid plaque area and intima-media thickness reductions in Chen 2022 were observed between months 6 and 12. If your clinician monitors carotid imaging, this is the conversation window.</p>"
+          }
+        },
+        "tz6": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "12 Months",
+            "description": "<p>12-month outcomes in the Chen 2022 cohort (n=1,062, 10,800 FU/day): carotid plaque area −36%, IMT −22%, LDL −18%, HDL +16%. These are observations from a single peer-reviewed trial, not guarantees.</p>"
           }
         }
       },
       "block_order": [
-        "ts1",
-        "ts2",
-        "ts3"
+        "tz1",
+        "tz2",
+        "tz3",
+        "tz4",
+        "tz5",
+        "tz6"
       ],
       "settings": {
-        "eyebrow": "What to expect",
-        "heading": "Cardiovascular work happens on a long timeline.",
-        "intro": "Three milestones framed as observations, not guarantees.",
-        "footnote": "Individual results vary. Talk to your physician before starting any nattokinase protocol."
-      }
-    },
-    "who_for": {
-      "type": "rich-text",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "heading": "What You Might Expect from Daily Use of Spike Detox",
+        "show_cta": true,
+        "cta_text": "BUY NOW & SAVE",
+        "cta_link": "/products/spike-detox",
+        "guarantee_text": "30-Day Money Back Guarantee"
       }
     },
     "testimonial_repeat": {
@@ -654,65 +610,6 @@
         "background_style": "navy"
       }
     },
-    "trust_promise": {
-      "type": "trust-strip",
-      "blocks": {
-        "m1": {
-          "type": "mark",
-          "settings": {
-            "icon": "shield",
-            "label": "Third-party tested"
-          }
-        },
-        "m2": {
-          "type": "mark",
-          "settings": {
-            "icon": "lab",
-            "label": "GMP-certified"
-          }
-        },
-        "m3": {
-          "type": "mark",
-          "settings": {
-            "icon": "globe",
-            "label": "Made in USA"
-          }
-        },
-        "m4": {
-          "type": "mark",
-          "settings": {
-            "icon": "leaf",
-            "label": "Single ingredient"
-          }
-        },
-        "m5": {
-          "type": "mark",
-          "settings": {
-            "icon": "test_tube",
-            "label": "COA per batch"
-          }
-        },
-        "m6": {
-          "type": "mark",
-          "settings": {
-            "icon": "checkmark",
-            "label": "60-day money-back"
-          }
-        }
-      },
-      "block_order": [
-        "m1",
-        "m2",
-        "m3",
-        "m4",
-        "m5",
-        "m6"
-      ],
-      "settings": {
-        "eyebrow": "What's behind every batch",
-        "heading": "Built for the people who read the label."
-      }
-    },
     "promise_icons": {
       "type": "promise-icons",
       "blocks": {
@@ -765,96 +662,123 @@
           }
         }
       },
-      "block_order": ["pi1", "pi2", "pi3", "pi4", "pi5", "pi6"],
+      "block_order": [
+        "pi1",
+        "pi2",
+        "pi3",
+        "pi4",
+        "pi5",
+        "pi6"
+      ],
       "settings": {
         "heading": "Spike Detox Promise",
         "background_style": "white"
       }
     },
-    "timeline_long": {
-      "type": "expectation-timeline",
+    "comparison": {
+      "type": "comparison-vs",
       "blocks": {
-        "tl1": {
-          "type": "milestone",
+        "r1": {
+          "type": "row",
           "settings": {
-            "time_label": "Week 1",
-            "title": "Establish your dose",
-            "description": "Most users start at 1 capsule (4,000 FU) on an empty stomach, 30 min before food. The body adjusts to fibrinolytic activity over 5–7 days."
+            "feature_label": "4,000 FU per capsule (clinical dose)",
+            "brand_check": "yes",
+            "competitor_check": "no"
           }
         },
-        "tl2": {
-          "type": "milestone",
+        "r2": {
+          "type": "row",
           "settings": {
-            "time_label": "Month 1",
-            "title": "Routine and consistency",
-            "description": "By week 3–4 most users have a stable cadence. Some increase to 2–3 capsules/day to land inside the 6,000–12,000 FU/day range identified in Chen 2022."
+            "feature_label": "Wild-fermented Bacillus subtilis",
+            "brand_check": "yes",
+            "competitor_check": "no"
           }
         },
-        "tl3": {
-          "type": "milestone",
+        "r3": {
+          "type": "row",
           "settings": {
-            "time_label": "2 Months",
-            "title": "Consistency builds the protocol",
-            "description": "Energy and cognitive clarity are subjective — no promises on timeline. Keep a simple log so you have something to share with your clinician at month 3."
+            "feature_label": "Single ingredient — no proprietary blend",
+            "brand_check": "yes",
+            "competitor_check": "no"
           }
         },
-        "tl4": {
-          "type": "milestone",
+        "r4": {
+          "type": "row",
           "settings": {
-            "time_label": "3 Months",
-            "title": "Lipid panel cadence",
-            "description": "Cholesterol changes in Chen 2022 were measured starting around the 3-month mark. Most physicians order a routine lipid panel at this point if you flagged the protocol with them at intake."
+            "feature_label": "K2-free for blood-thinner compatibility",
+            "brand_check": "yes",
+            "competitor_check": "no"
           }
         },
-        "tl5": {
-          "type": "milestone",
+        "r5": {
+          "type": "row",
           "settings": {
-            "time_label": "6 Months",
-            "title": "Carotid imaging window",
-            "description": "Carotid plaque area and intima-media thickness reductions in Chen 2022 were observed between months 6 and 12. If your clinician monitors carotid imaging, this is the conversation window."
+            "feature_label": "FU number printed on the front of the label",
+            "brand_check": "yes",
+            "competitor_check": "no"
           }
         },
-        "tl6": {
-          "type": "milestone",
+        "r6": {
+          "type": "row",
           "settings": {
-            "time_label": "12 Months",
-            "title": "Full Chen 2022 readout",
-            "description": "12-month outcomes in the Chen 2022 cohort (n=1,062, 10,800 FU/day): carotid plaque area −36%, IMT −22%, LDL −18%, HDL +16%. These are observations from a single peer-reviewed trial, not guarantees of your individual outcome."
+            "feature_label": "Per-batch COA published (lookup by lot)",
+            "brand_check": "yes",
+            "competitor_check": "no"
+          }
+        },
+        "r7": {
+          "type": "row",
+          "settings": {
+            "feature_label": "Backed by Chen 2022 (n=1,062, 12 months)",
+            "brand_check": "yes",
+            "competitor_check": "no"
+          }
+        },
+        "r8": {
+          "type": "row",
+          "settings": {
+            "feature_label": "Dose-flexible (stack 1–3 caps to your protocol)",
+            "brand_check": "yes",
+            "competitor_check": "no"
+          }
+        },
+        "r9": {
+          "type": "row",
+          "settings": {
+            "feature_label": "Proprietary blends with undisclosed amounts",
+            "brand_check": "no",
+            "competitor_check": "yes"
+          }
+        },
+        "r10": {
+          "type": "row",
+          "settings": {
+            "feature_label": "K2 bundled without clinician disclosure",
+            "brand_check": "no",
+            "competitor_check": "yes"
+          }
+        },
+        "r11": {
+          "type": "row",
+          "settings": {
+            "feature_label": "2,000 FU regulatory minimum — sub-clinical",
+            "brand_check": "no",
+            "competitor_check": "yes"
           }
         }
       },
       "block_order": [
-        "tl1",
-        "tl2",
-        "tl3",
-        "tl4",
-        "tl5",
-        "tl6"
-      ],
-      "settings": {
-        "eyebrow": "What to expect",
-        "heading": "Cardiovascular work happens on a long timeline.",
-        "intro": "Nattokinase is not a fast-acting drug. Below is what peer-reviewed research has observed at each milestone — framed as observations, not guarantees.",
-        "footnote": "Individual results vary. These are observations from peer-reviewed research, not promises. Talk to your physician before starting any nattokinase protocol."
-      }
-    },
-    "comparison": {
-      "type": "comparison-vs",
-      "blocks": {
-        "r1":  { "type": "row", "settings": { "feature_label": "4,000 FU per capsule (clinical dose)",            "brand_check": "yes", "competitor_check": "no" } },
-        "r2":  { "type": "row", "settings": { "feature_label": "Wild-fermented Bacillus subtilis",                "brand_check": "yes", "competitor_check": "no" } },
-        "r3":  { "type": "row", "settings": { "feature_label": "Single ingredient — no proprietary blend",        "brand_check": "yes", "competitor_check": "no" } },
-        "r4":  { "type": "row", "settings": { "feature_label": "K2-free for blood-thinner compatibility",         "brand_check": "yes", "competitor_check": "no" } },
-        "r5":  { "type": "row", "settings": { "feature_label": "FU number printed on the front of the label",     "brand_check": "yes", "competitor_check": "no" } },
-        "r6":  { "type": "row", "settings": { "feature_label": "Per-batch COA published (lookup by lot)",         "brand_check": "yes", "competitor_check": "no" } },
-        "r7":  { "type": "row", "settings": { "feature_label": "Backed by Chen 2022 (n=1,062, 12 months)",        "brand_check": "yes", "competitor_check": "no" } },
-        "r8":  { "type": "row", "settings": { "feature_label": "Dose-flexible (stack 1–3 caps to your protocol)", "brand_check": "yes", "competitor_check": "no" } },
-        "r9":  { "type": "row", "settings": { "feature_label": "Proprietary blends with undisclosed amounts",     "brand_check": "no",  "competitor_check": "yes" } },
-        "r10": { "type": "row", "settings": { "feature_label": "K2 bundled without clinician disclosure",         "brand_check": "no",  "competitor_check": "yes" } },
-        "r11": { "type": "row", "settings": { "feature_label": "2,000 FU regulatory minimum — sub-clinical",      "brand_check": "no",  "competitor_check": "yes" } }
-      },
-      "block_order": [
-        "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11"
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11"
       ],
       "settings": {
         "heading": "Why Spike Detox Outperforms Typical Nattokinase Supplements",
@@ -867,49 +791,6 @@
         "cta_text": "BUY NOW & SAVE",
         "cta_link": "/products/spike-detox",
         "guarantee_text": "60-day money-back guarantee"
-      }
-    },
-    "special_offer": {
-      "type": "special-offer-callout",
-      "blocks": {
-        "b1": {
-          "type": "bullet",
-          "settings": {
-            "text": "60-day money-back guarantee"
-          }
-        },
-        "b2": {
-          "type": "bullet",
-          "settings": {
-            "text": "Ships from US warehouse"
-          }
-        },
-        "b3": {
-          "type": "bullet",
-          "settings": {
-            "text": "Single-ingredient transparency"
-          }
-        },
-        "b4": {
-          "type": "bullet",
-          "settings": {
-            "text": "Cancel anytime, no commitment"
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4"
-      ],
-      "settings": {
-        "eyebrow": "SPECIAL OFFER ON NOW!",
-        "headline": "Try Spike Detox Risk-Free with our First Time Buyer's Offer!",
-        "offer_text": "Buy 2 Bottles Get 1 Free",
-        "cta_text": "Buy Now & Save",
-        "cta_url": "",
-        "bg": "#fff7e8"
       }
     },
     "promo_bar": {
@@ -1016,17 +897,6 @@
         "cta_bg_color": "",
         "guarantee_text": "30-Day Money Back Guarantee"
       }
-    },
-    "footer_cta": {
-      "type": "repeat-cta",
-      "settings": {
-        "eyebrow": "60-day money-back guarantee",
-        "heading": "Clinical-grade nattokinase. Every batch tested.",
-        "subheading": "Dosed to your protocol. Tested per batch. FU on the front of the label.",
-        "button_text": "BUY NOW & SAVE",
-        "product_handle": "spike-detox",
-        "background_style": "navy"
-      }
     }
   },
   "order": [
@@ -1038,18 +908,12 @@
     "one_ingredient_split",
     "ingredients_carousel",
     "timeline_zigzag",
-    "timeline_short",
-    "who_for",
     "testimonial_repeat",
     "video_stories",
     "cta_repeat",
-    "trust_promise",
     "promise_icons",
-    "timeline_long",
     "comparison",
-    "special_offer",
     "promo_bar",
-    "faq",
-    "footer_cta"
+    "faq"
   ]
 }

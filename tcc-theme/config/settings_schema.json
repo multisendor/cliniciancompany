@@ -58,7 +58,7 @@
         "id": "section_muted_bg_color",
         "label": "Muted section background color",
         "default": "#EEF1F8",
-        "info": "Used as the soft, low-saturation background on the bottom FAQ and the comparison-vs section. Pick a very washed-out tint of the brand accent — same role the sage cream played on Resilia."
+        "info": "Used as the soft, low-saturation background on the bottom FAQ and the comparison-vs section. Pick a very washed-out tint of the brand accent."
       }
     ]
   },
