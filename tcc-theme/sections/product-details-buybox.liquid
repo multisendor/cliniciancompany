@@ -1,4 +1,4 @@
-<!-- DEPLOYTEST_1778138525 -->
+<!-- DEPLOYTEST_1778904600 -->
 {%- liquid
   assign benefits = section.blocks | where: "type", "benefit"
   assign bundles = section.blocks | where: "type", "bundle_option"
@@ -191,6 +191,7 @@
         {%- endfor -%}
 
         <!-- Add to Cart -->
+        <!-- DEBUG2 cta_bold_style raw=[{{ settings.cta_bold_style }}] type=[{% if settings.cta_bold_style == true %}eq-true{% elsif settings.cta_bold_style == false %}eq-false{% elsif settings.cta_bold_style == blank %}blank{% elsif settings.cta_bold_style == nil %}nil{% else %}other{% endif %}] truthy=[{% if settings.cta_bold_style %}YES{% else %}NO{% endif %}] -->
         <button type="submit" name="add" class="product-details-buybox__add-to-cart{% if settings.cta_bold_style %} product-details-buybox__add-to-cart--bold{% endif %}">
           {%- if settings.cta_bold_style -%}
             <span class="product-details-buybox__atc-label product-details-buybox__atc-label--bold">Add To Cart</span>
