@@ -40,39 +40,39 @@
           </div>
         </div>
       </div>
+    {%- endif -%}
 
-      <!-- Thumbnail strip with navigation -->
-      {%- if gallery_product.media.size > 1 -%}
-        <div class="product-media-gallery__nav">
-          <button class="product-media-gallery__arrow product-media-gallery__arrow--prev"
-                  type="button" aria-label="Previous image" disabled>
-            <span class="material-symbols-outlined">chevron_left</span>
-          </button>
-          <div class="product-media-gallery__thumbs">
-            {%- for media in gallery_product.media -%}
-              <button
-                class="product-media-gallery__thumb{% if forloop.first %} product-media-gallery__thumb--active{% endif %}"
-                data-media-id="{{ media.id }}"
-                data-index="{{ forloop.index0 }}"
-                type="button"
-                aria-label="View image {{ forloop.index }}"
+    <!-- Thumbnail strip with navigation — shows whenever the product has 2+ media -->
+    {%- if gallery_product.media.size > 1 -%}
+      <div class="product-media-gallery__nav">
+        <button class="product-media-gallery__arrow product-media-gallery__arrow--prev"
+                type="button" aria-label="Previous image" disabled>
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <div class="product-media-gallery__thumbs">
+          {%- for media in gallery_product.media -%}
+            <button
+              class="product-media-gallery__thumb{% if forloop.first %} product-media-gallery__thumb--active{% endif %}"
+              data-media-id="{{ media.id }}"
+              data-index="{{ forloop.index0 }}"
+              type="button"
+              aria-label="View image {{ forloop.index }}"
+            >
+              <img
+                src="{{ media | image_url: width: 120 }}"
+                alt="{{ media.alt | escape | default: gallery_product.title }}"
+                width="80"
+                height="80"
+                loading="lazy"
               >
-                <img
-                  src="{{ media | image_url: width: 120 }}"
-                  alt="{{ media.alt | escape | default: gallery_product.title }}"
-                  width="80"
-                  height="80"
-                  loading="lazy"
-                >
-              </button>
-            {%- endfor -%}
-          </div>
-          <button class="product-media-gallery__arrow product-media-gallery__arrow--next"
-                  type="button" aria-label="Next image">
-            <span class="material-symbols-outlined">chevron_right</span>
-          </button>
+            </button>
+          {%- endfor -%}
         </div>
-      {%- endif -%}
+        <button class="product-media-gallery__arrow product-media-gallery__arrow--next"
+                type="button" aria-label="Next image">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
     {%- endif -%}
 
     <!-- Featured Review Card (Desktop Only) — duplicate of the buy-box testimonial,
