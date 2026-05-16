@@ -266,14 +266,31 @@
     background: var(--tcc-ink) !important;
     color: #fff !important;
   }
+  /* Match Resilia top-bar sizing (try.resilia.shop/rsl): 52px tall, 18px/21.6 wt 700 */
+  .tcc-promo-bar .utility-bar__grid,
+  .tcc-promo-bar .announcement-bar {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+  }
   .tcc-promo-bar a,
   .tcc-promo-bar .announcement-bar__message {
     color: #fff !important;
     font-weight: 700 !important;
+    font-size: 18px !important;
+    line-height: 21.6px !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
   }
   @media screen and (max-width: 749px) {
+    .tcc-promo-bar .utility-bar__grid,
+    .tcc-promo-bar .announcement-bar {
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
+    }
+    .tcc-promo-bar a,
     .tcc-promo-bar .announcement-bar__message {
-      font-size: var(--tcc-fs-small) !important;
+      font-size: 14px !important;
+      line-height: 18px !important;
     }
   }
 </style>
