@@ -108,6 +108,39 @@
         "purchase_mode": "bundle"
       }
     },
+    "cardio_problem": {
+      "type": "alternating-row",
+      "settings": {
+        "eyebrow": "The shift",
+        "heading": "Modern Life Is Hard on Your Cardiovascular System",
+        "body_paragraph_1": "Today's habits aren't built for how our bodies were designed to move. Long sitting hours, processed-food convenience, chronic stress, and environmental load all stack against the natural processes that keep blood flow steady.",
+        "body_paragraph_2": "As we age, the body's own fibrinolytic activity — the natural enzymatic process that helps maintain healthy blood flow — can taper. Many people report feeling sluggish, foggy, or \"off\" without a clear reason.",
+        "closing_paragraph": "Supporting that system gently, with a single-ingredient enzyme that has been studied for decades, is one option more cardiovascular-conscious adults are exploring.",
+        "image_asset_filename": "benefit-heart.jpg",
+        "image_alt": "Anatomical illustration emphasizing the heart and cardiovascular system",
+        "image_side": "image_right",
+        "background_style": "cream"
+      }
+    },
+    "cardio_solution": {
+      "type": "alternating-row",
+      "settings": {
+        "eyebrow": "The enzyme",
+        "heading": "Nattokinase: A Centuries-Old Enzyme, Dosed to Your Protocol",
+        "body_paragraph_1": "Nattokinase is the active enzyme in natto, a traditional Japanese fermented soybean dish consumed for over a thousand years. It was isolated in 1980 by Dr. Hiroyuki Sumi after screening 173 foods for fibrinolytic activity.",
+        "body_paragraph_2": "Modern peer-reviewed research has built on that work — including a 12-month, 1,062-adult trial at 10,800 FU/day showing meaningful cardiovascular endpoints.",
+        "bullets_intro": "Our nattokinase is built around four non-negotiables:",
+        "bullet_1": "Supports natural fibrinolytic activity",
+        "bullet_2": "4,000 FU per capsule — dose to your protocol (1, 2, or 3 capsules)",
+        "bullet_3": "K2 removed for compatibility with vitamin-K-antagonist blood thinners",
+        "bullet_4": "Third-party tested every batch, COA published",
+        "closing_paragraph": "One ingredient. Transparent label. The same enzyme adults have used for centuries — measured to a clinically active range.",
+        "image_asset_filename": "hero-product-main.jpg",
+        "image_alt": "Bottle of Spike Detox nattokinase capsules",
+        "image_side": "image_left",
+        "background_style": "cream"
+      }
+    },
     "subscription": {
       "type": "subscription-features",
       "blocks": {
@@ -1014,6 +1047,8 @@
   "order": [
     "media",
     "buybox",
+    "cardio_problem",
+    "cardio_solution",
     "subscription",
     "guarantee",
     "how_it_works",
