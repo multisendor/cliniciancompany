@@ -6,10 +6,13 @@
 
 <section
   class="alternating-row tcc-section-padding alternating-row--{{ section.settings.image_side }} alternating-row--bg-{{ section.settings.background_style }}"
+  data-section-type="alternating-row"
   data-section-id="{{ section.id }}"
 >
+  <div class="tcc-page-width">
   <div class="alternating-row__grid">
     <div class="alternating-row__visual">
+      {%- assign image_alt_escaped = section.settings.image_alt | escape -%}
       {%- if section.settings.image != blank -%}
         {{ section.settings.image
           | image_url: width: 1200
@@ -17,7 +20,7 @@
               loading: 'lazy',
               widths: '400,600,800,1000,1200',
               sizes: '(max-width: 768px) 100vw, 50vw',
-              alt: section.settings.image_alt,
+              alt: image_alt_escaped,
               class: 'alternating-row__image'
         }}
       {%- elsif section.settings.image_asset_filename != blank -%}
@@ -75,6 +78,7 @@
         <p class="alternating-row__body alternating-row__body--closing">{{ section.settings.closing_paragraph }}</p>
       {%- endif -%}
     </div>
+  </div>
   </div>
 </section>
 
@@ -158,11 +162,14 @@
     margin: 0 0 var(--tcc-s-3);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--tcc-s-2);
+  }
+  .alternating-row__bullets:last-child {
+    margin-bottom: 0;
   }
   .alternating-row__bullets li {
     position: relative;
-    padding-left: 22px;
+    padding-left: var(--tcc-s-3);
     font-family: var(--tcc-font-sans);
     font-size: var(--tcc-fs-body);
     line-height: var(--tcc-lh-body);
