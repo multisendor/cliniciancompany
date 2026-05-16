@@ -2,7 +2,7 @@
   class="one-ingredient-split tcc-section-padding one-ingredient-split--{{ section.settings.background_style }}"
   data-section-type="one-ingredient-split"
   data-section-id="{{ section.id }}"
-  style="--ois-card-bg: {{ section.settings.card_bg_color }}; --ois-pad-top: {{ section.settings.padding_top }}px; --ois-pad-bot: {{ section.settings.padding_bottom }}px;"
+  style="{% if section.settings.card_bg_color != blank %}--ois-card-bg: {{ section.settings.card_bg_color }};{% endif %} --ois-pad-top: {{ section.settings.padding_top }}px; --ois-pad-bot: {{ section.settings.padding_bottom }}px;"
 >
   <div class="tcc-page-width">
     <div class="one-ingredient-split__grid">
@@ -220,7 +220,7 @@
   .one-ingredient-split__card {
     margin: 0;
     aspect-ratio: 1 / 1;
-    background: var(--ois-card-bg, #0F3F2E);
+    background: var(--ois-card-bg, var(--tcc-cta-accent, #1e40af));
     border-radius: 24px;
     position: relative;
     overflow: hidden;
@@ -410,7 +410,7 @@
     { "type": "header", "content": "Visual card" },
     { "type": "image_picker", "id": "card_image",      "label": "Card image (capsule cluster)" },
     { "type": "text",         "id": "card_image_alt",  "label": "Card image alt text", "default": "Nattokinase capsules" },
-    { "type": "color",        "id": "card_bg_color",   "label": "Card background color", "default": "#0F3F2E" },
+    { "type": "color",        "id": "card_bg_color",   "label": "Card background color (leave blank to inherit theme accent)", "default": "" },
 
     { "type": "header", "content": "Layout" },
     { "type": "select", "id": "background_style", "label": "Section background",

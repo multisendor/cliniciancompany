@@ -328,7 +328,7 @@
 
   .video-testimonials__cta {
     display: inline-block;
-    background: #095946;
+    background: var(--tcc-cta-accent, #1e40af);
     color: #f6f9fe;
     font-family: var(--tcc-font-sans);
     font-size: 18px;
@@ -345,7 +345,8 @@
     transition: background 0.18s ease, transform 0.18s ease;
   }
   .video-testimonials__cta:hover {
-    background: #0a6750;
+    background: var(--tcc-cta-accent, #1e40af);
+    filter: brightness(0.88);
   }
   .video-testimonials__cta:active {
     transform: scale(0.99);

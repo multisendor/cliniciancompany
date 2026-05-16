@@ -398,6 +398,16 @@
       }
     </style>
     {%- endif -%}
+
+    {%- comment -%}
+      Brand accent color (CTAs, cards, badges) — single source of truth.
+      Drives --tcc-cta-accent everywhere; sections fall back to #1e40af if unset.
+    {%- endcomment -%}
+    <style>
+      :root {
+        --tcc-cta-accent: {{ settings.cta_bold_bg_color | default: '#1e40af' }};
+      }
+    </style>
   </head>
 
   <body class="{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

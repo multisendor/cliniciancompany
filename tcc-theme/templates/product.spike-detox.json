@@ -362,7 +362,7 @@
         "list_b_heading": "Natural Benefits",
         "closing_paragraph": "<p>With Pure, you're giving your body one of nature's most-studied enzymes — trusted for centuries in traditional Japanese natto and validated by 40+ years of peer-reviewed cardiovascular research.</p>",
         "card_image_alt": "Nattokinase capsules",
-        "card_bg_color": "#0f3f2e",
+        "card_bg_color": "",
         "background_style": "cream",
         "padding_top": 80,
         "padding_bottom": 80
@@ -1007,7 +1007,7 @@
         "show_cta": true,
         "cta_text": "BUY NOW & SAVE",
         "cta_link": "/products/spike-detox",
-        "cta_bg_color": "#095946",
+        "cta_bg_color": "",
         "guarantee_text": "30-Day Money Back Guarantee"
       }
     },
