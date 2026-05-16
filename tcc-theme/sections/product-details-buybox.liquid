@@ -318,8 +318,8 @@
       </div>
     {%- endif -%}
 
-    <!-- Featured Review Card -->
-    <div class="buybox-feat-review">
+    <!-- Featured Review Card (mobile-only here; desktop copy lives under the bottle in product-media-gallery) -->
+    <div class="buybox-feat-review buybox-feat-review--mobile-only">
       <div class="buybox-feat-review__stars">
         <span class="buybox-feat-review__star">★</span>
         <span class="buybox-feat-review__star">★</span>
@@ -996,6 +996,14 @@
     font-weight: 700 !important;
     color: #1a1a1a;
     white-space: nowrap;
+  }
+
+  /* Hide the mobile-only testimonial copy on desktop (≥750px) —
+     the desktop copy is rendered under the bottle in product-media-gallery. */
+  @media screen and (min-width: 750px) {
+    .buybox-feat-review--mobile-only {
+      display: none !important;
+    }
   }
 
   @media screen and (max-width: 749px) {

@@ -75,6 +75,35 @@
       {%- endif -%}
     {%- endif -%}
 
+    <!-- Featured Review Card (Desktop Only) — duplicate of the buy-box testimonial,
+         rendered here so on desktop it sits directly under the bottle image on the left,
+         filling the empty whitespace. Hidden on mobile; the buy-box copy is the mobile source. -->
+    <div class="product-media-gallery__feat-review">
+      <div class="buybox-feat-review">
+        <div class="buybox-feat-review__stars">
+          <span class="buybox-feat-review__star">★</span>
+          <span class="buybox-feat-review__star">★</span>
+          <span class="buybox-feat-review__star">★</span>
+          <span class="buybox-feat-review__star">★</span>
+          <span class="buybox-feat-review__star">★</span>
+        </div>
+        <p class="buybox-feat-review__quote tcc-body">"Two months in, my numbers are improving and my doctor is curious about it. The dose-to-protocol math just makes sense — I can take 1, 2, or 3 capsules a day depending on what I'm working toward."</p>
+        <div class="buybox-feat-review__footer">
+          <img class="buybox-feat-review__avatar" src="{{ 'avatar-1.png' | asset_url }}" alt="Customer photo" width="42" height="42" loading="lazy">
+          <div class="buybox-feat-review__info">
+            <span class="buybox-feat-review__name tcc-body">— Margaret S., Verified Buyer</span>
+            <div class="buybox-feat-review__verified">
+              <svg class="buybox-feat-review__badge" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#05B890"/>
+                <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="buybox-feat-review__verified-text tcc-body">Verified Customer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Integrated Trust Card (Desktop Only) -->
     {%- assign badges = section.blocks | where: "type", "trust_badge" -%}
     {%- assign checklist_items = section.blocks | where: "type", "checklist_item" -%}
@@ -411,6 +440,12 @@
     margin-top: var(--tcc-s-3, 24px);
   }
 
+  /* Desktop-only Featured Review (under the bottle, left column) */
+  .product-media-gallery__feat-review {
+    width: 100%;
+    margin-top: var(--tcc-s-3, 24px);
+  }
+
   @media screen and (max-width: 749px) {
     .product-media-gallery.tcc-section-padding {
       padding-top: 0 !important;
@@ -434,6 +469,10 @@
       display: none !important;
     }
     .product-media-gallery__ugc-videos {
+      display: none !important;
+    }
+    /* Mobile: hide the desktop-only testimonial copy; the buy-box copy is the mobile source */
+    .product-media-gallery__feat-review {
       display: none !important;
     }
   }
