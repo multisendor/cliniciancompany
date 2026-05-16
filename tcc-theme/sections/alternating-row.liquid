@@ -58,6 +58,10 @@
         <p class="alternating-row__body">{{ section.settings.body_paragraph_2 }}</p>
       {%- endif -%}
 
+      {%- if section.settings.body_paragraph_3 != blank -%}
+        <p class="alternating-row__body">{{ section.settings.body_paragraph_3 }}</p>
+      {%- endif -%}
+
       {%- assign has_bullets = false -%}
       {%- if section.settings.bullet_1 != blank or section.settings.bullet_2 != blank or section.settings.bullet_3 != blank or section.settings.bullet_4 != blank -%}
         {%- assign has_bullets = true -%}
@@ -246,6 +250,7 @@
     { "type": "text",         "id": "heading",              "label": "Heading", "default": "Heading goes here" },
     { "type": "textarea",     "id": "body_paragraph_1",     "label": "Body paragraph 1" },
     { "type": "textarea",     "id": "body_paragraph_2",     "label": "Body paragraph 2 (optional)" },
+    { "type": "textarea",     "id": "body_paragraph_3",     "label": "Body paragraph 3 (optional)" },
     { "type": "text",         "id": "bullets_intro",        "label": "Bullet list intro (optional)" },
     { "type": "text",         "id": "bullet_1",             "label": "Bullet 1 (optional)" },
     { "type": "text",         "id": "bullet_2",             "label": "Bullet 2 (optional)" },
