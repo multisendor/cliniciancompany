@@ -403,6 +403,88 @@
         "description": "Pure is a single-ingredient product — nattokinase only. Every FU number on the front of the label. No proprietary blends, no hidden co-factors."
       }
     },
+    "ingredients_carousel": {
+      "type": "ingredients-carousel",
+      "blocks": {
+        "ic1": {
+          "type": "ingredient",
+          "settings": {
+            "image_url": "//www.twc.health/cdn/shop/files/image_480_1.png?v=1778791355&width=400",
+            "image_alt": "Nattokinase",
+            "title": "Nattokinaise",
+            "description": "4x strength to dissolve spike proteins."
+          }
+        },
+        "ic2": {
+          "type": "ingredient",
+          "settings": {
+            "image_url": "//www.twc.health/cdn/shop/files/image_185.png?v=1778791355&width=400",
+            "image_alt": "Dandelion Root",
+            "title": "Dandelion Root",
+            "description": "Supports liver detox and cellular cleansing."
+          }
+        },
+        "ic3": {
+          "type": "ingredient",
+          "settings": {
+            "image_url": "//www.twc.health/cdn/shop/files/image_479_1.png?v=1778791355&width=400",
+            "image_alt": "Bromelain",
+            "title": "Bromelain",
+            "description": "Natural enzyme to break down spike proteins."
+          }
+        },
+        "ic4": {
+          "type": "ingredient",
+          "settings": {
+            "image_url": "//www.twc.health/cdn/shop/files/image_477_1.png?v=1778791355&width=400",
+            "image_alt": "Turmeric Root Extract",
+            "title": "Turmeric Root Extract",
+            "description": "Fights inflammation and boosts immune response."
+          }
+        },
+        "ic5": {
+          "type": "ingredient",
+          "settings": {
+            "image_url": "//www.twc.health/cdn/shop/files/image_478_1.png?v=1778791355&width=400",
+            "image_alt": "Selenium",
+            "title": "Selenium",
+            "description": "Antioxidant mineral for immune resilience."
+          }
+        },
+        "ic6": {
+          "type": "ingredient",
+          "settings": {
+            "image_url": "//www.twc.health/cdn/shop/files/image_484_1.png?v=1778791355&width=400",
+            "image_alt": "Black Seed",
+            "title": "Black Seed",
+            "description": "Helps clear toxins and support immunity"
+          }
+        },
+        "ic7": {
+          "type": "ingredient",
+          "settings": {
+            "image_url": "//www.twc.health/cdn/shop/files/image_485_2.png?v=1778791355&width=400",
+            "image_alt": "Black Pepper",
+            "title": "Black Pepper",
+            "description": "Enhances absorption of key active ingredients."
+          }
+        }
+      },
+      "block_order": [
+        "ic1",
+        "ic2",
+        "ic3",
+        "ic4",
+        "ic5",
+        "ic6",
+        "ic7"
+      ],
+      "settings": {
+        "heading": "Science-Backed Ingredients",
+        "subheading": "",
+        "background_color": "#f2f7f9"
+      }
+    },
     "symptoms": {
       "type": "symptom-grid",
       "blocks": {
@@ -1060,6 +1142,7 @@
     "subscription",
     "guarantee",
     "compounds",
+    "ingredients_carousel",
     "symptoms",
     "timeline_short",
     "who_for",
