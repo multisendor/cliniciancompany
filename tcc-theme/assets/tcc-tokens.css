@@ -54,8 +54,18 @@ body {
   font-size: var(--tcc-fs-body);
   line-height: var(--tcc-lh-body);
   color: var(--tcc-ink);
-  background: var(--tcc-bg);
+  background: #ffffff;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Header + hero (media + buybox) sit on pure white; cream sections below still
+   use var(--tcc-bg) explicitly so the cream alternation pattern is preserved. */
+.shopify-section-group-header-group,
+[data-section-type="product-media-gallery"],
+[data-section-type="product-details-buybox"],
+.product-details-buybox,
+.product-media-gallery {
+  background: #ffffff !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
