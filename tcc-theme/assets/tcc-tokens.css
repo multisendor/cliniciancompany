@@ -94,13 +94,15 @@ body {
 }
 
 /* Muted section background — single source of truth.
-   Drives bottom-faq + comparison-vs section backgrounds.
-   Forced with !important because the admin editor has now
-   stripped the var() reference inside the section liquid
-   files THREE times, restoring a hardcoded #eef0e8 sage cream.
-   This rule wins regardless. */
+   Drives every section that uses the "cream alternation" treatment:
+   bottom-faq, comparison-vs, and any alternating-row with bg=cream.
+   Forced with !important because (a) the admin editor has repeatedly
+   stripped var() refs inside section liquid files and restored
+   hardcoded creams, and (b) alternating-row's own `--bg-cream` class
+   hardcodes #f4f3ed beige. This rule wins regardless. */
 .bottom-faq,
-.comparison-vs {
+.comparison-vs,
+.alternating-row--bg-cream {
   background-color: var(--tcc-section-muted, #EEF1F8) !important;
 }
 .product-details-buybox__add-to-cart--bold:hover,
