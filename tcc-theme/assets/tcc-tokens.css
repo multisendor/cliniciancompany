@@ -187,6 +187,17 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.92;
   transform: translateY(-1px);
 }
+/* Primary-variant CTAs (hero "Shop the Protocol", sticky ATC, etc.) use the
+   dynamic brand accent so they update with the theme-editor color picker.
+   Base .tcc-btn (used for ATC-style dark buttons in image-band / cross-sell)
+   stays on --tcc-ink. */
+.tcc-btn--primary {
+  background: var(--tcc-cta-accent, #1e40af) !important;
+}
+.tcc-btn--primary:hover {
+  filter: brightness(0.92);
+  opacity: 1;
+}
 .tcc-btn--secondary {
   background: transparent;
   color: var(--tcc-ink);
