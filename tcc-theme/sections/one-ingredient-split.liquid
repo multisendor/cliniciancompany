@@ -61,7 +61,7 @@
                   class: 'one-ingredient-split__figure-img' }}
             {%- else -%}
               {%- comment -%} CSS-rendered placeholder cluster (5 amber pills) {%- endcomment -%}
-              <div class="one-ingredient-split__figure-placeholder" aria-label="{{ section.settings.card_image_alt }}">
+              <div class="one-ingredient-split__figure-placeholder" aria-label="{{ section.settings.card_image_alt | escape }}">
                 <span></span><span></span><span></span><span></span><span></span>
               </div>
             {%- endif -%}
