@@ -14,6 +14,7 @@
   --tcc-card: #ffffff;
   --tcc-positive: #00a86b;
   --tcc-urgent: #c8281a;
+  --tcc-accent-blue: #1e40af;
 
   /* --- Type --- */
   --tcc-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
