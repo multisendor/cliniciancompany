@@ -79,25 +79,30 @@
     color: rgba(255, 255, 255, 0.7);
   }
 
+  /* Resilia-matched: 30px / 36px / 700 / ls normal at desktop;
+     26.6px / 31.92px at mobile */
   .outcome-stats__heading {
     font-family: var(--tcc-font-sans);
-    font-weight: var(--tcc-fw-display, 800);
-    font-size: var(--tcc-fs-h2, clamp(24px, 3vw, 32px));
+    font-weight: 700;
+    font-size: 30px;
     color: var(--tcc-ink);
     margin: 0 0 var(--tcc-s-2, 16px);
-    line-height: 1.2;
-    letter-spacing: var(--tcc-ls-display, -1.5px);
+    line-height: 36px;
+    letter-spacing: normal;
   }
 
   .outcome-stats--navy .outcome-stats__heading {
     color: #ffffff;
   }
 
+  /* Resilia-matched body paragraph: 16/24 wt 400 ls normal */
   .outcome-stats__intro {
     font-family: var(--tcc-font-sans);
-    font-size: var(--tcc-fs-body, 16px);
+    font-size: 16px;
+    font-weight: 400;
     color: var(--tcc-ink-soft);
-    line-height: 1.65;
+    line-height: 24px;
+    letter-spacing: normal;
     margin: 0;
   }
 
@@ -105,12 +110,15 @@
     color: rgba(255, 255, 255, 0.75);
   }
 
+  /* Resilia paragraph weight is 400; keep this slightly stronger than
+     body since it's a mid-line setup, but match Resilia's 16/24 base */
   .outcome-stats__sub-heading {
     font-family: var(--tcc-font-sans);
-    font-size: var(--tcc-fs-body, 16px);
-    font-weight: var(--tcc-fw-bold, 700);
+    font-size: 16px;
+    font-weight: 400;
     color: var(--tcc-ink);
-    line-height: 1.45;
+    line-height: 24px;
+    letter-spacing: normal;
     text-align: center;
     max-width: 760px;
     margin: 0 auto var(--tcc-s-6, 48px);
@@ -120,12 +128,14 @@
     color: #ffffff;
   }
 
+  /* Resilia uses 400 for paragraph copy; footnote is small but not bolded */
   .outcome-stats__footnote {
     font-family: var(--tcc-font-sans);
-    font-size: var(--tcc-fs-small, 13px);
-    font-weight: var(--tcc-fw-bold, 700);
+    font-size: 13px;
+    font-weight: 400;
     color: var(--tcc-ink);
-    line-height: 1.55;
+    line-height: 20px;
+    letter-spacing: normal;
     text-align: center;
     max-width: 900px;
     margin: var(--tcc-s-6, 48px) auto 0;
@@ -155,12 +165,13 @@
     margin-bottom: var(--tcc-s-3, 24px);
   }
 
+  /* Resilia-matched: 35px / 42px / 700 / ls normal — same on desktop & mobile */
   .outcome-stats__value {
     font-family: var(--tcc-font-sans);
-    font-size: clamp(40px, 5vw, 64px);
-    font-weight: var(--tcc-fw-display, 800);
-    line-height: 1;
-    letter-spacing: -0.02em;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 42px;
+    letter-spacing: normal;
     color: var(--tcc-accent-blue);
   }
 
@@ -181,13 +192,16 @@
     color: rgba(255, 255, 255, 0.7);
   }
 
+  /* Resilia stat label sits at the body 16/24 scale, weight 400 */
   .outcome-stats__label {
     font-family: var(--tcc-font-sans);
-    font-size: var(--tcc-fs-small, 13px);
-    line-height: 1.55;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: normal;
     color: var(--tcc-ink-soft);
     margin: 0;
-    max-width: 220px;
+    max-width: 260px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -209,8 +223,16 @@
       grid-template-columns: 1fr;
       row-gap: var(--tcc-s-4, 32px);
     }
+    /* Resilia mobile H2: 26.6 / 31.92 wt 700 */
     .outcome-stats__heading {
-      font-size: 24px;
+      font-size: 26.6px;
+      line-height: 31.92px;
+    }
+    /* Resilia body paragraph on mobile: 15.6 / 23.4 */
+    .outcome-stats__intro,
+    .outcome-stats__sub-heading {
+      font-size: 15.6px;
+      line-height: 23.4px;
     }
   }
 </style>

@@ -138,20 +138,24 @@
     margin: 0 0 var(--tcc-s-2);
   }
 
+  /* Resilia-matched H2: 30/36 wt 700 ls normal (desktop) */
   .alternating-row__heading {
     font-family: var(--tcc-font-sans);
-    font-weight: var(--tcc-fw-display);
-    font-size: var(--tcc-fs-h2);
-    line-height: var(--tcc-lh-tight);
-    letter-spacing: var(--tcc-ls-display);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: normal;
     color: var(--tcc-ink);
     margin: 0;
   }
 
+  /* Resilia-matched body: 16/24 wt 400 ls normal */
   .alternating-row__body {
     font-family: var(--tcc-font-sans);
-    font-size: var(--tcc-fs-body);
-    line-height: var(--tcc-lh-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: normal;
     color: var(--tcc-ink);
     margin: 0 0 var(--tcc-s-3);
   }
@@ -159,11 +163,13 @@
     margin-bottom: 0;
   }
 
+  /* Resilia paragraphs are weight 400 across the board */
   .alternating-row__bullets-intro {
     font-family: var(--tcc-font-sans);
-    font-size: var(--tcc-fs-body);
-    line-height: var(--tcc-lh-body);
-    font-weight: var(--tcc-fw-medium);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: normal;
     color: var(--tcc-ink);
     margin: 0 0 var(--tcc-s-2);
   }
@@ -179,12 +185,15 @@
   .alternating-row__bullets:last-child {
     margin-bottom: 0;
   }
+  /* Resilia list-item: 16/24 wt 400 ls normal */
   .alternating-row__bullets li {
     position: relative;
     padding-left: var(--tcc-s-3);
     font-family: var(--tcc-font-sans);
-    font-size: var(--tcc-fs-body);
-    line-height: var(--tcc-lh-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: normal;
     color: var(--tcc-ink);
   }
   .alternating-row__bullets li::before {
@@ -208,6 +217,18 @@
         "body";
       column-gap: 0;
       row-gap: var(--tcc-s-3);
+    }
+    /* Resilia mobile H2: 26.6 / 31.92 wt 700 */
+    .alternating-row__heading {
+      font-size: 26.6px;
+      line-height: 31.92px;
+    }
+    /* Resilia mobile body / bullets: 15.6 / 23.4 wt 400 */
+    .alternating-row__body,
+    .alternating-row__bullets-intro,
+    .alternating-row__bullets li {
+      font-size: 15.6px;
+      line-height: 23.4px;
     }
   }
 </style>
