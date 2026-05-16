@@ -368,6 +368,61 @@
         "padding_bottom": 80
       }
     },
+    "timeline_zigzag": {
+      "type": "timeline-zigzag",
+      "blocks": {
+        "tz1": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "1 Week",
+            "description": "<p>Most users start at 1 capsule (4,000 FU) on an empty stomach, 30 min before food. The body adjusts to fibrinolytic activity over 5–7 days.</p>"
+          }
+        },
+        "tz2": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "1 Month",
+            "description": "<p>By week 3–4 most users have a stable cadence. Some increase to 2–3 capsules/day to land inside the 6,000–12,000 FU/day range identified in Chen 2022.</p>"
+          }
+        },
+        "tz3": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "2 Months",
+            "description": "<p>Energy and cognitive clarity are subjective — no promises on timeline. Keep a simple log so you have something to share with your clinician at month 3.</p>"
+          }
+        },
+        "tz4": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "3 Months",
+            "description": "<p>Cholesterol changes in Chen 2022 were measured starting around the 3-month mark. Most physicians order a routine lipid panel at this point if you flagged the protocol with them at intake.</p>"
+          }
+        },
+        "tz5": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "6 Months",
+            "description": "<p>Carotid plaque area and intima-media thickness reductions in Chen 2022 were observed between months 6 and 12. If your clinician monitors carotid imaging, this is the conversation window.</p>"
+          }
+        },
+        "tz6": {
+          "type": "milestone",
+          "settings": {
+            "time_label": "12 Months",
+            "description": "<p>12-month outcomes in the Chen 2022 cohort (n=1,062, 10,800 FU/day): carotid plaque area −36%, IMT −22%, LDL −18%, HDL +16%. These are observations from a single peer-reviewed trial, not guarantees.</p>"
+          }
+        }
+      },
+      "block_order": ["tz1", "tz2", "tz3", "tz4", "tz5", "tz6"],
+      "settings": {
+        "heading": "What You Might Expect from Daily Use of Spike Detox",
+        "show_cta": true,
+        "cta_text": "BUY NOW & SAVE",
+        "cta_link": "/products/spike-detox",
+        "guarantee_text": "30-Day Money Back Guarantee"
+      }
+    },
     "ingredients_carousel": {
       "type": "ingredients-carousel",
       "blocks": {
@@ -982,6 +1037,7 @@
     "trial_stats",
     "one_ingredient_split",
     "ingredients_carousel",
+    "timeline_zigzag",
     "timeline_short",
     "who_for",
     "testimonial_repeat",

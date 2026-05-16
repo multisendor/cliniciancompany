@@ -79,13 +79,15 @@ body {
 .sticky-atc__btn--bold,
 .bottom-faq__cta,
 .video-testimonials__cta,
+.timeline-zigzag__cta,
 .one-ingredient-split__card {
   background: var(--tcc-cta-accent, #1e40af) !important;
 }
 .product-details-buybox__add-to-cart--bold:hover,
 .sticky-atc__btn--bold:hover,
 .bottom-faq__cta:hover,
-.video-testimonials__cta:hover {
+.video-testimonials__cta:hover,
+.timeline-zigzag__cta:hover {
   background: var(--tcc-cta-accent, #1e40af) !important;
   filter: brightness(0.88);
 }
