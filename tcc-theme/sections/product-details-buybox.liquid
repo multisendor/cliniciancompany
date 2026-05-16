@@ -1,4 +1,4 @@
-<!-- DEPLOYTEST_1778138525 -->
+<!-- DEPLOYTEST_1778905900 -->
 {%- liquid
   assign benefits = section.blocks | where: "type", "benefit"
   assign bundles = section.blocks | where: "type", "bundle_option"
@@ -191,6 +191,7 @@
         {%- endfor -%}
 
         <!-- Add to Cart -->
+        <!-- DEBUG3 brand=[{{ settings.brand_short }}] cta_bold=[{{ settings.cta_bold_style }}] cta_truthy=[{% if settings.cta_bold_style %}YES{% else %}NO{% endif %}] keys_present=[{% for k in settings %}{{ k[0] }}|{% endfor %}] -->
         <button type="submit" name="add" class="product-details-buybox__add-to-cart{% if settings.cta_bold_style %} product-details-buybox__add-to-cart--bold{% endif %}">
           {%- if settings.cta_bold_style -%}
             <span class="product-details-buybox__atc-label product-details-buybox__atc-label--bold">Add To Cart</span>
