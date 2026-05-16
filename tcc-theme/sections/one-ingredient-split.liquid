@@ -60,9 +60,9 @@
                   alt: section.settings.card_image_alt,
                   class: 'one-ingredient-split__figure-img' }}
             {%- else -%}
-              {%- comment -%} Fallback to bundled bottle asset until a real capsule photo is uploaded via the card_image setting. {%- endcomment -%}
+              {%- comment -%} Fallback to the same TWC bottle placeholder the product-media-gallery uses, until a real capsule photo is uploaded via the card_image setting. {%- endcomment -%}
               <img
-                src="{{ 'hero-product-main.jpg' | asset_url }}"
+                src="https://www.twc.health/cdn/shop/files/SIG_UltSpike_Thumbnail.png?v=1773419148&width=800"
                 alt="{{ section.settings.card_image_alt | escape }}"
                 class="one-ingredient-split__figure-img"
                 loading="lazy"
