@@ -919,28 +919,6 @@
         "background_color": "#0a1628"
       }
     },
-    "cta_repeat_2": {
-      "type": "repeat-cta",
-      "settings": {
-        "eyebrow": "Built for the people who read the label",
-        "heading": "Single ingredient. Disclosed dose. Tested per batch.",
-        "subheading": "If it's not the right fit, email us within 60 days &mdash; even an empty bottle &mdash; for a full refund. No questions asked.",
-        "button_text": "BUY NOW & SAVE",
-        "product_handle": "spike-detox",
-        "background_style": "navy"
-      }
-    },
-    "exclusivity": {
-      "type": "rich-text",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "faq": {
       "type": "bottom-faq",
       "blocks": {
