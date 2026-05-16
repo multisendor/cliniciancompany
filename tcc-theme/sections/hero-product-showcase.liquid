@@ -229,10 +229,11 @@
   }
 
   .hero-product-showcase__subtitle {
-    font-family: var(--tcc-font-sans);
-    font-weight: var(--tcc-fw-medium);
-    font-size: var(--tcc-fs-h1);
-    line-height: var(--tcc-lh-tight);
+    font-family: var(--tcc-font-heading);
+    font-weight: var(--tcc-fw-display);
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: var(--tcc-ls-display);
     color: var(--tcc-ink);
     margin: 0;
   }
@@ -317,7 +318,8 @@
     }
 
     .hero-product-showcase__subtitle {
-      font-size: 28px;
+      font-size: 36px;
+      line-height: 1.1;
     }
 
     .hero-product-showcase__heading {
