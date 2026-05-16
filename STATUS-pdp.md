@@ -304,3 +304,30 @@ Created a new unpublished theme containing the exact same code as the locked liv
 - Con: any admin theme editor changes the user has made on the current live theme since the start of this session would be discarded (the new theme is built from local HEAD). Verify nothing important has been edited via admin.
 - Con: a fresh theme means any product-specific section overrides via admin theme editor (if any exist) would need to be re-applied.
 
+
+## Phase 6 — Resilia parity work (2026-05-15)
+
+Spike Detox PDP brought to 1:1 visual + topic parity with Resilia (`try.resilia.shop/rsl`) on the sections that mirror Resilia beats. Live theme `161862353132`.
+
+### Sections aligned
+
+- **Typography pass** (commit `9ac9122`) — `alternating-row`, `outcome-stats` (also renders `trial_stats`), and `trust-strip` brought to 1:1 with Resilia computed styles. Headings 30/36 wt 700 desktop / 26.6/31.92 wt 700 mobile; body 16/24 wt 400; stat numerals 35/42 wt 700; letter-spacing zeroed across the board. Font family kept as Inter (Resilia uses Libre Franklin — flagged but not swapped).
+- **Verified-buyer testimonial moved under bottle on desktop** (commit `f5cae23`) — duplicate-and-hide pattern (mobile order unchanged).
+- **Bold ADD-TO-CART theme toggle** (commits `b0e43cf` + `6af1a0b`) — `settings.cta_bold_style` (default OFF). When ON: large dark-forest pill `#0F3F2E` with white bold uppercase "ADD TO CART" (22px desktop / 18px mobile), price/divider hidden. Wired to both main buybox CTA and mobile sticky ATC. Price-update JS works in both modes — DOM elements stay in place with `hidden` attribute.
+- **New `one-ingredient-split` section** (commits `8b6b2fd` + `89af896` + `d0e52e3` + `3eb1258` + `f65c101` + `f9b3067`) — Resilia "One Ingredient. Endless Immune Support." beat, mirrored for nattokinase. Slotted between `trial_stats` and `subscription` in the Spike Detox PDP order. Left column: heading + intro paragraphs + "How It Works" (3 bullets) + "Natural Benefits" (4 bullets) + closing paragraph. Right column: dark-forest `#0F3F2E` square card with capsule cluster + 5 dose-forward callouts at corners (4,000 FU / Wild-fermented Bacillus subtilis / Third-party tested every batch / K2-free for blood-thinner users / Single ingredient no proprietary blend) connected by dotted SVG leader lines. Mobile: stacked single-column, callouts re-rendered as 2-col pill grid inside the card; heading sits above the card, body+lists below.
+
+### Open follow-ups
+
+- **Capsule-cluster photography** — currently a CSS-rendered amber placeholder cluster (5 rounded pills). Replace via the section's `card_image` setting once real product photography exists.
+- **Libre Franklin font** — Resilia uses it; we kept Inter. Decision pending.
+- **Icon glyph set** — `tcc-theme/snippets/one-ingredient-icon.liquid` ships 7 glyphs (capsule, leaf, shield, beaker, no_k2, sparkle, molecule). Extend if new icons are added to the section's schema.
+
+### Verification artifacts (in repo root)
+
+- `one-ingredient-split-final-desktop-2026-05-15.png`
+- `one-ingredient-split-final-mobile-2026-05-15.png`
+- `resilia-typo-desktop-1280-2026-05-15.png`
+- `resilia-typo-mobile-390-2026-05-15.png`
+- `task-testimonial-desktop-1280-*.png`, `task-testimonial-mobile-390-*.png`
+- `task-cta-toggle-{off,on}-{1280,390}.png`
+
