@@ -2,7 +2,7 @@
   class="one-ingredient-split tcc-section-padding one-ingredient-split--{{ section.settings.background_style }}"
   data-section-type="one-ingredient-split"
   data-section-id="{{ section.id }}"
-  style="{% if section.settings.card_bg_color != blank %}--ois-card-bg: {{ section.settings.card_bg_color }};{% endif %} --ois-pad-top: {{ section.settings.padding_top }}px; --ois-pad-bot: {{ section.settings.padding_bottom }}px;"
+  style="--ois-card-bg: {{ section.settings.card_bg_color | default: 'var(--tcc-cta-accent, #1e40af)' }}; --ois-pad-top: {{ section.settings.padding_top }}px; --ois-pad-bot: {{ section.settings.padding_bottom }}px;"
 >
   <div class="tcc-page-width">
     <div class="one-ingredient-split__grid">

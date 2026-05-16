@@ -37,7 +37,7 @@
         <a
           class="bottom-faq__cta"
           href="{{ section.settings.cta_link | default: '/products/spike-detox' }}"
-          {%- if section.settings.cta_bg_color != blank -%}style="--cta-bold-bg: {{ section.settings.cta_bg_color }};"{%- endif -%}
+          style="--cta-bold-bg: {{ section.settings.cta_bg_color | default: 'var(--tcc-cta-accent, #1e40af)' }};"
         >
           {{ section.settings.cta_text | default: 'BUY NOW & SAVE' }}
         </a>
@@ -246,7 +246,7 @@
     {
       "type": "color",
       "id": "cta_bg_color",
-      "label": "CTA background color (leave blank to inherit theme accent)",
+      "label": "CTA background color",
       "default": ""
     },
     {
