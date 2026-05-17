@@ -15,7 +15,7 @@ cd "/Users/jonas/Documents/IDE/Health Store/tcc-theme"
 shopify theme pull --theme=<TARGET_THEME_ID> --nodelete
 ```
 
-- **Default `TARGET_THEME_ID`**: `161862353132` ("Spike Detox v1 Preview") — **this is now the LIVE theme** (published as of 2026-05-15). Pushes to it affect the live storefront. Per CONTRACT-2 you MUST get explicit user authorization in the same conversation before pushing. When a new preview theme replaces it as the working target, update this number.
+- **Default `TARGET_THEME_ID`**: `162169880812` ("TCC") — **this is the LIVE theme** (published 2026-05-16, replacing the previous `161862353132` "Spike Detox v1 Preview" which had a stuck Shopify section-registration cache). Pushes to it affect the live storefront. Per CONTRACT-2 you MUST get explicit user authorization in the same conversation before pushing. When a new preview theme replaces it as the working target, update this number.
 - The user and their staff edit via the Shopify admin theme editor in real time. **They WILL make changes between Claude Code sessions.** Pulling first preserves those.
 - **`--nodelete`** is mandatory: pull should never delete local files Shopify doesn't know about (we have local-only working files like `STATUS-pdp.md`).
 - After pulling, **`git status`** to see what came down. If anything came down, **commit it as a separate "sync from Shopify admin" commit** BEFORE making your own edits, so the human's work is preserved on its own commit and your edits are diffable separately.
@@ -94,7 +94,7 @@ Health Store/
 ```bash
 # Pull latest from Shopify (DO THIS FIRST)
 cd "/Users/jonas/Documents/IDE/Health Store/tcc-theme"
-shopify theme pull --theme=161862353132 --nodelete
+shopify theme pull --theme=162169880812 --nodelete
 
 # Local dev preview (separate from the unpublished preview theme)
 shopify theme dev --store=gmmehe-01.myshopify.com
@@ -103,14 +103,14 @@ shopify theme dev --store=gmmehe-01.myshopify.com
 shopify theme list --store=gmmehe-01.myshopify.com --json
 
 # Push to preview theme (after edits)
-shopify theme push --theme=161862353132 --nodelete --json
+shopify theme push --theme=162169880812 --nodelete --json
 
 # Visual QA via Playwright
 # Use the public preview URL with theme override:
-# https://gmmehe-01.myshopify.com?preview_theme_id=161862353132
+# https://gmmehe-01.myshopify.com?preview_theme_id=162169880812
 # Specific PDPs:
-# https://gmmehe-01.myshopify.com/products/spike-detox?preview_theme_id=161862353132
-# https://gmmehe-01.myshopify.com/products/spike-detox-complete?preview_theme_id=161862353132
+# https://gmmehe-01.myshopify.com/products/spike-detox?preview_theme_id=162169880812
+# https://gmmehe-01.myshopify.com/products/spike-detox-complete?preview_theme_id=162169880812
 ```
 
 ## Git conventions
