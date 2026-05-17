@@ -250,8 +250,8 @@
         "background_style": "soft"
       }
     },
-    "one_ingredient_image": {
-      "type": "one-ingredient-image",
+    "product_spotlight": {
+      "type": "product-spotlight-card",
       "blocks": {
         "la1": {
           "type": "list_a_item",
@@ -755,8 +755,8 @@
         "background_color": "#0a1628"
       }
     },
-    "special_offer_split": {
-      "type": "special-offer-split",
+    "offer_callout": {
+      "type": "offer-callout-block",
       "blocks": {
         "b1": {
           "type": "bullet",
@@ -913,7 +913,7 @@
     "cardio_problem",
     "cardio_solution",
     "trial_stats",
-    "one_ingredient_image",
+    "product_spotlight",
     "ingredients_carousel",
     "timeline_zigzag",
     "testimonial_repeat",
@@ -922,7 +922,7 @@
     "promise_icons",
     "comparison",
     "promo_bar",
-    "special_offer_split",
+    "offer_callout",
     "faq"
   ]
 }
