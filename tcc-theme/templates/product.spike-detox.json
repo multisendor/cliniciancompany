@@ -502,7 +502,7 @@
           "settings": {
             "name": "Shaun",
             "caption": "His story.",
-            "video_url": "",
+            "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
             "duration": "1:24"
           }
         },
@@ -511,7 +511,7 @@
           "settings": {
             "name": "Gina",
             "caption": "Her story.",
-            "video_url": "",
+            "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
             "duration": "0:56"
           }
         },
@@ -520,7 +520,7 @@
           "settings": {
             "name": "Taylor",
             "caption": "Their story.",
-            "video_url": "",
+            "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
             "duration": "1:12"
           }
         },
@@ -529,7 +529,7 @@
           "settings": {
             "name": "James",
             "caption": "His recovery.",
-            "video_url": "",
+            "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
             "duration": "1:38"
           }
         }
