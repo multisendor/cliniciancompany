@@ -1,69 +1,200 @@
 {%- comment -%}
-  One Ingredient Split — simplified to a single hero graphic.
+  One Ingredient — text-left, image-right.
 
-  Renders one image (paste a Shopify CDN URL into `image_url` from the
-  theme editor). When blank, shows a placeholder so layout is preserved.
+  Left column: eyebrow, heading, intro paragraphs, bullet lists, closing.
+  Right column: a single image (paste Shopify CDN URL in theme editor).
+  When image_url is blank, renders a styled blue placeholder so the
+  layout doesn't collapse.
 
-  Replaces the prior complex bottle+corner-icons SVG layout that was
-  composed in liquid; the new approach is one editorially-controlled
-  image asset (lets the designer iterate without code changes).
+  Replaces the previous composite SVG-callout layout — the bottle +
+  4 corner labels are now baked into one editorially-controlled image.
 {%- endcomment -%}
 
 <div
-  data-section-type="one-ingredient-split"
+  class="one-ingredient-split tcc-section-padding one-ingredient-split--{{ section.settings.background_style }}"
+  data-section-type="one-ingredient-image"
   data-section-id="{{ section.id }}"
-  class="one-ingredient-split tcc-section-padding"
 >
-  <div class="one-ingredient-split__inner tcc-page-width">
-    {%- if section.settings.image_url != blank -%}
-      <img
-        class="one-ingredient-split__image"
-        src="{{ section.settings.image_url }}"
-        alt="{{ section.settings.image_alt | default: 'Spike Detox bottle with key benefits' | escape }}"
-        loading="lazy"
-      >
-    {%- else -%}
-      <div class="one-ingredient-split__placeholder" role="img" aria-label="Image placeholder">
-        <div class="one-ingredient-split__placeholder-inner">
-          <div class="one-ingredient-split__placeholder-eyebrow">Image placeholder</div>
-          <div class="one-ingredient-split__placeholder-title">Spike Detox key-benefits graphic</div>
-          <div class="one-ingredient-split__placeholder-hint">
-            Upload the bottle + corner-icons image to Shopify Files, then paste the CDN URL into
-            <strong>Theme editor → One Ingredient Split → Image URL</strong>.
-          </div>
-        </div>
+  <div class="tcc-page-width">
+    <div class="one-ingredient-split__grid">
+
+      {%- comment -%} ============ LEFT COLUMN (text) ============ {%- endcomment -%}
+      <div class="one-ingredient-split__text">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="one-ingredient-split__eyebrow tcc-eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="one-ingredient-split__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.intro_paragraph_1 != blank -%}
+          <div class="one-ingredient-split__intro rte">{{ section.settings.intro_paragraph_1 }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.intro_paragraph_2 != blank -%}
+          <div class="one-ingredient-split__intro rte">{{ section.settings.intro_paragraph_2 }}</div>
+        {%- endif -%}
+
+        {%- assign list_a = section.blocks | where: "type", "list_a_item" -%}
+        {%- if list_a.size > 0 -%}
+          {%- if section.settings.list_a_heading != blank -%}
+            <p class="one-ingredient-split__list-heading"><strong>{{ section.settings.list_a_heading }}:</strong></p>
+          {%- endif -%}
+          <ul class="one-ingredient-split__list">
+            {%- for block in list_a -%}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- assign list_b = section.blocks | where: "type", "list_b_item" -%}
+        {%- if list_b.size > 0 -%}
+          {%- if section.settings.list_b_heading != blank -%}
+            <p class="one-ingredient-split__list-heading"><strong>{{ section.settings.list_b_heading }}:</strong></p>
+          {%- endif -%}
+          <ul class="one-ingredient-split__list">
+            {%- for block in list_b -%}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.closing_paragraph != blank -%}
+          <div class="one-ingredient-split__closing rte">{{ section.settings.closing_paragraph }}</div>
+        {%- endif -%}
       </div>
-    {%- endif -%}
+
+      {%- comment -%} ============ RIGHT COLUMN (image) ============ {%- endcomment -%}
+      <div class="one-ingredient-split__image-wrap">
+        {%- if section.settings.image_url != blank -%}
+          <img
+            class="one-ingredient-split__image"
+            src="{{ section.settings.image_url }}"
+            alt="{{ section.settings.image_alt | default: 'Spike Detox bottle with key benefits' | escape }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          <div class="one-ingredient-split__placeholder" role="img" aria-label="Image placeholder">
+            <div class="one-ingredient-split__placeholder-inner">
+              <div class="one-ingredient-split__placeholder-eyebrow">Image placeholder</div>
+              <div class="one-ingredient-split__placeholder-title">Spike Detox key-benefits graphic</div>
+              <div class="one-ingredient-split__placeholder-hint">
+                Upload the bottle + corner-icons image to Shopify Files, then paste the CDN URL into
+                <strong>Theme editor → One Ingredient Image → Image URL</strong>.
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
   </div>
 </div>
 
 <style>
   .one-ingredient-split {
     background: #ffffff;
+    color: var(--tcc-ink, #0a1628);
+  }
+  .one-ingredient-split--cream { background: var(--tcc-bg, #f6f4ef); }
+  .one-ingredient-split--white { background: #ffffff; }
+
+  /* Grid */
+  .one-ingredient-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+  @media (max-width: 749px) {
+    .one-ingredient-split__grid { grid-template-columns: 1fr; gap: 32px; }
   }
 
-  .one-ingredient-split__inner {
-    max-width: 1240px;
-    text-align: center;
+  /* Left column typography */
+  .one-ingredient-split__eyebrow {
+    font-family: var(--tcc-font-sans);
+    font-size: var(--tcc-fs-eyebrow, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--tcc-ink-soft);
+    margin: 0 0 var(--tcc-s-2, 16px);
+  }
+  .one-ingredient-split__heading {
+    font-family: var(--tcc-font-heading);
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+    letter-spacing: normal;
+    margin: 0 0 24px;
+    color: inherit;
+  }
+  @media (max-width: 749px) {
+    .one-ingredient-split__heading { font-size: 26.6px; line-height: 31.92px; }
+  }
+  .one-ingredient-split__intro,
+  .one-ingredient-split__closing {
+    font-family: var(--tcc-font-sans);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0 0 16px;
+  }
+  .one-ingredient-split__intro p,
+  .one-ingredient-split__closing p { margin: 0 0 16px; }
+  .one-ingredient-split__intro p:last-child,
+  .one-ingredient-split__closing p:last-child { margin-bottom: 0; }
+  .one-ingredient-split__closing { margin-top: 24px; }
+
+  .one-ingredient-split__list-heading {
+    font-family: var(--tcc-font-heading);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 24px 0 8px;
+  }
+  .one-ingredient-split__list-heading strong { font-weight: 700; }
+
+  .one-ingredient-split__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+  }
+  .one-ingredient-split__list li {
+    position: relative;
+    padding-left: 22px;
+    font-family: var(--tcc-font-sans);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0 0 10px;
+  }
+  .one-ingredient-split__list li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    background: var(--tcc-cta-accent, #1e40af);
+    border-radius: 50%;
   }
 
+  /* Right column — image or placeholder */
+  .one-ingredient-split__image-wrap { width: 100%; }
   .one-ingredient-split__image {
     display: block;
     width: 100%;
-    max-width: 1240px;
     height: auto;
-    margin: 0 auto;
     border-radius: 24px;
   }
 
-  /* Placeholder block — only shown when image_url is blank.
-     Same approximate aspect ratio + blue brand bg as the eventual image
-     so the page layout doesn't jump when the real asset lands. */
+  /* Placeholder block (when image_url is blank) — matches the eventual
+     aspect ratio and brand color so layout doesn't shift when the asset lands. */
   .one-ingredient-split__placeholder {
     width: 100%;
-    max-width: 1240px;
-    aspect-ratio: 1240 / 1100;
-    margin: 0 auto;
+    aspect-ratio: 1 / 1;
     background: var(--tcc-cta-accent, #1e40af);
     border-radius: 24px;
     color: #ffffff;
@@ -72,15 +203,13 @@
     justify-content: center;
     padding: 8%;
   }
-
   .one-ingredient-split__placeholder-inner {
-    max-width: 560px;
+    max-width: 360px;
     text-align: center;
     border: 2px dashed rgba(255, 255, 255, 0.45);
     border-radius: 16px;
-    padding: 40px 32px;
+    padding: 32px 24px;
   }
-
   .one-ingredient-split__placeholder-eyebrow {
     font-family: var(--tcc-font-sans);
     font-size: var(--tcc-fs-eyebrow, 11px);
@@ -90,35 +219,20 @@
     opacity: 0.8;
     margin-bottom: 12px;
   }
-
   .one-ingredient-split__placeholder-title {
     font-family: var(--tcc-font-heading);
-    font-size: clamp(22px, 3vw, 32px);
+    font-size: clamp(18px, 2.4vw, 22px);
     font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 16px;
+    line-height: 1.25;
+    margin-bottom: 14px;
   }
-
   .one-ingredient-split__placeholder-hint {
     font-family: var(--tcc-font-sans);
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.5;
     opacity: 0.85;
   }
-
-  .one-ingredient-split__placeholder-hint strong {
-    font-weight: 700;
-  }
-
-  @media (max-width: 749px) {
-    .one-ingredient-split__placeholder {
-      aspect-ratio: 4 / 5;
-      padding: 6%;
-    }
-    .one-ingredient-split__placeholder-inner {
-      padding: 28px 20px;
-    }
-  }
+  .one-ingredient-split__placeholder-hint strong { font-weight: 700; }
 </style>
 
 {% schema %}
@@ -130,17 +244,43 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    { "type": "header", "content": "Left column (text)" },
+    { "type": "text",     "id": "eyebrow",              "label": "Eyebrow (optional)" },
+    { "type": "text",     "id": "heading",              "label": "Heading", "default": "One Ingredient. Centuries of Use." },
+    { "type": "richtext", "id": "intro_paragraph_1",    "label": "Intro paragraph 1" },
+    { "type": "richtext", "id": "intro_paragraph_2",    "label": "Intro paragraph 2 (optional)" },
+    { "type": "text",     "id": "list_a_heading",       "label": "List A heading", "default": "How It Works" },
+    { "type": "text",     "id": "list_b_heading",       "label": "List B heading", "default": "Natural Benefits" },
+    { "type": "richtext", "id": "closing_paragraph",    "label": "Closing paragraph (optional)" },
+
+    { "type": "header", "content": "Right column (image)" },
+    { "type": "text",     "id": "image_url",            "label": "Image URL (Shopify CDN)", "info": "Paste the full https://cdn.shopify.com/... URL after uploading the bottle + corner-icons image to Settings → Files." },
+    { "type": "text",     "id": "image_alt",            "label": "Image alt text", "default": "Spike Detox bottle with key benefits — 4,000 FU per capsule, wild-fermented Bacillus subtilis, K2-free, third-party tested, single ingredient" },
+
+    { "type": "header", "content": "Section appearance" },
     {
-      "type": "text",
-      "id": "image_url",
-      "label": "Image URL (Shopify CDN)",
-      "info": "Paste the full https://cdn.shopify.com/... URL after uploading the image to Settings → Files."
+      "type": "select", "id": "background_style", "label": "Section background",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "cream", "label": "Cream / Muted" }
+      ],
+      "default": "white"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_a_item",
+      "name": "List A item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Bullet text" }
+      ]
     },
     {
-      "type": "text",
-      "id": "image_alt",
-      "label": "Image alt text",
-      "default": "Spike Detox bottle with key benefits — 4,000 FU per capsule, wild-fermented Bacillus subtilis, K2-free, third-party tested, single ingredient"
+      "type": "list_b_item",
+      "name": "List B item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Bullet text" }
+      ]
     }
   ],
   "presets": [
