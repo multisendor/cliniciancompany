@@ -224,27 +224,29 @@
       {%- endif -%}
     {%- endif -%}
 
-    {%- liquid
-      if section.settings.menu != blank
-        if section.settings.menu_type_desktop == 'dropdown'
-          render 'header-dropdown-menu'
-        elsif section.settings.menu_type_desktop != 'drawer'
-          render 'header-mega-menu'
+    {%- if section.settings.show_menu -%}
+      {%- liquid
+        if section.settings.menu != blank
+          if section.settings.menu_type_desktop == 'dropdown'
+            render 'header-dropdown-menu'
+          elsif section.settings.menu_type_desktop != 'drawer'
+            render 'header-mega-menu'
+          endif
         endif
-      endif
-    %}
+      %}
 
-    {%- comment -%}
-      Fallback inline nav when no Main menu is configured. Disappears
-      automatically once the merchant assigns a menu in the theme editor.
-    {%- endcomment -%}
-    {%- if section.settings.menu == blank -%}
-      <nav class="tcc-header-fallback-nav" aria-label="Primary">
-        <a href="{{ routes.collections_url }}/all" class="tcc-header-fallback-nav__item">Shop</a>
-        <a href="/products/spike-detox" class="tcc-header-fallback-nav__item">Spike Detox</a>
-        <a href="/pages/about" class="tcc-header-fallback-nav__item">About</a>
-        <a href="/#faq" class="tcc-header-fallback-nav__item">FAQ</a>
-      </nav>
+      {%- comment -%}
+        Fallback inline nav when no Main menu is configured. Disappears
+        automatically once the merchant assigns a menu in the theme editor.
+      {%- endcomment -%}
+      {%- if section.settings.menu == blank -%}
+        <nav class="tcc-header-fallback-nav" aria-label="Primary">
+          <a href="{{ routes.collections_url }}/all" class="tcc-header-fallback-nav__item">Shop</a>
+          <a href="/products/spike-detox" class="tcc-header-fallback-nav__item">Spike Detox</a>
+          <a href="/pages/about" class="tcc-header-fallback-nav__item">About</a>
+          <a href="/#faq" class="tcc-header-fallback-nav__item">FAQ</a>
+        </nav>
+      {%- endif -%}
     {%- endif -%}
 
     {%- if section.settings.logo_position == 'middle-center' -%}
@@ -280,6 +282,7 @@
       {%- endif -%}
     {%- endif -%}
 
+    {%- if section.settings.show_icons -%}
     <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
@@ -359,6 +362,7 @@
         {%- endif -%}
       </a>
     </div>
+    {%- endif -%}
   </header>
 </{{ header_tag }}>
 
@@ -569,6 +573,23 @@
       ],
       "default": "center",
       "label": "t:sections.header.settings.mobile_logo_position.label"
+    },
+    {
+      "type": "header",
+      "content": "Header visibility (Resilia-style minimal mode)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_menu",
+      "label": "Show main menu (HOME / BESTSELLERS / CONTACT etc.)",
+      "default": true,
+      "info": "Uncheck for a minimal Resilia-style header with just the announcement bar + centered logo."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icons",
+      "label": "Show right-side icons (search / account / cart)",
+      "default": true
     },
     {
       "type": "link_list",
